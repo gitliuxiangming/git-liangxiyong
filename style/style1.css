@@ -1,3 +1,6 @@
 h1{
-	color: blue; 
+	color: blue; font-size: 60px;
+}
+p{
+	color: yellow; font-size: 78px;
 }

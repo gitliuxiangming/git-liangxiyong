@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三大基本选择器</title>
+	<style>
+		p{
+			/*color: #f00;*/
+			font-size: 28px;
+		}
+		.yangshi{
+			font-style: italic;
+			color: #f00;
+		}
+		.yangzi{color: #0f0;
+
+		}
+		#id1 {
+			font-weight: bolder;
+		}
+		#id2{
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<p class="yangshi">我是段落1</p>
+	<p class="yangshi" id="id1">我是段落2</p>
+	<p class="yangzi" id="id2">我是段落3</p>
+	<p class="yangzi">我是段落4</p>
+	<ul>
+		<li>
+			<ul>
+				<li>
+					<p class="yangzi" >我还是个段落</p>
+				</li>
+			</ul>
+		</li>
+		<li class="yangshi"	>我是个无序列表中的一个li</li>
+	</ul>
+</body>
+</html>
