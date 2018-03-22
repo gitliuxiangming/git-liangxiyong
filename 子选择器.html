@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子选择器</title>
+	<style>
+		ul>li>.yangshi{
+			color: #f00;
+			font-size: 28px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>大大的标题</h1>
+		<p>
+			<ul>
+				<li>
+					<p>文字0</p>
+					<p class="yangshi">文字1</p>
+				</li>
+			</ul>
+		</p>
+		<p>文字2</p>
+		<p class="yangshi">文字3</p>
+		<p class="yangshi">文字4</p>
+		<p>
+			<ol>
+				<li class="yangshi">文字1</li>
+				<li class="yangshi">文字2</li>
+				<li >文字3</li>
+			</ol>
+		</p>
+	</header>
+</body>
+</html>
