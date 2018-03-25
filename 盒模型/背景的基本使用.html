@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>背景的基本使用</title>
+	<style>
+		body{
+			height: 3000px;
+
+		}
+		.div1{
+			width: 500px;
+			height: 500px;
+			background-color: #faa;
+			background-attachment: fixed;
+			background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521971534053&di=6486e82265bf6e0d6bed3489a08bcebe&imgtype=0&src=http%3A%2F%2Fg.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F83025aafa40f4bfbf54e719e094f78f0f6361859.jpg);
+			background-repeat: no-repeat;	
+			background-position: 100px 100px;
+		}
+		.div2{
+			width: 1800px;
+			height: 1200px;
+			margin-top: 100px;
+			background: #f00 url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=229269515,460278&fm=27&gp=0.jpg) no-repeat fixed center center ;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">文字在上</div>
+	<div class="div2">复合样式,复合样式的位置固定会把本来的定位属性也给带走。即attachment 和 position 一起走了</div>
+</body>
+</html>
