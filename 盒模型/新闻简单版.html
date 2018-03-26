@@ -4,23 +4,152 @@
 	<meta charset="UTF-8">
 	<title>新闻</title>
 	<style>
-		.box{}
+	     *{
+	     	margin: 0;
+	        padding: 0;
+	 	}
+	 	a:link{
+	 		text-decoration:none;
+	 		color: #222;
+	 	}
+	 	a:visited{
+	 		text-decoration:none;
+	 		 color: #222;
+	 		}
+	 	a:hover{
+	 		text-decoration: underline;
+	 		color: #222;
+	 	}
+	 	a:avtive{text-decoration:none;
+	 		 color: #222;
+	 		}
+
+	 	.box{
+	 		 /*border: 2px dashed pink;*/
+	 		 width: 390px;
+	 		 height: 427px;
+	 		 margin:50px auto;
+
+	 	}
+	 	li{
+	 		list-style: none;
+	 	}
+	 	.caption{
+	 		width: 390px;
+	 		height: 38px;
+	 		border-bottom: 1px solid gray;
+	 	}
+	 	.h2{
+	 		width: 112px;
+	 		height: 38px;
+	 		color: #2f63ba;
+	 		font-size: 18px;
+	 		font-weight: 700;
+	 		padding: 0 20px;
+	 		border-bottom: 2px solid #2f63ba;
+	 		line-height: 38px;
+	 	}
+	 	.li1{
+	 		width: 100%;
+	 		line-height: 48px;
+	 		font-weight: 700;
+	 	}
+	 	div .li1~li{
+	 		width: 100%;
+	 		line-height: 33px;
+	 		font-weight: 400;
+	 	}
+ 	    .li7{
+ 	    	width: 100%;
+ 	    	line-height: 42px;
+ 	    	font-weight: 700;
+ 	    }
+ 	    div .li7~li{
+ 	    	width: 388px;
+ 	    	line-height: 29px;
+ 	    	font-weight: 400;
+ 	    	white-space: nowrap;
+ 	    	text-overflow: ellipsis;
+ 	    	overflow: hidden;
+ 	    }
+		.red:before{
+			content:"";
+			display: inline-block;
+			width: 5px;
+			height: 5px;
+			border:1 solid #da4453;
+			background-color:#da4453;
+			margin-bottom: 5px;
+			margin-right: 5px;
+
+		}
+		span{
+			display: inline-block;
+			width: 3px;
+			height: 3px;
+			background: url(../src/网页素材.jpg) no-repeat scroll -129px -225px;
+			margin-right: 7px;
+			
+		}
+		
+
+
+		
 	</style>
 </head>
 <body>
 	<div class="box">
+        <div class="caption">
+			<h2 class="h2">要点新闻</h2>
+		</div>	
 		<div>
 			<ul>
-				<li class="li1"><a href=""></a></li>
-				<li class="li2"><a href=""></a></li>
-				<li class="li3"><a href=""></a></li>
-				<li class="li4"><a href=""></a></li>
-				<li class="li5"><a href=""></a></li>
-				<li class="li6"><a href=""></a></li>
-				<li class="li7"><a href=""></a></li>
-				<li class="li8"><a href=""></a></li>
-				<li class="li9"><a href=""></a></li>
-				<li class="li10"><a href=""></a></li>
+				<li class="li1 red">
+					<a href="http://m.news.cctv.com/2018/03/26/ARTIA1vUiOxayWaeuKGpo9Sb180326.shtml" target="_blank">央视原创时政微视频丨窑洞里的读书人</a>
+				</li>
+				<li class="li2 red">
+					<a href="http://www.xinhuanet.com/politics/leaders/2018-03/26/c_1122591289.htm" target="_blank">习近平向中国与葡语国家最高法院院长会议致贺信</a>
+				</li>
+				<li class="li3 red">
+					<a href="http://www.xinhuanet.com/politics/2018lh/2018-03/25/c_1122587194.htm" target="_blank">最高人民法院工作报告</a>
+					<a href="http://www.xinhuanet.com/politics/2018lh/2018-03/25/c_1122587415.htm" target="_blank">最高人民检察院工作报告</a>
+				</li>
+				<li class="li4 red">
+					<a href="http://app.peopleapp.com/Api/600/DetailApi/shareArticle?type=0&article_id=1110975" target="_blank">“美国优先”伤害全球利益 2018全国两会</a>
+				</li>
+				<li class="li5 red">
+					<a href="http://www.xinhuanet.com/fortune/2018-03/26/c_1122589869.htm" target="_blank">原油期货上市 构建金融开放新格局 </a>
+					<a href="http://news.china.com/focus/2018qingming/index.html?qq-pf-to=pcqq.temporaryc2c" target="_blank">清明节专题</a>
+				</li>
+				<li class="li6 red">
+					<a href="http://news.gmw.cn/2018-03/26/content_28102610.htm" target="_blank">现行宪法具有划时代意义的一次与时俱进</a>
+				</li>
+			</ul>
+			<ul>
+				<li class="li7 red" id="li7">
+					<a href="http://news.cctv.com/2018/03/25/ARTIMt8cLD9OnZADMW6mJTMC180325.shtml" target="_blank">文化大发展 讲好新时代中国故事</a>
+				</li>
+				<li class="li8 blue">
+					<span></span>
+					<a href="http://www.ce.cn/xwzx/gnsz/gdxw/201803/26/t20180326_28602924.shtml" target="_blank">北部战区陆军新时代传承弘扬雷锋精神群体 </a>
+					<a href="http://d.news.ifeng.com/pc/special/58261/index.shtml?_zbs_baidu_news" target="_blank">暖新闻</a>
+				</li>
+				<li class="li9 blue">
+					<span></span>
+					<a href="http://tech.ifeng.com/a/20180326/44919359_0.shtml?_zbs_baidu_news" target="_blank">国之重器！中国的“超级显微镜”完工登场</a>
+				</li>
+				<li class="li10 blue">
+					<span></span>
+					<a href="http://xinwen.eastday.com/a/xjump.html?id=180326013617051" target="_blank">四大部委齐发声信息量满满 与你的生活息息相关</a>
+				</li>
+				<li class="li11 blue">
+					<span></span>
+					<a href="http://xinwen.eastday.com/a/xjump.html?id=180326070720780" target="_blank">4位国际组织负责人点赞中国改革：不可同日而语	</a>
+				</li>
+				<li class="li12 blue">
+					<span></span>
+					<a href="http://www.sohu.com/a/226357733_123753?_f=index_news_0?pvid=ab2a3f3fa09b29b9" target="_blank">商务部：对原产于美国等国的进口苯酚进行反倾销调查</a>
+				</li>
 			</ul>
 		</div>
 	</div>
