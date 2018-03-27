@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>布局小练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/*
+		头部
+		*/
+		.header{
+			margin:10px auto;
+			overflow: hidden;
+			width: 780px;
+			height: 80px;
+			/*background-color: #111;*/
+		}
+		.boxa1{
+			width: 80px;
+			height: 80px;
+			background-color: #f00;
+			float: left;
+		}
+		.logo{
+			float: left;
+			overflow: hidden;
+		}
+		.headerright{
+			float: right;
+			overflow: hidden;
+		}
+		.boxa2{
+			width: 160px;
+			height: 40px;
+			background-color: #aaa;
+			float: right;
+		}
+		.boxa22{
+			height: 40px;
+		}
+		.nav{
+			width: 640px;
+			height: 40px;
+			background-color: purple;
+			float: right;
+		}
+		/*
+		主体
+		*/
+		.section{
+			width: 780px;
+			height: 520px;
+			overflow: hidden;
+			margin:10px auto;
+			/*background-color: #222;*/
+		}
+		.aside{
+			width: 130px;
+			height: 520px;
+			background-color: #0ff;
+			float: right;	
+		}
+		.sectionleft{
+			width: 640px;
+			height: 520px;
+			float: left;
+			/*background-color: #000;*/
+		}
+		.article1{
+			width: 640px;
+			height: 480px;
+			/*background-color: blue;*/
+		}
+		.article2{
+			width: 640px;
+			height: 30px;
+			background-color: red;
+			margin-top: 10px;
+		}
+		.articlea1{
+			width: 480px;
+			height: 480px;
+			float: left;
+		}
+		.articlea2{
+			width: 145px;
+			height: 480px;
+			background-color: pink;
+			float: right;
+		}
+		.articleaa1{
+			width: 480px;
+			height: 280px;
+			background-color: yellow;
+		}
+		.articleaa2{
+			width: 480px;
+			height: 190px;
+			background-color: yellow;
+			margin-top: 10px;
+		}
+		/*
+		尾部
+		*/
+		.footer{
+			width: 780px;
+			height: 40px;
+			margin:10px auto;
+			overflow: hidden;
+			background-color: blue;
+		}
+		
+	</style>
+</head>
+<body>
+	<header class="header">
+		<div class="logo">
+			<div class="boxa1"></div>
+		</div>
+		<div class="headeright">
+			<div class="boxa2"></div>
+			<div class="boxa22"></div>
+			<div class="nav"></div>
+		</div>
+	</header>
+	<section class="section">
+		<div class="sectionleft">
+			<article class="article1">
+				<div class="articlea1">
+					<div class="articleaa1"></div>
+					<div class="articleaa2"></div>
+				</div>
+				<div class='articlea2'></div>
+			</article>
+			<article class="article2"></article>
+		</div>
+		<aside class="aside"></aside>
+	</section>
+	<footer class="footer">
+		
+	</footer>
+</body>
+</html>
