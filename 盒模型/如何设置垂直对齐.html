@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如何设置垂直对齐</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.dot{
+			display:inline-block;
+			width: 3px;
+			height: 3px;
+			background-color: #f00;
+		}
+		span{
+			background-color: #000;
+			color: white;
+			line-height: 50px;
+			}
+		p{
+			border:1px solid blue;
+			margin-bottom: 5px;
+		}
+		}	
+
+		p:nth-child(1) .dot{
+			/*background-color: #000;*/
+			
+		}
+		p:nth-child(2) .dot{
+			/*background-color: #000;*/
+			vertical-align: top;
+		}
+		p:nth-child(3) .dot{
+			/*background-color: #000;*/
+			vertical-align: middle;
+		}
+		p:nth-child(4) .dot{
+			/*background-color: #000;*/
+			vertical-align: baseline;
+		}
+		p:nth-child(5) .dot{
+			/*background-color: #000;*/
+			vertical-align: bottom;
+		}
+		p:nth-child(6) .dot{
+			/*background-color: #000;*/
+			vertical-align: text-bottom;
+		}
+	</style>
+</head>
+<body>
+	<p><span><i class="dot"></i>我是用来测试的 默认</span></p>
+	<p><span><i class="dot"></i>我是用来测试的 top</span></p>
+	<p><span><i class="dot"></i>我是用来测试的 middle</span></p>
+	<p><span><i class="dot"></i>我是用来测试的 baseline</span></p>
+	<p><span><i class="dot"></i>我是用来测试的 bottom</span></p>
+	<p><span><i class="dot"></i>我是用来测试的 text-bottom</span></p>
+</body>
+</html>
