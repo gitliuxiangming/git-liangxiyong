@@ -8,6 +8,22 @@
 			margin: 0;
 			padding: 0;
 		}
+		a:link{
+			color: #1d5494;
+			text-decoration: none;
+		}
+		a:visited{
+			color: #1d5494;
+			text-decoration: none;
+		}
+		a:hover{
+			color: #1d5494;
+			text-decoration: underline;
+		}
+		a:active{
+			color: #1d5494;
+			text-decoration: underline;
+		}
 		.w{
 			overflow: hidden;
 			/*border: 1px solid #000;*/
@@ -15,6 +31,9 @@
 		/*
 		头部
 		*/
+		.quan{
+			background-color: #eff4fa;
+		}
 		header{
 			width: 1583px;
 			height: 63px;
@@ -37,22 +56,7 @@
 
 
 		}
-		a:link{
-			color: #1d5494;
-			text-decoration: none;
-		}
-		a:visited{
-			color: #1d5494;
-			text-decoration: none;
-		}
-		a:hover{
-			color: #1d5494;
-			text-decoration: underline;
-		}
-		a:active{
-			color: #1d5494;
-			text-decoration: underline;
-		}
+	
 		/*
 		主体
 		*/
@@ -108,17 +112,28 @@
 			line-height: 51px;
 			text-align: center;
 			float: left;
+
 		}
 		.form1>.a2{
 			width: 50%;
 			line-height: 51px;
 			text-align: center;
 			float: right;
+
+		}
+		.zhuti2 .form1 a{
+			color: #aaa;
+			text-decoration: none;
+		}
+		.zhuti2 .form1 a:hover{
+			color: #222;
+			text-decoration:none;
+
 		}
 		.form2 input,.form3 input{
 			width: 284px;
 			height: 50px;
-			margin:10px 25px;
+			margin:10px 26px;
 			border-radius: 3px;
 			border: 1px solid #96a5b4;
 		}
@@ -132,12 +147,16 @@
 		}
 		.form4{
 			margin:10px 25px;
+			font-size: 14px;
+			color: #aaa;
 		}
 		.form4 input{
 			width: 15px;
 			height: 15px;
 			border: 1px solid #96a5b4;
 			background-color: white;
+			vertical-align: bottom;
+			margin-bottom: 2px;
 		}
 		.form5{
 			font-size: 12px;
@@ -157,22 +176,7 @@
 		    font-size: 12px;
 		    margin-top: 180px;	
 		}
-		a:link{
-			color: #1d5494;
-			text-decoration: none;
-		}
-		a:visited{
-			color: #1d5494;
-			text-decoration: none;
-		}
-		a:hover{
-			color: #1d5494;
-			text-decoration: underline;
-		}
-		a:active{
-			color: #1d5494;
-			text-decoration: underline;
-		}
+
 		.foot{
 			color: #868686;
 		}
@@ -181,17 +185,19 @@
 	</style>
 </head>
 <body>
-	<header class="w">
-		<div class="h1">
-			<a href="https://mail.qq.com/" target="_blank"><img src="../src/qq邮箱LOGO.jpg" alt="LOGO" width="182px"  style="margin-left: 40px; margin-top: 14px;"></a>
-		</div>
-		<div class="h2">
-			<a href="http://w.mail.qq.com/cgi-bin/loginpage?f=xhtml" target="_blank">基本版</a>
-			<a href="http://en.mail.qq.com/" target="_blank">English</a>
-			<a href="http://app.mail.qq.com/" target="_blank">手机版</a>
-			<a href="http://exmail.qq.com/?referrer=index_top" target="_blank">企业邮箱</a>
-		</div>
-	</header>
+	<div class="quan">
+		<header class="w">
+			<div class="h1">
+				<a href="https://mail.qq.com/" target="_blank"><img src="../src/qq邮箱LOGO.jpg" alt="LOGO" width="182px"  style="margin-left: 40px; margin-top: 14px;"></a>
+			</div>
+			<div class="h2">
+				<a href="http://w.mail.qq.com/cgi-bin/loginpage?f=xhtml" target="_blank">基本版&nbsp;|&nbsp;</a>
+				<a href="http://en.mail.qq.com/" target="_blank">English&nbsp;|&nbsp;</a>
+				<a href="http://app.mail.qq.com/" target="_blank">手机版&nbsp;|&nbsp;</a>
+				<a href="http://exmail.qq.com/?referrer=index_top" target="_blank">企业邮箱</a>
+			</div>
+		</header>
+	</div>
 	<section class="w">
 		<div class="zhuti1">
 			<div class="zhuti3">
@@ -207,19 +213,19 @@
 		<div class="zhuti2">
 			<form action="https://mail.qq.com/">
 				<p class="form1">
-					<span class="a1">快速登陆</span>
-					<span class="a2">账号密码登陆</span>
+					<span class="a1" ><a href="#">快速登陆</a></span>
+					<span class="a2" ><a href="#">账号密码登陆</a></span>
 				</p>
 				<div class="zhuti22">
 					<p class="form2">
-						<input type="text" value="支持QQ号/邮箱/手机号登陆">
+						<input type="text" placeholder="支持QQ号/邮箱/手机号登陆" style='color: #aaa; font-size: 14px; padding-left: 13px; box-sizing: border-box;'>
 					</p>
 					<p class="form3">
-						<input type="text" value="QQ密码">
+						<input type="text" placeholder="QQ密码" style='color: #aaa; font-size: 14px; padding-left: 13px; box-sizing: border-box;'>
 					</p>
 					<p class="form4">
-						<input type="checkbox">
-						<span>下次自动登陆</span>
+						<input type="checkbox" id="checkbox">
+						<label for="checkbox">下次自动登陆</label>	
 					</p>
 					<input id="submit" type="submit" value="登录">
 				</div>
@@ -232,13 +238,15 @@
 			</form>
 		</div>
 	</section>
+	<div class="quan">
 	<footer class="w">
-		<a href="http://www.tencent.com/" target="_blank">关于腾讯 </a>
-		<a href="http://mail.qq.com/cgi-bin/readtemplate?check=false&t=mail_clause" target="_blank">服务条款 </a>
-		<a href="http://kf.qq.com/product/email.html" target="_blank">客服中心 </a>
-		<a href="http://mail.qq.com/contact_us.html" target="_blank">联系我们</a>
-		<a href="http://service.mail.qq.com/" target="_blank">帮助中心 </a>
+		<a href="http://www.tencent.com/" target="_blank">关于腾讯&nbsp;|&nbsp; </a>
+		<a href="http://mail.qq.com/cgi-bin/readtemplate?check=false&t=mail_clause" target="_blank">服务条款&nbsp;|&nbsp; </a>
+		<a href="http://kf.qq.com/product/email.html" target="_blank">客服中心&nbsp;|&nbsp; </a>
+		<a href="http://mail.qq.com/contact_us.html" target="_blank">联系我们&nbsp;|&nbsp;</a>
+		<a href="http://service.mail.qq.com/" target="_blank">帮助中心&nbsp;|&nbsp; </a>
 		<span class="foot"> ©1998 - 2018 Tencent Inc. All Rights Reserved.</span>
 	</footer>
+	</div>
 </body>
 </html>
