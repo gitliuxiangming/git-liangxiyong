@@ -1,0 +1,42 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>绝对定位</title>
+ 	<style>
+ 		*{
+ 			margin: 0;
+ 			padding: 0;
+ 		}
+ 		div{
+ 			width: 100px;
+ 			height: 100px;
+ 		}
+		.box1{
+			background-color: #f00;
+		}
+		.box2{
+			background-color: #0f0;
+			position: absolute;
+			bottom: 11px;
+			left: 11px;
+		}
+		.box3{background-color: #00f;
+			width: 110px;
+			height: 110px;
+	}
+		span{
+			height: 100px;
+			width: 100px;
+			background-color: #aaa;
+			position: absolute;
+		}
+ 	</style>
+ </head>
+ <body>
+ 	<div class="box1"></div>
+ 	<div class="box2"></div>
+ 	<div class="box3"></div>
+ 	<span>我是span</span>
+ </body>
+ </html>

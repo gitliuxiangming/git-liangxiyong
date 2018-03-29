@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位的参考点</title>
+	<style>
+		.father{
+	    	width: 500px;
+	    	height: 500px;
+	    	border: 1px solid #000;
+	    	margin:200px auto;
+	    	position: relative;
+	    }
+	    .son1{
+	    	width: 150px;
+	    	height: 150px;
+	    	background:red;
+	    	margin:20px;
+	    	position: relative;
+	    }
+	    .son2{
+	    	width: 150px;
+	    	height: 150px;
+	    	background:green;
+	    }
+	    .son3{
+	    	width: 150px;
+	    	height: 150px;
+	    	background:blue;
+	    	position: absolute;
+	    	bottom: 0px;
+	    	right:0px;
+	    }
+	    .sonson{
+	    	width: 100px;
+	    	height: 100px;
+	    	background: #aaa;
+	    	position: absolute;
+	    	top:20px;
+	    	left: 20px;
+	    	text-align: center;
+	    	line-height: 100px;
+	    }
+	</style>
+</head>
+<body>
+	<div class="father">
+ 		<div class="son1">
+ 			绝对定位参考点是
+ 			<div class="sonson">孙子元素</div>
+ 		</div>
+ 		<div class="son2">上一级拥有position属性的元素</div>
+ 		<div class="son3">这个元素可以是他父元素，也可以是祖宗元素</div>
+ 	</div>
+</body>
+</html>

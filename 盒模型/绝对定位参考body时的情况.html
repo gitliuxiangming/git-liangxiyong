@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位参考body时的情况</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			position: relative;
+			margin: 100px auto;
+		}
+		.fuchuang{
+			width: 200px;
+			height: 200px;
+			background: #aaa;
+			position: absolute;
+			left: 40px;
+			bottom:30%;
+			text-align: center;
+			/*line-height: 200px;*/
+			padding: 50px 0;
+			box-sizing: border-box;
+		}
+		.fuchuang2{
+			width: 200px;
+			height: 200px;
+			background: #aaa;
+			position: absolute;
+			right: 40px;
+			bottom:30%;
+			text-align: center;
+			/*line-height: 200px;*/
+			padding: 50px 0;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="fuchuang">这是一个浮窗广告类型,烦死人的浮窗广告就是这个东东！</div>
+		<div class="fuchuang2">这是一个浮窗广告类型,烦死人的浮窗广告就是这个西西	！</div>
+	</div>
+</body>
+</html>
