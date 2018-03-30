@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3新增过渡的练习-过渡速度</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin:60px auto;
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 100px;
+			background-color: #f00;
+			margin-top: 10px;
+			text-align: center;
+			line-height: 100px;
+			margin-left: 0;
+			transition-property: margin-left;
+			transition-duration: 5s;
+			transition-delay: 0.5s;
+		}
+		ul:hover li{
+			margin-left: 600px;
+			background-color: #00f;
+		}
+		ul li:nth-child(2){
+			transition-timing-function: linear;
+		}
+		ul li:nth-child(3){
+			transition-timing-function: ease;
+		}
+		ul li:nth-child(4){
+			transition-timing-function: ease-in;
+		}
+		ul li:nth-child(5){
+			transition-timing-function: ease-out;
+		}
+		ul li:nth-child(6){
+			transition-timing-function: ease-in-out;
+		}
+		ul li:nth-child(7){
+			transition-timing-function: cubic-bezier(0,0,1,1);
+		}
+		
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>默认</li>
+			<li>linear</li>
+			<li>ease</li>
+			<li>ease-in</li>
+			<li>ease-out</li>
+			<li>ease-in-out</li>
+			<li>cubic-bezier</li>
+		</ul>
+	</div>
+</body>
+</html>

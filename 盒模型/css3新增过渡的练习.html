@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css3新增过渡的练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 200px;
+			height: 200px;
+			background: rgba(255,255,133,0.6);
+			transition-property: width,background-color;
+			transition-duration: 3s,6s;
+			transition-delay: 2s;
+		}
+		.box1:hover{
+			width: 400px;
+			background-color: rgba(0,123,122,0.8);
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+</body>
+</html>
