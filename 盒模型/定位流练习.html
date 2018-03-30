@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		}
+		/*
+		导航栏
+		*/
+		.header{
+			overflow: hidden;
+		}
+		.navtop{
+			width: 919px;
+			height: 10px;
+			background-image: url(../src/定位流素材副本.jpg);
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			margin:20px auto 0;
+
+		}
+		.nav{
+			width: 919px;
+			height: 37px;
+			margin:0px auto;
+			position: relative;
+		}
+		.nav div{
+			width: 20%;
+			height: 37px;
+			line-height: 37px;
+			background: gray;
+			float: left;
+			text-align: center;
+		}
+		.nav div:hover{
+			background-color:red;
+		}
+		.nav a:link{
+			text-decoration: none;
+			color:#14131b;
+		}
+		.nav a:hover{
+			text-decoration: underline;
+			color: skyblue;
+		}
+		.nav .nav3{
+			width: 20%;
+			height: 37px;
+			background: red;
+		}
+		/*
+		交互图片
+		*/
+		.jiaohu{
+			width: 765px;
+			height: 407px;
+			margin:20px auto;
+			border: 1px solid #000;
+			background-image: url(../src/定位流素材背景图.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-origin: border-box;
+			position: relative;
+		}
+		.shang {
+			width: 38px;
+			height: 50px;
+			position: absolute;
+			left: 0;
+			top: 205px;
+		}
+	     .xia {
+			width: 38px;
+			height: 50px;
+			position: absolute;
+			right:-1px;
+			top: 206px;
+		}
+		.di{
+			height: 28px;
+			position: absolute;
+			right: 0;
+			bottom: 10px;
+			/*background: red;*/
+		}
+		.di div{
+			width: 28px;
+			height: 28px;
+			border-radius: 50%;
+			border: 1px solid #000;
+			float: right;
+			margin-right: 7px;
+			line-height: 28px;
+			text-align: center;
+			background:rgba(255 255 0 0.9);
+		}
+		.di div a:link{
+			text-decoration: none;
+			color: #fff;
+		}
+		.you{
+			width: 96px;
+			height: 183px;
+			background: red;
+			text-align: center;
+			line-height: 183px;	
+			position: fixed;
+			right: 0;
+			top: 200px;
+		}
+		.zuo{
+			width: 96px;
+			height: 183px;
+			background: red;
+			text-align: center;
+			line-height: 183px;
+			position: fixed;
+			left: 0;
+			top: 210px;
+		}
+		.zuo a,.you a{
+			text-decoration: none;
+			color:#222;
+		}
+		/*
+		内容部分
+		*/
+		.content{
+			width: 919px;
+			height: 2500px;
+			background: blue;
+			margin:70px auto;
+			background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4087029894,1532388988&fm=11&gp=0.jpg);
+
+		}
+		.retop{
+			width: 73px;
+			height: 73px;
+			background: gray;
+			text-align: center;
+			line-height: 73px;
+			position: fixed;
+			bottom: 0;
+			right: 0;
+		}
+		.retop a:link{
+			text-decoration: none;
+			color: purple;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="navtop"></div>
+		<div class="nav">
+			<div class="nav1"><a href="javascript:">天猫会员</a></div>
+			<div class="nav2"><a href="javascript:">品牌街</a></div>
+			<div class="nav3"><a href="javascript:">电器城</a></div>
+			<div class="nav4"><a href="javascript:">营业厅</a></div>
+			<div class="nav5"><a href="javascript:">魅力惠</a></div>
+		</div>
+	</div>
+	<div class="zuo"><a href="#">左浮窗</a></div>	
+	<div class="jiaohu">
+		<div class="shang"><a href="#"><img src="../src/定位流素材背景用左箭头.jpg" alt=""></a></div>
+		<div class="xia"><a href="#"><img src="../src/定位流素材背景用右箭头.jpg" alt=""></a></div>
+		<div class="di">
+			<div><a href="javascript:">5</a></div>
+			<div><a href="javascript:">4</a></div>
+			<div><a href="javascript:">3</a></div>
+			<div><a href="javascript:">2</a></div>
+			<div><a href="javascript:">1</a></div>
+		</div>
+	</div>
+	<div class="you"><a href="#">右浮窗</a></div>
+	<div class="content">导航栏没有固定定位的版本</div>
+	<div class="retop"><a href="#">回到顶部</a></div>
+</body>
+</html>
