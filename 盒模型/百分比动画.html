@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百分比动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 500px;
+			height: 500px;
+			background: gray;
+			position: relative;
+			margin:50px auto;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			position: absolute;
+			top: 0;
+			left: 0;
+			animation:donghua 3s ease 0.5s infinite normal;
+		}
+		@keyframes donghua{
+			0%{
+				top: 0;
+				left: 0;
+			}
+			25%{
+				top: 0;
+				left:400px;
+			}
+			50%{
+				top: 400px;
+				left: 400px;
+			}
+			75%{
+				top: 400px;
+				left: 0;
+			}
+			100%{
+				top: 0;
+				left: 0;
+
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

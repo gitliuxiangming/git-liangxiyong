@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2d修改基点和轴向</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{ 
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin:50px auto;
+			position: relative;
+		}
+		ul li{
+			list-style:none;
+			margin:0 auto;
+			position: absolute;
+			top: 0;
+			left: 0;
+			perspective: 1000px;
+		}
+		ul li img{
+			width: 200px;
+			height: 200px;
+		}
+		ul li:nth-child(1){
+			transform: rotateX(15deg);
+			transform-origin: center bottom;
+		}
+		ul li:nth-child(2){
+			transform: rotate(45deg);
+			transform-origin: left center;
+		}
+		ul li:nth-child(3){
+			transform: rotate(60deg);
+			transform-origin: right bottom;
+		}
+	</style>
+</head>
+<body>
+	<h1>乱七八糟</h1>
+	<ul>
+		<li><img src="../src/1.jpg" alt=""></li>
+		<li><img src="../src/2.jpg" alt=""></li>
+		<li><img src="../src/3.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

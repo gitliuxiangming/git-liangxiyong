@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画的基本使用</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: red;
+			/*animation-name: donghua;
+			animation-duration: 2s;
+			animation-delay: 0.8s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;	*/
+			animation:donghua 2s linear 0.5s infinite alternate;
+		}
+		@keyframes donghua{
+			from{
+				width: 100px;
+				height: 100px;
+				background: blue;
+			}
+			to{
+				width: 300px;
+				height: 200px;
+				background: blue;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box">一些属性和过渡一样比如执行时间，执行速度，是否延迟。。。</div>
+</body>
+</html>

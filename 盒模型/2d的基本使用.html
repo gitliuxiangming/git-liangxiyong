@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2d的基本使用</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			height: 1000px;
+			border: 1px solid #000;
+			margin:0 auto;
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 100px;
+			background: red;
+			margin:0 auto;
+			margin-top: 50px;
+			text-align: center;
+			line-height: 100px;
+		}
+		ul li:nth-child(2){
+			transform: rotate(45deg);
+		}
+		ul li:nth-child(3){
+			transform:translate(50px,10px);
+		}
+		ul li:nth-child(4){
+			transform:scale(1.2,1.2);
+		}
+		ul li:nth-child(5){
+			transform:translate(50px,80px) scale(1.5,1.5) rotate(45deg);
+		}	
+		
+
+
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>默认</li>
+			<li>旋转</li>
+			<li>平移</li>
+			<li>拉伸</li>
+			<li>复合</li>
+		</ul>
+	</div>
+</body>
+</html>

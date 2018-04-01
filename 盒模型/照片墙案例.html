@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>照片墙案例</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100%;
+			height: 400px;
+			background: #079;
+			margin:80px auto;
+		}
+		ul{
+			text-align: center;
+			padding-top: 75px;
+
+		}
+		ul li{
+			list-style: none;
+			margin-right: 10px;
+			display: inline-block;
+			position: relative;	
+			transition:all 0.5s linear ;
+		}
+		ul:hover li{
+			opacity: 0.5
+		}
+		 div ul li:hover{
+			transform:rotate(0deg);
+			z-index: 1;
+			opacity: 1;	
+		}
+		ul li:nth-child(1){
+			transform:rotate(-20deg);
+		}
+		ul li:nth-child(2){
+			transform:rotate(25deg);
+		}
+		ul li:nth-child(3){
+			transform:rotate(-20deg);
+		}
+		ul li:nth-child(4){
+			transform:rotate(30deg);
+		}
+		li img{
+			width: 190px;
+			height: 250px;
+			border: 6px solid #fff;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	 <div>
+	 	<ul>
+	 		<li><img src="../src/照片墙1.jpg" alt=""></li>
+	 		<li><img src="../src/照片墙2.jpg" alt=""></li>
+	 		<li><img src="../src/照片墙3.jpg" alt=""></li>
+	 		<li><img src="../src/照片墙4.jpg" alt=""></li>
+	 	</ul>
+	 </div>
+</body>
+</html>

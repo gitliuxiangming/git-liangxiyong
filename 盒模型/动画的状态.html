@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画的状态</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			margin:50px auto;
+			background: blue;
+			animation: donghua 3s 1s;
+			animation-fill-mode:both; 
+			line-height: 100px;
+			text-align: center;
+		}
+		div:hover{
+			animation-play-state: paused;
+		}
+		@keyframes donghua{
+			0%{
+				transform:rotate(25deg);
+			}
+			33%{
+				transform:rotate(45deg);
+			}
+			66%{
+				transform:rotate(60deg);
+			}
+			100%{
+				transform:rotate(80deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div>状态</div>
+</body>
+</html>
