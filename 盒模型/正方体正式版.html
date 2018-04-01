@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正方体正式版</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			position:relative;
+			margin:100px auto;
+			transform-style: preserve-3d;
+			transform:rotateX(0deg) rotateY(0deg);
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top: 0;
+			left: 0;
+			line-height: 200px;
+			text-align: center;
+			font-size: 30px;
+		}
+		ul li:nth-child(1){
+			background:red;
+			transform:rotateX(90deg) translateZ(100px);
+		}
+		ul li:nth-child(2){
+			background:green;
+			transform:rotateX(180deg) translateZ(100px);
+		}
+		ul li:nth-child(3){
+			background:blue;
+			transform:rotateX(270deg) translateZ(100px);
+		}
+		ul li:nth-child(4){
+			background:yellow;
+			transform:translateZ(100px);
+		}
+		ul li:nth-child(5){
+			background:pink;
+			transform:rotateY(90deg) translateZ(100px);
+		}
+		ul li:nth-child(6){
+			background:purple;
+			transform:rotateY(270deg) translateZ(100px);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>这</li>
+		<li>是</li>
+		<li>个</li>
+		<li>正</li>
+		<li>方</li>
+		<li>体</li>
+	</ul>
+</body>
+</html>
