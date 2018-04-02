@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>长方体练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 400px;
+			height: 200px;
+			margin:100px auto;
+			position: relative;
+			transform-style: preserve-3d;
+			transform: rotateX(0deg) rotateY(0deg);
+		}
+		ul li{
+			list-style: none;
+			text-align: center;
+			line-height: 200px;
+			font-size: 60px;
+			color:red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		ul li:nth-child(1){
+			width: 400px;
+			height: 200px;
+			background:#123;
+		}
+		ul li:nth-child(2){
+			width: 400px;
+			height: 200px;
+			background:#234;
+		}
+		ul li:nth-child(3){
+			width: 400px;
+			height: 200px;
+			background:#345;
+		}
+		ul li:nth-child(4){
+			width: 400px;
+			height: 200px;
+			background:#456;
+		}
+		ul li:nth-child(5){
+			width: 200px;
+			height: 200px;
+			background:#567;
+		}
+		ul li:nth-child(6){
+			width: 200px;
+			height: 200px;
+			background:#678;
+		}
+		ul li:nth-child(1){
+			transform: translateZ(100px);
+		}
+		ul li:nth-child(2){
+			transform:rotateX(90deg) translateZ(100px);
+		}
+		ul li:nth-child(3){
+			transform:rotateX(180deg) translateZ(100px);
+		}
+		ul li:nth-child(4){
+			transform:rotateX(270deg) translateZ(100px);
+		}
+		ul li:nth-child(5){
+			transform:rotateY(90deg) translateZ(300px);
+		}
+		ul li:nth-child(6){
+			transform:rotateY(270deg) translateZ(100px);
+		}										
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>这</li>
+			<li>是</li>
+			<li>个</li>
+			<li>长</li>
+			<li>方</li>
+			<li>体</li>
+		</ul>
+	</div>
+</body>
+</html>

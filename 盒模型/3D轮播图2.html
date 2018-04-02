@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D轮播图2</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.b{
+			width: 1000px;
+			height: 600px;
+			/*background: gray;*/
+			margin:100px auto;
+			overflow: hidden;
+			transition:all 5s;
+		}
+		ul{
+			width: 800px;
+			height: 400px;
+			margin:100px auto;
+			transform-style: preserve-3d;
+			position: relative;
+			transform: rotateX(0deg) rotateY(0deg);
+			animation: lunbotu 10s linear 0.5s infinite normal;
+		}
+		@keyframes lunbotu{
+			0%{
+				transform: rotateX(0deg);
+			}
+			25%{
+				transform: rotateX(90deg);
+			}
+			50%{
+				transform: rotateX(180deg);
+			}
+			75%{
+				transform: rotateX(270deg);
+			}
+			100%{
+				transform: rotateX(360deg);
+			}
+		}
+		ul:hover{
+			animation-play-state: paused;
+		}
+		ul li img{
+			width: 800px;
+			height: 400px;
+		}
+		ul li{
+			list-style: none;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			box-shadow: 1px 1px 20px gray;
+		}
+		ul li:nth-child(1){
+			transform: rotateX(0deg) translateZ(200px);
+		}
+		ul li:nth-child(2){
+			transform: rotateX(270deg) translateZ(200px);
+		}
+		ul li:nth-child(3){
+			transform: rotateX(180deg) translateZ(200px);
+		}
+		ul li:nth-child(4){
+			transform: rotateX(90deg) translateZ(200px);
+		}
+	</style>
+</head>
+<body>
+	<div class="a">
+		<div class="b">
+			<ul>
+				<li><img src="../src/photos/百度风景12.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景10.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景8.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景11.jpg" alt=""></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
