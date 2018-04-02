@@ -15,6 +15,7 @@
 			margin:100px auto;
 			overflow: hidden;
 			transition:all 5s;
+			perspective: 500px;
 		}
 		ul{
 			width: 800px;
@@ -23,13 +24,12 @@
 			transform-style: preserve-3d;
 			position: relative;
 			transform: rotateX(0deg) rotateY(0deg);
-			animation: lunbotu 10s linear 0.5s infinite normal;
+			animation: lunbotu 4s linear 0.5s infinite normal;
 		}
 		@keyframes lunbotu{
-			0%{
+			/*0%{
 				transform: rotateX(0deg);
-			}
-			25%{
+			}			25%{
 				transform: rotateX(90deg);
 			}
 			50%{
@@ -39,6 +39,12 @@
 				transform: rotateX(270deg);
 			}
 			100%{
+				transform: rotateX(360deg);
+			}*/
+			from{
+	            transform: rotateX(0deg);
+			}
+			to{
 				transform: rotateX(360deg);
 			}
 		}
@@ -74,10 +80,10 @@
 	<div class="a">
 		<div class="b">
 			<ul>
-				<li><img src="../src/photos/百度风景12.jpg" alt=""></li>
-				<li><img src="../src/photos/百度风景10.jpg" alt=""></li>
-				<li><img src="../src/photos/百度风景7.jpg" alt=""></li>
-				<li><img src="../src/photos/百度风景11.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景1.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景3.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景4.jpg" alt=""></li>
+				<li><img src="../src/photos/百度风景5.jpg" alt=""></li>
 			</ul>
 		</div>
 	</div>

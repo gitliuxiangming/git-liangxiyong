@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS综合案例练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.nav input,.nav a{
+			width: 20%;
+			height: 34px;	
+			position:fixed;
+			top: 0px;
+		}
+		.nav a{
+			background: #f00;
+			text-align: center;
+			line-height: 34px;
+			text-decoration: none;
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			z-index: 1;
+		}
+		.nav input{
+			z-index: 100;
+			opacity: 0;	
+
+		}
+		.nav input:checked+a,.nav input:checked:hover+a{
+			background: #0f0;
+		}		
+		.nav input:hover+a{
+			background: #00f;
+		}
+		.nav #nav1,.nav #nav1+a{
+			left: 0%;
+		}
+		.nav #nav2,.nav #nav2+a{
+			left: 20%;
+		}
+		.nav #nav3,.nav #nav3+a{
+			left: 40%;
+		}
+		.nav #nav4,.nav #nav4+a{
+			left: 60%;
+		}
+		.nav #nav5,.nav #nav5+a{
+			left: 80%;
+		}								
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<input type="radio" id="nav1" name="aaa" checked>
+		<a href="#">主页</a>
+		<input type="radio" id="nav2" name="aaa">
+		<a href="#">服务</a>
+		<input type="radio" id="nav3" name="aaa">
+		<a href="#">关于我们</a>
+		<input type="radio" id="nav4" name="aaa">
+		<a href="#">团队成员</a>
+		<input type="radio" id="nav5" name="aaa">
+		<a href="#">联系我们</a>						
+	</div>
+</body>
+</html>

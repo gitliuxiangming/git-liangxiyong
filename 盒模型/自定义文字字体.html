@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义文字字体</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		@font-face{
+			font-family:zidingyi;
+			src:url(../src/font/Sansation_Light.eot),
+			    url(../src/font/Sansation_Light.ttf);
+		}
+/*		@font-face{
+			font-family: zidingyi;
+			src:url(../src/font/Sansation_Bold.eot),
+				url(../src/font/Sansation_Bold.ttf);
+			font-weight:bold;
+		}*/
+		@font-face{
+			font-family: zidingyi;
+			src:url(../src/font/Sansation_Bold.eot),
+				url(../src/font/Sansation_Bold.ttf);
+			font-style:italic;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			margin:150px auto;
+			border: 1px solid #000;
+			font-family:zidingyi;
+			/*font-weight: bold;*/
+			font-style:italic;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		woshiyizhixioaqingwa gagagagagagaga
+		我是一只小青蛙 嘎嘎嘎嘎嘎
+	</div>
+</body>
+</html>
