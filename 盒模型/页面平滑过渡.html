@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS综合案例练习,平滑过渡页面自己琢磨版</title>
+	<link rel="stylesheet" href="../盒模型/fontawesome-free-5.0.9/web-fonts-with-css/css/fontawesome-all.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.nav input,.nav a{
+			width: 20%;
+			height: 34px;	
+			position:fixed;
+			top: 0px;
+		}
+		.nav a{
+			background: #e23a6e;
+			text-align: center;
+			line-height: 34px;
+			text-decoration: none;
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			z-index: 1;
+		}
+		.nav input{
+			z-index: 100;
+			opacity: 0;	
+
+		}
+		.nav input:checked+a,.nav input:checked:hover+a{
+			background: #821134;
+			/*color: white;	*/
+		}		
+		.nav input:hover+a{
+			background: #ad244f;
+			/*color: red;*/
+		}
+		.nav #nav1,.nav #nav1+a{
+			left: 0%;
+		}
+		.nav #nav2,.nav #nav2+a{
+			left: 20%;
+		}
+		.nav #nav3,.nav #nav3+a{
+			left: 40%;
+		}
+		.nav #nav4,.nav #nav4+a{
+			left: 60%;
+		}
+		.nav #nav5,.nav #nav5+a{
+			left: 80%;
+		}
+		div.diyiye{
+			background-image: url(../src/photos/百度风景6.jpg);
+			background-size: 100% 100%;
+			opacity: 0.5;
+			transition:all 3s;
+		}
+		div.dierye{
+			background-image: url(../src/photos/百度风景7.jpg);
+			background-size: 100% 100%;
+			opacity: 0.5;
+			transition:all 3s;
+		}		
+		div.disanye{
+			background-image: url(../src/photos/百度风景8.jpg);
+			background-size: 100% 100%;
+			opacity: 0.5;
+			transition:all 3s;
+		}		
+		div.disiye{
+			background-image: url(../src/photos/百度风景9.jpg);
+			background-size: 100% 100%;
+			opacity: 0.5;
+			transition:all 3s;
+		}		
+		div.diwuye{
+			background-image: url(../src/photos/百度风景10.jpg);
+			background-size: 100% 100%;
+			opacity: 0.5;
+			transition:all 3s;
+		}		
+		.guodu{
+			width: 100%;
+			height: 1000px;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			color:#faf;
+			overflow: hidden;
+
+		}
+		.guodua{
+			transition:all 1s;
+			width: 100%;
+			height: 5000px;
+		}
+		input#nav1:checked~.guodu .guodua{
+			display: block;
+			margin-top: 0px;
+		}
+		input#nav2:checked~.guodu .guodua{
+			display: block;
+			margin-top: -1000px;
+		}
+		input#nav3:checked~.guodu .guodua{
+			display: block;
+			margin-top: -2000px;
+		}				
+		input#nav4:checked~.guodu .guodua{
+			display: block;
+			margin-top: -3000px;
+		}		
+		input#nav5:checked~.guodu .guodua{
+			display: block;
+			margin-top: -4000px;
+		}
+		input#nav1:checked~.guodu .guodua .diyiye{
+			opacity: 1;
+		}	
+		input#nav2:checked~.guodu .guodua .dierye{
+			opacity: 1;
+		}		
+		input#nav3:checked~.guodu .guodua .disanye{
+			opacity: 1;
+		}		
+		input#nav4:checked~.guodu .guodua .disiye{
+			opacity: 1;
+		}		
+		input#nav5:checked~.guodu .guodua .diwuye{
+			opacity: 1;
+		}		
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<input type="radio" id="nav1" name="aaa" checked>
+		<a href="#">
+			<i class="fas fa-home"></i>
+			主页
+		</a>
+		<input type="radio" id="nav2" name="aaa">
+		<a href="#">
+			<i class="fas fa-coffee"></i>
+			服务
+		</a>
+		<input type="radio" id="nav3" name="aaa">
+		<a href="#">
+			<i class="fas fa-angle-double-right"></i>
+			关于我们
+		</a>
+		<input type="radio" id="nav4" name="aaa">
+		<a href="#">
+			<i class="fas fa-sitemap"></i>
+			团队成员
+		</a>
+		<input type="radio" id="nav5" name="aaa">
+		<a href="#">
+			<i class="fas fa-phone-volume"></i>
+			联系我们
+		</a>						
+		<div class="guodu">
+			<div class="guodua">
+				<div class="diyiye">平滑第一页！透明度为过渡方式</div>
+				<div class="dierye">平滑第二页！</div>
+				<div class="disanye">平滑第三页！</div>
+				<div class="disiye">平滑第四页！</div>
+				<div class="diwuye">平滑第五页！</div>
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

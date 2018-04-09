@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>CSS综合案例练习</title>
+	<title>CSS综合案例练习,平滑过渡页面</title>
+	<link rel="stylesheet" href="../盒模型/fontawesome-free-5.0.9/web-fonts-with-css/css/fontawesome-all.css">
 	<style>
 		*{
 			margin: 0;
@@ -17,7 +18,7 @@
 			top: 0px;
 		}
 		.nav a{
-			background: #f00;
+			background: #e23a6e;
 			text-align: center;
 			line-height: 34px;
 			text-decoration: none;
@@ -32,10 +33,12 @@
 
 		}
 		.nav input:checked+a,.nav input:checked:hover+a{
-			background: #0f0;
+			background: #821134;
+			/*color: white;	*/
 		}		
 		.nav input:hover+a{
-			background: #00f;
+			background: #ad244f;
+			/*color: red;*/
 		}
 		.nav #nav1,.nav #nav1+a{
 			left: 0%;
@@ -51,21 +54,144 @@
 		}
 		.nav #nav5,.nav #nav5+a{
 			left: 80%;
-		}								
+		}
+/*		div.nav~div{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 80px;
+			font-weight: 900;
+		}
+*/		
+		div.diyiye{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			font-weight: 900;
+			background:#069;
+			background-image: url(../src/photos/风景5.jpg);
+			-webkit-background-size: 100% 1000px;
+			background-size: 100% 1000px;
+			animation: huadong 2s ease 1 normal;
+		}	
+		div.dierye{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			font-weight: 900;			
+			background:#357;
+			background-image: url(../src/photos/风景1.jpg);
+			-webkit-background-size: 100% 1000px;
+			background-size: 100% 1000px;
+			animation: huadong 2s ease 1 normal; 
+		}
+		div.disanye{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			font-weight: 900;			
+			background:#045;
+			background-image: url(../src/photos/风景2.jpg);
+			-webkit-background-size: 100% 1000px;
+			background-size: 100% 1000px;
+			animation: huadong 2s ease 1 normal; 
+		}
+		div.disiye{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			font-weight: 900;			
+			background:#033;
+			background-image: url(../src/photos/风景3.jpg);
+			-webkit-background-size: 100% 1000px;
+			background-size: 100% 1000px;
+			animation: huadong 2s ease 1 normal; 
+		}
+		div.diwuye{
+			width: 100%;
+			height: 1000px;
+			display: none;
+			text-align: center;
+			line-height: 1000px;
+			font-size: 40px;
+			font-weight: 900;			
+			background:#512;
+			background-image: url(../src/photos/风景4.jpg);
+			-webkit-background-size: 100% 1000px;
+			background-size: 100% 1000px;
+			animation: huadong 2s ease 1 normal; 
+		}
+		@keyframes huadong{
+			from{
+				margin-top: 1000px;
+			}
+			to{
+				margin-top: 0px;
+			}
+		}
+		.nav input#nav1:checked~div.diyiye{
+			display: block;
+		}	
+		.nav input#nav2:checked~div.dierye{
+			display: block;
+		}
+		.nav input#nav3:checked~div.disanye{
+			display: block;
+		}
+		.nav input#nav4:checked~div.disiye{
+			display: block;
+		}
+		.nav input#nav5:checked~div.diwuye{
+			display: block;
+		}																						
 	</style>
 </head>
 <body>
 	<div class="nav">
 		<input type="radio" id="nav1" name="aaa" checked>
-		<a href="#">主页</a>
+		<a href="#">
+			<i class="fas fa-home"></i>
+			主页
+		</a>
 		<input type="radio" id="nav2" name="aaa">
-		<a href="#">服务</a>
+		<a href="#">
+			<i class="fas fa-coffee"></i>
+			服务
+		</a>
 		<input type="radio" id="nav3" name="aaa">
-		<a href="#">关于我们</a>
+		<a href="#">
+			<i class="fas fa-angle-double-right"></i>
+			关于我们
+		</a>
 		<input type="radio" id="nav4" name="aaa">
-		<a href="#">团队成员</a>
+		<a href="#">
+			<i class="fas fa-sitemap"></i>
+			团队成员
+		</a>
 		<input type="radio" id="nav5" name="aaa">
-		<a href="#">联系我们</a>						
+		<a href="#">
+			<i class="fas fa-phone-volume"></i>
+			联系我们
+		</a>						
+		<div class="diyiye"><h1>这是第一页！！！</h1></div>
+		<div class="dierye"><h1>这是第二页！！！</h1></div>
+		<div class="disanye"><h1>这是第三页！！！</h1></div>
+		<div class="disiye"><h1>这是第四页！！！</h1></div>
+		<div class="diwuye"><h1>这是第五页！！！</h1></div>
 	</div>
 </body>
 </html>
