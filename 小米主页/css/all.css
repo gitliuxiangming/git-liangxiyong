@@ -1,9 +1,264 @@
 /*主页样式*/
 /*可提取样式*/
+.shu{
+	width: 2px;
+	height: 12px;
+	border: 1px solid #424242;
+	background: #424242;
+	margin-right:7px;
+	margin-top:15px; 
+}
+.kuan1{
+	width: 234px;
+}
 /*顶部*/
+.top{
+	width: 100%;
+	height: 40px;
+	background:#333;
+}
+.top .container{
+	background: #333;
+	height: 40px;
+	color: #b0b0b0;
+}
+.top .container a{
+	color: #b0b0b0;
+}
+.top .container a:hover{
+	color: #fff;
+}
+.top .container .top1{
+	float: left;
+}
+.top .container .top1 li{
+	float: left;
+	line-height: 40px;
+	font-size: 12px;
+	margin-right: 7px;
+}
+.top .container .top2{
+	line-height: 40px;
+	font-size: 12px;
+	float: right;
+	background: #424242;
+	padding:0 15px 0 15px;
+}
+.top .container .top2 img{
+	display: inline-block;
+	vertical-align:middle;
+	width: 20px;
+}
+.top .container .top3{
+	float: right;
+	margin-right: 30px;
+}
+.top .container .top3 li{
+	float: left;
+	line-height: 40px;
+	font-size: 12px;
+	margin-left: 7px;
+}
 /*导航栏*/
+.nav{
+	height: 100px;
+}
+.nav .nav1{
+	float: left;
+	margin-top: 23px;
+}
+.nav .nav2{
+	float: left;
+	margin-left: 190px;
+}
+.nav .nav2>li{
+	float: left;
+	line-height: 100px;
+	margin-left: 20px;
+}
+.nav .nav2>li a{
+	font-size: 16px;
+	color: #333;
+}
+.nav .nav2>li a:hover{
+	color: #ff6700;
+}
+.nav .nav3{
+	float: right;
+}
+.nav .nav3 li{
+	float: left;
+	margin-top: 25px;
+	position: relative;
+}
+.nav .nav3 li:nth-child(1){
+	width: 245px;
+	height: 50px;
+	border: 1px solid #e0e0e0;
+}
+.nav .nav3 li:nth-child(1) span{
+	display: inline-block;
+	height: 18px;
+	font-size: 12px;
+	background: #eee;
+	color: #757575;
+}
+.nav .nav3 li .span1{
+	position: absolute;
+	top: 18px;
+	right: 75px;
+}
+.nav .nav3 li .span2{
+	position: absolute;
+	top: 18px;
+	right: 10px;
+}
+.nav .nav3 li:nth-child(2){
+	width: 50px;
+	height: 50px;
+	border: 1px solid #e0e0e0;
+	border-left: none;
+}
+.nav .nav3 li:nth-child(2) img{
+	width: 49px;
+	height: 49px;
+}
+.nav .nav3 li input{
+	border: none;
+	width: 100%;
+	height: 100%;
+	padding-left: 15px;	
+}
+.nav .nav3 li:hover{
+	border: 1px solid #ff6700;
+}
+.nav .nav3 li .span1:hover,
+.nav .nav3 li .span2:hover,
+.nav .nav3 li img:hover{
+	cursor: pointer;
+	background: #ff6700;
+}
 /*黄金位置*/
+.ggw{
+	height: 460px;
+	position: relative;
+}
+.ggw .left,.ggw .right{
+	width: 42px;
+	height: 70px;
+	line-height: 70px;
+	font-size: 40px;
+	font-weight: 500;
+	color: #757575;
+	position: absolute;	
+	top: 195px;
+	z-index: 999;
+}
+.ggw .left:hover,.ggw .right:hover{
+	background: rgba(3,3,3,0.2);
+}
+.ggw .left{
+	left: 234px;
+}
+.ggw .right{
+	right: 0;
+}
+.ggw .bottom{
+	width: 100px;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 999;
+}
+.ggw .bottom li{
+	float: left;
+	list-style: none;
+	width: 10px;
+	height: 10px;
+	border: 3px solid #757575;
+	background: #b0b0b0;
+	border-radius: 50%;
+	margin-left: 10px;
+}
+.ggw .bottom li:hover{
+	background: #fff;
+}
+.ggw ul li img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.ggw ul.zuobian{
+	height: 460px;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	top: 0;
+	left:0;
+	z-index: 3;
+	padding:20px 0 20px 0px;
+}
+.ggw ul.zuobian li{
+	width: 100%;
+	padding-left: 20px;
+	height: 42px;
+	position: relative;
+}
+.ggw ul.zuobian li:hover{
+	cursor: pointer;
+	background: #ff6700;
+}
+.ggw ul.zuobian li a{
+	line-height: 42px;
+	font-size: 12px;
+	font-weight: 500;
+	color: #fff;
+}
+.ggw ul.zuobian li a span{
+	position: absolute;
+	top: 0px;
+	right: 20px;
+	font-size: 18px;
+	font-weight: 600;
+}
 /*热销商品*/
+.rexiao{
+	margin-top: 15px;
+}
+.rexiao .zuo{
+	height: 170px;
+	float: left;
+	box-sizing: border-box;
+}
+.rexiao .zuo li{
+	width: 78px;
+	height: 50%;
+	float: left;
+	background: #5f5750;
+}
+.rexiao .zuo li img{
+	margin-top: 22px;
+	margin-left: 19px;
+}	
+.rexiao .you{
+	width: 978px;
+	height: 170px;
+	float: right;
+}
+.rexiao .you li{
+	width: 316px;
+	height: 170px;
+	float: left;
+	margin-left: 15px;
+}
+.rexiao .you li:nth-child(1){
+	margin-left: 0;
+}
+.rexiao .you li img{
+	width: 100%;
+	height: 100%;
+}
 /*小米闪购*/
 /*手机*/
 /*家电*/
