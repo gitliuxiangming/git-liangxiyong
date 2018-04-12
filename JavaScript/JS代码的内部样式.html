@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS代码的内部样式</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: #f00;
+		}
+	</style>
+	<script>
+		function bianlan(){
+			var box=document.getElementById('box-1').style;
+			box.width='400px'
+			box.height='400px'
+			box.background='#00f'
+		}
+		function bianhui(){
+			var box=document.getElementById('box-1').style;
+			box.width='200px'
+			box.height='200px'
+			box.background='#f00'
+		}
+	</script>
+</head>
+<body>
+	<div id="box-1" onmouseover="bianlan()" onmouseout="bianhui()"></div>
+</body>
+</html>
