@@ -1157,6 +1157,9 @@ li.huowu{
 	width: 100%;
 	height: 220px;
 }
+.reping .content .tongyong li:nth-child(1){
+	margin-top: 0;
+}
 .reping .content .tongyong li:nth-child(2){
 	padding-left: 20px;
 	padding-right: 20px;
@@ -1169,7 +1172,7 @@ li.huowu{
 .reping .content .tongyong li:nth-child(4){
 	text-align: left;
 	padding-left: 20px;
-	margin-top: 10px;
+	margin-top: 40px;
 }
 .reping .content .tongyong li:nth-child(4) span:first-child{
 	color: #333;
@@ -1420,6 +1423,9 @@ li.huowu{
 	margin-left: 60px;
 	text-align: center;
 }
+.dibu .dibus ul li i{
+	margin-right: 5px;
+}
 .dibu .dibus ul li a{
 	font-size: 16px;
 	color: #424242;
@@ -1536,4 +1542,12 @@ li.huowu{
 }
 .dibu .dibux .xy li{
 	float: left;
+}
+.fashaomi{
+	width: 100%;
+	height: 60px;
+}
+.fashaomi img{
+	width: 100%;
+	height: 100%;
 }
