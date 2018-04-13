@@ -1,0 +1,13 @@
+/*大号*/
+.neirong{
+	font-size:34px;
+	font-weight: 900;
+	background: rgba(0,0,255,0.5);
+}
+.huanfu ul li a{
+	text-decoration: none;
+	color: #00f;
+}
+.huanfu ul li:nth-child(3) a{
+	text-decoration: underline;
+}

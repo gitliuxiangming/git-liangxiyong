@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS的提取</title>
+	<style>
+		#box{
+			width: 1000px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			function color(){
+				var obox=document.getElementById('box');
+				obox.style.background='red'
+			}
+			var obox=document.getElementById('box');	
+			obox.onclick=color;
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

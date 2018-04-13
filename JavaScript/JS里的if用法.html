@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS里的if用法</title>
+	<style>
+		div{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			document.getElementById('btn').onclick=function(){
+				if(document.getElementById('box').style.display=='none'){
+					document.getElementById('box').style.display='block';
+				}else{
+					document.getElementById('box').style.display='none'
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮">
+	<div style="display: none;" id="box">
+		点我上边按钮 我一进一出
+	</div>
+</body>
+</html>
