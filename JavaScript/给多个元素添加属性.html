@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>给多个元素添加属性</title>
+	<style>
+		ul li{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			float: left;
+			list-style: none;
+			margin-right: 20px;
+		}
+	</style>
+	<script>
+		/*
+		window.onload=function(){
+			var aLi=document.getElementsByTagName('li');
+			aLi[0].style.background='red';
+			aLi[1].style.background='red';
+			aLi[2].style.background='red';
+			aLi[3].style.background='red';
+			aLi[4].style.background='red';
+		}
+		*/
+		window.onload=function(){
+			var aLi=document.getElementsByTagName('li');
+			for (var i=0; i<aLi.length; i++) {
+				aLi[i].style.background='blue';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

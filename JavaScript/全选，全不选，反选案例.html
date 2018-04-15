@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全选，全不选，反选案例</title>
+	<script>
+		window.onload = function(){
+			var aBtn1=document.getElementById('ipt1');
+			var aBtn2=document.getElementById('ipt2');
+			var aBtn3=document.getElementById('ipt3');
+			var aDiv=document.getElementById('box');
+			var aCheck=aDiv.getElementsByTagName('input');
+			aBtn1.onclick=function(){
+				for(var j=0;j<aCheck.length;j++){
+					aCheck[j].checked=true;
+				}
+			}
+			aBtn2.onclick=function(){
+				for(var j=0;j<aCheck.length;j++){
+					aCheck[j].checked=false;
+				}
+			}
+			aBtn3.onclick=function(){
+				for(var j=0;j<aCheck.length;j++){
+					if (aCheck[j].checked==true) {
+						aCheck[j].checked=false;
+					}else{
+						aCheck[j].checked=true;
+					}
+				}
+			}
+		}	
+	</script>
+</head>
+<body>
+	<input type="button" value="全选" id='ipt1'>
+	<input type="button" value="全不选" id='ipt2'>
+	<input type="button" value="反选" id='ipt3'>
+	<div id="box">
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox"><br>
+		<input type="checkbox">
+	</div>
+</body>
+</html>

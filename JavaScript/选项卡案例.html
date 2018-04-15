@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡案例</title>
+	<style>
+		div{
+			width: 300px;
+			height: 300px;
+			background: #aaa;
+			line-height: 300px;
+			text-align: center;
+			border: 1px solid #000;
+			display: none;
+		}
+		.click{
+			background: #ff6700;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var aBtn=document.getElementsByTagName('input');
+			var aDiv=document.getElementsByTagName('div');
+			for(var i=0;i<aBtn.length;i++){	
+				aBtn[i].index= i;			
+				aBtn[i].onclick=function(){
+					for(var j=0;j<aBtn.length;j++){
+						aBtn[j].className='';
+						aDiv[j].style.display='none';
+					}
+					this.className='click';
+					aDiv[this.index].style.display='block';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="第一个" class="click">
+	<input type="button" value="第二个">
+	<input type="button" value="第三个">
+	<input type="button" value="第四个">
+	<div style="display:block">第一个内容</div>
+	<div>第二个内容</div>
+	<div>第三个内容</div>
+	<div>第四个内容</div>
+</body>
+</html>
