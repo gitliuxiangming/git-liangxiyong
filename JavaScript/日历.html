@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日历</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 300px;
+			height: 520px;
+			margin:100px auto;
+			background: #ccc;
+			overflow: hidden;
+		}
+		ul{
+			width: 100%;
+			margin: 20px 30px;
+			overflow: hidden;
+		}
+		ul li{
+			float: left;
+		}
+		ul li a{
+			text-decoration: none;
+			color:#333;
+		}
+		li{
+			list-style: none;
+			width: 80px;
+			height: 80px;
+			background: #bbb;
+			line-height: 80px;
+			text-align: center;
+		}
+		.ali{
+			background: #fff;
+		}
+		.aBox{
+			width: 100%;
+			height: 400px;
+		}
+		.aBox input{
+			width: 100px;
+			height: 100px;
+			background: #333;
+			/*display: none;*/	
+		}
+		#bBox{
+			width: 260px;
+			height: 80px;
+			margin:0 auto;
+			border: 1px solid #000;
+			background: #fff;
+			box-sizing: border-box;
+			padding-top: 10px;
+			padding-left: 10px;		
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var aLi=document.getElementsByTagName('li');
+			var oBox=document.getElementById('bBox');
+			var wuyu=['老大','老二','老三','老四','老五','老六','老七','老八','老九','老十','老十一','老十二'];
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].ind=i;
+				aLi[i].onmouseover=function(){
+					for(var j=0;j<aLi.length;j++){
+						aLi[j].className='';
+					}
+					this.className='ali';
+					oBox.innerHTML = '<h2>'+(this.ind+1)+'月</h2><p>'+wuyu[this.ind]+'</p>';	
+				}								
+			}	  		
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="aBox">
+			<ul>
+				<li><a href="javascript:">一月</a></li>
+				<li><a href="javascript:">二月</a></li>
+				<li><a href="javascript:">三月</a></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:">四月</a></li>
+				<li><a href="javascript:">五月</a></li>
+				<li><a href="javascript:">六月</a></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:">七月</a></li>
+				<li><a href="javascript:">八月</a></li>
+				<li><a href="javascript:">九月</a></li>
+			</ul>
+			<ul>
+				<li><a href="javascript:">十月</a></li>
+				<li><a href="javascript:">十一月</a></li>
+				<li><a href="javascript:">十二月</a></li>
+			</ul>
+		</div>
+		<div id="bBox"></div>
+	</div>
+</body>
+</html>
