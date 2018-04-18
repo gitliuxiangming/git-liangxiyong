@@ -4,10 +4,39 @@
 	<meta charset="UTF-8">
 	<title>字符转数字类型的隐式转换</title>
 	<script>
-		
+		window.onload = function(){
+			var oTxt1=document.getElementById('txt1');
+			var oTxt2=document.getElementById('txt2');
+			var oBtn=document.getElementById('btn');
+			oBtn.onclick = function(){
+				var int1=oTxt1.value;
+				var int2=oTxt2.value;
+				// var int1=int1*1;
+				// var int2=int2*1;
+
+				// var int1=int1/1;
+				// var int2=int2/1;
+
+				var int1=int1-0;
+				var int2=int2-0;
+
+				if (isNaN(int1)) {
+					alert('请输入正确的数字在第一个框内');
+				}else if (isNaN(int2)) {
+					alert('请输入正确的数字在第二个框内');
+				}else{
+					alert(int1 + int2);
+				}			
+			}
+		}
 	</script>
 </head>
 <body>
-	
+	<input type="text" id="txt1">
+	+
+	<input type="text"  id="txt2">
+	=
+	<input type="button" id="btn" value="等于">
+	<p>隐式转换加号不能用 因为+不但表示加号 还可以表示为字符之间的连接符</p>
 </body>
 </html>

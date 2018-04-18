@@ -3,6 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>json和for in循环</title>
+	<script>
+	// for in 遍历数组
+		// var arr=[1,2,3,4]
+		// for(i in arr){
+		// 	console.log(arr[i]);
+		// }
+	// for in 遍历json
+		var obj={
+			'a':11,
+			'b':21,
+			'c':31,
+			'd':41	
+		}
+		// 用变量检测
+		console.log(obj.a);
+		// 用字符串检测
+		console.log(obj['a'])
+		// json的遍历
+		for(key in obj){
+			console.log(obj[key]);
+		}
+
+	</script>
 </head>
 <body>
 	

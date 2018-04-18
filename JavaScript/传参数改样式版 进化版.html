@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>传参数改样式版 进化版</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			background: #aaa;
+		}
+	</style>
+	<script>
+		function css(name,attr,value){
+			if (arguments.length == 2) {
+				return getComputedStyle(name,true)[attr];
+			}else{
+				name.style[attr] = value;
+			}
+		}
+		window.onload = function(){
+			var oBtn1=document.getElementById('btn1');
+			var oBtn2=document.getElementById('btn2');
+			var oBtn3=document.getElementById('btn3');
+			var oBtn4=document.getElementById('btn4');
+			var oBox=document.getElementById('box');
+			oBtn1.onclick = function(){
+				// oBox.style.width = '400px';
+				css(oBox,'width','400px');
+			}
+			oBtn2.onclick = function(){
+				// oBox.style.height = '400px';
+				css(oBox,'height','400px');
+
+			}
+			oBtn3.onclick = function(){
+				// oBox.style.background = '#f90653';
+				css(oBox,'background','#f96652');
+			}
+			oBtn4.onclick = function(){
+				alert(css(oBox,'backgroundColor'));
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" id="btn1" value="变宽">
+	<input type="button" id="btn2" value="变高">
+	<input type="button" id="btn3" value="变色">
+	<input type="button" id="btn4" value="提取参数">
+	<div id="box"></div>
+</body>
+</html>

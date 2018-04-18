@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+	<script>
+		function show(){
+			var a=1;
+			function fn(){
+				alert(a);
+			}
+			fn();
+		}
+		function show1(){
+			alert(a);
+		}
+		show();
+		// show1()会出错，因为a这个变量只有在show()中才能用
+		show1();
+// 如果在show()中直接写a=1，前边不写var的情况下，系统会认为a是一个存在于window中的一个全局变量！！！
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

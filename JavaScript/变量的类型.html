@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量的类型</title>
+	<script>
+		// 基本类型
+		// var a=123;
+		// var b=a;
+		// var b=a+1;
+		// alert(b);
+		// alert(typeof b);
+		// 基本类型会再划出一片区域存储
+		//引入类型
+		var obj={
+			'aa':123,
+			'bb':222,
+			'cc':888
+		}
+		var obj2=obj;
+			obj2.dd=555;
+		console.log(obj);
+		console.log(obj2);
+		// 引入类型不会再划出一片区域存储，只是引用，而且会同时改变原数组的赋值！
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

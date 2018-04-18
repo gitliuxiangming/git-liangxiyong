@@ -3,8 +3,50 @@
 <head>
 	<meta charset="UTF-8">
 	<title>数据类型和字符转数字</title>
+	<script>
+		// 正确版本
+		window.onload = function(){
+			var oTxt1=document.getElementById('txt1');
+			var oTxt2=document.getElementById('txt2');
+			var oBtn=document.getElementById('btn');
+			oBtn.onclick = function(){
+				var int1=oTxt1.value;
+				var int2=oTxt2.value;
+				if (isNaN(parseInt(int1))) {
+					alert('请输入正确的数字在第一个框内');
+				}else if (isNaN(parseInt(int2))) {
+					alert('请输入正确的数字在第二个框内');
+				}else{
+					alert(parseInt(int1) + parseInt(int2));
+				}			
+			}
+		}
+// 错误版本
+		// window.onload = function(){
+		// 	var oTxt1=document.getElementById('txt1');
+		// 	var oTxt2=document.getElementById('txt2');
+		// 	var oBtn=document.getElementById('btn');
+
+		// 	var int1=oTxt1.value;
+		// 	var int2=oTxt2.value;
+
+		// 	oBtn.onclick = function(){
+		// 		if (isNaN(parseInt(int1))) {
+		// 			alert('请输入正确的数字在第一个框内');
+		// 		}else if (isNaN(parseInt(int2))) {
+		// 			alert('请输入正确的数字在第二个框内');
+		// 		}else{
+		// 			alert(parseInt(int1) + parseInt(int2));
+		// 		}			
+		// 	}
+		// }
+	</script>
 </head>
 <body>
-	
+	<input type="text" id="txt1">
+	+
+	<input type="text"  id="txt2">
+	=
+	<input type="button" id="btn" value="等于">
 </body>
 </html>
