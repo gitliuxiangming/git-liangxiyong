@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取元素集锦</title>
+	<style>
+		#ul1 li{
+			list-style: none;
+			width: 100%;
+			height: 50px;
+			border: 1px solid #000;
+			margin-top:5px;
+		}
+		#box2{
+			margin-top: 50px;
+		}
+		#box2 div{
+			width: 100%;
+			height: 80px;
+			border: 1px solid #000;
+			margin-top:5px;
+		}
+	</style>
+	<script>
+		function zhaoren(name,value){
+			var oShu = [];
+			var oEle = name.children;
+			for(i in oEle){
+				if(oEle[i].className == value){
+					oShu.push(oEle[i]);
+				}
+			} 
+			return oShu;
+		}
+		window.onload = function(){
+			var oUL = document.getElementById('ul1');
+			var oBox = document.getElementById('box2');
+			var aUh = zhaoren(oUL,'xsz');
+			var aBh = zhaoren(oBox,'xsz');
+			for(i in aUh){
+				aUh[i].style.background = 'green';
+			}
+			for(i in aBh){
+				aBh[i].style.background = 'green';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li class="xsz"></li>
+		<li></li>
+		<li class="xsz"></li>
+		<li></li>
+		<li class="xsz"></li>
+		<li></li>
+		<li class="xsz"></li>
+	</ul>
+	<div id="box2">
+		<div></div>
+		<div class="xsz"></div>
+		<div></div>
+		<div class="xsz"></div>
+		<div></div>
+		<div class="xsz"></div>
+	</div>
+</body>
+</html>

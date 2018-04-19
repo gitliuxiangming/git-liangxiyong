@@ -4,7 +4,15 @@
 	<meta charset="UTF-8">
 	<title>函数的不定参数</title>
 	<script>
-		var arr=[1,5,8]
+		function qiuhe(){
+			var arr=0;
+			for(var i=0;i<arguments.length;i++){
+				// arr=arr+arguments[i];
+				arr+=arguments[i];
+			}
+			alert(arr)
+		}
+		qiuhe(1,2,3,5,5)
 	</script>
 </head>
 <body>

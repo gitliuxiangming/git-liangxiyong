@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组中元素的去重</title>
+	<script>
+		var arr=[1,3,2,4,3,2,4,6,5,7];
+		function removeDup(arr){
+			var result = [];
+			for(var i=0;i<arr.length;i++){
+				var isDup=false;
+				for(var j=0;j<result.length;j++){
+					if(arr[i] == result[j]){
+						isDup=true;
+						break;
+					}
+				}
+				if(!isDup){
+						result.push(arr[i]);
+				}
+			}
+			return result;
+		}
+		console.log(removeDup(arr));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

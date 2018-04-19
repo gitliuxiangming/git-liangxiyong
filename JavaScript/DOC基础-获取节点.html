@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOC基础-获取节点</title>
+	<style>
+		#box1{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			margin:100px auto;
+			background: red;
+		}
+		#box2{
+			width: 100px;
+			height: 150px;
+			border: 1px solid #000;
+			background: gray;
+			position: absolute;
+			top:50px;
+			left: 500px;
+		}
+		#box2 div{
+			width: 60px;
+			height: 30px;
+			border: 1px solid #000;
+			margin:10px auto;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox2 = document.getElementById('box2');
+			// 获取子节点！
+			var aDiv = oBox2.children;
+			for(var i=0;i<aDiv.length;i++){
+				aDiv[i].style.background = 'black';
+			}
+			// 获取父节点！
+			oBox2.parentNode.style.background = 'blue';
+			// 获取定位元素节点！
+			oBox2.offsetParent.style.background = 'green';
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</body>
+</html>
