@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js中的动画方法以及过渡方式</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 50px;
+			left: 0px;
+		}
+		.xian{
+			width: 1px;
+			height: 800px;
+			background: #000;
+			position: absolute;
+			left: 500px;
+			top: 0px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oBtn = document.getElementById('btn');
+			var dsq=null;
+			oBtn.onclick = function(){
+				clearInterval(dsq);
+				if (oBox.style.left >= '500px') {
+					clearInterval(dsq);
+				}else{
+					dsq = setInterval(function(){
+					oBox.style.left = oBox.offsetLeft + 6 +'px';
+				},50)   
+				}                                                                     
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="移动">
+	<div id="box"></div>
+	<div class="xian"></div>
+</body>
+</html>

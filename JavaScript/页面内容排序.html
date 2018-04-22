@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面内容排序</title>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('ul1');
+			var oLi =oUl.children;
+			oBtn.onclick = function(){
+				var kong = [];
+				for(var i=0;i<oLi.length;i++){
+					kong.push(oLi[i]);
+				}
+				kong.sort(function(n1,n2){
+					var n1 = n1.innerHTML;
+					var n2 = n2.innerHTML;
+					return n1-n2;					
+				})
+				for(var i=0;i<kong.length;i++){
+					oUl.appendChild(kong[i]);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="排序">
+	<ul id="ul1">
+		<li>54</li>
+		<li>56</li>
+		<li>21</li>
+		<li>23</li>
+		<li>32</li>
+		<li>25</li>
+		<li>65</li>
+		<li>88</li>
+		<li>66</li>
+	</ul>
+</body>
+</html>

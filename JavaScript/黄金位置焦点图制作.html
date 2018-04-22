@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>黄金位置焦点图制作</title>
+	<style>
+		.ggw{
+			height: 560px;
+			position: relative;
+		}
+		.quanbu{
+			width: 100%;
+			height: 100%;
+		}
+		.ggw .left,.ggw .right{
+			width: 42px;
+			height: 70px;
+			line-height: 70px;
+			font-size: 40px;
+			font-weight: 500;
+			color: #757575;
+			position: absolute;	
+			top: 195px;
+			z-index: 999;
+		}
+		.ggw .left:hover,.ggw .right:hover{
+			background: rgba(3,3,3,0.2);
+		}
+		.ggw .left{
+			left: 0px;
+		}
+		.ggw .right{
+			right: 0;
+		}
+		.ggw .bottom{
+			width: 100px;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			z-index: 999;
+		}
+		.ggw .bottom li{
+			float: left;
+			list-style: none;
+			width: 10px;
+			height: 10px;
+			border: 3px solid #757575;
+			border-radius: 50%;
+			margin-left: 10px;
+		}
+		.ggw ul li img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.active{
+			background: #f5d0a3;
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oTupian = document.getElementById('imgbox');
+			var oImg = oTupian.getElementsByTagName('img')
+			var oLbtn = document.getElementById('left');
+			var oRbtn = document.getElementById('right');
+			var oBottom = document.getElementById('bottom');
+			var oBbtn = oBottom.getElementsByTagName('li');
+			var now = 0;
+			function qing(){
+				for(var i=0;i<oImg.length;i++){
+					oImg[i].style.zIndex=0;
+				}
+				for(var i=0;i<oImg.length;i++){
+					oBbtn[i].className='';
+				}
+				oImg[now].style.zIndex = 30;  
+				oBbtn[now].className='active';				
+			}
+			oLbtn.onclick = function(){
+				now--;
+				if(now<0){
+					now=oImg.length-1;
+				}
+				qing();
+			}
+			oRbtn.onclick = function(){
+				now++;
+				if(now>=oImg.length){
+					now = 0;
+				}
+				qing();  
+			}
+			for(var i=0;i<oBbtn.length;i++){
+				oBbtn[i].index=i; 
+				oBbtn[i].onclick = function(){
+					now=this.index;
+					qing();					
+				}
+			}
+			var dingshiqi = setInterval(oRbtn.onclick,1000);
+			oBox.onmouseover = function(){
+				clearInterval(dingshiqi);
+			}
+			oBox.onmouseout = function(){
+				dingshiqi=setInterval(oRbtn.onclick,1000);
+			}
+		}
+	</script>
+}
+</head>
+<body>
+	<div class="container ggw" id="box">
+		<ul class="quanbu" id="imgbox">
+			<li ><a href="#"><img src="images/黄金广告1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="images/黄金广告2.jpg" alt=""></a></li>
+			<li style="z-index: 30;"><a href="#"><img src="images/黄金广告3.jpg" alt=""></a></li>
+		</ul>
+		<div class="left" id="left">&lt;</div>
+		<div class="right" id="right">&gt;</div>
+		<div class="bottom" id="bottom">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</div>
+	</div>
+</body>
+</html>
