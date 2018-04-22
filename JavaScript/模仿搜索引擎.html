@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模仿搜索引擎</title>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oTxt = document.getElementById('txt');
+			var aLi = document.getElementsByTagName('li');
+			oBtn.onclick = function(){
+				var sTxt = oTxt.value.toLowerCase();
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].style.background = '';
+				}				
+				for(var i=0;i<aLi.length;i++){				
+					var sLi=aLi[i].innerHTML.toLowerCase();
+					var aTxt = sTxt.split(' ');
+					for(var j=0;j<aTxt.length;j++){
+						if(sLi.search(aTxt[j]) != -1){
+							aLi[i].style.background = 'gold';
+						}
+				 	}											
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="搜索">
+	<ul>
+		<li>Tom</li>
+		<li>Lily</li>
+		<li>Jack</li>
+		<li>Tim</li>
+		<li>Hob</li>
+		<li>Jick</li>
+		<li>Bob</li>
+		<li>Pob</li>
+		<li>45</li>
+		<li>46</li>
+		<li>56</li>
+		<li>567</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标滑过时高亮</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#ul1 li{
+			list-style: none;
+			width: 100%;
+			height: 50px;
+			margin-top:5px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oLi = document.getElementById('ul1').children;
+			for(i in oLi){
+				var color='';
+				if(i%2){
+					oLi[i].style.background = '#aaa';
+				}else{
+					oLi[i].style.background = '#f99';
+				}
+				oLi[i].onmouseover = function(){
+					color = this.style.background;
+					this.style.background = '#f00';
+				}
+				oLi[i].onmouseout = function(){
+					this.style.background = color;
+				}
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

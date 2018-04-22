@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM基本操作</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			var oTxt = document.getElementById('txt');
+			var oBtn= document.getElementById('btn');
+			var aA = oUl.getElementsByTagName('a');
+			for(i in aA){
+				aA[i].onclick = function(){
+					oUl.removeChild(this.parentNode);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="提交评论">
+	<ul id="ul1">
+		<li><a href="javascript:;">1</a></li>
+		<li><a href="javascript:;">11</a></li>
+		<li><a href="javascript:;">111</a></li>
+		<li><a href="javascript:;">1111</a></li>
+		<li><a href="javascript:;">11111</a></li>
+	</ul>
+</body>
+</html>

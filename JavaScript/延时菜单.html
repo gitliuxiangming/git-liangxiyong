@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延时菜单</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#xiao{
+			width: 200px;
+			height: 100px;
+			border: 1px solid #000;
+			float: left;
+			background: #987;
+		}
+		#da{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			float: right;
+			background: #852;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var aX = document.getElementById('xiao');
+			var aD = document.getElementById('da');
+			var timer = null;
+			aX.onmouseover = function(){
+				clearTimeout(timer);
+				aD.style.display = 'block';
+			}
+			aD.onmouseover = function(){
+				clearTimeout(timer);
+				aD.style.display = 'block';
+			}
+			aX.onmouseout = function(){
+				timer = setTimeout(function(){
+					aD.style.display = 'none';
+				},1000)				
+			}
+			aD.onmouseout = function(){
+				timer = setTimeout(function(){
+					aD.style.display = 'none';
+				},1000)
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="xiao">一级菜单</div>
+	<div id="da">二级多元菜单</div>
+</body>
+</html>

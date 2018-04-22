@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加删除合并应用</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			var oTxt = document.getElementById('txt');
+			var oBtn= document.getElementById('btn');
+			oBtn.onclick = function(){
+				var aLi = document.createElement('li');
+				aLi.innerHTML = oTxt.value;
+				var aAA = document.createElement('a');
+				aAA.innerHTML = '删除';
+				aAA.href = 'javascript:;'
+				aLi.appendChild(aAA);
+				aAA.onclick = function(){
+					// oUl.removeChild(this.parentNode);
+					oUl.removeChild(aLi);
+				}
+			    oUl.appendChild(aLi);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="提交评论">
+	<ul id="ul1">
+		<li><a href="javascript:;">1</a></li>
+		<li><a href="javascript:;">11</a></li>
+		<li><a href="javascript:;">111</a></li>
+		<li><a href="javascript:;">1111</a></li>
+		<li><a href="javascript:;">11111</a></li>
+	</ul>
+</body>
+</html>
