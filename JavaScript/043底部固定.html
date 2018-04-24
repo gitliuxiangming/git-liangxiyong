@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043底部固定</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 5000px;
+		}
+		#box{
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		text-align: center;
+		font-size:30px;
+		background: #f00;
+		position: absolute;
+		right: 0px;
+		}
+	</style>
+	<script>
+		function animation(obj,attr,iTarget){
+				clearInterval(obj.time);
+				obj.time = setInterval(function(){
+					var speed=0;
+					var dqz=parseFloat(getComputedStyle(obj,true)[attr]);
+					if(attr == 'opacity'){
+						dqz=dqz*100;
+					}
+					if(dqz<=iTarget){
+						speed= 50;
+					}else{
+						speed= -50;
+					}
+
+					if(Math.abs(iTarget-dqz)<Math.abs(speed)){
+						clearInterval(obj.time);
+						if(attr == 'opacity'){
+							obj.style[attr]=iTarget/100;
+						}else{
+							obj.style[attr] = iTarget+'px';
+						}
+					}else{
+						if(attr == 'opacity'){
+							obj.style[attr]=(dqz+speed)/100;
+						}else{
+							obj.style[attr] = dqz+speed+'px';
+						}
+					}
+				},30)
+				obj.style[attr] = iTarget;
+			}
+		window.onscroll = window.onresize = window.onload = function(){
+			var oBox = document.getElementById('box');
+			var kHeight=window.innerHeight;
+			var gHeight=document.body.scrollTop || document.documentElement.scrollTop;
+			var bianliang=kHeight+gHeight-oBox.offsetHeight;
+			animation(oBox,'top',bianliang); 
+		}
+	</script>
+</head>
+<body>
+	<div id="box">TOP</div>
+</body>
+</html>

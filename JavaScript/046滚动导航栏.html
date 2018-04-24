@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046滚动导航栏</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#nav{
+			width: 100%;
+			height: 100px;
+			background: #f00;
+		}
+		#topnav{
+			width: 100%;
+			background: #0f0;
+			position: absolute;
+			top: 0px;
+		}
+		#main{
+			width: 100%;
+			height: 6000px;
+			background: #aaa;
+			box-sizing: border-box;
+			padding-top:200px;
+		}
+	</style>
+	<script>
+		function animation(obj,attr,iTarget){
+			var speed=0;
+			clearInterval(obj.time);
+			obj.time=setInterval(function(){
+				var dqz=parseInt(getComputedStyle(obj,true)[attr]);
+				// console.log(dqz)
+				if(dqz<=iTarget){
+					speed=9;
+				}else{
+					speed=-9;
+				}
+				if(Math.abs(iTarget-dqz)<Math.abs(speed)){
+					clearInterval(obj.time);
+					obj.style[attr]=iTarget+'px';
+				}else{
+					obj.style[attr]=dqz+speed+'px';
+				}
+			},30)
+		}
+		var kZbl=true;
+		window.onscroll = function(){
+			var oTop=document.getElementById('topnav');
+			var oMain=document.getElementById('main');
+			var iTop=document.body.scrollTop || document.documentElement.scrollTop;
+			oTop.style.top=iTop+'px';
+			if (iTop>100) {
+				if (kZbl) {
+					animation(oTop,'height',100);
+					oMain.style.marginTop='100px';
+					kZbl=false;
+				}
+			}else{
+				if (!kZbl) {
+					animation(oTop,'height',0)
+					oMain.style.marginTop='0px';
+					kZbl=true;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="nav"></div>
+	<div id="topnav"></div>
+	<div id="main"><h1>跟着往下滚动一起走！</h1></div>
+</body>
+</html>

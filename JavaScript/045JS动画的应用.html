@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045JS动画的应用</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 400px;
+			height: 100px;
+			background: #f00;
+			position: absolute;
+			bottom:200px;
+			left:-400px;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			background: #0f0;
+			position:absolute;
+			top: 0px;
+			right:-100px;
+		}
+	</style>
+	<script>
+		function animation(obj,attr,iTarget){
+			var speed=0;
+			clearInterval(obj.time);
+			obj.time=setInterval(function(){
+				var dqz=parseInt(getComputedStyle(obj,true)[attr]);
+				// console.log(dqz)
+				if(dqz<=iTarget){
+					speed=9;
+				}else{
+					speed=-9;
+				}
+				if(Math.abs(iTarget-dqz)<Math.abs(speed)){
+					clearInterval(obj.time);
+					obj.style[attr]=iTarget+'px';
+				}else{
+					obj.style[attr]=dqz+speed+'px';
+				}
+			},30)
+		}
+		window.onload = function(){
+			var oBox1 = document.getElementById('box1');
+			var oBox2 = document.getElementById('box2');
+			oBox1.onmouseover = function(){
+				animation(oBox1,'left',0);
+			}
+			oBox1.onmouseout = function(){
+				animation(oBox1,'left',-400);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2"></div>
+	</div>
+</body>
+</html>

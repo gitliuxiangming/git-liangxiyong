@@ -14,7 +14,7 @@
 			background: red;
 			position: absolute;
 			top: 50px;
-			left: 0px;
+			left: 700px;
 		}
 		.xian{
 			width: 1px;
@@ -30,16 +30,27 @@
 			var oBox = document.getElementById('box');
 			var oBtn = document.getElementById('btn');
 			var dsq=null;
-			oBtn.onclick = function(){
+			var speed=0;
+			function animation(iTarget){
 				clearInterval(dsq);
-				if (oBox.style.left >= '500px') {
-					clearInterval(dsq);
-				}else{
-					dsq = setInterval(function(){
-					oBox.style.left = oBox.offsetLeft + 6 +'px';
-				},50)   
-				}                                                                     
+				dsq = setInterval(function(){					
+					if(oBox.offsetLeft<=iTarget){
+						speed=9;
+					}else{
+						speed=-9;
+					}
+					if(Math.abs(iTarget-oBox.offsetLeft)<Math.abs(speed)){
+						oBox.style.left =iTarget+'px';
+						// alert(oBox.style.left)	
+						clearInterval(dsq);
+					}else{
+						oBox.style.left = oBox.offsetLeft + speed +'px';
+					}
+				},30)                                                                        
 			}
+			oBtn.onclick=function(){
+				animation(500);
+			}	
 		}
 	</script>
 </head>

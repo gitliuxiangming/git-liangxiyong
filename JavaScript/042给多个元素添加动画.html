@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042给多个元素添加动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			line-height: 200px;
+			text-align: center;
+			font-size: 30px;
+			background: #f00;
+			opacity: 1;
+			margin-top: 20px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox1 = document.getElementById('box1');
+			var oBox2 = document.getElementById('box2');
+			var oBox3 = document.getElementById('box3');
+			function animation(obj,attr,iTarget){
+				clearInterval(obj.time);
+				obj.time = setInterval(function(){
+					var speed=0;
+					var dqz=parseFloat(getComputedStyle(obj,true)[attr]);
+					if(attr == 'opacity'){
+						dqz=dqz*100;
+					}
+					if(dqz<=iTarget){
+						speed= 5;
+					}else{
+						speed= -5;
+					}
+
+					if(Math.abs(iTarget-dqz)<Math.abs(speed)){
+						clearInterval(obj.time);
+						if(attr == 'opacity'){
+							obj.style[attr]=iTarget/100;
+						}else{
+							obj.style[attr] = iTarget+'px';
+						}
+					}else{
+						if(attr == 'opacity'){
+							obj.style[attr]=(dqz+speed)/100;
+						}else{
+							obj.style[attr] = dqz+speed+'px';
+						}
+					}
+				},30)
+				obj.style[attr] = iTarget;
+			}
+			oBox1.onmouseover = function(){
+				animation(oBox1,'width',400);
+			}
+			oBox1.onmouseout = function(){
+				animation(oBox1,'width',200);
+			}
+			oBox2.onmouseover = function(){
+				animation(oBox2,'height',400);
+			}
+			oBox2.onmouseout = function(){
+				animation(oBox2,'height',200);
+			}
+			oBox3.onmouseover = function(){
+				animation(oBox3,'opacity',30);
+			}
+			oBox3.onmouseout = function(){
+				animation(oBox3,'opacity',100);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">变宽</div>
+	<div id="box2">变高</div>
+	<div id="box3">透明</div>
+</body>
+</html>
