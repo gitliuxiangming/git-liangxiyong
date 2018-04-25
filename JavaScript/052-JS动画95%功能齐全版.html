@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>052-JS动画95%功能齐全版</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+		}
+	</style>
+	<script>
+		function animation(obj,opation,sudu,fn){
+				clearInterval(obj.time);
+				var speed=0;
+				var stop=false;				
+				obj.time = setInterval(function(){
+					var stopall=true;
+					for(attr in opation){
+						var dqz=parseFloat(getComputedStyle(obj,true)[attr]);
+						if(attr == 'opacity'){
+							dqz=dqz*100;
+						}
+						if (sudu) {
+							if(dqz<=opation[attr]){
+								speed= 5;
+							}else{
+								speed= -5;
+							}
+							if (Math.abs(opation[attr]-dqz)<Math.abs(speed)) {
+								stop=true;								
+							}else{
+								stopall=false;
+							}
+						}else{
+							speed=(opation[attr]-dqz)/10;
+							speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
+							if (!speed) {
+								stop=true;
+							}else{
+								stopall=false;
+							}
+						}					
+						if(stop){
+							// clearInterval(obj.time);
+							// if (fn) {
+							// 	fn();
+							// }
+							if(attr == 'opacity'){
+								obj.style[attr]=opation[attr]/100;
+							}else{
+								obj.style[attr] = opation[attr]+'px';
+							}
+						}else{
+							if(attr == 'opacity'){
+								obj.style[attr]=(dqz+speed)/100;
+							}else{
+								obj.style[attr] = dqz+speed+'px';
+							}
+						}
+					}
+					if (stopall) {
+						clearInterval(obj.time);
+						if(fn){
+							fn();
+						}
+					}
+					console.log(111)
+				},30)
+			}
+			window.onload = function(){
+				var oDiv = document.getElementById('box');
+				oDiv.onmouseover = function(){
+					animation(oDiv,{width:1000,height:110},false);
+				}
+				oDiv.onmouseout = function(){
+					animation(oDiv,{width:100,height:100},false);
+				}
+				
+			}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	
+</body>
+</html>

@@ -12,6 +12,9 @@
 			width: 100%;
 			height: 100%;
 		}
+		.quanbu li{
+			list-style: none;
+		}
 		.ggw .left,.ggw .right{
 			width: 42px;
 			height: 70px;
@@ -58,6 +61,7 @@
 		.active{
 			background: #f5d0a3;
 	</style>
+	<script src="JS/动画定时器.js"></script>
 	<script>
 		window.onload = function(){
 			var oBox = document.getElementById('box');
@@ -71,11 +75,13 @@
 			function qing(){
 				for(var i=0;i<oImg.length;i++){
 					oImg[i].style.zIndex=0;
+					oImg[i].style.opacity=0;
 				}
 				for(var i=0;i<oImg.length;i++){
 					oBbtn[i].className='';
 				}
-				oImg[now].style.zIndex = 30;  
+				oImg[now].style.zIndex = 30; 
+				animation(oImg[now],{opacity:100},true) 
 				oBbtn[now].className='active';				
 			}
 			oLbtn.onclick = function(){
@@ -99,16 +105,15 @@
 					qing();					
 				}
 			}
-			var dingshiqi = setInterval(oRbtn.onclick,1000);
+			var dingshiqi = setInterval(oRbtn.onclick,3000);
 			oBox.onmouseover = function(){
 				clearInterval(dingshiqi);
 			}
 			oBox.onmouseout = function(){
-				dingshiqi=setInterval(oRbtn.onclick,1000);
+				dingshiqi=setInterval(oRbtn.onclick,3000);
 			}
 		}
 	</script>
-}
 </head>
 <body>
 	<div class="container ggw" id="box">

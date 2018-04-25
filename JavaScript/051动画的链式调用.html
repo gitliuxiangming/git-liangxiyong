@@ -2,27 +2,20 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>050减速动画和匀速动画的合并精简版</title>
+	<title>051动画的链式调用</title>
 	<style>
 		*{
 			margin: 0;
 			padding: 0;
 		}
-		div{
+		#box{
 			width: 100px;
 			height: 100px;
-			float: left;
-			margin-top: 100px;
-			margin-left: 100px;
-			background: #ff0;
-			line-height: 100px;
-			text-align: center;
-			font-size: 30px;
-			font-weight: 900;
+			background: #f00;
 		}
 	</style>
 	<script>
-			function animation(obj,attr,iTarget,sudu){
+		function animation(obj,attr,iTarget,sudu,fn){
 				clearInterval(obj.time);
 				var speed=0;
 				var stop=false;
@@ -54,6 +47,9 @@
 					}					
 					if(stop){
 						clearInterval(obj.time);
+						if (fn) {
+							fn();
+						}
 					}else{
 						if(attr == 'opacity'){
 							obj.style[attr]=(dqz+speed)/100;
@@ -63,34 +59,26 @@
 					}
 				},30)
 			}
-		window.onload = function(){
-			var oDiv1=document.getElementById('box1');
-			var oDiv2=document.getElementById('box2');
-			var oDiv3=document.getElementById('box3');
-			oDiv1.onmouseover = function(){
-				animation(oDiv1,'width',300,true);
+			window.onload = function(){
+				var oDiv = document.getElementById('box');
+				oDiv.onmouseover = function(){
+					animation(oDiv,'height',500,false,function(){
+						animation(oDiv,'width',500,false,function(){
+							animation(oDiv,'opacity',50,false)
+						})
+					});
+				}
+				oDiv.onmouseout = function(){
+					animation(oDiv,'opacity',100,false,function(){
+						animation(oDiv,'width',100,false,function(){
+							animation(oDiv,'height',100,false)
+						})
+					});
+				}
 			}
-			oDiv1.onmouseout = function(){
-				animation(oDiv1,'width',100,true);
-			}
-			oDiv2.onmouseover = function(){
-				animation(oDiv2,'height',300,false);
-			}
-			oDiv2.onmouseout = function(){
-				animation(oDiv2,'height',100,false);
-			}
-			oDiv3.onmouseover = function(){
-				animation(oDiv3,'opacity',30);
-			}
-			oDiv3.onmouseout = function(){
-				animation(oDiv3,'opacity',100);
-			}
-		}
 	</script>
 </head>
 <body>
-	<div id="box1">匀速</div>
-	<div id="box2">减速</div>
-	<div id="box3">默认</div>
+	<div id="box"></div>
 </body>
 </html>
