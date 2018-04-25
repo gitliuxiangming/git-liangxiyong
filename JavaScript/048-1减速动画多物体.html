@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-1减速动画多物体</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			float: left;
+			margin-top: 100px;
+			margin-left: 100px;
+			background: #f00;
+			line-height: 100px;
+			text-align: center;
+			font-size: 30px;
+			font-weight: 900;
+		}
+	</style>
+	<script>
+		function animation(obj,attr,iTarget){
+				clearInterval(obj.time);
+				obj.time = setInterval(function(){
+					var dqz=parseFloat(getComputedStyle(obj,false)[attr]);
+					if(attr=='opacity'){
+						dqz=dqz*100;
+					}
+					var speed=(iTarget-dqz)/10;
+					var speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
+					// console.log(speed)
+					if(speed == 0){
+						clearInterval(time);
+					}else{
+						if (attr=='opacity') {
+							obj.style[attr]= (dqz+speed)/100;
+						}else{
+							obj.style[attr] = dqz+speed+'px';
+						}						
+					}
+				},30)
+			}
+		window.onload = function(){
+			var oDiv1=document.getElementById('box1');
+			var oDiv2=document.getElementById('box2');
+			var oDiv3=document.getElementById('box3');
+			oDiv1.onmouseover = function(){
+				animation(oDiv1,'width',300);
+			}
+			oDiv1.onmouseout = function(){
+				animation(oDiv1,'width',100);
+			}
+			oDiv2.onmouseover = function(){
+				animation(oDiv2,'height',300);
+			}
+			oDiv2.onmouseout = function(){
+				animation(oDiv2,'height',100);
+			}
+			oDiv3.onmouseover = function(){
+				animation(oDiv3,'opacity',30);
+			}
+			oDiv3.onmouseout = function(){
+				animation(oDiv3,'opacity',100);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">完</div>
+	<div id="box2">全</div>
+	<div id="box3">OK</div>
+</body>
+</html>

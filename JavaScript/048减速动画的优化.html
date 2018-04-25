@@ -3,8 +3,70 @@
 <head>
 	<meta charset="UTF-8">
 	<title>048减速动画的优化</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			position: absolute;
+			top: 100px;
+			left: 700px;
+			opacity: 1;
+		}
+		#line{
+			width: 1px;
+			height: 800px;
+			background: #000;
+			position: absolute;
+			top: 0px;
+			left: 500px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn=document.getElementById('btn');
+			var oBox=document.getElementById('box');
+			var time=null;
+		 	function animation(obj,attr,iTarget){
+				clearInterval(time);
+				time = setInterval(function(){
+					var dqz=parseFloat(getComputedStyle(obj,false)[attr]);
+					if(attr=='opacity'){
+						dqz=dqz*100;
+					}
+					var speed=(iTarget-dqz)/10;
+					var speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
+					// console.log(speed)
+					if(speed == 0){
+						clearInterval(time);
+					}else{
+						if (attr=='opacity') {
+							obj.style[attr]= (dqz+speed)/100;
+						}else{
+							obj.style[attr] = dqz+speed+'px';
+						}						
+					}
+				},30)
+			}
+			oBtn.onclick = function(){
+				animation(oBox,'opacity',30);
+			}
+			oBox.onmouseover = function(){
+				animation(oBox,'opacity',30);
+			}
+			oBox.onmouseout = function(){
+				animation(oBox,'opacity',100);
+			}
+		}
+	</script>
 </head>
 <body>
-	
+	<input type="button" id="btn" value="开始运动">
+	<div id="box"></div>
+	<div id="line"></div>
 </body>
 </html>
