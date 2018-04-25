@@ -36,13 +36,12 @@
 				time = setInterval(function(){
 					var dqz=parseFloat(getComputedStyle(obj,false)[attr]);
 					if(attr=='opacity'){
-						dqz=dqz*100;
+						dqz=Math.round(dqz*100);
 					}
 					var speed=(iTarget-dqz)/10;
 					var speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
-					// console.log(speed)
 					if(speed == 0){
-						clearInterval(time);
+						clearInterval(obj.time);
 					}else{
 						if (attr=='opacity') {
 							obj.style[attr]= (dqz+speed)/100;

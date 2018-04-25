@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>04减速动画和匀速动画的合并</title>
+	<title>049减速动画和匀速动画的合并</title>
 	<style>
 		*{
 			margin: 0;
@@ -53,8 +53,9 @@
 					}else{
 						speed=(iTarget-dqz)/10;
 						speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
+						speed=Math.round(speed);
 						if(speed == 0){
-							clearInterval(time);
+							clearInterval(obj.time);
 						}else{
 							if (attr=='opacity') {
 								obj.style[attr]= (dqz+speed)/100;
