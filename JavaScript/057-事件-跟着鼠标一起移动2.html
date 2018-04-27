@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>057-事件-跟着鼠标一起移动2</title>
+	<style>
+		div{
+			width: 50px;
+			height: 50px;
+			background: #f0f;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+		}
+	</style>
+	<script>
+		function piont(ev){
+			var oEvent=ev || event;
+			var iTop=document.body.scollTop || document.documentElement.scrollTop;
+			var iLeft=document.body.scollLeft || document.documentElement.scrollLeft;
+			var nTop=iTop+oEvent.clientY;
+			var nLeft=iLeft+oEvent.clientX;
+			return {x:nTop,y:nLeft}
+		}
+		window.onload = function(){
+			var aDiv=document.getElementsByTagName('div');
+			document.onmousemove = function(){
+				var shang=piont().x;
+				var zuo=piont().y;
+				aDiv[0].style.left=zuo + 'px';
+				aDiv[0].style.top=shang + 'px';
+				// --循环有灵动的效果
+				for(var i=aDiv.length-1;i>0;i--){
+					aDiv[i].style.left=aDiv[i-1].offsetLeft + 50 +'px';
+					aDiv[i].style.top=aDiv[i-1].offsetTop + 50 +'px';
+				}
+				// ++循环没有灵动的效果，生硬死板
+				// for(var i=1;i<=aDiv.length-1;i++){
+					// aDiv[i].style.left=aDiv[i-1].offsetLeft + 50 +'px';
+					// aDiv[i].style.top=aDiv[i-1].offsetTop + 50 +'px';
+				// }
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

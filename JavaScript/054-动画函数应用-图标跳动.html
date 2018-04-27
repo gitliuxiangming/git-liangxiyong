@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>054-动画函数应用-图标跳动</title>
+	<link rel="stylesheet" href="../盒模型/fontawesome-free-5.0.9/web-fonts-with-css/css/fontawesome-all.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			position: relative;
+			top: 80px;
+			left: 50%;
+			margin-left: -330px;
+		}
+		ul li{
+			list-style: none;
+			float: left;
+			margin-right: 20px;
+			width: 100px;
+			height: 150px;
+			border: 1px solid #000;
+			position: relative;
+		}
+		ul li i{
+			font-size: 40px;
+			position: absolute;
+			top: 40px;
+			left: 50%;
+			margin-left:-20px;
+		}
+		ul li p{
+			font-size: 12px;
+			position: absolute;
+			bottom: 10px;
+		}
+	</style>
+	<script src="JS/动画定时器.js"></script>
+	<script>
+		window.onload = function(){
+			var oUl=document.getElementById('ul');
+			var oLi=oUl.getElementsByTagName('li');
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].onmouseover = function(){
+					var oI=this.firstElementChild;					
+					oI.style.opacity=0;
+					animation(oI,{top:10,opacity:0},false,function(){
+						animation(oI,{top:40,opacity:100},false)
+					})
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li><i class="fas fa-camera-retro"></i><p>上边那个玩意会动</p></li>
+		<li><i class="fas fa-wheelchair"></i><p>上边那个玩意会动</p></li>
+		<li><i class="fas fa-coffee"></i><p>上边那个玩意会动</p></li>
+		<li><i class="fas fa-briefcase"></i><p>上边那个玩意会动</p></li>
+	</ul>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>052-JS动画95%功能齐全版</title>
+	<title>052-JS多值动画95%功能齐全版</title>
 	<style>
 		*{
 			margin: 0;
@@ -12,6 +12,9 @@
 			width: 100px;
 			height: 100px;
 			background: #f00;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	</style>
 	<script>
@@ -76,10 +79,10 @@
 			window.onload = function(){
 				var oDiv = document.getElementById('box');
 				oDiv.onmouseover = function(){
-					animation(oDiv,{width:1000,height:110},false);
+					animation(oDiv,{width:500,height:400,opacity:30,left:300},false);
 				}
 				oDiv.onmouseout = function(){
-					animation(oDiv,{width:100,height:100},false);
+					animation(oDiv,{width:100,height:100,opacity:100,left:0},false);
 				}
 				
 			}

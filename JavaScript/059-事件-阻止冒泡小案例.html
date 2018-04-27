@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-事件-阻止冒泡小案例</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 300px;
+			background: #aaa;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn=document.getElementById('btn');
+			var oBox=document.getElementById('box');
+			oBtn.onclick = function(){
+				event.stopPropagation();
+				oBox.style.display = 'block';
+			}
+			document.onclick = function(){
+				oBox.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="菜单">
+	<div id="box"></div>
+</body>
+</html>

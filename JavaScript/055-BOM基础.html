@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>055-BOM基础</title>
+	<script>
+		window.onload = function(){
+			var oBtn=document.getElementById('btn');
+			var oBtn2=document.getElementById('btn2');
+			oBtn.onclick = function(){
+				// var val=txt.value;
+				// var win=window.open('about:blank');
+				// window.open('about:blank','_blank');
+				// win.document.write(val);
+				window.open('https://www.baidu.com')
+			}
+			oBtn2.onclick = function(){
+				window.close();
+			}
+		}
+	</script>
+</head>
+<body>
+	<textarea name="" id="txt" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="新建页面">
+	<input type="button" id="btn2" value="关闭页面">
+
+</body>
+</html>

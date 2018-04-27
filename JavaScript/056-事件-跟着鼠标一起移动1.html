@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056-事件-跟着鼠标一起移动1</title>
+	<style>
+		#div{
+			width: 100px;
+			height: 100px;
+			background: #f0f;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<script>
+		function piont(ev){
+			var oEvent=ev || event;
+			var iTop=document.body.scollTop || document.documentElement.scrollTop;
+			var iLeft=document.body.scollLeft || document.documentElement.scrollLeft;
+			var nTop=iTop+oEvent.clientY;
+			var nLeft=iLeft+oEvent.clientX;
+			return {x:nTop,y:nLeft}
+		}
+		window.onload = function(){
+			var oDiv=document.getElementById('div');
+			document.onmousemove = function(){
+				var shang=piont().x;
+				var zuo=piont().y;
+				oDiv.style.left=zuo + 'px';
+				oDiv.style.top=shang + 'px';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+</html>

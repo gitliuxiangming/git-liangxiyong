@@ -19,9 +19,9 @@ function animation(obj,opation,sudu,fn){
 						}
 						if (sudu) {
 							if(dqz<=opation[attr]){
-								speed= 5;
+								speed= 10;
 							}else{
-								speed= -5;
+								speed= -10;
 							}
 							if (Math.abs(opation[attr]-dqz)<Math.abs(speed)) {
 								stop=true;								
@@ -29,7 +29,7 @@ function animation(obj,opation,sudu,fn){
 								stopall=false;
 							}
 						}else{
-							speed=(opation[attr]-dqz)/10;
+							speed=(opation[attr]-dqz)/20;
 							speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
 							if (!speed) {
 								stop=true;
@@ -57,6 +57,5 @@ function animation(obj,opation,sudu,fn){
 							fn();
 						}
 					}
-					console.log(111)
 				},30)
 			}

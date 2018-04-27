@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-动画函数应用-发布效果</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#ul li{
+			list-style: none;
+			border-bottom: 1px dashed #000;
+			padding-left: 20px;
+			width: 100%;
+			height: 50px;
+			line-height: 50px;
+			background: #0ff;
+		}
+	</style>
+	<script src="JS/动画定时器.js"></script>
+	<script>
+		window.onload = function(){
+			var oBtn=document.getElementById('btn');
+			var oTxt=document.getElementById('txt');
+			var oUl=document.getElementById('ul');
+			oBtn.onclick = function(){
+				var oLi=document.createElement('li');
+				var aA=document.createElement('a');
+				aA.innerHTML='删除';
+				aA.href='javascript:';
+				oLi.innerHTML=oTxt.value;
+				oLi.appendChild(aA);
+				aA.style.marginLeft='200px';
+				aA.onclick = function(){					
+					animation(oLi,{opacity:0,height:0},true)
+					setTimeout(function(){
+						oUl.removeChild(oLi);
+					},200)
+				}
+				oUl.insertBefore(oLi,oUl.firstElementChild);
+				oLi.style.height=0;
+				oLi.style.opacity=0;
+				animation(oLi,{height:50,opacity:100},true);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" id="btn" value="发布">
+	<ul id="ul"></ul>
+</body>
+</html>
