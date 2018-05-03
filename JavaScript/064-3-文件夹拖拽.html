@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>064-3-文件夹拖拽</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			height: 100px;
+			width: 100px;
+			background-color: blue;
+			position: absolute;
+		}
+		.box{
+			box-sizing: border-box;
+			border: 1px dashed #000;
+			position: absolute;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oDiv=document.getElementById('div1');
+			var disX=0;
+			var disY=0;
+			oDiv.onmousedown=function(ev){
+				var oEvent=ev||event;
+				var oBox=document.createElement('div');
+				oBox.style.width=oDiv.offsetWidth+'px';
+				oBox.style.height=oDiv.offsetHeight+'px';
+
+				oBox.className='box';
+				document.body.appendChild(oBox);
+				oBox.style.left=oDiv.offsetLeft+'px';
+				oBox.style.top=oDiv.offsetTop+'px';
+
+				disY=oEvent.clientY-oDiv.offsetTop;
+				disX=oEvent.clientX-oDiv.offsetLeft;
+
+				document.onmousemove=function(ev){
+					var oEvent=ev||event;
+					var l=oEvent.clientX-disX;
+					var t=oEvent.clientY-disY;
+					// var le=window.innerWidth-oDiv.offsetWidth;
+					// var to=window.innerHeight-oDiv.offsetHeight;
+					// if(l<0){
+					// 	l=0;
+					// }else if(l>le){
+					// 	l=le;
+					// }
+					// if(t<0){
+					// 	t=0;
+					// }else if(t>to){
+					// 	t=to;
+					// }
+					oBox.style.left=l+'px';
+					oBox.style.top=t+'px';
+				}
+				document.onmouseup=function(){
+					document.onmousemove=null;
+					document.onmouseup=null;
+					oDiv.style.left=oBox.offsetLeft+'px';
+					oDiv.style.top=oBox.offsetTop+'px';
+					document.body.removeChild(oBox);
+				}
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+		<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>067-事件-滚动条滚动文字</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 400px;
+			height: 100px;
+			background: #555;
+			position: relative;
+		}
+		#btn{
+			width: 100px;
+			height: 100px;
+			background: #f23;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#div1{
+			width: 400px;
+			height: 400px;
+			/*background: #f5f;*/
+			position: relative;
+			overflow: hidden;
+		}
+		#div2{
+			width: 100%;
+			/*background: #f6f;*/
+			border: 1px solid #000;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oBtn = document.getElementById('btn');
+			var oDiv2 = document.getElementById('div2');
+			var oDiv1 = document.getElementById('div1');
+			oBtn.onmousedown = function(ev){
+				var oEvent=ev || event;
+				var disX=oEvent.clientX - oBtn.offsetLeft;
+				var l=0;				
+				document.onmousemove = function(ev){
+					var oEvent=ev || event;
+					l=oEvent.clientX-disX;				
+					gundong();				
+				}
+				oBox.onmousewheel = function(ev){
+					var oEvent=ev || event;
+					if (oEvent.wheelDelta>0) {
+						l-=10;
+					}else{
+						l+=10;
+					}
+					gundong();
+					return false;
+				}
+				function gundong(){
+					if (l<0) {
+						l=0;
+					}else if(l>oBox.offsetWidth-oBtn.offsetWidth){
+						l=oBox.offsetWidth-oBtn.offsetWidth;
+					}
+					var bili=l/(oBox.offsetWidth-oBtn.offsetWidth);
+					oBtn.style.left=l+'px';
+					oDiv2.style.top=bili*(-oDiv2.offsetHeight+oDiv1.offsetHeight)+'px';
+				}				
+				document.onmouseup = function(){
+					document.onmousemove=null;
+					document.onmousedown=null;
+				}
+			}			
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="btn"></div>
+	</div>
+	<div id="div1">
+		<div id="div2">
+		电影局回应 ：初步认定该影片退票情况确有异常
+
+据中国电影报记者从国家电影局并获悉，电影局关注到行业上述反映之后，依据国家电影专资数据平台的数据，对近几日退票信息进行了分析，初步认定该影片退票情况确有异常，具体问题尚待研判。
+
+29日，电影局有关负责人已对影片出品方、发行方等相关人员进行了约谈，要求立即完善退票机制，认真查明存在的漏洞、进一步梳理情况、完善数据，形成书面报告报主管部门。
+
+电影局相关负责人表示，无论哪一部影片，都应该以其影片质量去赢得观众喜爱。电影主管部门坚决反对不正当竞争，反对任何票房造假的行为，决不允许任何扰乱电影市场、破坏市场秩序、损害电影产业整体利益和声誉的行为。
+
+对此一旦发现查明，将严肃处理。希望广大电影企业和从业人员认真学习遵守《电影产业促进法》和相关法律法规，共同营造公平竞争的市场环境，推动建立更加规范有序的电影市场。
+
+此前，根据微博账号“电影票房”的说法，被退票影院总数接近4000家，退票额在1500万至2000万之间，影院方蒙受巨大损失。
+
+@1905电影网官博 采访了某家院线高层，对方表示，他们院线方确实有退票，但是没有网络上传得那么夸张，据他们统计，28日就《后来的我们》退票率是6%，但是按照行业以往的情况，退票率是在千分之2-3。
+ 		据外媒报道，比尔·盖茨近日在接受媒体采访时表示，上个月他在美国白宫总统办公室与特朗普展开了亲切友好的交谈。比尔·盖茨称双方就在全球普及流感疫苗进行了史上最长的总统级别谈话，特朗普对他的“脑洞”大加赞赏，情到深处，特朗普甚至邀请他出任白宫科学顾问，但被比尔·盖茨当场拒绝了，比尔·盖茨称，“我有正经事要忙”。
+ 		而在特朗普与比尔·盖茨长达四十分钟的会谈中，特朗普也向比尔·盖茨再次表达了他的担忧，美国科学界的许多人都很担心这个关键职位长期处于空缺状态。
+
+比尔·盖茨附和表示，也许我们是时候应该有一位科学顾问了。
+
+特朗普当即顺势而为称，那么然后呢？你是否有兴趣接下这一重任。
+
+比尔·盖茨当场拒绝特朗普的建议称，这并非我一直寻找的答案。比尔·盖茨委婉地告诉特朗普，“这对我来说不是一个利用时间的好主意。”
+
+比尔·盖茨本人并非美国科学界人士，他只是近些年将他事业重心放在了一些和科技发展、科学研究相关的事情上，他主持的盖茨梅琳达基金会便是致力于资助从事气候变化和传染病等问题的科研项目。
+比尔·盖茨事后表示，如果他当场应允了特朗普，他不知道接下来会发生些什么。“我没有接受这个提议，不管特朗普总统当时的提议是否是一件严肃的事情。他可能本人也不清楚自己那一瞬间是不是认真的，或许只是出于友好的随口一说吧，他很友善。”
+		</div>
+
+	</div>
+</body>
+</html>
