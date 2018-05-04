@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>070-事件-事件的绑定和移除</title>
+	<style>
+		#div{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		// window,onload = function(){
+		// 	var oDiv=document.getElementById('div');
+		// 	oDiv.onclick = function(){
+		// 		alert('你是谁');
+		// 	}
+		// }
+		window.onload = function(){
+			var oDiv=document.getElementById('div');
+			function shui(){
+				alert('我是被定义的函数');
+			}
+			function shui2(){
+				alert('我是第二个被定义的函数');
+			}
+			oDiv.addEventListener('click',shui,false);
+			oDiv.addEventListener('click',shui2,false);
+			oDiv.addEventListener('click',function(){
+				alert('事件绑定，并且移除是只能移除定义过的函数（及有函数名的函数），第一个已经被移除')
+			},false);
+			oDiv.removeEventListener('click',shui,false);
+		}
+	</script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+</html>
