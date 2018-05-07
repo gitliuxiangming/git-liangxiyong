@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-2-对象-属性的继承2</title>
+	<script>
+		function  Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		// Person.prototype.showName = function(){
+		// 	console.log('I am'+ this.name);
+		// }
+		Object.defineProperty(Person.prototype,'showName',{value:function(){
+				console.log('I am'+ this.name);
+		}})
+		Person.prototype.showAge = function(){
+			console.log('I am'+ this.age);
+		}
+		var p1=new Person('tom',18);
+		p1.showName();
+		p1.showAge();
+		//属性继承 和方法继承
+		function  Student(name,age,className){
+			Person.call(this,name,age);
+			this.className=className;
+		}
+		for(key in Person.prototype){
+			Student.prototype[key]=Person.prototype[key];
+		}
+		// 这种方法,如果上边的方法不能被枚举，那么就会找不到这个方法
+		Student.prototype.showClassName = function(){
+			console.log('I am from'+ this.className);
+		}
+		var s1=new Student('liu',20,'Computer');
+		s1.showName();
+		s1.showAge();
+		s1.showClassName();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

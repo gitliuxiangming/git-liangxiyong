@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-3-对象-属性的继承3</title>
+	<script>
+		function  Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		// Person.prototype.showName = function(){
+		// 	console.log('I am'+ this.name);
+		// }
+		Object.defineProperty(Person.prototype,'showName',{value:function(){
+				console.log('I am'+ this.name);
+		}})
+		Person.prototype.showAge = function(){
+			console.log('I am'+ this.age);
+		}
+		var p1=new Person('tom',18);
+		p1.showName();
+		p1.showAge();
+		//属性继承 和方法继承
+		function  Student(name,age,className){
+			Person.call(this,name,age);
+			this.className=className;
+		}
+		var Student.prototype=new Person();
+		Student.prototype.constructor=Student;
+		// 这种方法是换了一条路走，新new一个对象实例，通过它里面的_proto_来往原型链上边找。
+		//但是构造函数会被执行两次！并且会把多余的属性也找进来
+		Student.prototype.showClassName = function(){
+			console.log('I am from'+ this.className);
+		}
+		var s1=new Student('liu',20,'Computer');
+		s1.showName();
+		s1.showAge();
+		s1.showClassName();
+
+	</script>
+</head>
+<body>

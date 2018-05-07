@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>082-对象-this的指向</title>
+	<script>
+		function show(n1,n2){
+			console.log(this,n1,n2);
+		}
+		//这样调用时，这个函数属于window
+		// show();
+		//用call调用时，第一个参数是被调用函数里面的this，后面是对应的参数列表
+		// show.call({name:"tom"},100,200);
+		//用apply调用时，第一个参数是被调用函数里面的this，第二个参数是一个数组，数组里面用来接收原来函数的参数列表
+		// show.apply({name:"bob"},[300,400]);
+		//用bind调用时，bind会返回一个函数，返回的函数内部的this就是bind的参数，即被调用函数的this
+		// var fn=show.bind({name:"lily"},500,600);
+		// fn(); 
+		//既然bind会返回一个函数，那么就可以调用这个函数。往它后边加一对圆括号
+		show.bind({name:"lily"},500,600)();
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

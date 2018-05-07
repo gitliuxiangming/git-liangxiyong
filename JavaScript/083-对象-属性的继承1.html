@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-对象-属性的继承1</title>
+	<script>
+		function  Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Person.prototype.showName = function(){
+			console.log('I am'+ this.name);
+		}
+		Person.prototype.showAge = function(){
+			console.log('I am'+ this.age);
+		}
+		var p1=new Person('tom',18);
+		p1.showName();
+		p1.showAge();
+		//另一个构造函数
+		// function  Student(name,age,className){
+		// 	this.name=name;
+		// 	this.age=age;
+		// 	this.className=className;
+		// }
+		// Student.prototype.showName = function(){
+		// 	console.log('I am'+this.name);
+		// }
+		// Student.prototype.showAge = function(){
+		// 	console.log('I am'+this.age);
+		// }
+		// Student.prototype.showClassName = function(){
+		// 	console.log('I am from'+this.className);
+		// }
+		// var s1=new Student('liu',20,Computer);
+		// s1.showName();
+		// s1.showAge();
+		// s1.showClassName();
+		//属性继承 和方法继承
+		function  Student(name,age,className){
+			Person.call(this,name,age);
+			this.className=className;
+		}
+		// Student.prototype.showName = function(){
+		// 	console.log('I am'+ this.name);
+		// }
+		// Student.prototype.showAge = function(){
+		// 	console.log('I am'+ this.age);
+		// }
+		Student.prototype=Person.prototype;
+		// 这种方法会全复制 并且会改变原来的方法 不靠谱
+		Student.prototype.showClassName = function(){
+			console.log('I am from'+ this.className);
+		}
+		var s1=new Student('liu',20,'Computer');
+		s1.showName();
+		s1.showAge();
+		s1.showClassName();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

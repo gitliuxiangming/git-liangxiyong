@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-4-对象-属性的继承4</title>
+	<script>
+		function  Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		// Person.prototype.showName = function(){
+		// 	console.log('I am'+ this.name);
+		// }
+		Object.defineProperty(Person.prototype,'showName',{value:function(){
+				console.log('I am'+ this.name);
+		}})
+		Person.prototype.showAge = function(){
+			console.log('I am'+ this.age);
+		}
+		var p1=new Person('tom',18);
+		p1.showName();
+		p1.showAge();
+		//属性继承 和方法继承
+		function  Student(name,age,className){
+			Person.call(this,name,age);
+			this.className=className;
+		}
+		// 方法继承
+		var obj=Object.create(Person.prototype);
+		var Student.prototype=obj;
+		Student.prototype.constructor=Student;
+		// 这种方法是通过Object.create(目标类)，会创建一个只含有目标类的_proto_的对象，在通过这个对象往原型链上边找。好处是构造函数没有被多次执行，也没有多找一些多余的属性。
+		Student.prototype.showClassName = function(){
+			console.log('I am from'+ this.className);
+		}
+		var s1=new Student('liu',20,'Computer');
+		s1.showName();
+		s1.showAge();
+		s1.showClassName();
+
+	</script>
+</head>
+<body>
