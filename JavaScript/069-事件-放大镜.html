@@ -39,8 +39,8 @@
 			border: 1px solid #f00;
 		}
 		#da{
-			width: 540px;
-			height: 540px;
+			width: 600px;
+			height: 600px;
 			border: 1px solid #ccc;
 			position: absolute;
 			top: 0;
@@ -106,8 +106,9 @@
 					}
 					$('mask').style.top=t+'px';
 					$('mask').style.left=l+'px';
-					aDa.style.left=-l/($('mask').offsetWidth/aDa.offsetWidth)+'px';
-					aDa.style.top=-t/($('mask').offsetHeight/aDa.offsetHeight)+'px';
+					var bili=$('mask').offsetWidth/aZhong[0].offsetWidth;
+					aDa.style.left=-(l/($('mask').offsetWidth/aDa.offsetWidth))*bili+'px';
+					aDa.style.top=-(t/($('mask').offsetHeight/aDa.offsetHeight))*bili+'px';
 				}
 			}
 			$('zhong').onmouseout = function(){

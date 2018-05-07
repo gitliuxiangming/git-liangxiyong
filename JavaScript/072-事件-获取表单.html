@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>072-事件-获取表单</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		p{
+			width: 300px;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 30px;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var oTxT=document.getElementById('txt');
+			var oSp=document.getElementById('sp');
+			var oSub=document.getElementById('sub');
+			var oUl=document.getElementById('ul1');
+			var isOk=false;
+			var isOne=false;
+			var Data=['Tom','Cat','Dog','Phone'];
+			oTxT.onfocus=function(){
+				oSp.style.color='green';
+				oSp.innerHTML='请输入3-6个数字';
+			}
+			oTxT.oninput=function(){
+				if(isOne){
+					return false;
+				}
+				for(i=0;i<Data.length;i++){
+					var oLi=document.createElement('li');
+					oLi.innerHTML=Data[i];
+					oUl.appendChild(oLi);
+					// oLi.onclick=function(){
+					// 	oTxT.value=this.innerHTML;
+					// 	oSp.style.color='blue';
+					// 	oSp.innerHTML='输入正确';
+					// 	isOk=true;
+					// }
+					oUl.onclick=function(ev){
+						var oEvent=ev||event;
+						oTxT.value=oEvent.target.innerHTML;
+						oSp.style.color='blue';
+						oSp.innerHTML='输入正确';
+						isOk=true;
+					}
+				}
+				isOne=true;
+			}
+			oTxT.onblur=function(){
+				if(oTxT.value.length>2&&oTxT.value.length<7){
+					oSp.style.color='blue';
+					oSp.innerHTML='输入正确';
+					isOk=true;
+				}else{
+					oSp.style.color='red';
+					oSp.innerHTML='输入错误';
+				}
+			}
+			oSub.onclick=function(){
+				if(!isOk){
+					return false;
+				}
+				
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<form action="https://www.kuazhu.com">
+		<p>
+			<input type="text" id="txt" name="usernaem">
+			<span id="sp"></span>
+		</p>
+		<ul id="ul1"></ul>
+		<p><input type="submit" id="sub" value="提交"></p>
+	</form>
+</body>
+</html>

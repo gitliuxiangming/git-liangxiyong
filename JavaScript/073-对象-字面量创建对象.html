@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>073-对象-字面量创建对象</title>
+	<script>
+		window.onload = function(){
+			var obj={};
+			//第一种方法
+			obj.name='assdf';
+			obj.age='1';
+			obj.bug='0';
+			//第二种方法
+			obj={
+				name:'asssdfsdf',
+				age:'1',
+				bug:'13',
+				show:function(){
+					console.log('hello')
+				}
+			}
+			for(key in obj){
+				console.log(obj[key])
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

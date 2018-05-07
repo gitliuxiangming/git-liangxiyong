@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075-对象-json和js对象的区别</title>
+	<script>
+		var json = '{"name":"yanyan","age":25,"mianmao":"beautiful"}';
+		// 不能传函数，会是undefined
+		console.log(typeof json);
+		var objJson=JSON.parse(json);	
+		console.log(typeof objJson);
+		console.log(objJson.name);
+		var obj={
+			name:"meimei",
+			age:21,
+			"@pi":"beautiful",
+		}
+		console.log(typeof obj);
+		//不是正规变量名必须的加双引号
+		console.log(obj["@pi"]);
+		var jsonObj=JSON.stringify(obj);
+		console.log(typeof jsonObj);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

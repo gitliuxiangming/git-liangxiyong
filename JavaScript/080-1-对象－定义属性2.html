@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>080-1-对象－定义属性2.html</title>
+	<script>
+		var obj = {};
+		Object.defineProperty(obj,"name",{value:"Tom",configurable:true});
+		for(key in obj){
+			// 可删除或更改但是不能枚举所以第一个console找不到元素
+			console.log(obj[key]);
+		}		
+		Object.defineProperty(obj,"name",{value:"Bom",enumerable:true});
+		// 又添加了可以枚举的属性，所以第二个可以找的到元素
+		for(key in obj){
+			console.log(obj[key]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

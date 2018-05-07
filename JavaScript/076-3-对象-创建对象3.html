@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>078-对象-创建对象3</title>
+	<script>
+		function  create(name,age){
+			var obj=new Object();
+			obj.name=name;
+			obj.age=age;
+			obj.showName=function(){
+				console.log('wo shi'+name);
+			}
+			obj.showAge = function(){
+				console.log("I am "+this.age + " years old");	
+			}
+			return obj;
+		}
+		var p1 = create("Tom",18);
+		// console.log(typeof p1);
+		// console.log(p1.name);
+		p1.showName();
+		p1.showAge();
+		var p2 = create("Leo",88);
+		p2.showName();
+		p2.showAge();
+		//p1和p2不相等  因为调用了两次create函数，生成了俩次showname 和 shouage  并且两次生成的不同
+		console.log(p1.showName == p2.showName);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

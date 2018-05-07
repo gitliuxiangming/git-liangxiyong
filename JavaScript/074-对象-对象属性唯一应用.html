@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>074-对象-对象属性唯一应用</title>
+	<script>
+		window.onload = function(){
+			var arr=[1,5,4,46,1,5,36,54,85,2,2,1];
+			function qvchong(){
+				var kong=[];
+				var obj={};
+				for(var i=0;i<arr.length;i++){
+					obj[arr[i]]='';
+				}
+				for(key in obj){
+					kong.push(key)
+				}
+
+				return kong;
+			}
+			console.log(qvchong());
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
