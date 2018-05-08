@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡案例方法二</title>
+	<style>
+		#div>div{
+			width: 300px;
+			height: 300px;
+			background: #aaa;
+			line-height: 300px;
+			text-align: center;
+			border: 1px solid #000;
+			display: none;
+		}
+		#div1>div{
+			width: 300px;
+			height: 300px;
+			background: #aaa;
+			line-height: 300px;
+			text-align: center;
+			border: 1px solid #000;
+			display: none;
+		}
+		.click{
+			background: #ff6700;
+		}
+	</style>
+	<script>
+		//1.取消函数嵌套
+		//2.添加全局变量
+		//3.onload变构造函数
+		//4.把函数改为原型对象上的方法，把全局变量改为构造函数中的属性，然后修改this，
+		window.onload = function(){
+			new Tab('input','div');
+			new Tab('input1','div1');
+		}
+		function Tab(id1,id2){
+			this.aBtn=document.getElementById(id1).children;
+			this.aDiv=document.getElementById(id2).children;
+			// var _self=this;
+			for(var i=0;i<this.aBtn.length;i++){	
+				this.aBtn[i].index= i;			
+				this.aBtn[i].onclick=this.change.bind(this,this.aBtn[i]);					
+				// this.aBtn[i].onclick=function(){
+				// 	console.log(this);
+				// 	_self.change(this);
+				// };					
+			}
+		}
+		Tab.prototype.change = function(oBtn){
+			// console.log(this);
+			for(var j=0;j<this.aBtn.length;j++){
+				this.aBtn[j].className='';
+				this.aDiv[j].style.display='none';
+			}
+			this.aBtn[oBtn.index].className='click';
+			this.aDiv[oBtn.index].style.display='block';
+		}
+	</script>
+</head>
+<body>
+	<div id="input">
+		<input type="button" value="第一个" class="click">
+		<input type="button" value="第二个">
+		<input type="button" value="第三个">
+		<input type="button" value="第四个">
+	</div>
+	<div id="div">
+		<div style="display:block">第一个内容</div>
+		<div>第二个内容</div>
+		<div>第三个内容</div>
+		<div>第四个内容</div>
+	</div>
+		<div id="input1">
+		<input type="button" value="第一个" class="click">
+		<input type="button" value="第二个">
+		<input type="button" value="第三个">
+		<input type="button" value="第四个">
+	</div>
+	<div id="div1">
+		<div style="display:block">第一个内容</div>
+		<div>第二个内容</div>
+		<div>第三个内容</div>
+		<div>第四个内容</div>
+	</div>
+</body>
+</html>

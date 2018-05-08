@@ -11,6 +11,7 @@
 		// Person.prototype.showName = function(){
 		// 	console.log('I am'+ this.name);
 		// }
+		//下边会找不到这个函数，所以下边的构造函数中没有这个方法
 		Object.defineProperty(Person.prototype,'showName',{value:function(){
 				console.log('I am'+ this.name);
 		}})

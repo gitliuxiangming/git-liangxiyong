@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-对象-面向对象的拖拽-1</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			new Tuo();
+		}
+		function Tuo(){
+			this.oDiv=document.getElementById('div');
+			this.oDiv.onmousedown = this.down.bind(this);
+		}
+		Tuo.prototype.down=function(ev){
+			var oEvent = ev || event;
+			this.disX=oEvent.clientX - this.oDiv.offsetLeft;
+			this.disY=oEvent.clientY - this.oDiv.offsetTop;
+			document.onmousemove = this.move.bind(this);
+			document.onmouseup = this.up;
+		}
+		Tuo.prototype.move=function(ev){
+			var oEvent = ev || event;
+			this.oDiv.style.left = oEvent.clientX - this.disX +'px';
+			this.oDiv.style.top = oEvent.clientY - this.disY +'px';
+		}
+		Tuo.prototype.up=function(){
+			document.onmousemove=null;
+			document.onmnouseup=null;
+		}
+	</script>
+</head>
+<body>
+	<div id="div"></div>
+</body>
+</html>
