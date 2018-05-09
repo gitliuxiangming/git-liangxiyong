@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-对象-面向对象的拖拽-4-继承版</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			new Tuo({width:100,height:100,background:'blue'});
+			new Tuo({width:200,height:200,background:'red'});
+			new Sontuo({width:230,height:230,background:'green'});
+		}
+		function Tuo(obj){						
+			this.width=obj.width;			
+			this.height=obj.height;			
+			this.background=obj.background;	
+			//初始化
+			this.add();
+			//属性的罗列
+			this.disX=0;
+			this.disY=0;
+			//绑定函数		
+			this.bindevent();
+		}
+		Tuo.prototype.add = function(){
+			this.oDiv=document.createElement('div');
+			this.oDiv.style.width=this.width +'px';
+			this.oDiv.style.height=this.height +'px';
+			this.oDiv.style.background=this.background;
+			this.oDiv.style.position='absolute';
+			document.body.appendChild(this.oDiv);
+		}
+		//优化构造函数
+		Tuo.prototype.bindevent=function(){
+			this.oDiv.onmousedown = function(ev){
+				var oEvent = ev || event;
+				this.disX=oEvent.clientX - this.oDiv.offsetLeft;
+				this.disY=oEvent.clientY - this.oDiv.offsetTop;
+				document.onmousemove = this.move.bind(this);
+				document.onmouseup = this.up;
+			}.bind(this);
+		}
+		// Tuo.prototype.down=function(ev){
+		// 	var oEvent = ev || event;
+		// 	this.disX=oEvent.clientX - this.oDiv.offsetLeft;
+		// 	this.disY=oEvent.clientY - this.oDiv.offsetTop;
+		// 	document.onmousemove = this.move.bind(this);
+		// 	document.onmouseup = this.up;
+		// }
+		Tuo.prototype.move=function(ev){
+			var oEvent = ev || event;
+			this.oDiv.style.left = oEvent.clientX - this.disX +'px';
+			this.oDiv.style.top = oEvent.clientY - this.disY +'px';
+		}
+		Tuo.prototype.up=function(){
+			document.onmousemove=null;
+			document.onmnouseup=null;
+		}
+		function Sontuo(obj){
+			Tuo.call(this,obj);
+		}
+		Sontuo.prototype=Object.create(Tuo.prototype);
+		Sontuo.prototype.constructor=Sontuo;
+		// console.log(Sontuo.prototype.constructor);
+		Sontuo.prototype.move=function(ev){
+			var oEvent = ev || event;
+			var l=oEvent.clientX - this.disX ;
+			var t=oEvent.clientY - this.disY ;
+			if (l<0) {
+				l=0;
+			}else if(l>=window.innerWidth - this.oDiv.offsetWidth){
+				l=window.innerWidth - this.oDiv.offsetWidth;
+			}
+			if (t<0) {
+				t=0;
+			}else if(t>=window.innerHeight - this.oDiv.offsetHeight){
+				t=window.innerHeight - this.oDiv.offsetHeight;
+			}
+			this.oDiv.style.left = l+'px';
+			this.oDiv.style.top = t+'px';
+		}
+	</script>
+</head>
+<body>
+	<!-- <div id="div"></div> -->
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-对象-面向对象的拖拽-3-低级优化版</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			new Tuo({width:200,height:200,background:'red'});
+		}
+		function Tuo(obj){
+			//罗列属性
+			this.disX=0;						
+			this.disY=0;						
+			this.width=obj.width;			
+			this.height=obj.height;			
+			this.background=obj.background;
+			//初始化	
+			this.add();
+			//绑定事件		
+			this.bindevent();
+		}
+		Tuo.prototype.bindevent=function(){
+			this.oDiv.onmousedown = function(ev){
+				var oEvent = ev || event;
+				this.disX=oEvent.clientX - this.oDiv.offsetLeft;
+				this.disY=oEvent.clientY - this.oDiv.offsetTop;
+				document.onmousemove = this.move.bind(this);
+				document.onmouseup = this.up;
+			}.bind(this);
+		}
+		Tuo.prototype.add = function(){
+			this.oDiv=document.createElement('div');
+			this.oDiv.style.width=this.width +'px';
+			this.oDiv.style.height=this.height +'px';
+			this.oDiv.style.background=this.background;
+			this.oDiv.style.position='absolute';
+			document.body.appendChild(this.oDiv);
+		}
+		//这个事件被优化到上边的bindevent中去了
+		// Tuo.prototype.down=function(ev){
+		// 	var oEvent = ev || event;
+		// 	this.disX=oEvent.clientX - this.oDiv.offsetLeft;
+		// 	this.disY=oEvent.clientY - this.oDiv.offsetTop;
+		// 	document.onmousemove = this.move.bind(this);
+		// 	document.onmouseup = this.up;
+		// }
+		Tuo.prototype.move=function(ev){
+			var oEvent = ev || event;
+			this.oDiv.style.left = oEvent.clientX - this.disX +'px';
+			this.oDiv.style.top = oEvent.clientY - this.disY +'px';
+		}
+		Tuo.prototype.up=function(){
+			document.onmousemove=null;
+			document.onmnouseup=null;
+		}
+	</script>
+</head>
+<body>
+	<!-- <div id="div"></div> -->
+</body>
+</html>

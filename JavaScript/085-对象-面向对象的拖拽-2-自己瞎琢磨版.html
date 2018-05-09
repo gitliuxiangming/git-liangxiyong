@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>085-对象-面向对象的拖拽-1</title>
+	<title>085-对象-面向对象的拖拽-2
+	</title>
 	<style>
 		*{
 			margin: 0;
@@ -19,12 +20,15 @@
 	</style>
 	<script>
 		window.onload = function(){
-			new Tuo('div');
+			new Tuo({width:200,height:200,background:'red'});
 		}
-		function Tuo(id){
-			this.disX=0;
-			this.disY=0;
-			this.oDiv=document.getElementById(id);
+		function Tuo(obj){			
+			this.oDiv=document.createElement('div');
+			this.oDiv.style.width=obj.width +'px';
+			this.oDiv.style.height=obj.height +'px';
+			this.oDiv.style.background=obj.background;
+			this.oDiv.style.position='absolute';
+			document.body.appendChild(this.oDiv);
 			this.oDiv.onmousedown = this.down.bind(this);
 		}
 		Tuo.prototype.down=function(ev){
@@ -46,6 +50,6 @@
 	</script>
 </head>
 <body>
-	<div id="div"></div>
+	<!-- <div id="div"></div> -->
 </body>
 </html>
