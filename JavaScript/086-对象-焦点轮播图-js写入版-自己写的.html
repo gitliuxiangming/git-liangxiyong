@@ -20,26 +20,41 @@
 	//构造函数
 	function Carousel(option){
 		//罗列属性
-		this.oBox=document.getElementById('div1');
+		this.oBox=document.getElementById(option.id);
+		this.oImgul=null;
+		this.oImgli=null;
+		this.aImg=option.arr;
+		this.width=option.width;
+		this.height=option.height;
 		//初始化
 		this.init();
 		//绑定函数
 	}
 	Carousel.prototype.init=function(){
+		//创建放图片的ul容器
+		this.oImgul=document.creataElement('ul');
+		//添加元素到顶层父容器中
+		this.oBox.appendChild(this.oImgul);
+		for(var i=0;i<this.aImg.length;i++){
+			//创建li并添加到ul中
+
+			//创建img并添加到li中
+			
+		}		
 
 	}
-	Carousel.prototype.right=function(){
+	Carousel.prototype.clickevent=function(){
 
 	}
-	Carousel.prototype.left=function(){
-
-	}
-	Carousel.prototype.bottom=function(){
-
-	}
-	Carousel.prototype.onload=function(){
-
-	}
-	new Carousel({});
+	new Carousel({
+		id:'div',
+		arr:[
+			'images/黄金广告1.jpg',
+			'images/黄金广告2.jpg',
+			'images/黄金广告3.jpg'
+		],
+		width:1300,
+		height:500
+	});
 </script>
 </html>
