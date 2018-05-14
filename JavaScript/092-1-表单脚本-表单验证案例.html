@@ -237,6 +237,15 @@
 
     			}
     		}
+    		function phoneCheck(){
+
+    		}
+    		function sanCheck(){
+    			
+    		}
+    		function siCheck(){
+    			
+    		}
     	}
 
     </script>
@@ -245,18 +254,25 @@
 <body>
     <div class="reg" id='reg'>
         <form action="http://www.kuazhu.com">
+        	<!-- 第一块 -->
             <div id="username-box">
+            	<!-- 把输入框的焦点和文字点击绑定到一块 -->
                 <label for="username">用户名</label>
                 <input type="text" name="username" placeholder="请设置用户名">
+                <!-- 输入框里面的，oninput时才会有的清空图标  获取时可以已数组的方式获取-->
                 <span class="cancel" data-obj="username" style="display: none;"></span>
+                <!-- 输入前，输入时，输入后出现的提示信息 获取时可以已数组的方式获取-->
                 <span class="msg"></span>
             </div>
+            <!-- 第二块 -->
             <div id="phone-box">
+            	<!-- 1.纯数字输入（通过onkeydown的oEvent.keycode属性）2.不能超过11位(value.length) -->
                 <label for="phone">手机号</label>
                 <input type="text" name="phone" placeholder="可用于登录和找回密码">
                 <span class="cancel" style="display: none;"></span>
                 <span class="msg"></span>
             </div>
+            <!-- 第三块 -->
             <div id="pwd-box" class="pwd-box">
                 <label for="password">密码</label>
                 <input type="password" name="password" placeholder="请设置登录密码"/>
@@ -271,6 +287,7 @@
                     <span class="pwd-checklist-arrow"></span>
                 </div>
             </div>
+            <!-- 第四块 -->
             <div id="verify-box">
                 <label for="verify">验证码</label>
                 <input type="text" name="verify" placeholder="请输入验证码">
@@ -278,6 +295,7 @@
                 <input type="button"  id="smsBtn" value="获取短信验证码">
                 <span class="msg"></span>       
             </div> 
+            <!-- 第五块 -->
             <div id='agree-box'>
                <input type="checkbox" name='isAgree' id='isAgree'> 
                <label for="isAgree">阅读并接受</label>

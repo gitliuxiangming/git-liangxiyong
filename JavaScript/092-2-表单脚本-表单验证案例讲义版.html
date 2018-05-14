@@ -216,43 +216,79 @@
             oMsg.innerHTML = sMsg;
             oInput.style.borderColor = 'red';            
         }
+        function setOk(oMsg,oInput){
+            oMsg.className = 'ok';
+            oMsg.innerHTML = '';
+            oInput.style.borderColor = '#ddd';           
+        }
         window.onload = function(){
             //获取元素
             var oForm = document.forms[0];
             var oUserName = oForm.username;
             var oPhone = oForm.phone;
+            var oPwd = oForm.password;
+            var oPwdCheckList = document.getElementById('pwdChecklist');
+            var aPwdCheckListLi = oPwdCheckList.getElementsByTagName('li');
+            var oVerify = oForm.verify;
+            var oSmsBtn = document.getElementById('smsBtn');
+            var oAgree = document.getElementById('isAgree');
+            var oSubBtn = document.getElementById('subBtn');
             var aCancel = document.querySelectorAll('.cancel');
             var aMsg = document.querySelectorAll('.msg');
-            //初始化
+            //全局验证位
+            var bPhone = false;
+            var bUserName = false;
+            var bPwd = false;
+            var bVerify = false;
             init();
-            //调用函数
             checkUserName();
             checkPhone();
-            
+            checkPwd();
+            checkVerify();
+            handleSub();
+            //初始化
             //设置默认焦点
             function init(){
                 oUserName.focus();
                 //设置默认提示信息
                 aMsg[0].className = 'tiptext';
-                aMsg[0].innerHTML = '设置后不可更改<br>中英文均可,最长14个英文或7个汉字';               
+                aMsg[0].innerHTML = '设置后不可更改<br>中英文均可,最长14个英文或7个汉字'; 
+                //通过是事件冒泡委托父元素处理添加取消按钮功能
+                oForm.oninput = function(ev){
+                    var oEvent = ev || event;
+                    var oInput = ev.target;
+                    var oCancel = oInput.nextElementSibling;
+                    if(oInput.value.length > 0){
+                        oCancel.style.display = 'block';
+                    }else{
+                        oCancel.style.display = 'none';
+                    }
+                }
+                //通过是事件冒泡委托父元素处理添加取消按钮功能
+                oForm.onclick = function(ev){
+                    var oEvent = ev || event;
+                    var oSpan = ev.target;
+                    // 方法一
+                    var oInput = oSpan.previousElementSibling;
+                    if(oInput && (oInput.name == 'username' || oInput.name == 'phone' || oInput.name == 'password' || oInput.name == 'verify' )){
+                        oInput.value = '';
+                        oSpan.style.display = 'none';
+                        oInput.focus();          
+                    }
+                    
+                    //方法二
+                    /*
+                    var sInput = oSpan.dataset.obj;
+                    if(sInput  == 'username' || sInput == 'phone' || sInput == 'password' || sInput == 'verify'){
+                        oForm[sInput].value = '';
+                        oSpan.style.display = 'none';
+                        oForm[sInput].focus();  
+                    }
+                    */
+                }                               
             }
             //验证用户名
             function checkUserName(){
-                //监听用户名的输入事件
-                oUserName.oninput = function(){
-                    //显示或者隐藏取消按钮
-                    if(oUserName.value.length > 0){
-                        aCancel[0].style.display = 'block';
-                    }else{
-                        aCancel[0].style.display = 'none';
-                    }
-                }
-                //监听取消按钮事件
-                aCancel[0].onclick = function(){
-                    oUserName.value = '';
-                    aCancel[0].style.display = 'none';
-                    oUserName.focus();
-                }
                 oUserName.onfocus = function(){
                     aMsg[0].className = 'tiptext';
                     aMsg[0].innerHTML = '设置后不可更改<br>中英文均可,最长14个英文或7个汉字';
@@ -260,47 +296,35 @@
                 }
                 oUserName.onblur = function(){
                     aMsg[0].className = 'msg';
-                    oPhone.style.borderColor = '#ddd';
+                    oUserName.style.borderColor = '#ddd';
                     var sVal = oUserName.value;
                     var reg1 = /[^\u4e00-\u9fa5|a-z|0-9_]/;
                     var reg2 = /^\d+$/;
                     var reg3 = /^\s+$/;
                     if(sVal == ''){
+                        bUserName = false;
                     }
                     //用户名不能超过7个汉字或14个字符
                     else if(getLen(sVal)>14){
-                        setErr(aMsg[0],'用户名不能超过7个汉字或14个字符',oUserName);                   
+                        setErr(aMsg[0],'用户名不能超过7个汉字或14个字符',oUserName); 
+                        bUserName = false;                  
                     }
                     else if(reg3.test(sVal)){
-                        setErr(aMsg[0],'请输入用户名',oUserName);                       
+                        setErr(aMsg[0],'请输入用户名',oUserName);
+                        bUserName = false;                         
                     }                
                     //用户名仅支持中英文、数字和下划线,且不能为纯数字
                     else if(reg1.test(sVal) || reg2.test(sVal)){
-                        setErr(aMsg[0],'用户名仅支持中英文、数字和下划线,且不能为纯数字',oUserName);                   
+                        setErr(aMsg[0],'用户名仅支持中英文、数字和下划线,且不能为纯数字',oUserName);  
+                        bUserName = false;                   
                     }else{
-                        aMsg[0].className = 'ok';
-                        aMsg[0].innerHTML = '';
-                        oUserName.style.borderColor = '#ddd';                   
+                        setOk(aMsg[0],oUserName);
+                        bUserName = true;                    
                     }
                 }
             }
             //验证手机
             function checkPhone(){
-                //监听手机的输入事件
-                oPhone.oninput = function(){
-                    //显示或者隐藏取消按钮
-                    if(oPhone.value.length > 0){
-                        aCancel[1].style.display = 'block';
-                    }else{
-                        aCancel[1].style.display = 'none';
-                    }
-                }
-                //监听取消按钮事件
-                aCancel[1].onclick = function(){
-                    oPhone.value = '';
-                    aCancel[1].style.display = 'none';
-                    oPhone.focus();
-                }
                 oPhone.onfocus = function(){
                     aMsg[1].className = 'tiptext';
                     aMsg[1].innerHTML = '请输入中国大陆手机号,其他用户不可见';
@@ -315,20 +339,147 @@
                     var reg1 = /^\s+$/;
                     var reg2 = /^1[35789]\d{9}$/;
                     if(sVal == ''){
+                        bPhone = false;
                     }
                     else if(reg1.test(sVal)){
                         setErr(aMsg[1],'请输入手机号',oPhone);
+                        bPhone = false;
                     }
                     else if(!reg2.test(sVal)){
-                        setErr(aMsg[1],'手机号码格式不正确',oPhone);              
+                        setErr(aMsg[1],'手机号码格式不正确',oPhone);  
+                        bPhone = false;
                     }                
-                    else{
-                        aMsg[1].className = 'ok';
-                        aMsg[1].innerHTML = '';
-                        oPhone.style.borderColor = '#ddd';                   
+                    else{ 
+                        setOk(aMsg[1],oPhone);
+                        bPhone = true;
                     }
                 }
-            }            
+                oPhone.onkeydown = function(ev){
+                    var oEvent = ev || event;
+                    if((oEvent.keyCode < 48 || oEvent.keyCode > 57 ||oPhone.value.length > 10)
+                        && oEvent.keyCode != 8
+                        && oEvent.keyCode !=37
+                        && oEvent.keyCode !=39
+                        ){
+                        return false;
+                    }
+                }
+            } 
+            //验证密码
+            function checkPwd(){
+                oPwd.onfocus = function(){
+                    oPwdCheckList.style.display = 'block';
+                    oPwd.style.borderColor = '#488ee7';
+                }
+                var sSucc = 'pwd-checklist-item pwd-checklist-item-success';
+                var sErr = 'pwd-checklist-item pwd-checklist-item-error';
+                var bPwd1 = false;
+                var bPwd2 = false;
+                var bPwd3 = false;
+                oPwd.oninput = function(){
+                    var sVal = oPwd.value;
+                    //长度为6~14个字符
+                    var reg1 = /^.{6,14}$/;
+                    //支持数字,大小写字母和标点符号
+                    var reg2 = /[^0-9a-z\^\$\*\?\[\]\(\)]/i;
+                    //不允许有空格
+                    var reg3 = /\s/;
+                    if(reg1.test(sVal)){
+                        aPwdCheckListLi[0].className = sSucc;
+                        bPwd1 = true;
+                    }else{
+                        aPwdCheckListLi[0].className = sErr;
+                        bPwd1 = false;
+                    }
+                    if(reg2.test(sVal)){
+                        aPwdCheckListLi[1].className = sErr;
+                        bPwd2 = false;
+                    }else{
+                        aPwdCheckListLi[1].className = sSucc;
+                        bPwd2 =true;
+                    }
+                    if(reg3.test(sVal)){
+                        aPwdCheckListLi[2].className = sErr;
+                        bPwd3 = false;
+                    }else{
+                        aPwdCheckListLi[2].className = sSucc;
+                        bPwd3 = true;
+                    }
+                }
+                oPwd.onblur = function(){
+                    aMsg[2].className = 'msg';
+                    oPwd.style.borderColor = '#ddd';
+                    if(bPwd1 && bPwd2 && bPwd3){
+                        oPwdCheckList.style.display = 'none';
+                        setOk(aMsg[2],oPwd);
+                        bPwd = true;
+                    }else{
+                        bPwd = false;
+                    }
+                    if(oPwd.value == ''){
+                        oPwdCheckList.style.display = 'none';
+                        bPwd = false;
+                    }
+                }
+                aCancel[2].onclick = function(){
+                    bPwd1 = false;
+                    bPwd2 = false;
+                    bPwd3 = false;
+                    for(var i = 0;i<aPwdCheckListLi.length;i++){
+                        aPwdCheckListLi[i].className = 'pwd-checklist-item';
+                    }
+                }
+            } 
+            //验证验证码
+            function checkVerify(){
+                //监听获取验证码事件
+                oSmsBtn.onclick = function(){
+                    if(oPhone.value == ''){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                    }
+                    if(!bPhone){
+                        return false;
+                    }
+                    console.log('get sms...');
+                    //todo..... get sms 
+                }
+                oVerify.onblur = function(){
+                    if(oVerify.value.length == 6){
+                        bVerify = true;
+                    }else{
+                        verify = false;
+                    }
+                }
+            } 
+            //处理提交
+            function handleSub(){
+                // 
+                oSubBtn.onclick = function(){
+                    if(oUserName.value == ''){
+                        setErr(aMsg[0],'请输入手机号',oUserName);
+                    }
+                    if(oPhone.value == ''){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                    }
+                    if(oPwd.value == ''){
+                        setErr(aMsg[2],'请输入密码',oPwd);
+                    }
+                    if(oVerify.value == ''){
+                        aMsg[3].className = 'err';
+                        aMsg[3].innerHTML = '请输入验证码';
+                    }else{
+                        aMsg[3].className = 'msg';
+                    }
+                    if(!oAgree.checked){
+                        aMsg[4].style.display = 'inline';
+                    }else{
+                        aMsg[4].style.display = 'none';
+                    }
+                    if(bUserName && bPhone && bPwd && bVerify && oAgree.checked ){
+                        oForm.submit();
+                    }                    
+                }
+            }         
         }
     </script>
 </head>
@@ -336,25 +487,37 @@
 <body>
     <div class="reg" id='reg'>
         <form action="http://www.kuazhu.com">
+            <!-- 第一块 -->
             <div id="username-box">
+                <!-- 把输入框的焦点和文字点击绑定到一块 通过全局控制变量来确定最后状态-->
                 <label for="username">用户名</label>
                 <input type="text" name="username" placeholder="请设置用户名">
-                <span class="cancel" style="display: none;"></span>
+                <!-- 输入框里面的，oninput时才会有的清空图标  获取时可以已数组的方式获取-->
+                <span class="cancel" data-obj="username" style="display: none;"></span>
+                <!-- 输入前，输入时，输入后出现的提示信息 获取时可以已数组的方式获取-->
                 <span class="msg"></span>
             </div>
+            <!-- 第二块 -->
             <div id="phone-box">
+                <!-- 1.纯数字输入（通过onkeydown的oEvent.keycode属性）2.不能超过11位(value.length) 通过全局控制变量来确定最后状态-->
                 <label for="phone">手机号</label>
                 <input type="text" name="phone" placeholder="可用于登录和找回密码">
                 <span class="cancel" style="display: none;"></span>
                 <span class="msg"></span>
             </div>
+            <!-- 第三块 -->
             <div id="pwd-box" class="pwd-box">
+                <!-- 1.6-14个字符之间2.支持字母，数字，符号（正则判断）3.不能有空格 -->
                 <label for="password">密码</label>
+                <!-- 1.逐个判断三个条件是否符合，符合时msg的显示样式 -->
+                <!-- 获取焦点时的事件和离开时的事件以及显示的样式 通过全局控制变量来确定最后状态 -->
                 <input type="password" name="password" placeholder="请设置登录密码"/>
                 <span class="cancel" style="display: none;"></span>
                 <span class="msg"></span>
+                <!-- 一定要先用正确的方法获取到元素 一步一步的做，一项一项的判断  -->
                 <div id="pwdChecklist" class="pwd-checklist" style="display:none">
                     <ul>
+                        <!-- 正则的具体应用 -->
                         <li class="pwd-checklist-item ">长度为6~14个字符</li>
                         <li class="pwd-checklist-item ">支持数字,大小写字母和标点符号</li>
                         <li class="pwd-checklist-item ">不允许有空格</li>
@@ -362,20 +525,27 @@
                     <span class="pwd-checklist-arrow"></span>
                 </div>
             </div>
+            <!-- 第四块 -->
             <div id="verify-box">
+                <!-- 获取到button时才开始事件，并且与第二块手机号相关联 当第二块为true时，后续操作才会介入，否则没有后续操作 -->
                 <label for="verify">验证码</label>
+                <!-- 判定验证码是否为6位，否则控制变量为false -->
                 <input type="text" name="verify" placeholder="请输入验证码">
                 <span class="cancel" style="display: none;"></span>
+                <!--  -->
                 <input type="button"  id="smsBtn" value="获取短信验证码">
                 <span class="msg"></span>       
             </div> 
+            <!-- 第五块 -->
             <div id='agree-box'>
+                <!-- 通过input.checked属性来判断，不通过报错 -->
                <input type="checkbox" name='isAgree' id='isAgree'> 
                <label for="isAgree">阅读并接受</label>
                <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>  
                <span class="msg" id='agreeErr'>选“阅读并接受百度用户协议”</span>               
             </div>           
             <div class="subBtn">
+                <!-- 在提交之前，先判断每一个input是否为空，再判断每一个input的返回值确认为真，否则不执行oForm.submit()。 -->
                 <input type="button" value="注册" id="subBtn">
             </div>
         </form>
