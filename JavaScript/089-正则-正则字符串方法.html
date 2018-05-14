@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串方法</title>
+
+	<script>
+		var str='abcda';
+		console.log(str.charAt(0));
+		console.log(str.search('a'));
+		console.log(str.search(/a/g));
+		// 和reg的exec在不是全局的情况下是相似的
+		console.log(str.match(/a/g));
+		// 字符串的其他方法
+		// replace() split() math()
+		var str1='a1b2c3d4e';
+		console.log(str1.replace(/\d/g,function(match,index,origin){
+			return match*1+1;
+		}))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

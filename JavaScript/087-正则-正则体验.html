@@ -4,31 +4,30 @@
 	<meta charset="UTF-8">
 	<title>087-正则-正则体验</title>
 	<script>
-		var str='sdf123  df211 sdfsd55 32  32fff   sasf23';
+		var str = '123sdfdsfjk dsfds 34 dsfd 343sd dfds343 dsfd89';
 		/*
-		var result=[];
-		for(var i=0;i<str.length;i++){
-			if()
+		var result = [];
+		var tmp = '';
+		for(var i = 0;i<str.length;i++){
+			// console.log(str.charAt(i));
+			if(!isNaN(parseInt(str.charAt(i)))){
+				tmp += str.charAt(i);
+			}else if(tmp){
+				result.push(tmp);
+				tmp = '';
+			}
 		}
+		if(tmp){
+			result.push(tmp);
+			tmp = '';
+		}
+		console.log(result);
 		*/
-		
+		var reg = /\d+/g;
+		console.log(str.match(reg));
 	</script>
 </head>
 <body>
-	<textarea name="" id="txt1" cols="30" rows="10"></textarea>
-	<input type="button" id="btn" value="提交">
-	<textarea name="" id="txt2" cols="30" rows="10"></textarea>
-</body>
-<script>
-	
-	var oTxt1=document.getElementById('txt1');
-	var oTxt2=document.getElementById('txt2');
-	var oBtn=document.getElementById('btn');
-	oBtn.onclick = function(){
-		var reg=/<[\w|\/]+>/g;
-		oTxt2.value=oTxt1.value.replace(reg,'*');
-		oTxt1.value='';
 
-	}
-</script>
+</body>
 </html>
