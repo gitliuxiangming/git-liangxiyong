@@ -184,6 +184,28 @@ li.huowu{
 .top .container .top1{
 	float: left;
 }
+.top .container .cart-box{
+	position: relative;
+}
+.top .container .cart-box .cart-content{
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	top: 40px;
+	right: 0px;
+	z-index: 998;
+	background:#fff;
+	box-shadow: 0 0px 2px rgba(0,0,0,0.2)
+}
+.top .container .cart-box .cart-content .loader{
+	margin-top: 40px;
+	display: none;
+}
+.top .container .cart-box .cart-content .cart-empty{
+	margin-top: 40px;
+	position: absolute;
+	margin-left: 20px;
+}
 .top .container .top1 li{
 	float: left;
 	line-height: 40px;

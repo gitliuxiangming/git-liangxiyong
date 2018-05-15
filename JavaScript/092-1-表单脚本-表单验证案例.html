@@ -208,13 +208,13 @@
         }
     </style>
     <script>
-    	function getLen(){
+    	function getLen(str){
     		return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
     	}
-    	function getMsgerr(oMsg,sMsg,value){
+    	function geterr(oMsg,sMsg,oInput){
     		oMsg.className = 'err';
             oMsg.innerHTML = sMsg;
-            oInput.style.borderColor = 'red';
+            oInput.style.borderColor = '#fc4343';
     	}
     	window.onload = function(){
     		//罗列属性
@@ -222,32 +222,52 @@
     		var oUsername=oForm.username;
     		var aCancel=document.querySelectorAll('.cancel');
     		var aMsg=document.querySelectorAll('.msg');
-    		var pHone=oForm.phone;
-    		reg=/^1[3578]\d{9}$/;
+    		var oPhone=oForm.phone;
+    		var oPwd=oForm.password;
+    		var oVerify=oForm.verify;
+    		var oSubBtn=document.getElementById('subBtn');
     		//初始化
     		init();
     		//设置默认焦点
     		function init(){
     			oUsername.focus();
-    			aMsg[0].claddName='tiptext';
-    		}
-    		function nameCheck(){
+    			aMsg[0].className='tiptext';
+    			aMsg[0].innerHTML='设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
+    			// 监听用户名的输入事件
     			oUsername.oninput = function(){
-    				getLen();
-
+    				//显示取消按钮
+    				if(oUsername.value.length>0){
+    					aCancel[0].style.display='block';
+    				}else{
+    					aCancel[0].style.display='none';
+    				}
+    				//监听取消按钮事件
+    				aCancel[0].onclick = function(){
+    					oUsername.value='';
+    					aCancel[0].style.display='none';
+    					oUsername.focus();
+    				}
+    				oUsername.onblur = function(){
+    					//用户名不能超过七个汉字或十四个字符
+    					oMsg[0].className='msg';
+    					oUsername.style.borderColor = '#ddd';
+    					var sVal = oUsername.value;
+    					var reg=/[^\u4e00-\u9fa5 | a-z | 0-9]/;
+    					var reg1=/^\d+$/;
+    					var reg2=/^\s+$/;
+    				 	if(getLen(sVal)>14 || getLen(sVal)<7){
+    						geterr(aMsg[0],'用户名不能超过七个汉字或十四个字符',oUsername)
+    					}
+    					else if(!reg && !reg1){
+    						return true;
+    						oMsg[0].className='msg';
+    					}
+    					//	用户名仅支持中英文，数字下划线，且不能为纯数字    					
+    				}
     			}
-    		}
-    		function phoneCheck(){
 
-    		}
-    		function sanCheck(){
-    			
-    		}
-    		function siCheck(){
-    			
     		}
     	}
-
     </script>
 </head>
 
@@ -262,7 +282,7 @@
                 <!-- 输入框里面的，oninput时才会有的清空图标  获取时可以已数组的方式获取-->
                 <span class="cancel" data-obj="username" style="display: none;"></span>
                 <!-- 输入前，输入时，输入后出现的提示信息 获取时可以已数组的方式获取-->
-                <span class="msg"></span>
+                <span class="	msg"></span>
             </div>
             <!-- 第二块 -->
             <div id="phone-box">

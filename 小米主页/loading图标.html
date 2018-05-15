@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>loading图标</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.loader{
+			width: 4px;
+			height: 20px;
+			background:#ff6700;
+			margin:10px auto;
+			position: relative;
+			animation: load 0.5s linear 0s infinite alternate;
+		}
+		@keyframes load{
+			from{
+				opacity: 0.2;
+				transform: scale(1,0.5);
+			}
+			to{
+				opacity: 1;	
+				transform: scale(1,1);
+			}
+		}
+		.loader:after,
+		.loader:before{
+			content: '';
+			width: 4px;
+			height: 20px;
+			background: #ff6700;
+			position: absolute;
+		}
+		.loader:after{
+			margin:0 0 0 10px;
+			transform: scale(1,0.5);
+			animation: load 0.5s linear 0.5s infinite alternate;
+		}
+		.loader:before{
+			margin:0 0 0 -10px;
+			transform: scale(1,0.5);
+			animation: load 0.5s linear 0.3s infinite alternate;
+		}
+	</style>
+</head>
+<body>
+	<div class="loader"></div>
+</body>
+</html>

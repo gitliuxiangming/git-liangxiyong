@@ -264,7 +264,7 @@
                         oCancel.style.display = 'none';
                     }
                 }
-                //通过是事件冒泡委托父元素处理添加取消按钮功能
+                //通过事件冒泡委托父元素处理添加取消按钮功能
                 oForm.onclick = function(ev){
                     var oEvent = ev || event;
                     var oSpan = ev.target;
