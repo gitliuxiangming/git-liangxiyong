@@ -21,7 +21,7 @@ function animation(obj,opation,sudu,fn){
 								stopall=false;
 							}
 						}else{
-							speed=(opation[attr]-dqz)/20;
+							speed=(opation[attr]-dqz)/5;
 							speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
 							if (!speed) {
 								stop=true;

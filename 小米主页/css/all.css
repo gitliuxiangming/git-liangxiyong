@@ -189,13 +189,13 @@ li.huowu{
 }
 .top .container .cart-box .cart-content{
 	width: 300px;
-	height: 100px;
+	height: 0px;
 	position: absolute;
 	top: 40px;
 	right: 0px;
 	z-index: 998;
 	background:#fff;
-	box-shadow: 0 0px 2px rgba(0,0,0,0.2)
+	box-shadow: 0 0px 2px rgba(0,0,0,0.2);
 }
 .top .container .cart-box .cart-content .loader{
 	margin-top: 40px;
@@ -204,7 +204,11 @@ li.huowu{
 .top .container .cart-box .cart-content .cart-empty{
 	margin-top: 40px;
 	position: absolute;
-	margin-left: 20px;
+	margin-left: 60px;
+	font-size: 12px;
+	color: #424242;
+	font-weight: 400;
+	display: none;
 }
 .top .container .top1 li{
 	float: left;
@@ -237,6 +241,7 @@ li.huowu{
 /*导航栏*/
 .nav{
 	height: 100px;
+	position: relative;
 }
 .nav .nav1{
 	float: left;
@@ -312,6 +317,67 @@ li.huowu{
 .nav .nav3 li img:hover{
 	cursor: pointer;
 	background: #ff6700;
+}
+.shoujizhanshi{
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	/*display: none;*/
+	background: #fff;
+	box-sizing: border-box;
+	/*border-top: 1px solid #ccc;*/
+	position: absolute;
+	top: 140px;
+	z-index: 999;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+.shoujizhanshi .container li .img-box{
+	width: 100%;
+	height: 110px;
+	margin-top: 40px;
+	border-right: 1px solid #ccc;
+}
+.shoujizhanshi .container li:last-child .img-box{
+	border-right:none;
+}
+.shoujizhanshi .container ul li{
+	float: left;
+	width: 160px;
+	height: 210px;
+	position: relative;
+}
+.shoujizhanshi .container .li1 img{
+	width: 90px;
+	height: 110px;
+	margin-left: 35px;
+
+}
+.shoujizhanshi .container .li1 span{
+	display: block;
+	width: 66px;
+	line-height: 22px;
+	color:#ff6700;
+	text-align: center;
+	border: 1px solid #ff6700;
+	font-size: 12px;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -33px;
+}
+.shoujizhanshi .container .li1 p:nth-child(2){
+	width: 100%;
+	font-size: 12px;
+	color: #333;
+	line-height: 20px;
+	text-align: center;
+	margin-top: 10px;
+}
+.shoujizhanshi .container .li1 p:nth-child(3){
+	line-height: 20px;
+	font-size: 12px;
+    color: #ff6700;
+    text-align: center;
 }
 /*黄金位置*/
 .ggw{
