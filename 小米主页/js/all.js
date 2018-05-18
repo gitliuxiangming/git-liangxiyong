@@ -4,6 +4,8 @@ gouwuche();	//购物车
 navxialaliebiao();//导航栏onmouseenter下拉列表
 sousuokuang()//搜索框
 lunbotu()//轮播图
+listli()//焦点图左边的list的事件
+//nowtime()//闪购倒计时
 //定义事件函数
 function gouwuche(){
 	//获取元素
@@ -51,7 +53,7 @@ function navxialaliebiao(){
 			setTimeout(function(){
 				loaddata(index);
 				oNavLoader.style.display='none';
-			},1000)
+			},500)
 		}
 		aLiA[i].onmouseleave = function(){
 			time=setTimeout(function(){
@@ -138,4 +140,20 @@ function lunbotu(){
 		height:460,
 		lunbotime:2000
 	});
+}
+function listli(){
+	var oZuobian=document.querySelector('.ggw .zuobian');
+	var aA=document.querySelectorAll('.ggw .zuobian a');
+}
+function nowtime(){
+	var nextData= new Data('2018/05/20 12:00:00');
+	setInterval(function(){
+		//获取当前时间
+		var now = new Data();
+		//剩下毫秒数
+		var alltime=parseInt((nextData.getTime()-now.getTime())/1000);
+		var h = parseInt(alltime/3600);
+		var m = parseInt((alltime%3600)/60);
+		var s = parseInt(alltime%3600)%60;
+	},1000)
 }
