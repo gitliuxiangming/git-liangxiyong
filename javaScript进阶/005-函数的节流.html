@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-函数的节流</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var time=null;
+	window.onresize = function(){
+		clearTimeout(time);
+		time=setTimeout(function(){
+			console.log(window.innerWidth);
+		},400)		
+	}
+	*/
+	function jieliu(fn,delay){
+		var time=null;
+		return function(){
+			clearTimeout(time);
+			time=setTimeout(fn,delay);
+		}
+	}
+	window.onresize = jieliu(function(){
+		console.log(window.innerWidth);
+	},400);
+</script>
+</html>

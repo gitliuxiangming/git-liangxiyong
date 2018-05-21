@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-闭包和原型构建对象</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function Person(name,age){
+		this.init(name,age)
+	}
+	Person.prototype = {
+		constructor:Person,
+		_proto_:Object.prototype,
+		init(naem,age){
+			this.name=name;
+			this.age=age;
+		},
+		showName:function(){
+			console.log("I am "+this.name)
+		},
+		showAge:function(){
+			console.log("I am "+this.age+" years old")
+		},
+	}
+	var p1=new Person('tom',18);
+	p1.showName();
+	p1.showAge();
+	*/
+	//封闭函数本质是匿名函数的自我调用
+	(function(w){
+		function Person(name,age){
+			this.init(name,age);
+		}
+		Person.prototype = {
+			constructor:Person,
+			_proto_:Object.prototype,
+			init(naem,age){
+				this.name=name;
+				this.age=age;
+			},
+			showName:function(){
+				console.log("I am "+this.name)
+			},
+			showAge:function(){
+				console.log("I am "+this.age+" years old")
+			},
+		}
+		w.Person=Person;
+	})(window);
+	var p1=new Person('tom',18);
+	p1.showName();
+	p1.showAge();
+</script>
+</html>

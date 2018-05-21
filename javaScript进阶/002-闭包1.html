@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-闭包1.html</title>
+	<script>
+		var name='tom1';
+		function fn1(){
+			var name1='bob2';
+			console.log(name);
+			console.log(name1);
+			// 变量的作用域链式从下往上找的
+			//console.log(name2);在fn1中是找不到的
+			function fn2(){
+				var name2='pop3';
+				console.log(name);
+				console.log(name1);
+				console.log(name2);
+			}
+			fn2();
+		}
+		fn1();
+		console.log(name);
+		//name1和name2都是is not defined ！
+		console.log(name1);
+		console.log(name2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

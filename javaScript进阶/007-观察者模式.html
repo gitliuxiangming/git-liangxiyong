@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-观察者模式</title>
+	<script>
+		//老师构造函数
+		(function(w){
+			function Teacher(name){
+				this.name=name;
+				this.student=[];
+			};
+			Teacher.prototype={
+				constructor:Teacher,
+				_proto_:Object.prototype,
+				guanzhu:function(xuesheng){
+					this.student.push(xuesheng);
+				},
+				fabu:function(msg){
+					for(var i=0;i<this.student.length;i++){
+						this.student[i].jieshou(msg);
+
+					}
+				}				
+			}
+			w.Teacher=Teacher;
+		})(window);
+		//学生构造函数
+		(function(w){
+			function Student(name,laoshi){
+				this.name=name;
+				laoshi.guanzhu(this);
+				this.msg='';
+			};
+			Student.prototype={
+				constructor:Student,
+				_proto_:Object.prototype,
+				// zhuce:function(this){
+				// 	laoshi.guanzhu(this);
+				// },
+				jieshou:function(msg){
+					this.msg=msg
+				}
+			}
+			w.Student=Student;
+		})(window);
+
+		var teacher1=new Teacher('刘老师');
+		var xuesheng1=new Student('一一',teacher1);
+		var xuesheng2=new Student('二二',teacher1);
+		var xuesheng3=new Student('三三',teacher1);
+		teacher1.fabu('我是'+teacher1.name);
+		console.log(xuesheng1.name+" 获得消息 "+xuesheng1.msg);
+		console.log(xuesheng2.name+" 获得消息 "+xuesheng2.msg);
+		console.log(xuesheng3.name+" 获得消息 "+xuesheng3.msg);
+
+		var teacher2=new Teacher('陈老师');
+		var xuesheng4=new Student('四四',teacher2);
+		var xuesheng5=new Student('五五',teacher2);
+		var xuesheng6=new Student('六六',teacher2);
+		teacher2.fabu('我是'+teacher2.name);
+		console.log(xuesheng4.name+" 获得消息 "+xuesheng4.msg);
+		console.log(xuesheng5.name+" 获得消息 "+xuesheng5.msg);
+		console.log(xuesheng6.name+" 获得消息 "+xuesheng6.msg);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

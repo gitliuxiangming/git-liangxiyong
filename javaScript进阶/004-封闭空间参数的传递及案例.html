@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-封闭空间参数的传递及案例</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			margin:10px auto;
+			width: 300px;
+		}
+		li{
+			list-style: none;
+			height: 30px;
+			border: 1px solid #000;
+		}
+		.active{
+			background: red;
+		}
+	</style>	
+</head>
+<body>
+	<ul id="ul">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	var oUl=document.getElementById('ul');
+	var aLi=oUl.getElementsByTagName('li');
+	/* 闭包写法
+	for(var i=0;i<aLi.length;i++){
+		(function(index){
+			aLi[index].onmouseover = function(){
+				for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+				}
+				this.className='active';
+			}			
+		})(i);
+	}
+	*/
+	for(var i=0;i<aLi.length;i++){
+		var lastone=0;
+		aLi[i].index=i;
+		aLi[i].onmouseover = function(){
+			aLi[lastone].className='';
+			this.className='active';
+			lastone=this.index;
+		}
+	}
+</script>
+</html>

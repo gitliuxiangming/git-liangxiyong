@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-封闭空间.html</title>
+	<script>
+		(function(){
+			var a="abc"
+			console.log(a)
+		})();
+		;(function(){
+			var a="def"
+			console.log(a)
+		})();
+		console.log(a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

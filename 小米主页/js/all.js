@@ -5,7 +5,9 @@ navxialaliebiao();//导航栏onmouseenter下拉列表
 sousuokuang()//搜索框
 lunbotu()//轮播图
 listli()//焦点图左边的list的事件
-//nowtime()//闪购倒计时
+nowtime()//闪购倒计时
+//xuanxiangka1()//闪购右边部分
+//xuanxiangka2()//页面其余部分
 //定义事件函数
 function gouwuche(){
 	//获取元素
@@ -143,17 +145,88 @@ function lunbotu(){
 }
 function listli(){
 	var oZuobian=document.querySelector('.ggw .zuobian');
-	var aA=document.querySelectorAll('.ggw .zuobian a');
+	var aA=document.querySelectorAll('.ggw .zuobian li a');
+	var oCateContent=document.querySelector('.ggw .cate-content');
+	var  oUl=oCateContent.getElementsByTagName('ul')[0];
+	var time=null;
+	for(var i=0;i<aA.length;i++){
+		aA[i].index=i;
+		aA[i].onmouseenter = function(){
+			oUl.innerHTML='';
+			clearTimeout(time);
+			for(var j=0;j<aA.length;j++){
+			aA[j].className='';			
+			}				
+			oCateContent.style.display = 'block';
+			this.className='active';
+			loading(this.index);			
+		}		
+	}	
+	oZuobian.onmouseleave = function(){
+		time= setTimeout(function(){
+			oCateContent.style.display = 'none';
+			for(var j=0;j<aA.length;j++){
+			aA[j].className='';
+			}
+		},500)		
+	}
+	oCateContent.onmouseenter = function(){
+		clearTimeout(time);
+		oCateContent.style.display = 'block';
+	}
+	oCateContent.onmouseleave = function(){
+		oCateContent.style.display = 'none';
+		for(var j=0;j<aA.length;j++){
+		aA[j].className='';
+		}
+	}
+	function loading(index){
+		var  aCates=CateItem[index];		
+		if(!aCates){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aCates.length;i++){					
+			var  oLi=document.createElement('li');
+			oUl.appendChild(oLi);
+			var  oImg=document.createElement('img');
+			oLi.appendChild(oImg);
+			oImg.src=aCates[i].img;
+			var  oA=document.createElement('a');
+			oLi.appendChild(oA);
+			oA.innerHTML=aCates[i].name;
+		}		
+	}
 }
 function nowtime(){
-	var nextData= new Data('2018/05/20 12:00:00');
+	var nextData= new Date('2018/05/22 12:00:00');
+	var aLi=document.querySelectorAll('.shangou .content .time ul li span');
 	setInterval(function(){
 		//获取当前时间
-		var now = new Data();
+		var now = new Date();
 		//剩下毫秒数
 		var alltime=parseInt((nextData.getTime()-now.getTime())/1000);
+		if(alltime==0){
+			return;
+		}
 		var h = parseInt(alltime/3600);
 		var m = parseInt((alltime%3600)/60);
 		var s = parseInt(alltime%3600)%60;
+		aLi[0].innerHTML=panding(h);
+		aLi[2].innerHTML=panding(m);
+		aLi[4].innerHTML=panding(s);
 	},1000)
+	function panding(a){
+			if(a<10){
+				return	a='0'+a;
+			}else{
+				return	a=''+a;
+			}
+		} 
+}
+function xuanxiangka1(){
+
+}
+function xuanxiangka2(){
+
 }
