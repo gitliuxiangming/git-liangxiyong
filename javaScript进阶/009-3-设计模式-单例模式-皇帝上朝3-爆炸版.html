@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-3-设计模式-单例模式-皇帝上朝3</title>
+	<script>
+		(function(w){
+			var king=null;			
+			function Emperor(){				
+				var _self=this;
+				var fn=(function(){
+					return function(){
+						if(!king){
+							_self.name='始皇帝';
+							_self.id=Math.random();
+							king=_self;
+						}
+						return king;
+					}
+				})();
+				return fn();				
+			}
+			Emperor.prototype={
+				constructor:Emperor,
+				__proto__:Object.prototype,
+				say:function(){
+						console.log(this.name+this.id+"说:平身");
+				},
+			}
+			// Emperor.getKing=(function(){
+			// 	//在静态方法中var一个变量 保证变量的唯一
+			// 	var king=null;
+			// 	return function(){
+			// 		if(!king){
+			// 			king=new Emperor('始皇帝');
+			// 		}
+			// 		return king;
+			// 	}
+			// })();
+			w.Emperor=Emperor;
+		})(window);
+		for(var i=1;i<=5;i++){
+			console.log('第'+i+'天');
+			Emperor.getKing().say();
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

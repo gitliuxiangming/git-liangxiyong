@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-3-单例模式-登录框</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#login{
+			width: 200px;
+			height: 400px;
+			background: #ccc;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -100px;
+			margin-top: -200px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="登录" id="btn">
+</body>
+<script>
+	(function(w){
+		var obj=null;
+		function creatediv(){			
+			if(!obj){
+				var oDiv=document.createElement('div');
+				oDiv.id='login';
+				document.body.appendChild(oDiv);
+				obj=oDiv;
+			}		
+		}
+		w.creatediv=creatediv;
+	})(window);
+	var oBtn=document.getElementById('btn');
+	oBtn.onclick = function(){
+		creatediv();
+	}
+</script>
+</html>
