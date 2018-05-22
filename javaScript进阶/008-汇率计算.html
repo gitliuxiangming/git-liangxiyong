@@ -13,8 +13,8 @@
 		function Rmb(name){
 			this.name=name;
 			this.wb=[];
-			this,init(name);
 			this.oInput=null;
+			this.init(name);
 		}
 		Rmb.prototype = {
 			constructor:Rmb,
@@ -24,17 +24,17 @@
 				this.oInput=document.createElement('input');
 				document.body.appendChild(oP);
 				oP.appendChild(this.oInput);
-			}
+			},
 			bangding:function(wb){
 				this.wb.push(wb);
-			}
-			fabu:function(bizhong){
-				for(var i=0;i<this.wb.length;i++){
-					this.oInput.oninput = function(){
-						bizhong.jieshou(val);
-					}.bind(this)
-				}
-			}
+			},
+			fabu:function(){
+				this.oInput.oninput=function(){
+					for(var i=0;i<this.wb.length;i++){
+						this.wb[i].jieshou(this.oInput.value);
+					}
+				}.bind(this)
+			},
 		}
 		w.Rmb=Rmb;
 	})(window);
@@ -43,9 +43,10 @@
 		function Wb(name,rate,benbi){
 			this.name=name;
 			this.rate=rate;
-			this.benbi=benbi;
-			this.init(name);
+			this.oInput=null;
 			benbi.bangding(this);
+			this.benbi=benbi;
+			this.init(name);			
 		}
 		Wb.prototype = {
 			constructor:Wb,
@@ -55,17 +56,18 @@
 				this.oInput=document.createElement('input');
 				document.body.appendChild(oP);
 				oP.appendChild(this.oInput);
-			}
+			},
 			jieshou:function(val){
-				this.oInput.value=val/rate;
-			}
+				this.oInput.value=val / this.rate;
+			},
 		}
 		w.Wb=Wb;
 	})(window);
 
-	var zhongguo=new Rmb('人名币：')
-	var riben=new Wb('日元：'，0.05，zhongguo);
-	var meiguo=new Wb('美元：'，6.125，zhongguo);
-	var xianggang=new Wb('港币：'，0.8，zhongguo);
+	var zhongguo=new Rmb('人名币：');
+	var riben=new Wb('日元：',0.05,zhongguo);
+	var meiguo=new Wb('美元：',6.125,zhongguo);
+	var xianggang=new Wb('港币：',0.8,zhongguo);
+	zhongguo.fabu();
 </script>
 </html>

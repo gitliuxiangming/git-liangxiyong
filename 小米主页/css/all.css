@@ -98,6 +98,7 @@
 .caption .you li{
 	float: left;
 	text-align: center;
+	margin-top: 15px;
 }
 .caption .you span a,
 .caption .you li a{
@@ -634,7 +635,7 @@ li.huowu{
 .shangou .content .time-box{
 	margin-right: 14px;
 }
-.shangou .content .sg-content>li{
+.shangou .content .sg-content .big-box>li{
 	float: left;
 	margin-left:14px;
 } 
@@ -642,34 +643,42 @@ li.huowu{
 	width: 978px;
 	height: 340px;
 	overflow: hidden;
+	position: relative;
 }
-.shangou .content .sg-content>li:nth-child(1){
+.shangou .content .sg-content .big-box{
+	width: 1956px;
+	height: 340px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.shangou .content .sg-content .big-box>li:nth-child(1){
 	margin-left: 0;
 	border-top: 2px solid #e53935;
 }
-.shangou .content .sg-content>li:nth-child(2){
+.shangou .content .sg-content .big-box>li:nth-child(2){
 	border-top: 2px solid #ffac13;
 }
-.shangou .content .sg-content>li:nth-child(3){
+.shangou .content .sg-content .big-box>li:nth-child(3){
 	border-top: 2px solid #83c44e;
 }
-.shangou .content .sg-content>li:nth-child(4){
+.shangou .content .sg-content .big-box>li:nth-child(4){
 	border-top: 2px solid #2196f3;
 }
-.shangou .content .sg-content>li:nth-child(5){
+.shangou .content .sg-content .big-box>li:nth-child(5){
 	margin-left: 0;
 	border-top: 2px solid #e53935;
 }
-.shangou .content .sg-content>li:nth-child(6){
+.shangou .content .sg-content .big-box>li:nth-child(6){
 	border-top: 2px solid #ffac13;
 }
-.shangou .content .sg-content>li:nth-child(7){
+.shangou .content .sg-content .big-box>li:nth-child(7){
 	border-top: 2px solid #83c44e;
 }
-.shangou .content .sg-content>li:nth-child(8){
+.shangou .content .sg-content .big-box>li:nth-child(8){
 	border-top: 2px solid #2196f3;
 }
-.shangou .content .sg-content>li>ul{
+.shangou .content .sg-content .big-box>li>ul{
 	height: 340px;
 }
 .shangou .content .time ul{
@@ -771,47 +780,34 @@ li.huowu{
 	background: rgba(0,0,0,0);
 }
 /*家电*/
-.jiadian .bt>li{
-	margin-left: 10px;
-	transition: all 0.5s;
-}
-.jiadian .bt>li:hover,
-.jiadian .bt>li:last-child>div:hover{
-	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-	transform: translateY(-3px);
-}
-.jiadian .bt>li:last-child:hover{
-	transform: translateY(0px);
-	box-shadow: none;
-}
-.jiadian .caption .you li{
-	margin-left: 30px;
-}
-.jiadian .caption .you li:first-child a,
-.jiadian .caption .you li a:hover{
-	color: #ff6700;
-	border-bottom: 2px solid #ff6700;
-}
-.jiadian .bt>li{
-	height: 300px;
+.jiadian .bt-you,
+.jiadian .bt-zuo{
 	float: left;
-	margin-left: 14px
 }
-.jiadian .bt>li:nth-child(1) img,
-.jiadian .bt>li:nth-child(6) img{
+.jiadian .bt-zuo{
+	margin-right: 14px;
+}
+.jiadian .bt-zuo ul li img{
 	width: 100%;
 	height: 100%;
 }
-.jiadian .bt>li:nth-child(1),
-.jiadian .bt>li:nth-child(6){
-	margin-left: 0px;
+.jiadian .bt-you{
+	width: 978px;
 }
-.jiadian .bt>li:nth-child(1),
-.jiadian .bt>li:nth-child(2),
-.jiadian .bt>li:nth-child(3),
-.jiadian .bt>li:nth-child(4),
-.jiadian .bt>li:nth-child(5){
+.jiadian .bt>li,
+.jiadian .bt-zuo ul li{
+	width: 234px;
+	height: 300px;
+	transition: all 0.5s;
+}
+.jiadian .bt-zuo ul li:first-child{
 	margin-bottom: 14px;
+}
+.jiadian .bt>li:hover,
+.jiadian .bt-zuo li:hover,
+.jiadian .bt>li:last-child>div:hover{
+	box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+	transform: translateY(-3px);
 }
 .jiadian .bt>li:last-child>div{
 	width: 234px;
@@ -819,7 +815,6 @@ li.huowu{
 	background: #fff;
 	transition: all 0.3s;
 } 
-
 .jiadian .bt>li:last-child>div.ss{
 	margin-bottom: 15px;
 }
@@ -872,6 +867,33 @@ li.huowu{
 	position: relative;
 	top: 30px;
 	right: 30px;	
+}
+.jiadian .bt>li:last-child:hover{
+	transform: translateY(0px);
+	box-shadow: none;
+}
+.jiadian .caption .you li{
+	margin-left: 30px;
+}
+.jiadian .caption .you li:first-child a,
+.jiadian .caption .you li a:hover{
+	color: #ff6700;
+	border-bottom: 2px solid #ff6700;
+}
+.jiadian .bt-you .bt>li{
+	height: 300px;
+	float: left;
+	margin-left: 14px
+}
+.jiadian .bt-you .bt>li:nth-child(1),
+.jiadian .bt-you .bt>li:nth-child(5){
+	margin-left: 0px;
+}
+.jiadian .bt-you .bt>li:nth-child(1),
+.jiadian .bt-you .bt>li:nth-child(2),
+.jiadian .bt-you .bt>li:nth-child(3),
+.jiadian .bt-you .bt>li:nth-child(4){
+	margin-bottom: 14px;
 }
 /*智能*/
 .zhineng .bt>li{

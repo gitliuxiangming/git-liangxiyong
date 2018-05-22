@@ -6,7 +6,7 @@ sousuokuang()//搜索框
 lunbotu()//轮播图
 listli()//焦点图左边的list的事件
 nowtime()//闪购倒计时
-//xuanxiangka1()//闪购右边部分
+xuanxiangka1()//闪购右边部分
 //xuanxiangka2()//页面其余部分
 //定义事件函数
 function gouwuche(){
@@ -199,33 +199,51 @@ function listli(){
 	}
 }
 function nowtime(){
-	var nextData= new Date('2018/05/22 12:00:00');
+	var nextData= new Date('2018/05/23 12:00:00');
 	var aLi=document.querySelectorAll('.shangou .content .time ul li span');
-	setInterval(function(){
+	var timer=null;
+	timer=setInterval(time,1000)
+	function panding(a){
+		if(a<10){
+			return	a='0'+a;
+		}else{
+			return	a=''+a;
+		}
+	} 
+	function time(){
 		//获取当前时间
 		var now = new Date();
 		//剩下毫秒数
 		var alltime=parseInt((nextData.getTime()-now.getTime())/1000);
-		if(alltime==0){
-			return;
-		}
+		if(alltime<0){
+			alltime=0;
+			clearInterval(timer)
+		}		
 		var h = parseInt(alltime/3600);
 		var m = parseInt((alltime%3600)/60);
 		var s = parseInt(alltime%3600)%60;
+		// if(alltime<=0){
+		// 	h=0;
+		// 	m=0;
+		// 	s=0;
+		// }	
 		aLi[0].innerHTML=panding(h);
 		aLi[2].innerHTML=panding(m);
 		aLi[4].innerHTML=panding(s);
-	},1000)
-	function panding(a){
-			if(a<10){
-				return	a='0'+a;
-			}else{
-				return	a=''+a;
-			}
-		} 
+	}
+	time();
 }
 function xuanxiangka1(){
-
+	var aBtn=document.querySelectorAll('.shangou .caption .you span');
+	var oSgContent=document.querySelector('.shangou .content .sg-content');
+	var oBox=oSgContent.querySelector('.big-box');
+	console.log(oBox)
+	aBtn[0].onclick = function(){
+		animation(oBox,{'left':0});
+	};
+	aBtn[1].onclick = function(){
+		animation(oBox,{'left':-978});
+	};
 }
 function xuanxiangka2(){
 
