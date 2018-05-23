@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-数组的高级方法</title>
+	<script>
+		var arr=[11,22,33,44,55,66];
+		//迭代(会遍历数组，没有返回值)
+		var arr0=arr.forEach(function(value,index){
+			console.log('index '+ index + ' 的值是 '+ value);
+		});
+		console.log(arr0);
+		//映射(会遍历数组，返回的是return处理后的值)
+		var arr1=arr.map(function(value,index){
+			// console.log('index '+ index + ' 的值是 '+ value);
+			return value+10;
+		});
+		console.log(arr1)
+		//过滤(会遍历数组，返回的是符合return结果的值)
+		var arr2=arr.filter(function(value,index){
+			return value>30;//这是一个判断
+		});
+		console.log(arr2);
+		//全真判断(会遍历数组，全都符合返回true)
+		var bRes=arr.every(function(value,index){
+			return value>=60;
+		})
+		console.log(bRes);
+		//有真判断(会遍历数组，有一个符合返回true)
+		var bRes1=arr.some(function(value,index){
+			return value>=60;
+		})
+		console.log(bRes1);
+	</script>
+</head>
+<body>
+					
+</body>
+</html>
