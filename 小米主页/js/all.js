@@ -7,7 +7,11 @@ lunbotu()//轮播图
 listli()//焦点图左边的list的事件
 nowtime()//闪购倒计时
 xuanxiangka1()//闪购右边部分
-//xuanxiangka2()//页面其余部分
+xuanxiangka2()//页面家电部分
+xuanxiangka3()//页面智能部分
+xuanxiangka4()//页面搭配部分
+xuanxiangka5()//页面配件部分
+xuanxiangka6()//页面周边部分
 //定义事件函数
 function gouwuche(){
 	//获取元素
@@ -237,7 +241,6 @@ function xuanxiangka1(){
 	var aBtn=document.querySelectorAll('.shangou .caption .you span');
 	var oSgContent=document.querySelector('.shangou .content .sg-content');
 	var oBox=oSgContent.querySelector('.big-box');
-	console.log(oBox)
 	aBtn[0].onclick = function(){
 		animation(oBox,{'left':0});
 	};
@@ -246,5 +249,561 @@ function xuanxiangka1(){
 	};
 }
 function xuanxiangka2(){
-
+	var aLi=document.querySelectorAll('.jiadian .caption .you ul li');
+	var oUl=document.querySelector('.jiadian .bt-you ul');	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		init(0);
+		aLi[0].className='active';
+		aLi[i].onmouseenter = function(){
+			init(this.index);
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+			}
+			this.className='active';
+		}
+	}
+	function init(index){
+		var aXuanXiangKas=xuanxiangkaItem[index]; 
+		if(!aXuanXiangKas){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aXuanXiangKas.length;i++){
+			if(i==7){
+				var aLi7=document.createElement('li');
+				aLi7.className='kuan1 huowu';
+				oUl.appendChild(aLi7);
+				var oDiv1=document.createElement('div');
+				var oDiv2=document.createElement('div');
+				oDiv1.className='ss';
+				oDiv2.className='xx';
+				aLi7.appendChild(oDiv1);
+				aLi7.appendChild(oDiv2);
+				var oDiv3=document.createElement('div');
+				var oDiv4=document.createElement('div');
+				var oDiv5=document.createElement('div');
+				oDiv1.appendChild(oDiv3);
+				oDiv2.appendChild(oDiv4);
+				oDiv2.appendChild(oDiv5);
+				var oPp1=document.createElement('p');
+				var oPp2=document.createElement('p');
+				var oPp3=document.createElement('p');
+				var oPp4=document.createElement('p');
+				oDiv3.appendChild(oPp1);
+				oDiv3.appendChild(oPp2);
+				oDiv4.appendChild(oPp3);
+				oDiv4.appendChild(oPp4);
+				var oA1=document.createElement('a');
+				var oA2=document.createElement('a');
+				var oA3=document.createElement('a');
+				var oA4=document.createElement('a');
+				oA1.href='javascript:';
+				oA1.innerHTML=aXuanXiangKas[7].name;				
+				oA2.href='javascript:';
+				oA3.href='javascript:';
+				oA4.href='javascript:';
+				oPp1.appendChild(oA1);
+				oDiv1.appendChild(oA2);
+				oPp3.appendChild(oA3);
+				oDiv5.appendChild(oA4);
+				var oI=document.createElement('i');
+				oI.className='iconfont';
+				oA4.appendChild(oI);
+				var oImg1=document.createElement('img');
+				oA2.appendChild(oImg1);
+				oPp2.innerHTML=aXuanXiangKas[7].jiage;
+				oImg1.src=aXuanXiangKas[7].img;
+				oA3.innerHTML=aXuanXiangKas[7].name1;
+				oPp4.innerHTML=aXuanXiangKas[7].fenlei;
+				oI.innerHTML=aXuanXiangKas[7].ibiao;
+			}else{
+				var aLis=document.createElement('li');
+				aLis.className='kuan1 huowu biaoqian jjbiaoqian';
+				oUl.appendChild(aLis);
+				var oDiv=document.createElement('div');
+				oDiv.className='pinlun';
+				oDiv.style.zIndex='2';
+				aLis.appendChild(oDiv);
+				var oP1=document.createElement('p');
+				var oP2=document.createElement('p');
+				oP1.className='top1';
+				oP2.className='bottom';
+				oP1.innerHTML=aXuanXiangKas[i].p1;
+				oP2.innerHTML=aXuanXiangKas[i].p2;
+				oDiv.appendChild(oP1);
+				oDiv.appendChild(oP2);
+				var aUl=document.createElement('ul');
+				aUl.className='tongyong';
+				aLis.appendChild(aUl);
+				var oLi1=document.createElement('li');
+				aUl.appendChild(oLi1);
+				var oImg=document.createElement('img');
+				oImg.src=aXuanXiangKas[i].img;
+				oLi1.appendChild(oImg);
+				var oLi2=document.createElement('li');
+				oLi2.innerHTML=aXuanXiangKas[i].name;
+				aUl.appendChild(oLi2);
+				var oLi3=document.createElement('li');
+				oLi3.innerHTML=aXuanXiangKas[i].jieshao;
+				aUl.appendChild(oLi3);
+				var oLi4=document.createElement('li');
+				var oSpan=document.createElement('span');
+				var oDel=document.createElement('del');
+				oSpan.innerHTML=aXuanXiangKas[i].jiage;
+				oDel.innerHTML=aXuanXiangKas[i].del;
+				oLi4.appendChild(oSpan);
+				oLi4.appendChild(oDel);
+				aUl.appendChild(oLi4);
+			}
+			
+		}
+	}
+}
+function xuanxiangka3(){
+	var aLi=document.querySelectorAll('.zhineng .caption .you ul li');
+	var oUl=document.querySelector('.zhineng .bt-you ul');	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		init(0);
+		aLi[0].className='active';
+		aLi[i].onmouseenter = function(){
+			init(this.index);
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+			}
+			this.className='active';
+		}
+	}
+	function init(index){
+		var aXuanXiangKas=xuanxiangkaItem3[index]; 
+		if(!aXuanXiangKas){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aXuanXiangKas.length;i++){
+			if(i==7){
+				var aLi7=document.createElement('li');
+				aLi7.className='kuan1 huowu';
+				oUl.appendChild(aLi7);
+				var oDiv1=document.createElement('div');
+				var oDiv2=document.createElement('div');
+				oDiv1.className='ss';
+				oDiv2.className='xx';
+				aLi7.appendChild(oDiv1);
+				aLi7.appendChild(oDiv2);
+				var oDiv3=document.createElement('div');
+				var oDiv4=document.createElement('div');
+				var oDiv5=document.createElement('div');
+				oDiv1.appendChild(oDiv3);
+				oDiv2.appendChild(oDiv4);
+				oDiv2.appendChild(oDiv5);
+				var oPp1=document.createElement('p');
+				var oPp2=document.createElement('p');
+				var oPp3=document.createElement('p');
+				var oPp4=document.createElement('p');
+				oDiv3.appendChild(oPp1);
+				oDiv3.appendChild(oPp2);
+				oDiv4.appendChild(oPp3);
+				oDiv4.appendChild(oPp4);
+				var oA1=document.createElement('a');
+				var oA2=document.createElement('a');
+				var oA3=document.createElement('a');
+				var oA4=document.createElement('a');
+				oA1.href='javascript:';
+				oA1.innerHTML=aXuanXiangKas[7].name;				
+				oA2.href='javascript:';
+				oA3.href='javascript:';
+				oA4.href='javascript:';
+				oPp1.appendChild(oA1);
+				oDiv1.appendChild(oA2);
+				oPp3.appendChild(oA3);
+				oDiv5.appendChild(oA4);
+				var oI=document.createElement('i');
+				oI.className='iconfont';
+				oA4.appendChild(oI);
+				var oImg1=document.createElement('img');
+				oA2.appendChild(oImg1);
+				oPp2.innerHTML=aXuanXiangKas[7].jiage;
+				oImg1.src=aXuanXiangKas[7].img;
+				oA3.innerHTML=aXuanXiangKas[7].name1;
+				oPp4.innerHTML=aXuanXiangKas[7].fenlei;
+				oI.innerHTML=aXuanXiangKas[7].ibiao;
+			}else{
+				var aLis=document.createElement('li');
+				aLis.className='kuan1 huowu biaoqian jjbiaoqian';
+				oUl.appendChild(aLis);
+				var oDiv=document.createElement('div');
+				oDiv.className='pinlun';
+				oDiv.style.zIndex='2';
+				aLis.appendChild(oDiv);
+				var oP1=document.createElement('p');
+				var oP2=document.createElement('p');
+				oP1.className='top1';
+				oP2.className='bottom';
+				oP1.innerHTML=aXuanXiangKas[i].p1;
+				oP2.innerHTML=aXuanXiangKas[i].p2;
+				oDiv.appendChild(oP1);
+				oDiv.appendChild(oP2);
+				var aUl=document.createElement('ul');
+				aUl.className='tongyong';
+				aLis.appendChild(aUl);
+				var oLi1=document.createElement('li');
+				aUl.appendChild(oLi1);
+				var oImg=document.createElement('img');
+				oImg.src=aXuanXiangKas[i].img;
+				oLi1.appendChild(oImg);
+				var oLi2=document.createElement('li');
+				oLi2.innerHTML=aXuanXiangKas[i].name;
+				aUl.appendChild(oLi2);
+				var oLi3=document.createElement('li');
+				oLi3.innerHTML=aXuanXiangKas[i].jieshao;
+				aUl.appendChild(oLi3);
+				var oLi4=document.createElement('li');
+				var oSpan=document.createElement('span');
+				var oDel=document.createElement('del');
+				oSpan.innerHTML=aXuanXiangKas[i].jiage;
+				oDel.innerHTML=aXuanXiangKas[i].del;
+				oLi4.appendChild(oSpan);
+				oLi4.appendChild(oDel);
+				aUl.appendChild(oLi4);
+			}
+			
+		}
+	}
+}
+function xuanxiangka4(){
+	var aLi=document.querySelectorAll('.dapei .caption .you ul li');
+	var oUl=document.querySelector('.dapei .bt-you ul');	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		init(0);
+		aLi[0].className='active';
+		aLi[i].onmouseenter = function(){
+			init(this.index);
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+			}
+			this.className='active';
+		}
+	}
+	function init(index){
+		var aXuanXiangKas=xuanxiangkaItem4[index]; 
+		if(!aXuanXiangKas){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aXuanXiangKas.length;i++){
+			if(i==7){
+				var aLi7=document.createElement('li');
+				aLi7.className='kuan1 huowu';
+				oUl.appendChild(aLi7);
+				var oDiv1=document.createElement('div');
+				var oDiv2=document.createElement('div');
+				oDiv1.className='ss';
+				oDiv2.className='xx';
+				aLi7.appendChild(oDiv1);
+				aLi7.appendChild(oDiv2);
+				var oDiv3=document.createElement('div');
+				var oDiv4=document.createElement('div');
+				var oDiv5=document.createElement('div');
+				oDiv1.appendChild(oDiv3);
+				oDiv2.appendChild(oDiv4);
+				oDiv2.appendChild(oDiv5);
+				var oPp1=document.createElement('p');
+				var oPp2=document.createElement('p');
+				var oPp3=document.createElement('p');
+				var oPp4=document.createElement('p');
+				oDiv3.appendChild(oPp1);
+				oDiv3.appendChild(oPp2);
+				oDiv4.appendChild(oPp3);
+				oDiv4.appendChild(oPp4);
+				var oA1=document.createElement('a');
+				var oA2=document.createElement('a');
+				var oA3=document.createElement('a');
+				var oA4=document.createElement('a');
+				oA1.href='javascript:';
+				oA1.innerHTML=aXuanXiangKas[7].name;				
+				oA2.href='javascript:';
+				oA3.href='javascript:';
+				oA4.href='javascript:';
+				oPp1.appendChild(oA1);
+				oDiv1.appendChild(oA2);
+				oPp3.appendChild(oA3);
+				oDiv5.appendChild(oA4);
+				var oI=document.createElement('i');
+				oI.className='iconfont';
+				oA4.appendChild(oI);
+				var oImg1=document.createElement('img');
+				oA2.appendChild(oImg1);
+				oPp2.innerHTML=aXuanXiangKas[7].jiage;
+				oImg1.src=aXuanXiangKas[7].img;
+				oA3.innerHTML=aXuanXiangKas[7].name1;
+				oPp4.innerHTML=aXuanXiangKas[7].fenlei;
+				oI.innerHTML=aXuanXiangKas[7].ibiao;
+			}else{
+				var aLis=document.createElement('li');
+				aLis.className='kuan1 huowu biaoqian jjbiaoqian';
+				oUl.appendChild(aLis);
+				var oDiv=document.createElement('div');
+				oDiv.className='pinlun';
+				oDiv.style.zIndex='2';
+				aLis.appendChild(oDiv);
+				var oP1=document.createElement('p');
+				var oP2=document.createElement('p');
+				oP1.className='top1';
+				oP2.className='bottom';
+				oP1.innerHTML=aXuanXiangKas[i].p1;
+				oP2.innerHTML=aXuanXiangKas[i].p2;
+				oDiv.appendChild(oP1);
+				oDiv.appendChild(oP2);
+				var aUl=document.createElement('ul');
+				aUl.className='tongyong';
+				aLis.appendChild(aUl);
+				var oLi1=document.createElement('li');
+				aUl.appendChild(oLi1);
+				var oImg=document.createElement('img');
+				oImg.src=aXuanXiangKas[i].img;
+				oLi1.appendChild(oImg);
+				var oLi2=document.createElement('li');
+				oLi2.innerHTML=aXuanXiangKas[i].name;
+				aUl.appendChild(oLi2);
+				var oLi3=document.createElement('li');
+				oLi3.innerHTML=aXuanXiangKas[i].jieshao;
+				aUl.appendChild(oLi3);
+				var oLi4=document.createElement('li');
+				var oSpan=document.createElement('span');
+				var oDel=document.createElement('del');
+				oSpan.innerHTML=aXuanXiangKas[i].jiage;
+				oDel.innerHTML=aXuanXiangKas[i].del;
+				oLi4.appendChild(oSpan);
+				oLi4.appendChild(oDel);
+				aUl.appendChild(oLi4);
+			}
+			
+		}
+	}
+}
+function xuanxiangka5(){
+	var aLi=document.querySelectorAll('.peijian .caption .you ul li');
+	var oUl=document.querySelector('.peijian .bt-you ul');	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		init(0);
+		aLi[0].className='active';
+		aLi[i].onmouseenter = function(){
+			init(this.index);
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+			}
+			this.className='active';
+		}
+	}
+	function init(index){
+		var aXuanXiangKas=xuanxiangkaItem5[index]; 
+		if(!aXuanXiangKas){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aXuanXiangKas.length;i++){
+			if(i==7){
+				var aLi7=document.createElement('li');
+				aLi7.className='kuan1 huowu';
+				oUl.appendChild(aLi7);
+				var oDiv1=document.createElement('div');
+				var oDiv2=document.createElement('div');
+				oDiv1.className='ss';
+				oDiv2.className='xx';
+				aLi7.appendChild(oDiv1);
+				aLi7.appendChild(oDiv2);
+				var oDiv3=document.createElement('div');
+				var oDiv4=document.createElement('div');
+				var oDiv5=document.createElement('div');
+				oDiv1.appendChild(oDiv3);
+				oDiv2.appendChild(oDiv4);
+				oDiv2.appendChild(oDiv5);
+				var oPp1=document.createElement('p');
+				var oPp2=document.createElement('p');
+				var oPp3=document.createElement('p');
+				var oPp4=document.createElement('p');
+				oDiv3.appendChild(oPp1);
+				oDiv3.appendChild(oPp2);
+				oDiv4.appendChild(oPp3);
+				oDiv4.appendChild(oPp4);
+				var oA1=document.createElement('a');
+				var oA2=document.createElement('a');
+				var oA3=document.createElement('a');
+				var oA4=document.createElement('a');
+				oA1.href='javascript:';
+				oA1.innerHTML=aXuanXiangKas[7].name;				
+				oA2.href='javascript:';
+				oA3.href='javascript:';
+				oA4.href='javascript:';
+				oPp1.appendChild(oA1);
+				oDiv1.appendChild(oA2);
+				oPp3.appendChild(oA3);
+				oDiv5.appendChild(oA4);
+				var oI=document.createElement('i');
+				oI.className='iconfont';
+				oA4.appendChild(oI);
+				var oImg1=document.createElement('img');
+				oA2.appendChild(oImg1);
+				oPp2.innerHTML=aXuanXiangKas[7].jiage;
+				oImg1.src=aXuanXiangKas[7].img;
+				oA3.innerHTML=aXuanXiangKas[7].name1;
+				oPp4.innerHTML=aXuanXiangKas[7].fenlei;
+				oI.innerHTML=aXuanXiangKas[7].ibiao;
+			}else{
+				var aLis=document.createElement('li');
+				aLis.className='kuan1 huowu biaoqian jjbiaoqian';
+				oUl.appendChild(aLis);
+				var oDiv=document.createElement('div');
+				oDiv.className='pinlun';
+				oDiv.style.zIndex='2';
+				aLis.appendChild(oDiv);
+				var oP1=document.createElement('p');
+				var oP2=document.createElement('p');
+				oP1.className='top1';
+				oP2.className='bottom';
+				oP1.innerHTML=aXuanXiangKas[i].p1;
+				oP2.innerHTML=aXuanXiangKas[i].p2;
+				oDiv.appendChild(oP1);
+				oDiv.appendChild(oP2);
+				var aUl=document.createElement('ul');
+				aUl.className='tongyong';
+				aLis.appendChild(aUl);
+				var oLi1=document.createElement('li');
+				aUl.appendChild(oLi1);
+				var oImg=document.createElement('img');
+				oImg.src=aXuanXiangKas[i].img;
+				oLi1.appendChild(oImg);
+				var oLi2=document.createElement('li');
+				oLi2.innerHTML=aXuanXiangKas[i].name;
+				aUl.appendChild(oLi2);
+				var oLi3=document.createElement('li');
+				oLi3.innerHTML=aXuanXiangKas[i].jieshao;
+				aUl.appendChild(oLi3);
+				var oLi4=document.createElement('li');
+				var oSpan=document.createElement('span');
+				var oDel=document.createElement('del');
+				oSpan.innerHTML=aXuanXiangKas[i].jiage;
+				oDel.innerHTML=aXuanXiangKas[i].del;
+				oLi4.appendChild(oSpan);
+				oLi4.appendChild(oDel);
+				aUl.appendChild(oLi4);
+			}
+			
+		}
+	}
+}function xuanxiangka6(){
+	var aLi=document.querySelectorAll('.zhoubian .caption .you ul li');
+	var oUl=document.querySelector('.zhoubian .bt-you ul');	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		init(0);
+		aLi[0].className='active';
+		aLi[i].onmouseenter = function(){
+			init(this.index);
+			for(var j=0;j<aLi.length;j++){
+				aLi[j].className='';
+			}
+			this.className='active';
+		}
+	}
+	function init(index){
+		var aXuanXiangKas=xuanxiangkaItem6[index]; 
+		if(!aXuanXiangKas){
+			return;
+		}
+		oUl.innerHTML='';
+		for(var i=0;i<aXuanXiangKas.length;i++){
+			if(i==7){
+				var aLi7=document.createElement('li');
+				aLi7.className='kuan1 huowu';
+				oUl.appendChild(aLi7);
+				var oDiv1=document.createElement('div');
+				var oDiv2=document.createElement('div');
+				oDiv1.className='ss';
+				oDiv2.className='xx';
+				aLi7.appendChild(oDiv1);
+				aLi7.appendChild(oDiv2);
+				var oDiv3=document.createElement('div');
+				var oDiv4=document.createElement('div');
+				var oDiv5=document.createElement('div');
+				oDiv1.appendChild(oDiv3);
+				oDiv2.appendChild(oDiv4);
+				oDiv2.appendChild(oDiv5);
+				var oPp1=document.createElement('p');
+				var oPp2=document.createElement('p');
+				var oPp3=document.createElement('p');
+				var oPp4=document.createElement('p');
+				oDiv3.appendChild(oPp1);
+				oDiv3.appendChild(oPp2);
+				oDiv4.appendChild(oPp3);
+				oDiv4.appendChild(oPp4);
+				var oA1=document.createElement('a');
+				var oA2=document.createElement('a');
+				var oA3=document.createElement('a');
+				var oA4=document.createElement('a');
+				oA1.href='javascript:';
+				oA1.innerHTML=aXuanXiangKas[7].name;				
+				oA2.href='javascript:';
+				oA3.href='javascript:';
+				oA4.href='javascript:';
+				oPp1.appendChild(oA1);
+				oDiv1.appendChild(oA2);
+				oPp3.appendChild(oA3);
+				oDiv5.appendChild(oA4);
+				var oI=document.createElement('i');
+				oI.className='iconfont';
+				oA4.appendChild(oI);
+				var oImg1=document.createElement('img');
+				oA2.appendChild(oImg1);
+				oPp2.innerHTML=aXuanXiangKas[7].jiage;
+				oImg1.src=aXuanXiangKas[7].img;
+				oA3.innerHTML=aXuanXiangKas[7].name1;
+				oPp4.innerHTML=aXuanXiangKas[7].fenlei;
+				oI.innerHTML=aXuanXiangKas[7].ibiao;
+			}else{
+				var aLis=document.createElement('li');
+				aLis.className='kuan1 huowu biaoqian jjbiaoqian';
+				oUl.appendChild(aLis);
+				var oDiv=document.createElement('div');
+				oDiv.className='pinlun';
+				oDiv.style.zIndex='2';
+				aLis.appendChild(oDiv);
+				var oP1=document.createElement('p');
+				var oP2=document.createElement('p');
+				oP1.className='top1';
+				oP2.className='bottom';
+				oP1.innerHTML=aXuanXiangKas[i].p1;
+				oP2.innerHTML=aXuanXiangKas[i].p2;
+				oDiv.appendChild(oP1);
+				oDiv.appendChild(oP2);
+				var aUl=document.createElement('ul');
+				aUl.className='tongyong';
+				aLis.appendChild(aUl);
+				var oLi1=document.createElement('li');
+				aUl.appendChild(oLi1);
+				var oImg=document.createElement('img');
+				oImg.src=aXuanXiangKas[i].img;
+				oLi1.appendChild(oImg);
+				var oLi2=document.createElement('li');
+				oLi2.innerHTML=aXuanXiangKas[i].name;
+				aUl.appendChild(oLi2);
+				var oLi3=document.createElement('li');
+				oLi3.innerHTML=aXuanXiangKas[i].jieshao;
+				aUl.appendChild(oLi3);
+				var oLi4=document.createElement('li');
+				var oSpan=document.createElement('span');
+				var oDel=document.createElement('del');
+				oSpan.innerHTML=aXuanXiangKas[i].jiage;
+				oDel.innerHTML=aXuanXiangKas[i].del;
+				oLi4.appendChild(oSpan);
+				oLi4.appendChild(oDel);
+				aUl.appendChild(oLi4);
+			}
+			
+		}
+	}
 }
