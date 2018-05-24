@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-汇率计算</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//本币
+	(function(w){
+		function Rmb(name){
+			this.name=name;
+			this.wb=[];
+			this.oInput=null;
+			this.init(name);
+		}
+		Rmb.prototype = {
+			constructor:Rmb,
+			init:function(name){
+				var oP=document.createElement('p');
+				oP.innerHTML=name;
+				this.oInput=document.createElement('input');
+				document.body.appendChild(oP);
+				oP.appendChild(this.oInput);
+			},
+			bangding:function(wb){
+				this.wb.push(wb);
+			},
+			fabu:function(){
+				this.oInput.oninput=function(){
+					for(var i=0;i<this.wb.length;i++){
+						this.wb[i].jieshou(this.oInput.value);
+					}
+				}.bind(this)
+			},
+		}
+		w.Rmb=Rmb;
+	})(window);
+	//外币
+	(function(w){
+		function Wb(name,rate,benbi){
+			this.name=name;
+			this.rate=rate;
+			this.oInput=null;
+			benbi.bangding(this);
+			this.benbi=benbi;
+			this.init(name);			
+		}
+		Wb.prototype = {
+			constructor:Wb,
+			init:function(name){
+				var oP=document.createElement('p');
+				oP.innerHTML=name;
+				this.oInput=document.createElement('input');
+				document.body.appendChild(oP);
+				oP.appendChild(this.oInput);
+			},
+			jieshou:function(val){
+				this.oInput.value=val / this.rate;
+			},
+		}
+		w.Wb=Wb;
+	})(window);
+
+	var zhongguo=new Rmb('人名币：');
+	var riben=new Wb('日元：',0.05,zhongguo);
+	var meiguo=new Wb('美元：',6.125,zhongguo);
+	var xianggang=new Wb('港币：',0.8,zhongguo);
+	zhongguo.fabu();
+</script>
+</html>

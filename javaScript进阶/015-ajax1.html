@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-ajax1</title>
+</head>
+<body>
+	<input type="button" id="btn" value="获取数据">
+</body>
+<script>
+	var oBtn=document.getElementById('btn');
+	oBtn.onclick = function(){
+		//1.创建ajax对象
+		var oAjax=new XMLHttpRequest();
+		console.log('在new之后::'+oAjax.readyState);
+		//2.和服务器建立链接
+		oAjax.open('GET','http://127.0.0.1:3000/014-test.html',true);
+		console.log('在open之后::'+oAjax.readyState);
+		//3.发送请求
+		oAjax.send();
+		console.log('在send之后::'+oAjax.readyState);
+		//4.监听方法获取数据
+		oAjax. onreadystatechange = function(){
+			console.log('在监听事件之后::'+oAjax.readyState);
+			// 0 还没有初始化
+			// 1 已经初始化，但是还没有调用open方法
+			// 2 send方法已经调用
+			// 3 返回了部分数据
+			// 4 数据完全返回
+			// console.log(oAjax.readyState);
+			if(oAjax.readyState==4){//数据完全返回
+				// console.log(oAjax.status);
+				if (oAjax.status == 200) {
+					console.log('在数据成功返回之后::'+oAjax.readyState);
+				}else{
+					console.log('在数据返回失败之后::'+oAjax.status);
+				}				
+			}
+		}
+	}
+</script>
+</html>
