@@ -4,18 +4,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>015-ajax1</title>
+	<style>
+		li{
+			list-style: none;
+		}
+	</style>
 </head>
 <body>
 	<input type="button" id="btn" value="获取数据">
+	<ul id="ul1"></ul>
 </body>
 <script>
 	var oBtn=document.getElementById('btn');
+	var oUl=document.getElementById('ul1')
 	oBtn.onclick = function(){
 		//1.创建ajax对象
 		var oAjax=new XMLHttpRequest();
 		console.log('在new之后::'+oAjax.readyState);
 		//2.和服务器建立链接
-		oAjax.open('GET','http://127.0.0.1:3000/015-ajax1.html',true);
+		oAjax.open('GET','http://127.0.0.1:3000/s? name=Tom & age=23',true);
 		console.log('在open之后::'+oAjax.readyState);
 		//3.发送请求
 		oAjax.send();
@@ -38,6 +45,9 @@
 					var obj=JSON.parse(oAjax.responseText);
 					console.log(obj.name);
 					console.log(obj.age);
+					var oLi=document.createElement('li');
+					oLi.innerHTML='姓名：'+obj.name +' 年龄：'+obj.age;
+					oUl.appendChild(oLi);
 				}else{
 					console.log('在数据返回失败之后::'+oAjax.status);
 				}				
