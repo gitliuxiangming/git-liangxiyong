@@ -25,7 +25,9 @@ var server = http.createServer(function(req,res){
 	})
 	//plain就是一个纯文本
 	// res.setHeader('Content-Type','text/plain');
+	//页面状态
 	// res.statusCode=404;
+	//展示到页面的内容
 	// res.end('<h1>what is this? first study this knowlage,really diffculty  现在中文也能出现了</h1>');
 });
 // server上边有一个listen方法，它接受三个参数(第一个是运行的端口号“一般是3000”，第二个是运行的地址“一般是本机，
