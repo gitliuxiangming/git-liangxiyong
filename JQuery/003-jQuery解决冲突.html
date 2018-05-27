@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-jQuery解决冲突</title>
+
+	<script>
+		(function(w){
+			function test(){
+				alert(1234);
+			}
+			w.$=test;
+		})(window);
+	</script>
+	<script src="js/jquery-1.12.4.js"></script>
+
+	<script>
+		//释放$的使用权
+		// jQuery.noConflict();
+		//把$的使用权赋给liu用liu可以代替$或jQuery;
+		var liu=jQuery.noConflict();
+		$();
+		liu(function(){
+			alert('abcd')
+		})
+
+	</script>
+	
+</head>
+<body>
+	
+</body>
+</html>

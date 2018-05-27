@@ -10,6 +10,8 @@ var querystring=require('querystring');
 var server = http.createServer(function(req,res){
 	//html 可以解析html的默认标签样式
 	res.setHeader('Content-Type','text/html;charset=UTF-8');
+	res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+	res.setHeader('Access-Control-Allow-Headers','text');
 	//给后端指明文件的地址
 	var filepath='./'+req.url;
 	//如果请求是/favicon.ico直接返回
@@ -63,5 +65,5 @@ var server = http.createServer(function(req,res){
 // server上边有一个listen方法，它接受三个参数(第一个是运行的端口号“一般是3000”，第二个是运行的地址“一般是本机，
 //127.0.0.1或localhost”,第三个参数是一个回调函数“里边可以打印启动这个服务时的提示信息”)。
 server.listen(3000,'127.0.0.1',function(){
-	console.log('server is running at http://127.0.0.1');
+	console.log('server is running at http://127.0.0.1:3000');
 });

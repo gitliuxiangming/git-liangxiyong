@@ -1,0 +1,73 @@
+<!-- POST请求 -->
+<!-- 封装函数 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-ajax7</title>
+	<style>
+		li{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" id="btn" value="发送POST请求">
+	<ul id="ul1"></ul>
+</body>
+<script>
+	var oBtn=document.getElementById('btn');
+	var oUl=document.getElementById('ul1');
+	(function(w){
+		function ajax(method,url,data,fnSucc,fnFaild){
+			//1.创建ajax对象
+			var oAjax=new XMLHttpRequest();
+			if(method=="POST"){
+				//2.和服务器建立链接
+				oAjax.open(method,url,true);
+				//POST方法要在open和send之间添加一个请求头
+				oAjax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				oAjax.setRequestHeader("text","kuazhu");
+				//3.发送请求(POST方法需要在send是传参数)
+				oAjax.send(data);
+				//4.监听方法获取数据
+			}else{
+				//2.和服务器建立链接
+				if(data){
+					url=url+"?"+data;	
+				}
+				oAjax.open(method,url,true);
+				//3.发送请求(GET方法不需要在send是传参数)
+				oAjax.send();
+			}
+			
+			oAjax. onreadystatechange = function(){
+				if(oAjax.readyState==4){//数据完全返回
+					if (oAjax.status == 200) {					
+						fnSucc(oAjax.responseText);
+					}else{
+						if(fnFaild){
+							fnFaild(oAjax.status);
+						}						
+					}				
+				}
+			}
+		}
+		w.ajax=ajax;
+	})(window);
+	oBtn.onclick = function(){
+		ajax('POST',
+			'http://127.0.0.1:3000/014-test.html',
+			//不传data时
+			'',
+			function(val){
+				console.log('在数据成功返回之后::'+val);
+			},
+			function(status){
+				console.log('在数据返回失败之后::'+status);
+			}
+		);
+
+	}
+</script>
+</html>

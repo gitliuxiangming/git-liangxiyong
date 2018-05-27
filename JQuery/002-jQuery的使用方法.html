@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-jQuery的使用方法</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		//onload 下边代码是覆盖上边的{页面加载完才会运行}！！！
+		window.onload = function(){
+			var name='Tom';
+			alert(name);
+		}
+		window.onload = function(){
+			var name='TomTom';
+			alert(name);
+		}
+		//jQuery是dom加载完就会运行！！！
+		//方法一		
+		// jQuery(document).ready(function(){
+		// 	var name='jQuery一';
+		// 	alert(name);
+		// })
+		// jQuery(document).ready(function(){
+		// 	var name='jQuery二';
+		// 	alert(name);
+		// })
+		//方法二
+		// $(document).ready(function(){
+		// 	var name='jQuery一';
+		// 	alert(name);
+		// })
+		// $(document).ready(function(){
+		// 	var name='jQuery二';
+		// 	alert(name);
+		// })
+		//方法三
+		// jQuery(function(){
+		// 	var name='jQuery一';
+		// 	alert(name);
+		// })
+		// jQuery(function(){
+		// 	var name='jQuery二';
+		// 	alert(name);
+		// })
+		//方法四
+		$(function(){
+			var name='jQuery一';
+			alert(name);
+		})
+		$(function(){
+			var name='jQuery二';
+			alert(name);
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

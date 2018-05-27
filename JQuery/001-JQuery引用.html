@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-JQuery引用.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<!-- 本地文件引用 -->
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<!-- 网路文件引用（cdnjs.com）优点是 如果有缓存 不有再次加载 提高页面加载速度 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 如果网络文件不能用，就手动在页面写一个引入本地文件的scritp标签 -->
+    <script>
+        window.jQuery || document.write('<script src="js/jquery.js"><\/script>');
+    </script>
+
+</head>
+<body>
+	
+</html>
