@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-jQuery的静态方法</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var aLi =document.getElementById('ul').children;
+			var arr = [11,22,33,44,55];
+			var arrLike={0:'aaa',1:'bbb',2:'ccc',length:3}	
+			//数组的高级方法只能遍历真正的数组，不能遍历伪数组！！！
+			/*
+			arr.forEach(function(value,index){
+				console.log(index+':::'+value);
+			})
+			//注意参数的位置
+			//jQuery上的默认方法既可以便利真正的数组，也可以遍历伪数组！！！
+			$.each(arr,function(index,value){
+				console.log(index+':::'+value);	
+			})
+			
+			var $res=aLi.map(function(value,index){
+				console.log(index+':::'+value);
+				return value;
+			})
+			console.log($res);
+			//注意参数的位置
+			var $res=$.map(aLi,function(value,index){
+				console.log(index,value);	
+				return value;
+			})
+			console.log($res);
+			*/
+
+			// var $res=arrLike.map(function(value,index){
+			// 	console.log(index+':::'+value);
+			// 	return value;
+			// })
+			// console.log($res);
+			//注意参数的位置
+			var $res=$.map(arrLike,function(value,index){
+				console.log(index,value);	
+				return value;
+			})
+			console.log($res);
+		})
+	</script>
+</head>
+<body>
+	<ul id="ul">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+</html>
