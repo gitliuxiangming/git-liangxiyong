@@ -3,17 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title>008-jQuery中的选择器和过滤器</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			console.log($('div'));
+			console.log($('#box1'));
+			console.log($('.box2'));
+		})
+	</script>
 </head>
 <body>
 	<div></div>
-	<div>我是div中的段落</div>
-	<div><p>我是p中的段落</p></div>
+	<div id="box1">我是div中的段落</div>
+	<div class="box2"><p>我是p中的段落</p></div>
 	<div><p><span>我是span中的段落</span></p></div>
 </body>
-<script src="js/jquery-1.12.4.js"></script>
-<script>
-	$(function(){
-		
-	})
-</script>
 </html>

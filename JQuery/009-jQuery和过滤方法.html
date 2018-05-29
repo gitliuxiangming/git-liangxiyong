@@ -14,7 +14,9 @@
 	<script src="js/jquery-1.12.4.js"></script>
 	<script>
 		$(function(){
-			$('div').eq(0);
+			console.log($('div:eq(0)'));
+			console.log($('div:eq(1)'));
+			console.log($('div:eq(-1)').index());
 		})
 	</script>
 </html>
