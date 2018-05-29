@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-jQuery自定义事件</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('div').on('zidingyishijian',function(){
+				alert('我的自定义事件');
+			});
+			$('div').trigger('zidingyishijian');
+		})
+	</script>
+</head>
+<body>
+	<div>xxxx</div>
+</body>
+</html>

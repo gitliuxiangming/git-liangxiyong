@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-jQuery设置和获取值</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			//获取只会获取第一个input的value值
+			console.log($('input').val());
+			//设置会设置全部的input的value
+			$('input').val('我是设置的')
+			console.log($('input').val());
+		})
+	</script>	
+</head>
+<body>
+	<input type="text" value="我是默认的1">
+	<input type="text" value="我是默认的2">
+</body>
+</html>

@@ -29,17 +29,20 @@
 			var oBox1=document.getElementById('box1');
 			var oBox2=document.getElementById('box2');
 			var oBox3=document.getElementById('box3');
-			oBox1.onclick = function(){
-				event.stopPropagation();
+			oBox1.onclick = function(ev){
+				var oEvent=ev || event;
+				oEvent.stopPropagation();
 				alert('a');
 			}
-			oBox2.onclick = function(){
-				event.stopPropagation();
+			oBox2.onclick = function(ev){
+				var oEvent=ev || event;
+				oEvent.stopPropagation();
 				alert('b');
 			}
-			oBox3.onclick = function(){
+			oBox3.onclick = function(ev){
+				var oEvent=ev || event;
 				//  只能阻止当前的事件不在向上传递。！他的上一层如果没有阻止冒泡的话，点他的上一侧还会往再上一层传递！
-				event.stopPropagation();
+				oEvent.stopPropagation();
 				alert('c');
 			}
 		}

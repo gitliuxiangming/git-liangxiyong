@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-jQuery操作css</title>
+	<style>
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-bottom: 20px;
+		}
+		.box2{
+			width: 200px;
+			height: 200px;
+			background: blue;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// console.log($('div').css("width"));
+			//css方法的返回值还是一个jQuery对象，所以在他后边还可以再调用jQuery对象的方法（即链式调用！）
+			// console.log($('div').css('width','300px'));
+			//方法一
+			// $('div').css('width','300px');
+			// $('div').css('height','300px');
+			//方法二
+			// $('div').css('width','300px').css('height','300px');
+			//方法三
+			$('div').css({
+				width:300,
+				height:300,
+				background:'gold',
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+</body>
+</html>

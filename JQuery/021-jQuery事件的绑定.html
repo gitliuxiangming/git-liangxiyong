@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-jQuery事件的绑定</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			//方法一(参照原生js的addEventListener)
+			function test(){
+				alert('click1');
+			}
+			$('div').click(test);
+			$('div').click(function(){
+				alert('click2')
+			});
+			$('div').mouseover(function(){
+				alert('mouseover')
+			});
+			//方法二
+			/*
+			$('div').on('click',function(){
+				alert('click');
+			});
+			$('div').on('mouseover',function(){
+				alert('mouseover');
+			});
+			*/
+			// 事件的移除
+			// 什么都不传会移除所有事件
+			// $('div').off();
+			// 传事件名会移除特定事件(参照原生js的removeEventListener)
+			// $('div').off('click');
+			$('div').off('click',test);
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

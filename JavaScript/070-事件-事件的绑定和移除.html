@@ -25,6 +25,7 @@
 			function shui2(){
 				alert('我是第二个被定义的函数');
 			}
+			//false的意思是是否阻止冒泡，默认是false（事件冒泡），true是阻止冒泡【可以省略不写】
 			oDiv.addEventListener('click',shui,false);
 			oDiv.addEventListener('click',shui2,false);
 			oDiv.addEventListener('click',function(){

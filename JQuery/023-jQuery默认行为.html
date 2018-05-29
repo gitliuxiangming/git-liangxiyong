@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-jQuery默认行为</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('a').click(function(ev){
+				alert('abc');
+				//阻止默认行为两种方法
+				// return false;
+				ev.preventDefault();
+			});
+		})
+	</script>
+</head>
+<body>
+	<a href="http://www.kuazhu.com">跨猪网</a>
+</body>
+</html>

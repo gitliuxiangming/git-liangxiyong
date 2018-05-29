@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-jQuery操作尺寸</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			padding: 10px;
+			border: 5px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			//常规
+			// console.log($('div').width());
+			// console.log($('div').height());
+			// $('div').width(200);
+			// $('div').height(200);
+			//innerWidth...包含内边距的
+			// console.log($('div').innerWidth());
+			// console.log($('div').innerHeight());
+			//只会改变盒子内容的宽或高不会改变边距大小和边框大小
+			// $('div').innerWidth(200);
+			// $('div').innerHeight(200);
+			//outerWidth...包含内边距和边框的
+			console.log($('div').outerWidth());
+			console.log($('div').outerHeight());
+			//只会改变盒子内容的宽或高不会改变边距大小和边框大小
+			$('div').outerWidth(200);
+			$('div').outerHeight(200);
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
