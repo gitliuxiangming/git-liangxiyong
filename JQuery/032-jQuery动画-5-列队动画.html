@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-jQuery动画-5-列队动画</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				/*
+				//方法一
+				$('div').animate({
+					width:300
+				},1000);
+				$('div').animate({
+					height:300
+				},1000);
+				$('div').animate({
+					opacity:0.5
+				},1000);
+				*/
+				/*
+				//方法二
+				$('div')
+				.animate({
+					width:300
+				},1000)
+				.animate({
+					height:300
+				},1000)
+				.animate({
+					opacity:0.5
+				},1000)
+				*/
+				//方法三
+				$('div').animate({
+					width:300
+				},1000,function(){
+					$('div').animate({
+					height:300
+					},1000,function(){
+						$('div').animate({
+							opacity:0.5
+						},1000)
+					});
+				});
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<div></div>
+</body>
+</html>

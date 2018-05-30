@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-jQuery动画-3-淡入淡出</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').fadeIn(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+			$('button').eq(1).click(function(){
+				$('div').fadeOut(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+			$('button').eq(2).click(function(){
+				$('div').fadeToggle(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+			$('button').eq(3).click(function(){
+				$('div').fadeTo(1000,0.5,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>淡入</button>
+	<button>淡出</button>
+	<button>转换</button>
+	<button>指定</button>
+	<div></div>
+</body>
+</html>

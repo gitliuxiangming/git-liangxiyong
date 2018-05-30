@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-jQuery命名空间</title>
+	<style>
+		.grandfather{
+			width: 400px;
+			height: 400px;
+			background: red;
+			margin: 100px auto;
+			border: 1px solid red;
+		}
+		.father{
+			width: 200px;
+			height: 200px;
+			background: green;
+			margin:100px  auto;
+			border: 1px solid green;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			margin:50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="grandfather">
+			<div class="father">
+				<div class="son"></div>
+			</div>
+		</div>	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.son').on('click.zs',function(){
+			alert('click son1');
+		});
+		$('.son').on('click.ls',function(){
+			alert('click son2');
+		});
+		$('.father').on('click.zs',function(){
+			alert('click father1');
+		});
+		$('.father').on('click.ls',function(){
+			alert('click father2');
+		});
+		// $('.son').trigger('click');
+		$('.son').trigger('click.zs');
+	})
+</script>
+</html>

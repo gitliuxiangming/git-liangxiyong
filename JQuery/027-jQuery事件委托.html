@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-jQuery事件委托</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			/*
+			$('li').click(function(){
+				alert($(this).html());
+			})
+			*/
+			$('ul').delegate('li','click',function(){
+				alert($(this).html());
+			})
+			$('button').click(function(){
+				var oLi=$('<li>我是创建的li</li>')
+				$('ul').append(oLi);
+			})；			
+		})
+	</script>
+</head>
+<body>
+	<button>创建</button>
+	<ul>
+		<li>我是li1</li>
+		<li>我是li2</li>
+		<li>我是li3</li>
+		<li>我是li4</li>
+	</ul>
+</body>
+</html>

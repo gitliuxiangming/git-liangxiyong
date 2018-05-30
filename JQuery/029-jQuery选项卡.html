@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-jQuery选项卡</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn li{
+			width: 60px;
+			height: 30px;
+			border: 1px solid #000;
+			line-height: 30px;
+			text-align: center;
+			float: left;
+		}
+		.btn li.active{
+			background: #faa;
+		}
+		.content li{
+			width: 260px;
+			height: 260px;
+			border: 1px solid #000;
+			font-size: 30px;
+			font-weight: 900;
+			line-height: 150px;
+			text-align:center;
+			display: none;
+		}
+		.content li.show{
+			display: block;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.btn li').mouseenter(function(){
+				var $this=$(this);
+				$this.addClass('active');
+				$this.siblings().removeClass('active');
+				var $index=$this.index();
+				var box=$('.content li').eq($index);
+				// console.log($currli)
+				box.addClass('show');
+				box.siblings().removeClass('show');
+			})			
+		})
+	</script>
+</head>
+<body>
+	<ul class="btn">
+		<li>btn1</li>
+		<li>btn2</li>
+		<li>btn3</li>
+		<li>btn4</li>
+	</ul>
+	<ul class="content">
+		<li class="show">内容1</li>
+		<li>内容2</li>
+		<li>内容3</li>
+		<li>内容4</li>
+	</ul>
+</body>
+</html>

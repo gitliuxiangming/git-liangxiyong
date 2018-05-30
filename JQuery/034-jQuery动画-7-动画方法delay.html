@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-jQuery动画-7-动画方法delay</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				//延迟动画只对后边的动画起作用
+				$('div').animate({
+					width:300
+				},1000).delay(2000);
+				$('div').animate({
+					height:300
+				},1000);
+				$('div').animate({
+					opacity:0.5
+				},1000);
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-jQuery动画-6-动画方法</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').animate({
+					width:300
+				},1000);
+				$('div').animate({
+					height:300
+				},1000);
+				$('div').animate({
+					opacity:0.5
+				},1000);
+			});
+			/*
+			//模式一
+			$('button').eq(1).click(function(){
+				$('div').stop();
+			});
+			
+			//模式二
+			$('button').eq(1).click(function(){
+				$('div').stop(false,false);
+			});
+			
+			//模式三
+			$('button').eq(1).click(function(){
+				$('div').stop(true,false);
+			});
+			
+			//模式四
+			$('button').eq(1).click(function(){
+				$('div').stop(false,true);
+			});
+			*/
+			
+			//模式五
+			$('button').eq(1).click(function(){
+				$('div').stop(true,true);
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+</body>
+</html>

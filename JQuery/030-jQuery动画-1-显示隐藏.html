@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-jQuery动画-1-显示隐藏</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').show(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+			$('button').eq(1).click(function(){
+				$('div').hide(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+			$('button').eq(2).click(function(){
+				$('div').toggle(1000,function(){
+					alert('动画执行完之后，执行我这个回调函数！')
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>转换</button>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-jQuery动画-8-动画速度</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			margin-top: 10px;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				$('.div1').animate({
+				width:600
+				},2000,'swing');
+				$('.div2').animate({
+					width:600
+				},2000,'linear');
+			})			
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<div class="div1"></div>
+	<div class="div2"></div>
+</body>
+</html>

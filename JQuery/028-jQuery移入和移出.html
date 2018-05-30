@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-jQuery移入和移出</title>
+	<style>
+		.father{
+			width: 300px;
+			height: 300px;
+			background: blue;
+		}
+		.son{
+			width: 150px;
+			height: 150px;
+			background: red;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// $('.father').mouseover(function(){
+			// 	alert('mouseover');
+			// });
+			// $('.father').mouseout(function(){
+			// 	alert('mouseout');
+			// });
+			// $('.father').mouseenter(function(){
+			// 	alert('mouseenter');
+			// });
+			// $('.father').mouseleave(function(){
+			// 	alert('mouseleave');
+			// });
+			//接收两个函数，第一个是移入是执行的函数，第二个是移出是执行的函数
+			// $('.father').hover(function(){
+			// 	alert('进去');
+			// },function(){
+			// 	alert('出来');
+			// });
+			//接收一个函数，移入移出都执行这个函数
+			$('.father').hover(function(){
+				alert('进去出来都是我说的');
+			});
+		})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>
