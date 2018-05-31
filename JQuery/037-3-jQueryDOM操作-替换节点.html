@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-3-jQueryDOM操作-替换节点</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				//会替换掉所有
+				var $h1=$('<h1>I am biaoti</h1>')
+				$('div').replaceWith($h1);
+				// $('div').replaceWith('<h2>我是h2</h2>');
+				//会替换选择器中所选的所有节点
+				$h1.replaceAll('.div2');
+			})
+		})
+	</script>		
+</head>
+<body>
+	<button>替换</button>
+	<div>I am div1</div>
+	<div class="div2">I am div2</div>
+	<div>I am div3</div>
+	<div>I am div4</div>
+</body>
+</html>

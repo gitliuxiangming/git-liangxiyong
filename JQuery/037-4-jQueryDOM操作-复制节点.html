@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-4-jQueryDOM操作-复制节点</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<style>
+		div{
+			width: 100px;
+			height: 100px ;
+			background: #ffd;		
+		}
+	</style>
+	<script>
+		$(function(){
+			$("div").click(function(){
+				alert('点击事件')
+			})
+			//clone()接收一个布尔值，true克隆事件。false不克隆事件
+			$('button').click(function(){
+				$('div').clone(false).appendTo($('body'));
+				// $('div').clone(true).appendTo($('body'));
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>复制</button>
+	<div>我是div</div>
+</body>
+</html>

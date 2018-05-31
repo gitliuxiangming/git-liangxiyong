@@ -3,13 +3,149 @@
 <head>
 	<meta charset="UTF-8">
 	<title>036-关于动画小案例</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;			
+		}
+		.div1{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			background: #ccc;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -100px;
+			padding-left: 5px;
+		}
+		.div2{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			background: #ccc;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			padding-left: 5px;
+		}
+		.div1:hover,.div2:hover{
+			color:#ff6700;
+		}
+		.jiantou{
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			display: inline-block;	
+			font-size: 30px;
+			margin-left: 10px;
+			transition: transform 0.5s;
+			transform-origin: 10px 15px;
+		}
+		.jiantou.zhuan{
+			transform: rotateZ(180deg);
+		}
+		.box1{
+			width: 100px;
+			height: 0px;
+			background: #faa;
+			position: absolute;
+			top: 50px;
+			left: 50%;
+			margin-left: -100px;
+			overflow: hidden;
+		}		
+		.box2{
+			width: 100px;
+			height: 0px;
+			background: #faa;
+			position: absolute;
+			top: 50px;
+			left: 50%;
+			overflow: hidden;
+		}
+		.box1 div,
+		.box2 div{
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			transform: translateY(180);
+		}		
+	</style>
 </head>
 <body>
-	<div>
-		<div><span></span></div>
-		<div></div>
-		<div><span></span></div>
-		<div></div>
+	<div class="en1">
+		<div class="div1"><span>菜单一</span><span class="jiantou jiantou1">&and;</span></div>
+		<div class="box1">
+			<div class="xiala">下拉一</div>
+			<div class="xiala">下拉二</div>
+		</div>
+	</div>
+	<div class="en2">
+		<div class="div2"><span>菜单二</span><span class="jiantou jiantou2">&and;</span></div>
+		<div class="box2">
+			<div class="xiala">下拉一</div>
+			<div class="xiala">下拉二</div>
+		</div>
 	</div>
 </body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.en1').mouseenter(function(){
+			$('.box1').stop(true,false);
+			$('.jiantou1').addClass('zhuan');
+			$('.div1').css({
+				background:'#faa'
+			})
+			$('.box1').animate({
+				height:100
+			});			
+		});
+		$('.en1').mouseleave(function(){
+			$('.box1').stop(true,false);
+			$('.jiantou1').removeClass('zhuan');
+			$('.div1').css({
+				background:'#ccc'
+			})
+			$('.box1').animate({
+				height:0
+			});			
+		});
+		$('.en2').mouseenter(function(){
+			$('.box2').stop(true,false);
+			$('.jiantou2').addClass('zhuan');
+			$('.div2').css({
+				background:'#faa'
+			})
+			$('.box2').animate({
+				height:100
+			});			
+		});
+		$('.en2').mouseleave(function(){
+			$('.box2').stop(true,false);
+			$('.jiantou2').removeClass('zhuan');
+			$('.div2').css({
+				background:'#ccc'
+			})
+			$('.box2').animate({
+				height:0
+			});			
+		});
+		$('.xiala').mouseenter(function(){
+			$(this).css({
+				background:'#ccc'
+			})
+		});
+		$('.xiala').mouseleave(function(){
+			$(this).css({
+				background:'#faa'
+			})
+		})
+	})
+</script>
 </html>

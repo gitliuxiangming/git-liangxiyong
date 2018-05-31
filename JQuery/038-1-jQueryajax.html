@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-jQuery中的ajax-1</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				$.ajax({
+					url:'http://127.0.0.1:3000/038-data.json',
+					type:'GET',
+					// data:{name:'tom',age:18},
+					dataType:"json",
+					success:function(data,statusMsg,jqXHR){
+						console.log(data,statusMsg,jqXHR);
+						console.log(data.name);
+						console.log(data.age);
+					},
+					error:function(jqXHR,statusMsg){
+						console.log(jqXHR,statusMsg);
+					},
+					complete:function(jqXHR,statusMsg){
+						console.log(jqXHR,statusMsg);
+					},
+					timeout:3000,
+					statusCode:{
+						404:function(){
+							console.log('没有找到文件');
+						},
+						200:function(){
+							console.log('数据请求成功');
+						}
+					},
+					headers:{
+						test:'test'
+					}
+				})
+			})			
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+</body>
+</html>

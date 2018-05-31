@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-1-jQueryDOM操作-添加节点</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				//添加到内部
+					var $li=$('<li>我是新建的li</li>');
+					//插入都最后，两种方法
+					// $('ul').append($li);
+					// $li.appendTo($('ul'));
+					//插入都最前，两种方法
+					// $('ul').prepend($li);
+					// $li.prependTo($('ul'));
+				//添加到外部,在前或在后
+					// $('ul').after($li);	
+					$('ul').before($li);	
+			})		
+		})
+	</script>
+</head>
+<body>
+	<button>新建</button>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+	</ul>
+</body>
+</html>

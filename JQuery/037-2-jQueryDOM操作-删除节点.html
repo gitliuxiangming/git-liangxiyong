@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-2-jQueryDOM操作-删除节点</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('ul').click(function(){
+				alert('哈哈哈')
+			})
+			$('button').click(function(){
+				//删除jQuery对象中的DOM节点并且同时删除事件
+					// $('ul').remove();
+				//清空jQuery对象中的内容
+					// $('ul').empty();
+				//删除jQuery对象的DOM节点，但不删除事件
+					$('ul').detach();
+			})
+		})	
+	</script>	
+</head>
+<body>
+	<button>删除</button>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>
