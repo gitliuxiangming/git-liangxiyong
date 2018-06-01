@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>045-对象级别的插件2</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		;(function($){
+			//$.prototype=$.fn
+			//只能一个一个写
+			/*
+			$.fn.yanse=function(options){
+				var defaults={
+					color:'red',
+				};
+				options=$.extend(defaults,options);
+				this.each(function(options){
+					this.style.color=options.color;
+				})
+			}
+			*/
+			//对象版，可以写多个方法
+			$.fn.extend({
+				yanse:function(options){
+					var defaults={
+						color:'red',
+					};
+					options=$.extend(defaults,options);
+					this.each(function(options){
+						this.style.color=options.color;
+					});
+				},
+				beijingse:function(){
+					//第二个方法
+				},
+			});
+		})(jQuery);
+	</script>
+	<script>
+		$(function(){
+			$('input').click(function(){
+				$('div').yanse({
+					color:'gold',
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<input type="button" value="按钮">
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+</body>
+</html>

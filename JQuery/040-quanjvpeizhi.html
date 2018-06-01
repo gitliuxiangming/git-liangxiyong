@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-全局配置.html</title>
+	<!-- jQuery封装的接口，用起来方便些 -->
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				//在全局写一次 下边在用ajax的时候就不用再在全局定义过的了
+				$.ajaxSetup({
+					url:'./038-data.json',
+					type:'GET',
+					dataType:'json'
+				})		
+				//全局的配置信息不用再写，需要覆盖的时候写上去就行
+				$.ajax({
+					success:function(data){
+						console.log(data);
+					},
+					// global:false不可以取消调用全局配置
+					// global:true,
+				})		
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+	<div></div>
+</body>
+</html>

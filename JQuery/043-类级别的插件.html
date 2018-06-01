@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-类级别的插件.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			//一
+			// $.sayHi=function(){
+			// 	alert('hi');
+			// };
+			// $.sayHi();
+			// 二
+			// var obj={
+			// 	sayHi:function(){
+			// 		alert('hi');
+			// 	},
+			// };
+			// $.lxm=obj;
+			// $.lxm.sayHi();
+			//三 extend会把他参数对象里的方法添加到$的静态方法上
+			$.extend({
+				sayHi:function(){
+					alert('hi');
+				},
+			});
+			$.sayHi();
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

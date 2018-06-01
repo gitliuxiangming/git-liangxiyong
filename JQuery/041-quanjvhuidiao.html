@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-全局回调.html</title>
+	<!-- ajax在全局上的一些方法 每次调用ajax都会执行 -->
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// $(document).ajaxStart(回调函数),请求开始,未完成其它请求时执行回调函数
+			$(document).ajaxStart(function(){
+				console.log('ajaxStart');
+			})
+			// $(document).ajaxStop(回调函数),请求结束,所有请求结束时执行回调函数
+			$(document).ajaxStop(function(){
+				console.log('ajaxStop');
+			})
+			// $(document).ajaxSuccess(回调函数),当有请求成功时执行回调函数
+			$(document).ajaxSuccess(function(){
+				console.log('ajaxSuccess');
+			})
+			// $(document).ajaxComplete(回调函数),当有请求完成时执行回调函数
+			$(document).ajaxComplete(function(){
+				console.log('ajaxComplete');
+			})
+			// $(document).ajaxError(回调函数),当有请求失败时执行回调函数
+			$(document).ajaxError(function(){
+				console.log('ajaxError');
+			})
+			// $(document).ajaxSend(回调函数),当有请求发送请求时执行回调函数
+			$(document).ajaxSend(function(){
+				console.log('ajaxSend');
+			})	
+			$('button').click(function(){					
+				$.ajax({
+					url:'./038-data.json',
+					type:'GET',
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+					},
+					// global:false可以取消调用全局回调
+					// global:true,
+				})		
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+	<div></div>
+</body>
+</html>

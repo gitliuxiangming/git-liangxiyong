@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>044-对象级别的插件1</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$.prototype.yanse = function(options){
+				var defaults={
+					color:'red',
+				};
+				options=$.extend(defaults,options);
+				this.css('color',options.color);
+			}
+			$('div').yanse({
+				color:'gold',
+			})
+		})
+	</script>
+</head>
+<body>
+	<input type="button" value="按钮">
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+	<div>字体颜色</div>
+</body>
+</html>

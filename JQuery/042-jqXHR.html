@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-jqXHR.html</title>
+	<!-- jqXHR这个对象上的一些方法 -->
+	<!-- jqXHR对象是浏览器原生XHR对象的一个超集 -->
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){			
+			$('button').click(function(){					
+				var jqXHR = $.ajax({
+					url:'./038-data.json',
+					type:'GET',
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+					},
+					// global:false可以取消调用全局回调
+					// global:true,
+				});	
+				jqXHR.done(function(data,statusMsg,jqXHR对象){
+					console.log(data,statusMsg,jqXHR对象);
+				});
+				jqXHR.fail(function(jqXHR对象,statusMsg){
+					console.log(data,statusMsg,jqXHR对象);
+				});
+				jqXHR.always(function(arg1,arg2,arg3){
+					console.log(arg1,arg2,arg3);
+				});
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+	<div></div>
+</body>
+</html>
