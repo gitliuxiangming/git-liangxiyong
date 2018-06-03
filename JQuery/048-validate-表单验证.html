@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-validate-表单验证</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="js/validate/dist/jquery.validate.min.js"></script>
+	<script>
+		$(function(){
+			$('#reg').validate({
+				rules:{
+					username:{
+
+					}
+				},
+				messages:{
+
+				}
+			});
+		})
+	</script>
+</head>
+<body>
+	<form action="http://www.baidu.com" id="reg">
+		<input type="text" name="username" id="username">		
+		<input type="password" name="password" id="password">		
+		<input type="email" name="email" id="email">		
+		<input type="submit" name="esubmitmail" id="submit">		
+	</form>
+</body>
+</html>

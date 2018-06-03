@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-选项卡插件现写版</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			box-sizing: border-box;
+		}
+		.box{
+			margin:20px auto;
+			width: 200px;
+		}
+		.btn>li{
+			width: 50px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			border: 1px solid #000;
+			float: left;
+		}
+		.btn>li.active1{
+			background:red;
+			color: #fff;
+		}
+		.btn>li.active2{
+			background:blue;
+			color: #fff;
+		}
+		.content>li{
+			width: 200px;
+			height: 260px;
+			border: 1px solid #000;
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		;(function($){
+			$.fn.extend({
+				tab:function(options){
+					var defaults={
+						btnClass:'.btn>li',
+						shijian:'click',
+						active:'active1',
+						contentClass:'.content>li'
+					}
+					options=$.extend(defaults,options);
+					$(options.btnClass).each(function(){
+						$(this).on(options.shijian,function(){
+							var index=$(this).index();
+							$(this).addClass(options.active).siblings().removeClass(options.active);
+							$(options.contentClass).eq(index).show().siblings().hide();
+						})
+					})
+				},
+			})
+		})(jQuery);
+	</script>
+	<script>
+		$(function(){
+			$('.box').tab();
+		})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul class="btn">
+			<li class="active1">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul class="content">
+			<li style="display: block;">内容1</li>
+			<li>内容2</li>
+			<li>内容3</li>
+			<li>内容4</li>
+		</ul>
+	</div>
+</body>
+</html>

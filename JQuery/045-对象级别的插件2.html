@@ -21,7 +21,7 @@
 					color:'red',
 				};
 				options=$.extend(defaults,options);
-				this.each(function(options){
+				this.each(function(){
 					this.style.color=options.color;
 				})
 			}
@@ -33,7 +33,7 @@
 						color:'red',
 					};
 					options=$.extend(defaults,options);
-					this.each(function(options){
+					this.each(function(){
 						this.style.color=options.color;
 					});
 				},
@@ -45,16 +45,16 @@
 	</script>
 	<script>
 		$(function(){
-			$('input').click(function(){
+			$('.btn').click(function(){
 				$('div').yanse({
-					color:'gold',
+					// color:'blue'
 				});
 			});
 		})
 	</script>
 </head>
 <body>
-	<input type="button" value="按钮">
+	<input type="button" value="按钮" class="btn">
 	<div>字体颜色</div>
 	<div>字体颜色</div>
 	<div>字体颜色</div>
