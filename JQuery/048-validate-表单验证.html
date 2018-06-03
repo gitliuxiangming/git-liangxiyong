@@ -10,11 +10,25 @@
 			$('#reg').validate({
 				rules:{
 					username:{
-
-					}
+						
+					},
+					password:{
+						
+					},
+					email:{
+						
+					},
 				},
 				messages:{
+					username:{
 
+					},
+					password:{
+
+					},
+					email:{
+
+					},
 				}
 			});
 		})
@@ -22,10 +36,10 @@
 </head>
 <body>
 	<form action="http://www.baidu.com" id="reg">
-		<input type="text" name="username" id="username">		
-		<input type="password" name="password" id="password">		
-		<input type="email" name="email" id="email">		
-		<input type="submit" name="esubmitmail" id="submit">		
+		<div>用户名：<input type="text" name="username" id="username"></div>		
+		<div>密码：<input type="password" name="password" id="password"></div>		
+		<div>邮箱：<input type="email" name="email" id="email"></div>		
+		<div>确定：<input type="submit" name="esubmitmail" id="submit"></div>		
 	</form>
 </body>
 </html>
