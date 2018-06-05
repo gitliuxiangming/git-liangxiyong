@@ -32,15 +32,17 @@
 	// [].push.apply(obj,arr);
 	//转换成伪数组
 	[].push.apply(obj,aLi);
-	
 	console.log(obj);
+	
 	var arr3 = [];
 	// [].push.apply(arr3,aLi);
-	// [].push.apply(arr3,arr);
+	// [].push.apply(arr3,arr);	
 	[].push.apply(arr3,likeArr);
+	// [].push.apply()
 	console.log(arr3);
+
 	//伪数组转真数组
-	var arr4 = [].slice.call(likeArr);
+	var arr4 =[].slice.call(likeArr);
 	console.log(arr4);
 </script>
 </html>
