@@ -65,7 +65,7 @@
 		push: [].push,
 		sort: [].sort,
 		splice: [].splice,
-		toArray : function(str){
+		toArray : function(){
 			return [].slice.call( this );
 		},
 		get : function(num){
@@ -177,6 +177,124 @@
 			return retArr;
 		},
 	});
+	//lQuerty的原型上的方法
+	lQuery.fn.extend({
+		html:function(content){
+			if(content){
+				this.each(function(){
+					this.innerHTML = content;
+				});
+				return this;
+			}else{
+				return this[0].innerHTML;
+			}
+		},
+		text:function(content){
+			if(content){
+				this.each(function(){
+					this.innerText=content;
+				})
+				return this;
+			}else{
+				var str='';
+				this.each(function(){
+					str += this.innerText;
+				});
+				return str;	
+			}
+		},
+		attr:function(arg1,arg2){
+			if(lQuery.isObject(arg1)){//是对象的情况
+				//设置所有的DOM属性值为对象中的所有值
+				this.each(function(){
+					var dom=this;
+					lQuery.each(arg1,function(attr,value){
+						dom.setAttribute(attr,value);	
+					})
+				})				
+			}else{
+				if(arguments == 1){//传递一个参数的情况
+					//获取第一个DOM节点的属性值
+					this[0].getAttribute(arg1);
+				}else if(arguments.length == 2){//传递两个参数的情况
+					//设置所有DOM的属性值
+					this.each(function(){
+						this.setAttribute(arg1,arg2)
+					})
+				}
+			}
+			return this;
+		},
+		removeAttr:function(attr){
+			if(attr){
+				this.each(function(){
+					this.removeAttribute();
+				})				
+			};
+			return this;
+		},
+		val:function(value){
+			if(value){
+				this.each(function(){
+					this.value = value;
+				})
+				return this;
+			}else{
+				return this[0].value;
+			}
+		},
+		css:function(arg1,arg2){
+			if(kQuery.isString(arg1)){//是字符串的情况
+				if(arguments.length == 1){
+					//获取第一个元素对应的样式值
+					// return this[0].style[arg1];
+					
+					if(this[0].currentStyle){//兼容低级浏览器
+						return this[0].currentStyle[arg1];
+					}else{
+						return getComputedStyle(this[0],false)[arg1];
+					}
+					
+				}else if(arguments.length == 2){
+					this.each(function(){
+						this.style[arg1] = arg2;
+					});
+				}
+			}else if(kQuery.isObject(arg1)){
+				this.each(function(){
+					for(key in arg1){
+						this.style[key] = arg1[key];
+					}
+				});
+			}
+			return this;
+		},
+		hasClass:function(str){
+			var res = false;
+			if(str){
+				//判断是否存在指定单词的正则
+				var reg = eval('/\\b'+str+'\\b/');
+				this.each(function(){
+					//判断传入的参数是否存在在DOM节点的className上
+					if(reg.test(this.className)){
+						res = true;
+						return false;
+					}
+				})
+			}
+			return res;
+		},
+		addClass:function(str){
+			this.each(function(){
+				//如果有参数对应的class不添加,如果没有就添加
+				var $this = kQuery(this);//DOM节点转kquery对象
+				if(!$this.hasClass(str)){
+					this.className =this.className + ' ' + str;
+				}
+			})
+			return this;
+		},
+	})
 	//把lQuery上的init.prototype赋给lQuery.fn
 	lQuery.fn.init.prototype = lQuery.fn;
 	//暴露到window上

@@ -14,12 +14,8 @@
 	</script> -->
 </head>
 <body>
-	<ul>
-		<li>li1</li>
-		<li>li2</li>
-		<li>li3</li>
-		<li>li4</li>
-	</ul>
+	<div class="box1" name='aaa'></div>
+	<div class="box2" name='bbb'></div>
 </body>
 	<script>
 		/*
@@ -52,24 +48,25 @@
 		// console.log($('     <div><p></p></div><div><p></p></div>     '));
 		// // <a>
 		// console.log($('li'));
-		var aLi = document.getElementsByTagName('li');
+		// var aLi = document.getElementsByTagName('li');
 		// var likeArr = {0:'aaa',1:'bbb',2:'ccc',length:3};
-		var arr = [11,22,33,44,55];
+		// var arr = [11,22,33,44,55];
 		// 返回数组中的内容的的jquery对象
 		// console.log($(aLi));
 		// console.log($(likeArr));
 		// console.log($(arr));
 		// 返回参数对应的内容的jquery对象
-		var oLi = aLi[0];
+		// var oLi = aLi[0];
 		// console.log($(oLi));
 		// console.log($(123));
 		// console.log($(false));
-		$.each(aLi,function(index,value){
+		// $.each(aLi,function(index,value){
 			// console.log(this);
-			if(index==1){
-				return false;
-			}
-			console.log(this);
-		});
+			// if(index==1){
+			// 	return false;
+			// }
+			// console.log(this);
+		// });
+		console.log($('div').attr({'class':'liu'}));
 	</script>
 </html>
