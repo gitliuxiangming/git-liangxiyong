@@ -5,6 +5,7 @@
 		lQuery= function(selector){
 			return new lQuery.fn.init(selector);
 		}; 
+
 	//lQuery的原型对象!!!!!
 	lQuery.fn = lQuery.prototype = {
 		constructor:lQuery,
@@ -22,7 +23,6 @@
 				});
 				this[0]=document;
 				this.length = 1;
-			r;
 			}
 			//处理字符串
 			else if(lQuery.isString(selector)){
@@ -101,14 +101,14 @@
 		map:function(fn){
 			return lQuery(lQuery.map(this,fn));
 		},
-	}
+	};
 
 	//lQuery的entend方法，添加到他的静态方法和他的原型对象
 	lQuery.extend = lQuery.fn.extend = function(obj){
 		for(key in obj){
 			this[key] = obj[key];
 		}
-	}
+	};
 
 	//lQuery的静态方法
 	lQuery.extend({
@@ -176,7 +176,18 @@
 			}
 			return retArr;
 		},
+		toWords:function(str){
+			return str.match(/\b\w+\b/g);
+		},
+		addEvent:function(dom,eventName,fn){
+			if(dom.addEventListener){
+				dom.addEventListener(eventName,fn)
+			}else{
+				dom.attachEvent('on' + eventName,fn)
+			}
+		},
 	});
+
 	//lQuerty的原型上的方法
 	lQuery.fn.extend({
 		html:function(content){
@@ -244,7 +255,7 @@
 			}
 		},
 		css:function(arg1,arg2){
-			if(kQuery.isString(arg1)){//是字符串的情况
+			if(lQuery.isString(arg1)){//是字符串的情况
 				if(arguments.length == 1){
 					//获取第一个元素对应的样式值
 					// return this[0].style[arg1];
@@ -260,7 +271,7 @@
 						this.style[arg1] = arg2;
 					});
 				}
-			}else if(kQuery.isObject(arg1)){
+			}else if(lQuery.isObject(arg1)){
 				this.each(function(){
 					for(key in arg1){
 						this.style[key] = arg1[key];
@@ -272,7 +283,7 @@
 		hasClass:function(str){
 			var res = false;
 			if(str){
-				//判断是否存在指定单词的正则
+				//判断是否存在指定单词的正则,eval方法可以把字符串转换成为js代码
 				var reg = eval('/\\b'+str+'\\b/');
 				this.each(function(){
 					//判断传入的参数是否存在在DOM节点的className上
@@ -285,18 +296,154 @@
 			return res;
 		},
 		addClass:function(str){
+			if(str){
+				var names=lQuery.toWords(str);
+				this.each(function(){
+					//如果有参数对应的class不添加,如果没有就添加
+					var $this = lQuery(this);//DOM节点转lquery对象
+					//传入多个值时得用循环
+					for(var i=0;i<names.length;i++){
+						if(!$this.hasClass(names[i])){
+							this.className =this.className + ' ' + names[i];
+						}
+					}				
+				})
+			}			
+			return this;
+		},
+		removeClass:function(str){
+			//如果有参数对应的class就删除,如果没有就不删除
+			if(str){
+				var names=lQuery.toWords(str);
+				var $this = lQuery(this);//DOM节点转lquery对象
+				var reg = eval('/\\b'+names[i]+'\\b/');
+				this.each(function(){
+					for(var i=0;i<names.length;i++){
+						if($this.hasClass(names[i])){
+							this.className =this.className.replace(reg,'');
+						}
+					}				
+				})
+			}
+			else{
+				this.each(function(){
+					this.className = '';
+				})				
+			}
+			return this;
+		},
+		toggleClass:function(str){
+			if(str){
+				var names=lQuery.toWords(str);
+				this.each(function(){
+					var $this=lQuery(this);
+					for(var i=0;i<names.length;i++){
+						if($this.hasClass(names[i])){
+							//有的删除
+							$this.removeClass(names[i]);
+						}else{
+							//没有的添加
+							$this.addClass(names[i]);
+						}
+					}
+				})
+			}else{
+				this.each(function(){
+					this.className = '';
+				})
+			}
+			return this;
+		}
+	});
+
+	//lQuery对象上的DOM操作相关方法
+	lQuery.fn.extend({
+		empty:function(){
 			this.each(function(){
-				//如果有参数对应的class不添加,如果没有就添加
-				var $this = kQuery(this);//DOM节点转kquery对象
-				if(!$this.hasClass(str)){
-					this.className =this.className + ' ' + str;
-				}
-			})
+				this.innerHTML = '';
+			});
+			return this;
+		},
+		remove:function(selector){
+			if(selector){
+				//获取选择器选中的所有DOM节点
+				var doms=document.querySelectorAll(selector);
+				this.each(function(){
+					for(var i=0;i<doms.length;i++){
+						if(this==doms.[i]){
+							var parentNode = this.parentNode;
+							parentNode.removeChild(this);
+						};
+					};
+				});
+			}else{
+				this.each(function(){
+					var parentNode = this.parentNode;
+					parentNode.removeChild(this);
+				});
+			};
+			return this;
+		},
+		append:function(arg){
+			if(arg){
+				//lQuery对象，DOM节点，HTML代码片段
+				var $arg=lQuery(arg);
+				this.each(function(index,value){
+					var parentNode = this;
+					if(index==0){
+						$arg.each(function(){//第一个DOM元素直接插入
+							parentNode.appendChild(this);
+						})
+					}else{
+						$arg.each(function(){
+							//复制一份
+							var dom=this.cloneNode(true);
+							parentNode.appendChild(dom);
+						})
+					}
+					
+				})
+			}
+			return this;
+		},
+		prepend:function(arg){
+			if(arg){
+				//lQuery对象，DOM节点，HTML代码片段
+				var $arg=lQuery(arg);
+				this.each(function(index,value){
+					var parentNode = this;
+					if(index==0){
+						$arg.each(function(){//第一个DOM元素直接插入
+							//firstElementChild不会选取到文本节点，只能选到元素节点
+							parentNode.insertBefore(this,parentNode,firstChild);
+						})
+					}else{
+						$arg.each(function(){
+							//复制一份
+							var dom=this.cloneNode(true);
+							parentNode.insertBefore(dom,parentNode,firstChild);
+						})
+					}
+					
+				})
+			}
 			return this;
 		},
 	})
+
+	//lQuery对象上事件的相关方法
+	lQuery.fn.extend({
+		on:function(eventName,fn){
+			this.each(function(){
+				lQuery.addEvent(this,eventName,fn);
+			})
+		},
+	})
+
 	//把lQuery上的init.prototype赋给lQuery.fn
 	lQuery.fn.init.prototype = lQuery.fn;
+
 	//暴露到window上
 	window.lQuery = window.$ = lQuery; 	
+
 })(window);

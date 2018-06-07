@@ -14,8 +14,9 @@
 	</script> -->
 </head>
 <body>
-	<div class="box1" name='aaa'></div>
-	<div class="box2" name='bbb'></div>
+	<button id="btn">toggle</button>
+	<div class="box1 bbb" name='aaa'>div1</div>
+	<div class="box2 aaa" name='bbb'>div2</div>
 </body>
 	<script>
 		/*
@@ -67,6 +68,21 @@
 			// }
 			// console.log(this);
 		// });
-		console.log($('div').attr({'class':'liu'}));
+		// $(function(){
+			var oBtn = document.getElementById('btn');
+			// console.log(oBtn);
+			oBtn.onclick = function(){
+				// console.log($('div').toggleClass(function(){
+				// 	// console.log(this)
+				// 	// w3c有用法
+				// 	return $(this).index().className = 'box4';
+				// }));
+				console.log($('div').removeClass());
+				// console.log($('div').addClass());
+			}
+			
+		
+		// <!-- }) -->
+		// console.log($('div').removeClass('bbb'));
 	</script>
 </html>
