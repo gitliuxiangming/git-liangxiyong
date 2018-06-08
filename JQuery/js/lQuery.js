@@ -416,34 +416,86 @@
 						$arg.each(function(){//第一个DOM元素直接插入
 							//firstElementChild不会选取到文本节点，只能选到元素节点
 							parentNode.insertBefore(this,parentNode,firstChild);
-						})
+						});
 					}else{
 						$arg.each(function(){
 							//复制一份
 							var dom=this.cloneNode(true);
 							parentNode.insertBefore(dom,parentNode,firstChild);
-						})
-					}
+						});
+					};
 					
-				})
-			}
+				});
+			};
 			return this;
 		},
-	})
+		clone:function(bcopy){
+			var res=[];
+			this.each(function(){
+				var dom=this.cloneNode(true);
+				if (bcopy && this.buckeEvent){//复制事件
+					lQuery.each(this.buckeEvent,function(eventName,fnArr){
+						lQuery.each(fnArr,function(){
+							lQuery(dom).on(eventName,this);
+						})
+					})
+				}
+				res.push(dom);
+			});
+			return lQuery(res);
+		}
+	});
 
 	//lQuery对象上事件的相关方法
 	lQuery.fn.extend({
 		on:function(eventName,fn){
 			this.each(function(){
-				lQuery.addEvent(this,eventName,fn);
+				if(this.buckeEvent){
+					this.buckeEvent = {};
+				}
+				if(this.buckeEvent[eventName]){
+					this.buckeEvent[eventName] = [];
+					this.buckeEvent[eventName].push(fn);
+					lQuery.addEvent(this,eventName,function(){
+						lQuery.each(this.buckeEvent[eventName],function(){
+							this();
+						})
+					});
+				}else{
+					this.buckeEvent[eventName].push(fn)
+				}
+				
 			})
 		},
-	})
+		off:function(eventName,fnName){
+			if (arguments.length == 0){
+				this.each(function(){
+					this.buckeEvent = {};
+				})
+			}else if(arguments.length == 1){
+				this.each(function(){
+					if(this.buckeEvent){
+						this.buckeEvent[eventName] = [];
+					}
+				})
+			}else if(arguments.length == 2){
+				this.each(function(){
+					var dom=this;
+					if(this.buckeEvent && this.buckeEvent[eventName]){
+						lQuery.each(this.buckeEvent[eventName]),function(index,value){
+							if(this == fnName){
+								dom.buckeEvent[eventName].splice(index,1);
+							}
+						}
+					}
+				})
+			}
+		},                                                                     
+	});
 
 	//把lQuery上的init.prototype赋给lQuery.fn
 	lQuery.fn.init.prototype = lQuery.fn;
 
 	//暴露到window上
 	window.lQuery = window.$ = lQuery; 	
-
-})(window);
+})(window); 
