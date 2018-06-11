@@ -61,13 +61,10 @@
 		border-left: 1px solid #f3f5f6;
 		border-right: 1px solid #f3f5f6;
 	}
-/*	因为在common中用属性选择器给公共化了 所以这里不要了
-	.menu-active .dropdown-arrow{
+/*	.menu-active .dropdown-arrow{
 		transform: rotate(180deg);
 	}
-*/
-
-/*顶部导航结束*/
+*//*顶部导航结束*/
 /*头部开始*/
 /*头部结束*/
 /*主导航开始*/
