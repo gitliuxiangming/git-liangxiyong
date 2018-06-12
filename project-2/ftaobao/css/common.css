@@ -49,7 +49,12 @@
 		position: relative;
 		z-index: 2;
 	}
-	
+	.dropdown-left{
+		left: 0px;
+	}
+	.dropdown-right{
+		right: 0px;
+	}
 	.dropdown-layer{
 		position: absolute;
 		z-index: 1;
@@ -59,3 +64,19 @@
 		transform: rotate(180deg);
 	}
 /*下拉菜单共同样式结束*/
+/*显示隐藏公共样式开始*/
+		.fadeOut{
+			opacity: 0 !important;
+			visibility: hidden !important;
+		}
+		.slideUpDownCollapse{
+			height: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+		.slideLeftRightCollapse{
+			width: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}	
+/*显示隐藏公共样式结束*/

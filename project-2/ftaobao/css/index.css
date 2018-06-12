@@ -69,12 +69,28 @@
 
 /*顶部导航结束*/
 /*头部开始*/
+	.header{
+		height: 100px;
+		background: #ccc;
+	}
 /*头部结束*/
 /*主导航开始*/
+	.nav-main{
+		height: 50px;
+		background: orange;
+	}
 /*主导航结束*/
-/*主要区域开始*/
-/*主要区域结束*/
+/*主要内容开始*/
+	.focus{
+		height: 500px;
+		background: pink;
+	}
+/*主要内容结束*/
 /*今日热销开始*/
+	.todays{
+		height: 100px;
+		background: black;
+	}
 /*今日热销结束*/
 /*楼层1开始*/
 /*楼层1结束*/
