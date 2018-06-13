@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #000;
+		}
+		div{
+			width: 400px;
+			height: 400px;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.hua{
+			display: none;
+		}
+		.hua img{
+			margin-left: -80px;
+			margin-top: -80px;
+		}
+		.btn{
+			display: none;
+			position: relative;
+		}
+		button{
+			position: absolute;
+			left: 35%;
+			top: 40%;
+		}
+		p{
+			width: 200px;
+			height: 200px;
+			line-height: 100px;
+			border: 1px solid #000;
+			position: absolute;
+			top: 200px;
+			left: 50%;
+			margin-left: -100px;
+			background: gold;
+			font-size: 20px;
+			text-align: center;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="lue">
+		<img src="../lue.gif" alt="">
+	</div>
+	<div class="hua">
+		<img src="../hua.gif" alt="">
+	</div>
+	<div class="btn">
+		<button>幸运抽奖</button>
+	</div>
+	<p></p>
+</body>
+<script type="text/javascript" src="jQuery插件/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var timer = null
+	   	// 让图片显示一会儿，消失，然后出现一个动画效果，效果完毕，触发事件
+		timer = setTimeout(function(){
+			$('.lue').css({
+				display:'none'
+			});
+			$('.hua').css({
+				display:'block'
+			});
+			setTimeout(function(){
+				// clearTimeout(timer);
+				$('.hua').css({
+					display:'none'
+				});
+				$('.btn').css({
+					display:'block'
+				});
+			},1000)
+		},2000);
+
+	});
+</script>
+<script>
+	var timer=null;
+	function choujiang(){
+		$.ajax({
+			url:'http://10.196.18.35:3000',
+			type:'GET',
+			dataType:"json",
+			success:function(data,statusMsg,jqXHR){
+				if (data.name != '一等奖') {
+					clearInterval(timer);
+					timer=setInterval(function(){
+						choujiang();
+					},20)							
+				}else{
+					console.log(data);
+					clearInterval(timer);
+					$('p').html('恭喜获奖'+'<br>'+data.name);
+										
+				}
+			}
+		})
+	}
+	$('button').eq(0).on('click',function(){
+		$('body').css({
+			background:'#fafafa'
+		})		
+		choujiang();
+		$('p').eq(0).css({
+			display:'block',
+		})
+	})
+	
+</script>
+</html>

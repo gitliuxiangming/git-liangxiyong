@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抽奖页面</title>
+</head>
+<body>
+	<button>点击抽奖</button>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+	var $ajax=null;
+	function choujiang(){
+		var timer=null;
+		if($ajax != null){
+			$ajax.abort();
+		}
+		$ajax=
+		$.ajax({
+			url:'http://10.196.18.35:3000',
+			type:'GET',
+			dataType:"json",
+			success:function(data,statusMsg,jqXHR){
+					console.log(data);
+					// data.name="一等奖";
+					// console.log(data,statusMsg,jqXHR);		
+			},
+			complete:function(){
+				$ajax=null;
+			}
+		});
+	}
+
+	$('button').eq(0).on('click',function(){
+		choujiang();
+	})
+	
+</script>
+</html>
