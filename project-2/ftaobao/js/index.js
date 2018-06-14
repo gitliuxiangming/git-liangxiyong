@@ -1,5 +1,7 @@
 // 刘向明的仿电商页面的全部脚本语言
  ;(function($){
+
+// 顶部下拉菜单开始
 	var $dropdown=$('.dropdown')
 	$dropdown.on('dropdown-show',function(ev){
 		// console.log(this);
@@ -35,5 +37,43 @@
 		js:true,
 		mode:'slideUpDown',
 	});
+// 顶部下拉菜单结束
+
+// 搜索框开始
+	var $search=$('.search')
+	$search.search({
+		autocomplete:true
+	});
+	$search
+	.on('getData',function(ev,data){				
+		var $this=$(this);
+		var html=createSearchLayer(data,10);
+		// $searchLayer.html(html).showHide('show');	
+		$this.search('appendLayer',html).search('showLayer');
+	})
+	.on('getNoData',function(){
+		// $searchLayer.html('').showHide('hide');
+		$this.search('appendLayer','').search('hideLayer');
+	})
+	.on('click','.search-item',function(){
+		var $this=$(this)
+		// $searchInput.val(removeHTMLTag($(this).html()));
+		// $searchForm.trigger('submit');
+		$search.search('setInputVal',$(this).html());
+		$search.search('submit');
+	})
+
+	function createSearchLayer(data,maxNum){
+		if(data.result.length == 0){
+			return '';
+		}
+		var html='';
+		for(var i=0;i<data.result.length;i++){
+			if(i>=maxNum) break;
+			html += '<li class="search-item">'+data.result[i][0]+'</li>'
+		}
+		return html;
+	}
+// 搜索框结束
 
 })(jQuery);

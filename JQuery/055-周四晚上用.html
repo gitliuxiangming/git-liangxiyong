@@ -13,16 +13,29 @@
 			margin: 100px auto;
 			overflow: hidden;
 		}
-		.hua{
+		.hua,.a1{
 			display: none;
 		}
 		.hua img{
 			margin-left: -80px;
 			margin-top: -80px;
 		}
+		.a1 img{
+			margin-left: -80px;
+			margin-top: -80px;
+		}
+		.a1{
+			white-space: nowrap;
+			position: absolute;
+			top: 50px;
+			left: 50%;
+			margin-left: -200px;
+			display: none;
+		}
 		.btn{
 			display: none;
 			position: relative;
+			margin-top: 200px;
 		}
 		button{
 			position: absolute;
@@ -51,6 +64,9 @@
 	</div>
 	<div class="hua">
 		<img src="../hua.gif" alt="">
+	</div>
+	<div class="a1">
+		<img src="../2.gif" alt="">
 	</div>
 	<div class="btn">
 		<button>幸运抽奖</button>
@@ -83,63 +99,52 @@
 	});
 </script>
 <script>
-	var timer=null;
 	var time=null;
+	var timer=null;
 	function getRandomNum(min,max){
 		return Math.round(min + (max-min)*Math.random())
 	}
-	// var arr=[],
-
 	function choujiang(){
 		$.ajax({
 			url:'http://10.196.18.35:3000',
 			type:'GET',
 			dataType:"json",
 			success:function(data,statusMsg,jqXHR){
-				// var num = getRandomNum(1000,9999);
-				// if (data.name != (num+'一等奖')) {
-				// 	clearInterval(timer);
-				// 	console.log('again')
-				// 	timer=setInterval(function(){
-				// 		choujiang();
-				// 	},2)							
-				// }else{
 					console.log(data);
-					// clearInterval(timer);
-					$('p').html('恭喜获奖'+'<br>'+data.name);
-										
-				// }
+					$('p').html('恭喜获奖'+'<br>'+data.name);							
 			}
 		})
 	}
 	$('button').eq(0).on('click',function(){		
 		choujiang();
-		if($('p').html()==''){
-			clearInterval(time);
-			$('p').eq(0).css({
-				display:'none',
+		time=setInterval(function(){
+			var color=getRandomNum(000000,999999)
+			$('body').css({
+				background:'#'+color,
 			})
-			$('.lue').css({
-				display:'block'
-			});
-			time=setInterval(function(){
-				var color=getRandomNum(000000,999999)
-				$('body').css({
-					background:'#'+color,
-				})
-			},100)
-		}else{
+		},100)
+		$('.a1').css({
+			display:'block'
+		});
+		$('.btn').css({
+			display:'none'
+		});
+		timer=setTimeout(function(){
 			clearInterval(time);
+			clearTimeout(timer);
 			$('body').css({
 				background:'#fafafa'
 			})
-			$('.lue').css({
+			$('.a1').css({
 				display:'none'
-			});
+			});			
 			$('p').eq(0).css({
 				display:'block',
 			})
-		}		
+		},5000)
+
+		
+			
 	})
 	
 </script>

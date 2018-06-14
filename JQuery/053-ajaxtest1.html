@@ -10,6 +10,10 @@
 <script src="jquery-1.12.4.js"></script>
 <script>
 	var $ajax=null;
+	function getRandomNum(min,max){
+		return Math.round(min + (max-min)*Math.random())
+	}
+	var num = getRandomNum(1000,9999);
 	function choujiang(){
 		var timer=null;
 		if($ajax != null){
@@ -21,9 +25,13 @@
 			type:'GET',
 			dataType:"json",
 			success:function(data,statusMsg,jqXHR){
-					console.log(data);
-					// data.name="一等奖";
-					// console.log(data,statusMsg,jqXHR);		
+					// console.log(data);
+				if(data.name.search('一等奖')){
+					data.name=num+"一等奖";
+					console.log(data,statusMsg,jqXHR);	
+				}else{
+					choujiang();
+				}											
 			},
 			complete:function(){
 				$ajax=null;
