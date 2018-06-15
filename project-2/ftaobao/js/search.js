@@ -1,16 +1,16 @@
 ;(function($){
-	//缓存
 	var cache = {
 		data:{},
 		count:0,
 		addData:function(key,val){
-			this.data[key]=val;
+			this.data[key] = val;
 			this.count++;
 		},
-		readData:function(){
+		readData:function(key){
 			return this.data[key];
 		}
-	}
+	};
+
 
 	function Search($elem,options){
 		this.$elem = $elem;
@@ -19,6 +19,8 @@
 		this.$searchLayer = this.$elem.find('.search-layer');
 		this.$searchBtn = this.$elem.find('.search-btn');
 		this.options = options;
+
+		this.isLoaded = false;
 
 		this._init();
 
@@ -40,17 +42,19 @@
 		},
 		autocomplete:function(){
 			//获取数据
+			// this.getData();
 			this.$searchInput
 			.on('input',function(){
-				if(this.getInputVal == ''){
-					return false;
-				}
-				if(this.options.getInputVal){
-					clear(this.timer);
+
+				if(this.options.getDataInterval){
+					clearTimeout(this.timer);
 					this.timer = setTimeout(function(){
 						this.getData();
 					}.bind(this),this.options.getDataInterval)
+				}else{
+					this.getData();
 				}
+				
 			}.bind(this))
 			.on('focus',$.proxy(this.showLayer,this))
 			.on('click',function(ev){
@@ -58,29 +62,34 @@
 			});
 			$(document).on('click',$.proxy(this.hideLayer,this));
 
+			//初始化显示隐藏插件
 			this.$searchLayer.showHide(this.options);
 
 		},
 		getData:function(){
-			//获取服务器数据
-			var inputVal=this.getInputVal();
+
+			var inputVal = this.getInputVal();
+
 			if(inputVal == ''){
 				return false;
 			}
+
 			if(cache.readData(inputVal)){
 				this.$elem.trigger('getData',[cache.readData(inputVal)]);
 				return;
 			}
+
 			if(this.jqXHR){
 				this.jqXHR.abort();
 			}
+			//获取服务器数据
 			this.jqXHR = $.ajax({
 				url:this.options.url+this.getInputVal(),
 				dataType:'jsonp',
 				jsonp:'callback'
 			})
 			.done(function(data){
-				cache.addData(inputVal,data);
+				cache.addData(inputVal,data)
 				this.$elem.trigger('getData',[data]);
 			}.bind(this))
 			.fail(function(err){
@@ -88,12 +97,12 @@
 				this.$elem.trigger('getNoData');
 			}.bind(this))
 			.always(function(){
-				// console.log('always me');
-				this.jqXHR=null
+				this.jqXHR = null;
 			}.bind(this));
-		
+
 		},
 		showLayer:function(){
+			// if($.trim(this.$searchLayer.html()) == '') return;
 			if(!this.isLoaded) return;
 			this.$searchLayer.showHide('show');
 		},
@@ -110,8 +119,8 @@
 		setInputVal:function(val){
 			this.$searchInput.val(removeHTMLTag(val));
 			function removeHTMLTag(str){
-				return str.replace(/<[^<|>]+>/g,'')
-			}
+				return str.replace(/<[^<|>]+>/g,'');
+			}			
 		}
 	}
 	Search.DEFAULTS = {
@@ -119,7 +128,7 @@
 		css3:false,
 		js:false,
 		mode:'slideUpDown',
-		getDataInterval:0,
+		getDataInterval:200,
 		url:'https://suggest.taobao.com/sug?code=utf-8&_ksTS=1528889766600_556&k=1&area=c2c&bucketid=17&q='
 	}
 

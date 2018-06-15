@@ -2,7 +2,7 @@
  ;(function($){
 
 // 顶部下拉菜单开始
-	var $dropdown=$('.dropdown')
+	var $dropdown=$('.dropdown');
 	$dropdown.on('dropdown-show',function(ev){
 		// console.log(this);
 		var $this = $(this);
@@ -40,20 +40,26 @@
 // 顶部下拉菜单结束
 
 // 搜索框开始
+	//初始化
 	var $search=$('.search')
 	$search.search({
-		autocomplete:true
+		autocomplete:true,
+		getDataInterval:0
 	});
+	
 	$search
 	.on('getData',function(ev,data){				
 		var $this=$(this);
 		var html=createSearchLayer(data,10);
 		// $searchLayer.html(html).showHide('show');	
-		$this.search('appendLayer',html).search('showLayer');
+		$this.search('appendLayer',html);
+		if(html){
+			$this.search('showLayer');
+		}
 	})
 	.on('getNoData',function(){
 		// $searchLayer.html('').showHide('hide');
-		$this.search('appendLayer','').search('hideLayer');
+		$search.search('appendLayer','').search('hideLayer');
 	})
 	.on('click','.search-item',function(){
 		var $this=$(this)
