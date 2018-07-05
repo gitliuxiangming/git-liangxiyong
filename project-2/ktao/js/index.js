@@ -127,7 +127,8 @@
 	var $focusCarousel = $('.focus .carousel-container');
 
 	$focusCarousel.carousel({
-		activeIndex:5
+		activeIndex:5,
+		interval:4000,
 	})
 	/*中心轮播图结束*/
 })(jQuery);

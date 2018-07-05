@@ -15,12 +15,7 @@
 		this.$controlBtns = $elem.find('.control');
 
 		this.now = this._getCorrectIndex(options.activeIndex);
-		this._init();
-		if(options.interval){
-			this.auto();
-			var self = this;
-			this.$elem.hover($.proxy(self.pause,self),$.proxy(self.auto,self));		
-		}
+		this._init();		
 	}
 	Carousel.prototype = {
 		constructor:Carousel,
@@ -31,7 +26,7 @@
 			//激活底部对应的按钮
 			this.$btns.eq(this.now).addClass('active');
 
-			
+			//划入划出
 			if(this.options.mode === 'slide'){
 				this.tab = this._slide;
 			//淡入淡出	
@@ -57,8 +52,14 @@
 
 			this.$btns.on('click',function(){
 				self.tab(self.$btns.index($(this)));
-			})	
+			});
+			if(this.options.interval){
+				this.auto();
+				var self = this;
+				this.$elem.hover($.proxy(self.pause,self),$.proxy(self.auto,self));		
+			}
 		},
+		//index表示将要显示的索引
 		_fade(index){
 			if(this.now == index) return;
 			//当前的隐藏
