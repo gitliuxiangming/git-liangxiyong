@@ -21,19 +21,23 @@
 		constructor:Carousel,
 		_init:function(){
 			var self = this;
-			//显示当前的
-			this.$carouselItems.eq(this.now).show();
-			//激活底部对应的按钮
-			this.$btns.eq(this.now).addClass('active');
-
 			//划入划出
 			if(this.options.mode === 'slide'){
 				this.tab = this._slide;
+				//添加划入划出的的初始化class
+				this.$carouselItems.eq(this.now).css({left:0});
+				//初始化显示隐藏插件
+				this.$carouselItems.move(this.options);
 			//淡入淡出	
 			}else{
+				this.tab = this._fade;
+				this.$elem.addClass('fade');
+				//显示当前的
+				this.$carouselItems.eq(this.now).show();
+				//激活底部对应的按钮
+				this.$btns.eq(this.now).addClass('active');
 				//初始化显示隐藏插件
 				this.$carouselItems.showHide(this.options);
-				this.tab = this._fade;
 			}
 			//绑定事件
 			this.$elem

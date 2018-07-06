@@ -128,28 +128,58 @@
 				this.to(null,y);
 			}
 		}
-		var default = {
+		var defaults = {
 			css3:true,
 			js:true
 		}
 		var mode = null;
-		function move(options){
+		function move($elem,options){
 			if(options.css3 && kuazhu.transition.isSupport){//css3的移动
-				mode = Css3;
+				mode = new Css3($elem);
 			}
 			else if(options.js){
-				mode = Js;
+				mode = new Js($elem);
 			}
 			else{
-				mode = Slient;
+				mode = new Slient($elem);
 			}
+			/*
 			return {
-				to:
-				x:
-				y:
+				to:mode.to.bind(mode),
+				x:mode.x.bind(mode),
+				y:mode.y.bind(mode)
+			}
+			*/
+			return {
+				to:$.proxy(mode.to,mode),
+				x:$.proxy(mode.x,mode),
+				y:$.proxy(mode.y,mode)
 			}
 		}
-		var move = new Js($('.box'));
+		$.fn.extend={
+			move:function($elem,options){
+				return this.each(function(x,y){
+					var $elem = $(this);
+					var moveMode = $elem.data('moveMode');
+					// var moveMode = move($elem,{Css3:true,Js:false})
+					// 单例模式
+					if(!moveMode){
+						options = $.extend(defaults,options);
+						moveMode = move($elem,options);
+						//把有方法(show/hide)的对象存到对应的DOM元素上
+						$elem.data('moveMode',moveMode);
+					}
+					if(typeof moveMode[options] == 'function'){
+						//注意，此处要不执行显示隐藏的元素jQuery对象传递
+						//moveMode[options]相当于在mode对象中找不到下标为options的方法
+						//options 就是show/hide 方法
+						moveMode[options](x,y);
+					}
+				})
+				return this;
+			},
+		}
+		var move = new Css3($('.box'));
 		
 		$('.box').on('move moved',function(ev){
 			console.log(ev.type);
