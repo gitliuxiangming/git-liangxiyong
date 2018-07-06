@@ -103,6 +103,7 @@
 		interval:0
 	}
 
+	
 	$.fn.extend({
 		carousel:function(options){
 			return this.each(function(){

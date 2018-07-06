@@ -123,7 +123,7 @@
 			css3:true,
 			js:true
 		}
-		$.fn.extend={
+		$.fn.extend({
 			move:function(options,x,y){
 				return this.each(function(x,y){
 					var $this = $(this);
@@ -139,5 +139,5 @@
 				})
 				return this;
 			},
-		}
+		})
 })(jQuery);

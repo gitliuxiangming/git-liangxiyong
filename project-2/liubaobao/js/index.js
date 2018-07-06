@@ -125,7 +125,7 @@
 
 	/*中心轮播图开始*/
 	var $focusCarousel = $('.focus .carousel-container');
-
+	// console.log($focusCarousel )
 	$focusCarousel.carousel({
 		activeIndex:5,
 		mode:'slide',
