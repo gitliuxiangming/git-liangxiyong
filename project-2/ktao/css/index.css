@@ -1,0 +1,256 @@
+/*
+* @Author: TomChen
+* @Date:   2018-06-08 20:16:50
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-07-05 10:36:19
+*/
+/*顶部导航开始*/
+	.nav-site{
+		height: 44px;
+		background: #f3f5f7;
+	}
+	.nav-login{
+		color: #ea675a;
+	}
+	.nav-left li{
+		line-height: 44px;
+		margin-right: 10px;
+	}
+	.nav-category{
+		line-height: 44px;
+		margin:0 10px;
+	}
+	.nav-site .dropdown-toggle{
+		display: block;
+		height: 44px;
+		line-height: 44px;
+		padding: 0 10px;
+	}
+	.nav-site .dropdown-arrow{
+		margin-left: 5px;
+	}
+	.nav-site .dropdown-layer{
+		top:43px;
+		/*left:0px;*/
+		background: #fff;
+		border: 1px solid #f3f5f6;
+	}
+	.nav-site .menu-item{
+		/*width: 100px;*/
+		display: block;
+		line-height: 30px;
+		padding: 0 15px;
+		white-space: nowrap;
+	}
+	.nav-site .menu-item:hover{
+		background: #f3f5f6;
+	}
+
+	/*
+	CSS实现下拉显示,下一步转为用jQuery控制class来实现
+	.dropdown:hover .dropdown-layer{
+		display: block;
+	}
+	.dropdown:hover .dropdown-toggle{
+		background: #fff;
+		border-left: 1px solid #f3f5f6;
+		border-right: 1px solid #f3f5f6;
+	}
+	.dropdown:hover .dropdonw-arrow{
+		transform: rotate(180deg);
+		transition: all 0.5s;
+	}
+	*/
+	.menu-active .dropdown-layer{
+		display: block;
+	}
+	.menu-active .dropdown-toggle{
+		background: #fff;
+		border-left: 1px solid #f3f5f6;
+		border-right: 1px solid #f3f5f6;
+	}
+/*	.menu-active .dropdown-arrow{
+		transform: rotate(180deg);
+	}*/
+	
+/*顶部导航结束*/
+/*头部开始*/
+	.header{
+		height: 100px;
+		background: yellow;
+	}
+	.header-logo{
+		display: block;
+		width: 150px;
+		height: 71px;
+		background: url(../images/header-logo.png) no-repeat;
+		background-size: 150px;
+		margin-top: 36px;
+	}
+	.header .search{
+		margin-top: 36px;
+		margin-left: 150px;
+	}
+	.header .search-input{
+		width: 400px;
+		height: 40px;
+		outline-width: 0px;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+	.header .search-btn{
+		width: 80px;
+		height: 40px;
+		border:none;
+		box-sizing: border-box;
+		border:1px solid #ccc;
+		border-left: none;
+		outline-width: 0px;
+		cursor: pointer;
+		background: black;
+		color: #fff;
+	}
+	.header .search-layer{
+		border: 1px solid #ccc;
+		border-top: none;
+		box-sizing: border-box;
+	}
+	.header .search-item{
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		padding:0 10px;
+		box-sizing: border-box;
+		background: #fff;
+		cursor: pointer;
+	}
+	.header .search-item:hover{
+		background: #f5f5f7;
+	}	
+/*头部结束*/
+/*主导航开始*/
+	.nav-main{
+		background: black;
+	}
+	.nav-main .link{
+		display: inline-block;
+		height: 50px;
+		line-height: 50px;
+		color: #fff;
+		font-size: 14px;
+		margin-right: 20px;
+	}
+	.nav-main .link:nth-child(1){
+		margin-left: 100px;
+	}
+/*主导航结束*/
+/*主要内容开始*/
+	.focus{
+		height: 500px;
+		background: pink;
+	}
+	.category{
+		position: relative;
+		width: 208px;
+		margin-top: -54px;
+	}
+	.category-title{
+		display: block;
+		width: 100%;
+		height: 54px;
+		line-height: 54px;
+		background: #b1191a;
+		font-size: 14px;
+		color: #fff;
+		padding-left: 10px;
+		box-sizing: border-box;
+	}
+	.category-title .icon{
+		margin-right: 5px;
+	}
+	.category .dropdown{
+		position: static;
+	}
+	.category .dropdown-toggle{
+		width: 100%;
+		height: 36px;
+		line-height: 36px;
+		box-sizing: border-box;
+		background: #ea675a;
+		padding-left: 10px;
+		cursor: pointer;
+	}
+	.category .dropdown-link{
+		font-size: 14px;
+		color: #fff;
+	}
+	.category .dropdown-icon{
+		position: absolute;
+		right: 10px;
+		color: #fff;
+		font-style: normal;
+	}
+	.category .dropdown-layer{
+		/*display: block;*/
+		top:54px;
+		left:100%;
+		width: 774px;
+		min-height: 504px;
+		background: #fff;
+		padding-bottom: 24px;
+		box-sizing: border-box;
+	}
+	.category-details{
+		overflow: hidden;
+		margin-top: 24px;
+		font-size: 14px;
+		width: 764px;
+	}
+	.category-details-title{
+		width: 84px;
+		text-align: right;
+		box-sizing: border-box;
+		padding-right: 10px;
+		border-right: 1px solid #ccc;
+	}
+	.category-details-title-link{
+		font-weight: bold;
+	}
+	.category-details-item{
+		width: 670px;
+		line-height: 20px;
+	}
+	.category-details-item .link{
+		margin-left: 10px;
+		display: inline-block;
+	}
+	.category-active .dropdown-toggle{
+		background: #ccc;
+	}
+	.category-active .dropdown-link,
+	.category-active .dropdown-icon{
+		color: #ea675a;
+	}
+	.category .dropdown-loading{
+		margin: 220px auto;
+
+	}
+	
+	.focus .carousel-container,
+	.focus .carousel-container .carousel-item img {
+		width: 768px;
+		height: 504px;
+	}	
+/*主要内容结束*/
+/*今日热销开始*/
+	.todays{
+		height: 100px;
+		background: black;
+	}
+/*今日热销结束*/
+/*楼层开始*/
+	.floor{
+		height: 300px;
+		background: red;
+	}
+/*楼层结束*/
