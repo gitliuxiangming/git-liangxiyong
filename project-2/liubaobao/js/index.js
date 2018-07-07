@@ -184,7 +184,7 @@
 	$focusCarousel.carousel({
 		activeIndex:0,
 		mode:'slide',
-		interval:5000
+		interval:0
 	});
 
 	/*中心轮播图结束*/
@@ -197,5 +197,12 @@
 		interval:0
 	});
 	/*今日热销结束*/
+	/*楼层开始*/
+	// 楼层选项卡插件调用
+	var $floor=$('.floor');
+	$floor.tab({
+		activeIndex:0,
+	})
+	/*楼层结束*/
 	
 })(jQuery);

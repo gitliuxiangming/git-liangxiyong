@@ -77,6 +77,7 @@
 			var inputVal = this.getInputVal();
 
 			if(inputVal == ''){
+				this.$searchLayer.showHide('hide');
 				return false;
 			}
 
