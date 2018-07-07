@@ -347,4 +347,15 @@
 		border-radius: 50%;
 		margin-right: 5px;
 	}
+	.floor .floor-title .floor-title-text{
+		font-size: 16px;
+		position: relative;
+		top: 2px;
+	}
+	.floor .tab-item-wrap li{
+		float: right;
+		height: 100%;
+		font-size: 22px;
+	}
+	
 /*楼层结束*/

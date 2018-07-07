@@ -200,8 +200,54 @@
 	/*楼层开始*/
 	// 楼层选项卡插件调用
 	var $floor=$('.floor');
+
+		$('.floor-hd .tab-item').eq(0).addClass('tab-item-active');
+		$('.floor-bd .tab-panel').eq(0).show();
+
+		$floor.item = {};
+		$floor.totalItemNum =  $floor.find('.floor-item-img').length;
+		$floor.loadedItemNum = 0;
+		$floor.on('tab-show',$floor.loadFn = function(ev,index,elem){
+
+			
+
+			if($floor.item[index] != 'loaded'){
+
+				$floor.trigger('tab-loadItem',[index,$floor])
+			}
+		});		
+		$floor.on('tab-loadItem',function(ev,index,elem){
+
+			var $img = $($floor).find('.floor-item-img');
+			$img.each(function(){	
+
+				var $this=$(this);
+				var imgUrl = $this.data('src');
+				loadImage(imgUrl,function(url){
+					$this.attr('src',url);
+				},function(url){
+					$this.attr('src','images/focus-tab/placeholder.png');
+				});
+				$floor.item[index] = 'loaded';
+				$floor.loadedItemNum++;
+				if($floor.loadedItemNum == $floor.totalItemNum){
+					$floor.trigger('tab-loadedItems');
+				}					
+			})
+			$floor.on('tab-loadedItems',function(){
+				$floor.off('tab-show',$floor.loadFn)
+			});	
+		});
+
+
 	$floor.tab({
-		activeIndex:0,
+		css3:false,
+		js:false,
+		mode:'fade',
+		eventName:'mouseenter',
+		activeIndex:1,
+		delay:200,
+		interval:0
 	})
 	/*楼层结束*/
 	
