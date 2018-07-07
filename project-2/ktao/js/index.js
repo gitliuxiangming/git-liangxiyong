@@ -2,7 +2,7 @@
 * @Author: TomChen
 * @Date:   2018-06-08 20:17:35
 * @Last Modified by:   TomChen
-* @Last Modified time: 2018-07-06 11:40:25
+* @Last Modified time: 2018-07-06 17:18:31
 */
 ;(function($){
 
@@ -22,6 +22,19 @@
 		});		
 	}
 
+	function loadImage(url,success,error){
+		var image = new Image();
+
+		image.onload = function(){
+			if(typeof success == 'function') success(url);
+		}
+
+		image.onerror = function(){
+			if(typeof error == 'function') error(url);
+		}
+
+		image.src = url;		
+	}
 	/*顶部下拉菜单开始*/
 	var $menu = $('.nav-site .dropdown');
 	
@@ -125,11 +138,53 @@
 
 	/*中心轮播图开始*/
 	var $focusCarousel = $('.focus .carousel-container');
+	/*
+	$focusCarousel.on('carousel-show carousel-shown carousel-hide carousel-hidden',function(ev,index,elem){
+		console.log(index,ev.type);
+	})
+	*/
+	/*按需加载的步骤
+		1. 确定什么时候加载
+		2. 具体的加载
+		3. 加载完成的善后
+	*/
+	$focusCarousel.item = {};
+	$focusCarousel.totalItemNum =  $focusCarousel.find('img').length;
+	$focusCarousel.loadedItemNum = 0;
+	
+	$focusCarousel.on('carousel-show',$focusCarousel.loadFn = function(ev,index,elem){
+		console.log('carousel-show loading...');
+		if($focusCarousel.item[index] != 'loaded'){
+			$focusCarousel.trigger('carousel-loadItem',[index,elem])
+		}
+	});
+
+	$focusCarousel.on('carousel-loadItem',function(ev,index,elem){
+		console.log(index,'loading...');
+		var $img = $(elem).find('img');
+		var imgUrl = $img.data('src');
+		loadImage(imgUrl,function(url){
+			$img.attr('src',url);
+		},function(url){
+			$img.attr('src','images/focus-carousel/placeholder.png');
+		});
+		$focusCarousel.item[index] = 'loaded';
+		$focusCarousel.loadedItemNum++;
+		if($focusCarousel.loadedItemNum == $focusCarousel.totalItemNum){
+			$focusCarousel.trigger('carousel-loadedItems')
+		}
+	});
+	
+	$focusCarousel.on('carousel-loadedItems',function(){
+		$focusCarousel.off('carousel-show',$focusCarousel.loadFn)
+	});
+
 	/*调用轮播图插件*/
 	$focusCarousel.carousel({
 		activeIndex:0,
-		mode:'slide',
+		mode:'fade',
 		interval:0
-	})
+	});
+
 	/*中心轮播图结束*/
 })(jQuery);

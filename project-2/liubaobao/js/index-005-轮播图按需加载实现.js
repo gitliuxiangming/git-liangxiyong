@@ -2,7 +2,7 @@
 * @Author: TomChen
 * @Date:   2018-06-08 20:17:35
 * @Last Modified by:   TomChen
-* @Last Modified time: 2018-07-06 17:18:31
+* @Last Modified time: 2018-07-06 16:45:25
 */
 ;(function($){
 
@@ -136,66 +136,42 @@
 
 	/*分类导航结束*/
 
-	// 轮播图的按需加载函数
-	function carouselLoadOnce($elem){
-		$elem.item = {};
-		$elem.totalItemNum =  $elem.find('.carousel-img').length;
-		$elem.loadedItemNum = 0;
-		
-		$elem.on('carousel-show',$elem.loadFn = function(ev,index,elem){
-			if($elem.item[index] != 'loaded'){
-				$elem.trigger('carousel-loadItem',[index,$elem])
-			}
-		});
-
-		$elem.on('carousel-loadItem',function(ev,index,elem){
-			var $img = $($elem).find('.carousel-img');
-			$img.each(function(){
-				var $this=$(this);
-				var imgUrl = $this.data('src');
-				loadImage(imgUrl,function(url){
-					$this.attr('src',url);
-				},function(url){
-					$this.attr('src','images/focus-carousel/placeholder.png');
-				});
-				$elem.item[index] = 'loaded';
-				$elem.loadedItemNum++;
-				if($elem.loadedItemNum == $elem.totalItemNum){
-					$elem.trigger('carousel-loadedItems');
-				}					
-			})
-			$elem.on('carousel-loadedItems',function(){
-				$elem.off('carousel-show',$elem.loadFn)
-			});	
-		});
-	}
-
 	/*中心轮播图开始*/
 	var $focusCarousel = $('.focus .carousel-container');
 	/*
-	按需加载的步骤
-		1. 确定什么时候加载
-		2. 具体的加载
-		3. 加载完成的善后
+	$focusCarousel.on('carousel-show carousel-shown carousel-hide carousel-hidden',function(ev,index,elem){
+		console.log(index,ev.type);
+	})
 	*/
-	carouselLoadOnce($focusCarousel);
+	var item = {};
+	var totalItemNum =  $focusCarousel.find('img').length;
+	var loadedItemNum = 0;
+	var loadFn = null;
+	$focusCarousel.on('carousel-show',loadFn = function(ev,index,elem){
+		console.log('carousel-show loading...');
+		if(item[index] != 'loaded'){
+			console.log(index,'loading...');
+			var $img = $(elem).find('img');
+			var imgUrl = $img.data('src');
+			loadImage(imgUrl,function(url){
+				$img.attr('src',url);
+			},function(url){
+				$img.attr('src','images/focus-carousel/placeholder.png');
+			});
+			item[index] = 'loaded';
+			loadedItemNum++;
+			if(loadedItemNum == totalItemNum){
+				$focusCarousel.off('carousel-show',loadFn)
+			}
+		}
+	})
 
 	/*调用轮播图插件*/
 	$focusCarousel.carousel({
 		activeIndex:0,
-		mode:'slide',
-		interval:5000
+		mode:'fade',
+		interval:0
 	});
 
 	/*中心轮播图结束*/
-	/*今日热销开始*/
-	var $todaysCarousel = $('.todays .carousel-container');
-	carouselLoadOnce($todaysCarousel);
-	$todaysCarousel.carousel({
-		activeIndex:0,
-		mode:'slide',
-		interval:0
-	});
-	/*今日热销结束*/
-	
 })(jQuery);

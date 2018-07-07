@@ -77,7 +77,7 @@
 				var $this = $(this);
 				var dropdown = $this.data('dropdown');
 				if(!dropdown){//单例模式
-					options  = $.extend(DropDown.DEFAULTS,options);
+					options  = $.extend({},DropDown.DEFAULTS,options);
 					dropdown = new DropDown($(this),options);
 					$this.data('dropdown',dropdown);
 				}
