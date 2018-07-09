@@ -32,7 +32,7 @@
 			})
 
 			//触发事件
-			self.$elem.trigger("tab-show",[this.now,self.$tabPanels.index(this.now)]);
+			self.$elem.trigger("tab-show",[this.now,self.$tabPanels[this.now]]);
 
 			//绑定事件
 			this.options.eventName = this.options.eventName == 'click' ? 'click' : 'mouseenter';
