@@ -28,8 +28,12 @@
 			this.$tabPanels.eq(this.now).show();
 
 			this.$tabPanels.on('show',function(ev){
-				self.$elem.trigger("tab-"+ev.type,[self.$tabPanels.index(this),this])
+				self.$elem.trigger("tab-"+ev.type,[self.$tabPanels.index(this),this]);
 			})
+
+			//触发事件
+			self.$elem.trigger("tab-show",[this.now,self.$tabPanels.index(this.now)]);
+
 			//绑定事件
 			this.options.eventName = this.options.eventName == 'click' ? 'click' : 'mouseenter';
 			//初始化showHide

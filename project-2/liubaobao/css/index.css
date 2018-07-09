@@ -322,7 +322,7 @@
 /*今日热销结束*/
 /*楼层开始*/
 	.floor{
-		background: #f7f7f7;
+		background: #fff;
 	}
 	.floor .floor-hd{
 		width: 100%;
@@ -349,13 +349,55 @@
 	}
 	.floor .floor-title .floor-title-text{
 		font-size: 16px;
+		font-weight: bold;
 		position: relative;
-		top: 2px;
+		top:2px;
 	}
-	.floor .tab-item-wrap li{
-		float: right;
-		height: 100%;
-		font-size: 22px;
+	.floor .tab-item-wrap{
+		margin-top: 10px;
+		height: 60px;
+		line-height: 60px;
+	}
+	.floor .tab-item-wrap .tab-item{
+		display: inline-block;
+		margin-right: 10px;
+	}
+	.floor .tab-item-wrap .tab-item:hover{
+		color: #ea675a;
+	}
+	.floor .tab-item-wrap .tab-item.tab-item-active{
+		background: url(../images/floor-arrow.png) no-repeat center bottom;
+		color: #ea675a;
+	}
+	.floor .tab-item-wrap .tab-divider{
+	    width: 1px;
+	    height: 20px;
+	    background: #ccc;
+	    margin-top: 20px;
+	    margin-right: 10px;
+	}
+	.floor .tab-panel{
+		display: none;
+	}
+	.floor .floor-item{
+		width: 200px;
+		height: 234px;
+		text-align: center;
+		cursor: pointer;
+	}
+	.floor .floor-item:hover{
+		box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
+	}
+	.floor .floor-item .floor-item-pic{
+		margin-top: 24px;
+	}
+	.floor .floor-item .floor-item-name{
+		margin-top: 10px;
+	}
+	.floor .floor-item .floor-item-price{
+		margin-top: 10px;
+		color: #ff1414;
+		font-weight: bold;
 	}
 	
 /*楼层结束*/
