@@ -340,26 +340,26 @@
 		getDataOnce($doc,'data/floor/floorData.json',function(floorData){
 			var html = buildFloorHtml(floorData[index]);
 			//模拟网络延迟
-			setTimeout(function(){
-				$(elem).html(html);
-				//加载图片
-				// floorImgLoadOnce($(elem));
-				lazyLoad({
-					totalItemNum:$elem.find('.floor-img').length,
-					$elem:$elem,
-					eventName:'tab-show',
-					enentPrefix:'tab'
-				});
-				$elem	.tab({
-					css3:false,
-					js:false,
-					mode:'fade',
-					eventName:'mouseenter',
-					activeIndex:0,
-					delay:200,
-					interval:0
-				})
-			},500)
+			
+			$(elem).html(html);
+			//加载图片
+			// floorImgLoadOnce($(elem));
+			lazyLoad({
+				totalItemNum:$elem.find('.floor-img').length,
+				$elem:$elem,
+				eventName:'tab-show',
+				enentPrefix:'tab'
+			});
+			$elem	.tab({
+				css3:false,
+				js:false,
+				mode:'fade',
+				eventName:'mouseenter',
+				activeIndex:0,
+				delay:200,
+				interval:0
+			})
+			
 			success();
 		});
 	});
