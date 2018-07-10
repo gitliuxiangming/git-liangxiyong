@@ -55,6 +55,7 @@
 			var $img=$(this);
 			var imgUrl = $img.data('src');
 			loadImage(imgUrl,function(imgUrl){
+				$img.attr('src',imgUrl);
 				success($img,imgUrl);
 			},function(imgUrl){
 				error($img,imgUrl);
@@ -220,10 +221,7 @@
 	});
 	$focusCarousel.on('focusCarousel-loadItem',function(ev,index,elem,success){
 		var $imgs = $(elem).find('.carousel-img');
-		loadImages($imgs,function($img,url){
-			$img.attr('src',url);
-			success();
-		},function($img,url){
+		loadImages($imgs,success,function($img,url){
 			$img.sttr('src','images/focus-carousel/placeholder.png')
 		});
 	})
@@ -246,10 +244,7 @@
 	});
 	$todaysCarousel.on('todays-loadItem',function(ev,index,elem,success){
 		var $imgs = $(elem).find('.carousel-img');
-		loadImages($imgs,function($img,url){
-			$img.attr('src',url);
-			success();
-		},function($img,url){
+		loadImages($imgs,success,function($img,url){
 			$img.sttr('src','images/focus-carousel/placeholder.png')
 		});
 	})
@@ -399,8 +394,14 @@
 		},200)
 	});
 	/*楼层结束*/
+/*电梯开始*/
+	var $dianti=$('#elevator')
 
 
+
+
+
+/*电梯结束*/
 
 
 
@@ -422,3 +423,4 @@
 	
 	
 })(jQuery);
+set                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
