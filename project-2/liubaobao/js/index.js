@@ -395,10 +395,54 @@
 	});
 	/*楼层结束*/
 /*电梯开始*/
-	var $dianti=$('#elevator')
+	//判断楼层号
+	function whichFloor(){
+		var num = -1;
+		$floors.each(function(index,elem){
+			num = index;
+			if($win.scrollTop() + $win.height()/2 < $(elem).offset().top){
+				num = index - 1;
+				return false;
+			}
+		})
+		return num;
+	}
+	//设置电梯
+	var $elevator = $('#elevator');
+	$elevator.items = $elevator.find('.elevator-item');
+	function setElevator(){
+		var num = whichFloor();
+		if(num == -1){
+			$elevator.fadeOut(); 
+		}else{
+			$elevator.fadeIn();
+			$elevator.items.removeClass('elevator-active'); 
+			$elevator.items.eq(num).addClass('elevator-active'); 
+		}
+	}
+	//监听事件自动设置楼层
+	$win.on('scroll resize load',function(){
+		clearTimeout($elevator.elevatorTimer);
+		$elevator.elevatorTimer = setTimeout(function(){
+			setElevator();
+		},200)
+	});
+	//监听电梯点击事件
+	$elevator.on('click','.elevator-item',function(){
+		var num = $elevator.items.index(this);
+		$('body,html').animate({
+			scrollTop:$floors.eq(num).offset().top
+		})
+	});
 
+	/*电梯结束*/
 
-
+	/*回到顶部*/
+	$('#backToTop').on('click',function(){
+		$('body,html').animate({
+			scrollTop:0
+		})
+	});
 
 
 /*电梯结束*/
@@ -422,5 +466,4 @@
 
 	
 	
-})(jQuery);
-set                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+})(jQuery);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
