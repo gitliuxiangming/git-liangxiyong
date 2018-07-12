@@ -465,7 +465,8 @@
 		height: 40px;
 		line-height: 40px;
 		background: #ccc;
-
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
 		position: absolute;
 		left:0;
 		top:0;

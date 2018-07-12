@@ -86,11 +86,15 @@
 			height: 0 !important;
 			padding-top: 0 !important;
 			padding-bottom: 0 !important;
+			border-top-width:0 !important; 
+			border-bottom-width:0 !important;
 		}
 		.slideLeftRightCollapse{
 			width: 0 !important;
 			padding-left: 0 !important;
 			padding-right: 0 !important;
+			border-left-width:0 !important; 
+			border-right-width:0 !important; 
 		}	
 /*显示隐藏公共样式结束*/
 

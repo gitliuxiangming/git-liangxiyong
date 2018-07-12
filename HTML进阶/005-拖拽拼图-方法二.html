@@ -46,9 +46,10 @@
 	   		ev.originalEvent.dataTransfer.setData('tmp',targetEle.innerHTML)
 	   })
 	   .on('drop','li',function(ev){
-	   		targetEle.innerHTML = this.innerHTML;
-	   		this.innerHTML = ev.originalEvent.dataTransfer.getData('tmp');
-
+	   		if(targetEle.innerHTML != this.innerHTML){
+	   			targetEle.innerHTML = this.innerHTML;
+	   			this.innerHTML = ev.originalEvent.dataTransfer.getData('tmp');
+	   		}
 	   })
 	   .on('dragover','li',function(ev){
 	   		ev.preventDefault();

@@ -46,9 +46,11 @@
 	   		console.log(this);
 	   })
 	   .on('drop','li',function(){
-	   		var tmp=this.innerHTML;
-	   		this.innerHTML = targetEle.innerHTML;
-	   		targetEle.innerHTML = tmp;
+	  		if(targetEle.innerHTML != this.innerHTML){
+	  			var tmp=this.innerHTML;
+	   			this.innerHTML = targetEle.innerHTML;
+	   			targetEle.innerHTML = tmp;
+	  		}
 	   })
 	   .on('dragover','li',function(ev){
 	   		ev.preventDefault();
