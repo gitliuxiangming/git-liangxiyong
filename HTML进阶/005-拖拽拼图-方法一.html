@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-拖拽拼图-方法一.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.container{
+			width: 600px;
+			height: 400px;
+			margin:100px auto;
+		}
+		.container li{
+			float:left;
+		}
+		.container li img{
+			width: 120px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="container">
+		<li draggable="true"><img src="images/image/timg_02.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_03.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_04.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_05.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_06.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_07.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_08.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_09.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_10.gif" alt=""></li>
+		<li draggable="true"><img src="images/image/timg_11.gif" alt=""></li>
+	</ul>
+</body>
+<script type="text/javascript" src="../JQuery/jQuery插件/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   var targetEle = null;
+	   $('.container').on('dragstart','li',function(){
+	   		targetEle = this;
+	   		console.log(this);
+	   })
+	   .on('drop','li',function(){
+	   		var tmp=this.innerHTML;
+	   		this.innerHTML = targetEle.innerHTML;
+	   		targetEle.innerHTML = tmp;
+	   })
+	   .on('dragover','li',function(ev){
+	   		ev.preventDefault();
+	   });
+	});
+</script>
+</html>

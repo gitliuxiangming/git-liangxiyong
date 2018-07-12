@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-可拖拽的调查问卷.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.page{
+			width: 100%;
+		}
+		.container{
+			margin-top: 20px;
+			float: left;
+			width: 50%;
+			min-height: 500px;
+		}
+		.container:after{
+			display: block;
+			content: '';
+			width: 1px;
+			height: 500px;
+			background: #f00;
+			margin-left: 95%;
+		}
+		.target-list{
+			margin-top: 20px;
+			float: left;
+			width: 50%;
+		}
+		.box{
+			width: 300px;
+			height: 20px;
+			border:1px dashed #ccc;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="paga">
+		<div class="container">
+			<h2>调查问卷</h2>
+		</div>
+		<div class="target-list">
+			<div class="box">
+				<label for="">姓名</label>
+				<input type="text" name="username">
+			</div>
+			<div class="box">
+				<label for="">年龄</label>
+				<input type="text" name="usernage">
+			</div>
+			<div class="box">
+				<label for="">爱好</label>
+				<input type="checkbox" name="hobby">
+				篮球
+				<input type="checkbox" name="hobby">
+				足球
+				<input type="checkbox" name="hobby">
+				排球
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../JQuery/jQuery插件/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.box').attr('draggable','true');
+		var targetEle = null;
+		$('.target-list').on('dragstart','.box',function(){
+			targetEle=$(this).clone();
+		})
+		$('.container').on('drop',function(){
+			$(this).append(targetEle);
+		}).on('dragover',function(ev){
+			ev.preventDefault();
+		})
+	})
+</script>
+</html>
