@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>缓存</title>
+	<script>
+		//存储
+		function setCookie(key,value,iDate) {
+			var oDate = new Date();
+			oDate.setDate(oDate.getDate()+iDate);
+			document.cookie = key +'=' + value +':expires' + oDate;
+		}
+		setCookie('sex','男',1)
+		//获取
+		console.log(document.cookie);
+		function getCookie(key){
+			var value = '';	
+			var str = document.cookie;
+			var arr1 = str.split(';');
+			console.log(arr1);
+			for(var i=0;i<arr1.length;i++){
+				var arr2 = arr1[i].split('=');
+				if(arr2[0].trim() == key.trim()){
+					value = arr2[1];
+					break;
+				}
+			}
+			return value;
+		}
+		console.log(getCookie('sex'));
+		//删除
+		function removeCookie(key){
+			return setCookie(key,false,-1);
+		}
+		removeCookie('sex');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
