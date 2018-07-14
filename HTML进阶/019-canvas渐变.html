@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-canvas渐变</title>
+	<style>
+		#canvas1{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 改变canvas的大小 一般用js才能保证有矢量效果  用css的话会失去矢量效果被等比例拉伸,失真 -->
+	<canvas width="100" height="100" id="canvas1">
+		您的浏览器不支持，请更换高版本浏览器
+	</canvas>
+</body>
+<script>
+	var oCanvas = document.getElementById('canvas1');
+	oCanvas.width = 600;
+	oCanvas.height =600;
+	var ctx=oCanvas.getContext('2d');//获取canvas的上下文环境
+	
+	//画圆
+	ctx.beginPath();
+	var radialGradient = ctx.createRadialGradient(300,300,0,300,300,50);
+	radialGradient.addColorStop(0.1,'rgb(0,255,0)');
+	radialGradient.addColorStop(1,'rgb(255,0,0)');
+	ctx.fillStyle = radialGradient;
+	ctx.arc(300,300,100,0,2*Math.PI,true);
+	ctx.fill();
+</script>
+</html>

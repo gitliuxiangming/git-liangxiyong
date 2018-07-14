@@ -1,0 +1,174 @@
+/*
+	多行注释 编译后保留
+*/
+
+
+//变量的定义
+@color:#ff6700;
+@w:200px;
+@h:100px;
+
+//单行注释 编译后删除
+body{
+	background: #0ff;
+}
+h1{
+	color:@color;
+}
+a:hover{
+	color:@color;
+}
+div{
+	margin-bottom: 10px;
+}
+//变量的使用
+.box1{
+	border: 1px solid #000;
+	width: @w;
+	height: @h;
+	background: @color;
+	text-align: center;
+}
+.box2{
+	//混合的基本使用
+	.box1;
+	font-size: 90px;
+}
+//带参数的混合
+.border-radius(@border-width){
+	-webkit-border-radius:@border-width;
+	-ms-border-radius:@border-width;
+	-moz-border-radius:@border-width;
+	-o-border-radius:@border-width;
+	border-radius: @border-width;
+}
+
+//带默认参数的混合
+.border-radius-ref(@border-width:10px){
+	-webkit-border-radius:@border-width;
+	-ms-border-radius:@border-width;
+	-moz-border-radius:@border-width;
+	-o-border-radius:@border-width;
+	border-radius: @border-width;
+}
+.box3{
+	//带参数混合的使用
+	.border-radius(20px);
+	.box1;
+}
+.box4{
+	.box1;
+	.border-radius-ref();
+}
+
+/*
+基本三角形生成
+.triangle{
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-width: 10px;
+	border-color:red transparent transparent transparent;
+	border-style: solid;
+}
+*/
+
+
+
+//匹配模式
+//没有意义的参数一定！！！不能省略！！！，可以用@_！！！代替
+.triangle(top,@_,@color:red){
+	border-color:@color transparent transparent transparent ;
+}
+.triangle(right,@_,@color:red){
+	border-color:transparent @color transparent transparent ;
+}
+.triangle(bottom,@_,@color:red){
+	border-color:transparent transparent @color transparent ;
+}
+.triangle(left,@_,@color:red){
+	border-color:transparent transparent transparent @color ;
+}
+//@_代表匹配任意值，注意后面的参数不能省略,
+.triangle(@_,@w:10px,@color:red){
+	width: 0;
+	border-width: @w;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+}
+.box5{
+	.triangle(bottom,50px,#987);
+}
+
+//嵌套
+.list{
+	width: 100%;
+	li{
+		list-style:none;
+		width: 100%;
+		height: 30px;
+		padding: 10px;
+		border-bottom: 1px dashed #ccc;
+		span{
+			float: left;
+		}
+		a{
+			float: left;
+			margin-left: 600px;
+			display: inline-block;
+		}
+		//&代表上一层
+		&:hover{
+			background-color: #FF6700;
+		}
+	}
+}
+
+
+.fs(@s){
+	//注意：符号的左右各必须各有一个以上的空格
+	// font-size: @s * 10px;
+	// font-size: @s / 10px;
+	// font-size: @s + 10px;
+	font-size: @s - 10px;
+}
+.box6{
+	.fs(100px);
+}
+//避免编译
+.box7{
+	font-size: ~'calc(50px - 10px)';
+	width:~'calc(500px 200px)';
+}
+//给混合添加!important的话，混合中的所有属性都有!important
+.box8{
+	.box1 !important;
+}
+
+//设置样式的混合
+.setStyle(@attr,@value){
+	@{attr}:unit(@value,px);
+}
+
+.box9{
+	border: 1px solid #000;
+	.setStyle(width,100);
+	.setStyle(height,100);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
