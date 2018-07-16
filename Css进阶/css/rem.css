@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  float: left;
+  width: 4.0625rem;
+  margin: 0.3125rem 0.625rem 0.9375rem 1.25rem;
+}
+h1 {
+  font-size: 0.5rem;
+}

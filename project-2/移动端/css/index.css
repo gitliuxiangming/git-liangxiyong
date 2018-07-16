@@ -1,0 +1,15 @@
+.header {
+  height: 1.40625rem;
+  line-height: 1.40625rem;
+  font-size: 0.625rem;
+  border: 1px solid #e5e5e5;
+}
+.header .header-back {
+  width: 1.40625rem;
+  text-align: center;
+}
+.header .header-title {
+  display: inline-block;
+  width: 6.25rem;
+  text-align: center;
+}
