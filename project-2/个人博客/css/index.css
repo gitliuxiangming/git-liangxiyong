@@ -1,0 +1,21 @@
+/*刘向明博客样式*/
+#bg-navbar a:hover{
+	color:#f65a8a;
+}
+.bg-navbar .navbar-brand{
+	color:#333;
+}
+#bg-navbar{
+	opacity: 0.9;
+}
+#bg-navbar .active a{
+	color:#f65a8a;
+	background: transparent;
+}
+.bg-navbar .navbar-nav a{
+	font-size: 16px;
+}
+.main{
+	height: 3000px;
+	background: #f0f0f0;
+}
