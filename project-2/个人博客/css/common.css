@@ -1,0 +1,118 @@
+/*刘向明博客样式*/
+
+
+/*公共样式*/
+body{
+	background: #efefef;
+}
+.link{
+	text-decoration: none !important;
+}
+.link:hover{
+	color: #f65a8a !important;
+}
+.text-ellipsis{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+/*导航栏开始*/
+#bg-navbar a:hover{
+	color:#f65a8a;
+}
+.bg-navbar .navbar-brand{
+	color:#333;
+}
+#bg-navbar{
+	opacity: 0.9;
+}
+#bg-navbar .active a{
+	color:#f65a8a;
+	background: transparent;
+}
+.bg-navbar .navbar-nav a{
+	font-size: 16px;
+}
+.bg-navbar .navbar-nav li{
+	margin-left: 20px;
+}
+
+/*主体部分开始*/
+.main{
+	margin-top: 51px;
+	padding-top: 20px;
+}
+/*ad部分*/
+.ad .thumbnail{
+	border: none;
+	height: 200px;
+	padding: 0;
+	transition: all 0.5s;
+}
+.ad .thumbnail img{
+	width: 100%;
+	height: 100%;
+}
+.ad .thumbnail:hover{
+	box-shadow:0px 5px 2px rgba(0,0,0,0.3)
+}
+/*文字部分*/
+.content-item{
+	margin-top: 20px;
+}
+.content-item .panel-heading{
+	background: transparent;
+	border:none;
+	padding-left: 0px;
+}
+.content-item .panel-title{
+	border-left: 2px solid #f00;
+	padding-left: 15px;
+}
+.content-item:hover .panel-title a{
+	color: #f65a8a;
+}
+.content-item .panel-footer{
+	
+}
+.content-item .panel-footer-text{
+	margin-right: 10px;
+}
+/*分页按钮*/
+#paga .pagination>li>a:hover{
+	color: #f65a8a;
+	background: #fff;
+	border-color: #fff;
+}
+/*博主介绍开始 */
+.custom-panel .panel-heading{
+	background: #fff;
+	border:none;
+}
+.custom-panel .panel-body{
+	background: #f7f7f7;
+}
+.custom-panel .about-me-img{
+	width: 100px;
+	height: 100px;
+}
+/*点击排行开始*/
+.hot-list .panel-body{
+	padding-left: 0px;
+}
+.hot-list .list-group-item{
+	background: #f7f7f7;
+	border:none;
+}
+/*关注我开始*/
+/*.subscrib-me{
+	width: 330px;
+	height: 330px;
+}*/
+/*底部开始*/
+footer{
+	text-align: center;
+}
+
+
+
