@@ -5,7 +5,7 @@
   height: 1.40625rem;
   line-height: 1.40625rem;
   font-size: 0.625rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .header .header-back {
   width: 1.40625rem;
@@ -21,7 +21,7 @@
   height: 1.40625rem;
   line-height: 1.40625rem;
   font-size: 0.5rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .two .two-left {
   float: left;
@@ -36,11 +36,15 @@
 .three {
   height: 1.40625rem;
   line-height: 1.40625rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
-.three i {
+.three span {
   float: left;
+  width: 0.5625rem;
+  height: 0.5625rem;
   display: inline-block;
+  border: 1px solid #999999;
+  border-radius: 50%;
   font-size: 0.625rem;
   margin-top: 0.375rem;
   margin-left: 0.3125rem;
@@ -63,7 +67,7 @@
   line-height: 1.40625rem;
   font-size: 0.375rem;
   color: #999999;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .four p {
   float: left;
@@ -71,15 +75,24 @@
 .four p:nth-child(1) {
   margin-left: 0.3125rem;
 }
-.four p:nth-child(2),
-.four p:nth-child(3) {
+.four p:nth-child(2) span,
+.four p:nth-child(3) span {
+  display: inline-block;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  line-height: 0.46875rem;
   margin-left: 0.15625rem;
+  border: 1px solid #999999;
+  border-radius: 50%;
+  text-align: center;
 }
 .five {
-  height: 4.75rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  height: 5.15625rem;
 }
 .five .five-left {
+  height: 3.75rem;
   width: 4.8125rem;
   float: left;
 }
@@ -94,10 +107,11 @@
   margin-left: 0.3125rem;
 }
 .five .five-left img {
-  margin-top: 20px;
-  width: 3.125rem;
+  margin-top: 0.625rem;
+  width: 2.6875rem;
 }
 .five .five-right {
+  height: 3.75rem;
   width: 4.8125rem;
   float: right;
   margin-right: 0.3125rem;
@@ -107,46 +121,68 @@
   font-size: 0.4375rem;
   font-weight: bolder;
 }
-.five .five-right p:nth-child(2) {
-  font-size: 0.375rem;
-  color: #999999;
-  margin-top: 0.3125rem;
-}
-.five .five-right p:nth-child(3) span:nth-child(1) {
+.five .five-right p:nth-child(2) span:nth-child(1) {
   font-size: 0.3125rem;
   color: red;
+  font-weight: 600;
 }
-.five .five-right p:nth-child(3) span:nth-child(2) {
+.five .five-right p:nth-child(2) span:nth-child(2) {
   font-size: 0.625rem;
   margin-left: 0.625rem;
   color: #999999;
 }
-.five .five-right p:nth-child(3) span:nth-child(3) {
+.five .five-right p:nth-child(2) span:nth-child(3) {
   margin-left: 0.46875rem;
   font-size: 0.625rem;
   color: #999999;
 }
-.five .five-right p:nth-child(3) span:nth-child(4) {
+.five .five-right p:nth-child(2) span:nth-child(4) {
   margin-left: 0.46875rem;
   font-size: 0.625rem;
   color: #999999;
 }
-.five .five-right p:nth-child(4) {
+.five .five-right p:nth-child(3) {
   margin-right: 0.3125rem;
+  margin-top: 0.3125rem;
   display: flex;
   justify-content: flex-end;
 }
-.five .five-right p:nth-child(4) .five-btn {
+.five .five-right p:nth-child(3) .five-btn {
   font-size: 0.375rem;
   margin-left: 0.3125rem;
   color: #999999;
 }
+.five .five-bottom {
+  float: right;
+  margin-right: 0.46875rem;
+  width: 8.4375rem;
+  height: 0.9375rem;
+  line-height: 0.9375rem;
+  font-size: 0.375rem;
+  overflow: hidden;
+  background: #efefef;
+}
+.five .five-bottom span:nth-child(1) {
+  font-weight: 500;
+  margin-left: 0.3125rem;
+}
+.five .five-bottom span:nth-child(2) {
+  margin-left: 0.3125rem;
+  color: #999999;
+}
+.five .five-bottom span:nth-child(3) {
+  color: #999999;
+  display: inline-block;
+  float: right;
+  margin-right: 0.46875rem;
+}
 .six {
-  height: 4.75rem;
-  border: 1px solid #e5e5e5;
+  height: 5.15625rem;
+  border-bottom: 1px solid #e5e5e5;
 }
 .six .six-left {
-  width: 4.8125rem;
+  height: 3.75rem;
+  width: 4.0625rem;
   float: left;
 }
 .six .six-left span {
@@ -160,41 +196,47 @@
   margin-left: 0.3125rem;
 }
 .six .six-left img {
-  margin-top: 20px;
-  width: 3.125rem;
+  margin-top: 0.625rem;
+  width: 2.6875rem;
 }
 .six .six-right {
-  width: 4.8125rem;
+  height: 3.75rem;
+  width: 5.5625rem;
   float: right;
   margin-right: 0.3125rem;
 }
 .six .six-right p:nth-child(1) {
   margin-top: 0.625rem;
   font-size: 0.4375rem;
-  font-weight: bolder;
+  white-space: nowrap;
+  font-weight: bold;
 }
 .six .six-right p:nth-child(2) {
   font-size: 0.375rem;
-  color: #999999;
   margin-top: 0.3125rem;
+  color: #999999;
+}
+.six .six-right p:nth-child(3) {
+  margin-top: -0.46875rem;
 }
 .six .six-right p:nth-child(3) span:nth-child(1) {
   font-size: 0.3125rem;
   color: red;
+  font-weight: 600;
 }
 .six .six-right p:nth-child(3) span:nth-child(2) {
-  font-size: 0.625rem;
-  margin-left: 0.625rem;
+  font-size: 0.5625rem;
+  margin-left: 1.09375rem;
   color: #999999;
 }
 .six .six-right p:nth-child(3) span:nth-child(3) {
   margin-left: 0.46875rem;
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   color: #999999;
 }
 .six .six-right p:nth-child(3) span:nth-child(4) {
   margin-left: 0.46875rem;
-  font-size: 0.625rem;
+  font-size: 0.5625rem;
   color: #999999;
 }
 .six .six-right p:nth-child(4) {
@@ -207,76 +249,35 @@
   margin-left: 0.3125rem;
   color: #999999;
 }
-.seven {
-  height: 4.75rem;
-  border: 1px solid #e5e5e5;
-}
-.seven .seven-left {
-  width: 4.8125rem;
-  float: left;
-}
-.seven .seven-left span {
-  display: inline-block;
-  width: 0.625rem;
-  height: 0.625rem;
-  border: 2px solid #999999;
-  border-radius: 50%;
-  vertical-align: top;
-  margin-top: 1.875rem;
-  margin-left: 0.3125rem;
-}
-.seven .seven-left img {
-  margin-top: 20px;
-  width: 3.125rem;
-}
-.seven .seven-right {
-  width: 4.8125rem;
+.six .six-bottom {
   float: right;
-  margin-right: 0.3125rem;
-}
-.seven .seven-right p:nth-child(1) {
-  margin-top: 0.625rem;
-  font-size: 0.4375rem;
-  font-weight: bolder;
-}
-.seven .seven-right p:nth-child(2) {
+  margin-right: 0.46875rem;
+  width: 8.4375rem;
+  height: 0.9375rem;
+  line-height: 0.9375rem;
   font-size: 0.375rem;
-  color: #999999;
-  margin-top: 0.3125rem;
+  overflow: hidden;
+  background: #efefef;
 }
-.seven .seven-right p:nth-child(3) span:nth-child(1) {
-  font-size: 0.3125rem;
-  color: red;
+.six .six-bottom span:nth-child(1) {
+  font-weight: 500;
+  margin-left: 0.3125rem;
 }
-.seven .seven-right p:nth-child(3) span:nth-child(2) {
-  font-size: 0.625rem;
-  margin-left: 0.625rem;
-  color: #999999;
-}
-.seven .seven-right p:nth-child(3) span:nth-child(3) {
-  margin-left: 0.46875rem;
-  font-size: 0.625rem;
-  color: #999999;
-}
-.seven .seven-right p:nth-child(3) span:nth-child(4) {
-  margin-left: 0.46875rem;
-  font-size: 0.625rem;
-  color: #999999;
-}
-.seven .seven-right p:nth-child(4) {
-  margin-right: 0.3125rem;
-  display: flex;
-  justify-content: flex-end;
-}
-.seven .seven-right p:nth-child(4) .seven-btn {
-  font-size: 0.375rem;
+.six .six-bottom span:nth-child(2) {
   margin-left: 0.3125rem;
   color: #999999;
+}
+.six .six-bottom span:nth-child(3) {
+  color: #999999;
+  display: inline-block;
+  float: right;
+  margin-right: 0.46875rem;
 }
 .eight {
   height: 1.5625rem;
+  line-height: 0.78125rem;
   width: 10rem;
-  border: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -286,16 +287,16 @@
   float: left;
   width: 1.1875rem;
 }
-.eight .eight-one i {
-  color: red;
-  vertical-align: top;
-  margin-top: 0.21875rem;
-  font-size: 0.625rem;
+.eight .eight-one span {
+  display: inline-block;
+  width: 0.625rem;
+  height: 0.625rem;
+  border: 1px solid #999999;
+  border-radius: 50%;
   margin-left: 0.3125rem;
 }
 .eight .eight-one p {
   font-size: 0.375rem;
-  margin-top: -0.375rem;
   margin-left: 0.3125rem;
   color: #999999;
 }
@@ -304,21 +305,24 @@
   width: 5.3125rem;
 }
 .eight .eight-two p:nth-child(1) {
+  display: flex;
+  justify-content: flex-end;
   line-height: 0.78125rem;
-  margin-left: 0.3125rem;
+  margin-right: 0.3125rem;
   font-weight: bold;
 }
 .eight .eight-two p:nth-child(1) span:nth-child(1) {
-  font-size: 0.4375rem;
+  font-size: 0.5rem;
 }
 .eight .eight-two p:nth-child(1) span:nth-child(2) {
-  font-size: 0.4375rem;
+  font-size: 0.5rem;
   color: red;
 }
 .eight .eight-two p:nth-child(2) {
+  display: flex;
+  justify-content: flex-end;
   color: #999999;
-  margin-top: -0.46875rem;
-  margin-left: 0.3125rem;
+  margin-right: 0.3125rem;
   line-height: 0.78125rem;
 }
 .eight .eight-two p:nth-child(2) span:nth-child(1) {
@@ -333,8 +337,8 @@
   text-align: center;
   float: left;
   width: 3.4375rem;
-  background: red;
-  color: #fff;
+  background: #aaa;
+  color: #888;
   font-size: 0.5rem;
   font-weight: bold;
 }
