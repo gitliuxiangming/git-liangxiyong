@@ -1,0 +1,169 @@
+/*
+* @Author: TomChen
+* @Date:   2018-06-08 20:16:41
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-07-09 10:29:46
+*/
+/*公共样式开始*/
+	body{
+		font-size: 12px;
+	}
+	.container{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	.transition{
+		transition: all 0.5s;
+	}	
+/*公共样式结束*/
+/*公共连接开始*/
+	a{
+		text-decoration: none;
+		color: #4d555d;
+	}
+	a.link{
+		color: #4d555d;
+	}
+	a.link:hover{
+		color: #ea675a;
+	}
+/*公共连接结束*/
+/*浮动相关的公共样式开始*/
+	.fl{
+		float: left;
+	}
+	.fr{
+		float: right;
+	}
+	.clearfix:after{
+		clear: both;
+		display: block;
+		content: '';
+		height: 0px;
+		visibility: hidden;
+	}
+	.clearfix{
+		*zoom:1;
+	}
+/*浮动相关的公共样式结束*/
+/*下拉菜单共同样式开始*/
+	.dropdown{
+		position: relative;
+		z-index: 3;
+	}
+	.dropdown-toggle{
+		position: relative;
+		z-index: 2;
+	}
+	.dropdown-left{
+		left:0;
+	}
+	.dropdown-right{
+		right:0;
+	}	
+	.dropdown-layer{
+		position: absolute;
+		z-index: 1;
+		display: none;
+		overflow: hidden;
+	}
+	.dropdown-loading{
+		width: 32px;
+		height: 32px;
+		background: url(../images/loading.gif) no-repeat;
+		margin:20px;
+	}
+	[class*='-active'] .dropdown-arrow{
+		transform: rotate(180deg);
+	}
+/*下拉菜单共同样式结束*/
+/*显示隐藏公共样式开始*/
+		.fadeOut{
+			opacity: 0 !important;
+			visibility: hidden !important;
+		}
+		.slideUpDownCollapse{
+			height: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+		.slideLeftRightCollapse{
+			width: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}	
+/*显示隐藏公共样式结束*/
+
+/*搜索框公共样式开始*/
+	.search{
+		position: relative;
+	}
+	.search-layer{
+		display: none;
+		width: 100%;
+		position: absolute;
+		top:100%;
+		left:0px;
+	}
+/*搜索框公共样式结束*/
+/*轮播图公共样式开始*/
+	.carousel-container{
+		position: relative;
+		overflow: hidden;
+	}
+	.carousel-container .carousel-item{
+		position: absolute;
+		left:0;
+		top:0;
+		width: 100%;
+		height: 100%;
+		background: red;
+	}
+	.carousel-container .btns{
+		position: absolute;
+		left:50%;
+		bottom: 20px;
+	}
+	.carousel-container .btn-item{
+		float: left;
+		width: 12px;
+		height: 12px;
+		background: rgba(0,0,0,0.8);
+		border-radius: 50%;
+		margin-right: 5px;
+		cursor: pointer;
+	}
+	.carousel-container .btn-item.active{
+		background: #fff;
+	}
+
+	.carousel-container .control {
+		display: none;
+		position: absolute;
+		top:50%;
+		width: 30px;
+		height: 60px;
+		line-height: 60px;
+		text-align: center;
+		background: rgba(0,0,0,0.8);
+		font-size: 20px;
+		color: #fff;
+		margin-top: -30px;
+		cursor: pointer;
+	}
+	.carousel-container .control-left{
+		left:0;
+	}
+	.carousel-container .control-right{
+		right: 0;
+	}
+	.carousel-container.fade .carousel-item{
+		display: none;
+	}
+	.carousel-container.slide .carousel-item{
+		left:100%;
+	}
+/*轮播图公共样式结束*/
+
+
+
