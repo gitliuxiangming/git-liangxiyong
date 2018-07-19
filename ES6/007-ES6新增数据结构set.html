@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-ES6新增数据结构set	.html</title>
+</head>
+<body>																																																						
+</body>
+<script>
+	/* 
+	//唯一性，所以set里边的数据没有重复的，在new的时候会自动去重！！！
+	let s = new Set();
+	// console.log(typeof s);
+	// console.log(s);
+	s.add(11);
+	s.add(22);
+	s.add(33);
+	s.add(11);
+	s.delete(11);
+	s.clear();
+	console.log(s);
+	// console.log(s.has(11));
+	*/
+	/*
+	var arr = [11,22,33,44,55,66,44,33,22,11];
+	let s = new Set(arr);
+	let arr2 = [...s];
+	console.log(s)
+	console.log(arr2)
+	*/
+	//遍历的四种方法
+	var arr = [11,22,33,44,55];
+	let s = new Set(arr);
+	/*
+	console.log(s.keys());
+	for(key of s.keys()){
+		console.log(key)
+	}
+	*/
+	/*
+	for(value of s.values()){
+		console.log(value)
+	}
+	*/
+	/*
+	console.log(s.entries());
+	for(entry of s.entries()){
+		console.log(entry[0])
+		console.log(entry[1])
+	}
+	*/
+	s.forEach(function(value,key){
+		console.log(value,key)
+	})
+
+
+
+
+</script>
+</html>

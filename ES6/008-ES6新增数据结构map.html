@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-ES6新增数据结构map.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var obj1 = {
+		name:'LBB'
+	};
+	let obj2 = {age:18};
+	obj2[obj1] = 'hahaha';
+	// console.log(obj2);
+	// console.log(obj2[obj1]);
+
+	for(key in obj2){
+		console.log(key);
+		console.log(obj2[key])
+	}
+	*/
+	let map = new Map();
+	let obj1 = {name:'LBB'};
+	// console.log(map);
+	map.set('name','LBB2');
+	map.set(obj1,'hahaha');
+	/*
+	console.log(map);
+	console.log(map.size);
+	
+	console.log(map.get("name"));
+	console.log(map.get(obj1));
+
+	map.delete("name");
+	map.clear()
+	
+	console.log(map.has(obj1));
+	console.log(map);
+	console.log(map.size);
+	*/
+	/*
+	//map的遍历循环
+	for(key of map.keys()){
+		console.log(key)
+	}
+	*/
+	/*
+	for(key of map.values()){
+		console.log(key);
+	}
+	*/
+	/*
+	for(key of map.entries()){
+		console.log(key[0])
+		console.log(key[1])
+	}
+	*/
+	
+	map.forEach(function(value,key){
+		console.log(value,key)
+	})
+
+
+
+
+
+
+
+
+
+</script>
+</html>

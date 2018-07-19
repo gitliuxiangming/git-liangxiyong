@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var arr=[11,22,33,44];
+	console.log(arr);
+	console.log(...arr);
+	*/
+	/*
+	function show(n1,n2,n3){
+		console.log(n1,n2,n3);
+	}
+	var arr = [11,22,33]
+	// show.apply(null,arr)
+	show(...arr);
+	*/
+
+	/*
+	function show(...arr){
+		console.log(arr)
+	}
+	show(11,22,33)
+	*/
+	/*
+	function sum(){
+		var result = 0;
+		for(var i=0;i<arguments.length;i++){
+			result += arguments[i];
+		}
+		return result;
+	}
+
+	var arr = [11,22,33,44,55]
+	// console.log(sum(11,22,33,44));
+	console.log(sum(...arr));
+	*/
+	/*
+	function sum(...arr){
+		var result = 0;
+		for(var i=0;i<arr.length;i++){
+			result += arr[i];
+		}
+		return result;
+	}
+	// console.log(sum(11,22,33,44));
+	var arr = [11,22,33,44,55]
+	console.log(sum(...arr));
+	
+
+	Math.max(1,4,3);
+	console.log(Math.max(1,4,3))
+
+	*/
+	/*
+	var arr=[11,22,33,44,55,66];
+	// Math.max.apply();
+	var arr2 = arr.concat();
+	*/
+	/*
+	//扩展运算可以用到关于数组的复制，合并，以及运算中去
+	var arr=[11,22,33,44,55,66];
+	var arr2 = [...arr];
+	console.log(arr2);
+	*/
+	/*
+	var obj1= {name:'LBB',age:23};
+	var obj2 = {...obj1};
+	obj2.name = 'leo';
+	console.log({...obj1});
+	console.log(obj2);
+	*/
+	
+	var obj1= {name:'LBB',age:23,friend:{name:'leo',age:18}};
+	var obj2 = {...obj1};
+	obj2.name = 'LXM';
+	obj2.friend.name = 'MAKE';//对象里边再有对象，实际是在对象里边存了一个指向该对象的栈内存地址，所以通过复制得来的对象，更改二级对象的内容。
+	//原对象的对应二级对象内容也会被更改！！！
+	console.log({...obj1});
+	console.log(obj2);
+	
+
+
+
+
+
+
+</script>
+</html>
