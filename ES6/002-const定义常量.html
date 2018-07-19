@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-const定义常量.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//环境的配置 以及 固定不变的值 多用const定义
+
+
+	/*
+	var PI=3.1415926;
+	PI = PI+1;
+	console.log(PI);
+	*/
+	/*
+	const PI=3.1415926;
+	PI = PI +1;
+	console.log(PI);
+	*/
+	/*
+	const PI//错误的，定义的时候必须赋值
+	PI=3.1415926;//不能再定义之后赋值，没有用
+	console.log(PI);
+	*/
+
+	/*
+	const CONFIG = {
+		evn:'dev',
+		username:'root',
+		password:'root',
+	}
+	CONFIG.evn = 'prod';
+	console.log(CONFIG);
+	*/
+	/*
+	{
+		const PI=3.1415926;
+	}
+	console.log(PI);
+	*/
+
+	/*
+	console.log(PI);//先使用在定义不行 没有变量的提升，必须先定义 在使用
+	const PI=3.1415926;
+	*/
+
+	const PI=3.1415926;
+	console.log(PI);
+
+</script>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-变量的定义.html</title>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+</body>
+<script>
+	// var name='LBB';
+
+//	let name='LBB';
+ 
+ 	/*
+ 	// let  会有声明的提升
+	console.log(age);
+	var age=18;
+	*/
+
+	/*
+	// let  不会有声明的提升
+	console.log(age);
+	let age=18;
+	*/
+
+	/*
+	{
+		var age=18;
+		let age1=23; //let生成的变量 作用域是块级的 出了花括号都undefined了！！！
+		console.log(age1);
+	}
+
+	console.log(age);
+	console.log(age1);
+	*/
+	/*
+	function showAge(){
+		var age = 18;
+		console.log('out::',age);
+		function showAgeAgain(){
+			let age=23;
+			console.log('in::',age);
+		}
+		showAgeAgain();
+		console.log('out2::',age);
+	}
+
+	showAge();
+	*/
+	var Btn = document.getElementsByTagName('button');  
+
+	for(let i=0; i<Btn.length;i++){
+		Btn[i].style.color = 'red';
+		function abc(){
+			console.log(i);
+		}
+		
+	}
+	abc();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

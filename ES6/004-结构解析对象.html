@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-结构解析对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let {uesrname:uesrname1,age:age1} = {uesrname:'LBB',age:18};
+	console.log(uesrname1,age1);
+	*/
+	/*
+	let {uesrname,age} = {uesrname:'LBB',age:18};
+	console.log(uesrname,age);
+	*/
+	/*
+	let {age,uesrname} = {uesrname:'LBB',age:18};
+	console.log(uesrname,age);
+	*/
+	/*
+	let {person,dog} = {person:{
+		naem:'LBB',
+		age:18
+	},dog:{
+		name:'wangwang',
+		age:5
+	}};
+	console.log(person,dog);
+	*/
+
+	//对象解析只有在后边 赋值时 没有这个 对象名称所对应的值时 才会用前边的默认值
+	let {person = {
+		name:'TOM',
+		age:18
+	},dog} = {person:null,dog:{
+		name:'wangwang',
+		age:5
+	}};
+	console.log(person,dog);
+
+
+
+
+
+
+
+
+</script>
+</html>
