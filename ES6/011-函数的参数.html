@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-函数的参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function show(msg){
+		msg = msg || 'hello';
+		console.log(msg);
+
+	}
+	show('');
+	*/
+	/*
+	function show(msg){
+		// msg = msg || 'hello';
+		if(typeof msg === 'undefined'){
+			msg = 'hello';
+		}
+		console.log(msg);
+
+	}
+	show('');
+	*/
+	/*
+	function show(msg='hello'){
+		console.log(msg);
+
+	}
+	show();
+	*/
+	/*
+	function show(name,msg='hello'){
+		console.log(msg,name);
+
+	}
+	show('LBB');
+	*/
+
+
+
+	//ES6中的方法！
+	/*
+	//111结构解析
+	function show(name,{age=18,sex='男'}={}){
+		console.log(name,age,sex);
+	}
+	show('LBB',{age:23,sex:'帅'});
+	*/
+	/*
+	//222rest参数
+	function show(name,...arg){
+		console.log(name,arg[0],arg[1]);
+	}
+	show('LBB',...[18,'男']);
+	show('LBB',18,'男');//传递进去的是参数列表
+	show('LBB',18);
+	*/
+	/*
+	function show(arr){
+		console.log(arr[0],arr[1]);
+	}
+	show([18,'男']);//传递进去的是数组
+	*/
+
+	let i=99;
+	function show(age = i+1){
+		console.log(age);
+	}
+	show();
+
+	i = 100;
+	show();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

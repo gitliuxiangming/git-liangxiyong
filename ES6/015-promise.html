@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-promise.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//promise是一种异步编程解决方案
+	/*
+	let loadImg = (url,success,error) =>{
+		let image = new Image();
+		image.onload = () =>{
+			success();
+		}
+
+		image.onerror = () =>{
+			error();
+		}
+
+
+		image.src = url;
+	}
+
+	loadImg('../JavaScript/images/jdM1.jpg',()=>{
+		console.log('success loaded')
+	},()=>{
+		console.log('failed loaded')
+	});
+	*/ 
+
+	let getLoadImgPromise = (url) =>{
+		let promise = new Promise((resolve,reject)=>{
+			let image = new Image();
+			image.onload = () =>{
+				resolve();
+			}
+
+			image.onerror = () =>{
+				reject();
+			}
+			image.src = url;
+		});
+		return promise;
+	}
+	let promise = getLoadImgPromise('../JavaScript/images/jdM1.jpg');
+	console.log(promise);
+	let p = promise.then(()=>{
+		console.log('success loaded');
+		console.log(promise);
+	},()=>{
+		console.log('failed loaded');
+		console.log(promise);
+	})
+	console.log(p);
+
+
+
+
+
+
+
+</script>
+</html>

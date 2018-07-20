@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-箭头函数的this.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function Timer(id){
+		this.id =id;
+
+		setTimeout(function(){//执行这个定时器的是window 所以这个函数里边的this就是window
+			console.log(this,this.id)
+		},500)
+	}
+
+	var t = new Timer('100');
+	*/
+
+	function Timer(id){
+		this.id =id;
+		setTimeout(()=>{//定义的时候this指向谁，下边的this指向就不会再改变，无论是谁执行这个函数
+			console.log(this,this.id)
+		},500)
+	}
+	var t = new Timer('100');
+
+
+</script>
+</html>

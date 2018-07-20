@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	/*
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype = {
+		constructor:Person,
+		showName:function(){
+			console.log('I am '+this.name);
+		},
+		showAge:function(){
+			console.log('I am '+this.age);
+		},
+	};
+	Person.sayHi = function(){
+		console.log("hi ....")
+	}
+	var p = new Person('LBB',23);
+	// console.log(p);
+	p.showAge();
+	p.showName();
+	*/
+
+	class Person{
+
+		constructor(name,age){
+			this.name = name;
+			this,age = age;
+		}
+		showName(){
+			console.log("I am" + this.name)
+		}
+
+		showAge(){
+			console.log("I am " + this.age)
+		}
+
+		static sayHi(){
+			console.log("hi ....");
+		}
+	}
+
+	class Student extends Person{//继承
+		constructor(name,age,major){//属性的继承
+			super(name,age);//关键字，关联到父函数的constructor
+			this.major = major;
+		}
+		showMajor(){
+			console.log("I am " + this.major);
+		}
+
+	}
+
+
+
+	let p = new Student("LBB",23,'computer');
+	let p1= new Student("DBT",25,'computer');
+	console.log(typeof p);
+	console.log(p);
+	console.log(p1);
+	console.log(Person.prototype);
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

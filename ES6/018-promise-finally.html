@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-promise-finally.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let promise = new Promise((resolve,reject)=>{
+		let image = new Image();
+		image.onload = () =>{
+			resolve();
+		}
+
+		image.onerror = () =>{
+			reject();
+		}
+		image.src = '../JavaScript/images/0.png1';
+	});
+	promise
+	.then(()=>{
+		console.log('success loaded');
+		throw new Error('这是一个美丽的误会');
+	})
+	.catch((err)=>{//1:只有在then方法里便没有reject函数的时候才执行.2:在程序中有throw出现的时候，catch也能捕获到throw的内容！！！
+		console.log('error:::'+err);
+	})                 
+	.finally(()=>{         
+		console.log('finally::'+'无论成功或者失败');             
+	})  
+</script>  
+</html>                                                                        

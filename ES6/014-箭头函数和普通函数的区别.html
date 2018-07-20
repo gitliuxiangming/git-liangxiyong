@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-箭头函数和普通函数的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let Person = () =>{
+
+	}
+	let p = new Person();//没有constructor	
+	console.log(Person.prototype);//也没有原型对象
+	*/
+	/*
+	function show() {
+		console.log(arguments);
+	}
+	show(11,22);
+	*/
+	/*
+	let show = (...args)=>{//箭头函数没有arguments参数，可以用扩展运算来代替
+		console.log(args);
+	}
+	show(11,22,33);
+	*/
+
+	function fact(n){
+		if(n<=1){
+			return 1;
+		}else{
+			// return n*(fact(n-1));
+			return n * arguments.callee(n-1);//arguments里边的callee就代表函数本身！！！
+		}
+	}
+	// console.log(fact(5));
+	let fnFact = fact;
+	fact = null;
+	console.log(fnFact(5));
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

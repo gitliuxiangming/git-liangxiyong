@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-函数的定义.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function sum(x,y){
+		console.log(x,y);	
+		return x+y;
+	}
+	console.log(sum(1,2));
+	*/
+
+	/*
+	let sum = (x,y)=>{
+		console.log(x,y);	
+		return x+y;
+	}
+	console.log(sum(1,2));
+	*/
+
+	/*
+	//只有一个return的时候 可以简写成这样
+	let sum = (x,y)=> x + y;
+
+	console.log(sum(1,2));
+	*/
+
+	/*
+	//只有一个参数的时候 可以简写成这样
+	let sum = x=>{
+		console.log(x);	
+		return x+10;
+	}
+	console.log(sum(11));
+	*/
+
+	/*
+	//只有一个参数并且只有一个return的时候 可以简写成这样
+	let sum = x=>x+10;
+
+	console.log(sum(1));
+	*/
+
+
+	/*
+	let show =()=>{
+		console.log('hello');
+	}
+	show();
+	*/
+
+	let arr = [11,22,55,44,33,66,88,77];
+	/*
+	arr.sort(function(n1,n2){
+		return n2-n1;
+	}); 
+	*/
+
+	// arr.sort((n1,n2)=>{return n2-n1;})
+	arr.sort((n1,n2)=>n2-n1);
+
+	console.log(arr);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
