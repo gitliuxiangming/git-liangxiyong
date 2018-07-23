@@ -7,16 +7,24 @@ class Likereadable extends EventEmitter{
 		this.offsetLength = offsetLength;
 		this.on('newListener',(eventname)=>{
 			if(eventname == 'data'){
-
+				setImmediate(()=>{
+					this._dispath();
+				})
 			}
 		})
 	}
-	_dispatch(chuk,offsetLength){
+	_dispath(){
 		let startLength = this.data.length;
 		let endLength = startLength;
-		if(endLength > 0){
+		while(endLength > 0){
+			/*let start = startLength - endLength;
+			endLength -= startLength - offsetLength;*/
 			let start = startLength - endLength;
-			endLength -= startLength - offsetLength;
+			let end = start + this.offsetLength;
+			let tmp = this.data.slice(start,end);
+			let buf = Buffer.from(tmp);
+			this.emit('data',buf);
+			endLength -= this.offsetLength;
 		}
 	}
 }
@@ -24,11 +32,11 @@ class Likereadable extends EventEmitter{
 
 let data='aaaaabbbbbcccccddddd';
 
-const reads = new Likereadable(data,10);
+const reads = new Likereadable(data,5);
 
-const reads = getReadableStreamSomehow();
+// const reads = getReadableStreamSomehow();
 reads.on('data', (chunk) => {
-  console.log('data');
+  console.log(chunk.toString());
 });
 reads.on('end', () => {
   console.log('There will be no more data.');
