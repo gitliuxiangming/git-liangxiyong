@@ -4,9 +4,9 @@ const fs = require('fs');
 fs.open('./001.txt','r',(err,fd)=>{
 	if(!err){//open file success
 		//3.准备参数
-		let buf = Buffer.alloc(100);
+		let buf = Buffer.alloc(10);
 		//4.读取文件
-		fs.read(fd,buf,0,100,0,(err,bytesRead,buffer)=>{
+		fs.read(fd,buf,0,100,12,(err,bytesRead,buffer)=>{
 			if(!err){//read file success
 				//5.关闭文件
 				fs.close(fd,(err)=>{
