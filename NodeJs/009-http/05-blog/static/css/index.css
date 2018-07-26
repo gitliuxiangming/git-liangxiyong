@@ -1,0 +1,10 @@
+/*刘向明博客样式*/
+
+
+/*公共样式*/
+
+/*carousel*/
+.main #main-carousel .carousel-inner img{
+	width: 100%;
+	height:420px;
+}
