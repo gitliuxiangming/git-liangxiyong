@@ -10,7 +10,7 @@ const swig  = require('swig');
 const server = http.createServer((req,res)=>{
     let reqUrl = url.parse(req.url,true);
     let pathname = reqUrl.pathname;
-    console.log(reqUrl);
+    // console.log(reqUrl);
     let fileName = req.url;
      
     if(pathname === '/index.html' || pathname === '/'){//显示首页

@@ -28,7 +28,7 @@ const server = http.createServer((req,res)=>{
         });
     }else{//处理动态资源
         let paths = pathname.split('/');
-        let controller = paths[1] || 'Wish';
+        let controller = paths[1] || 'index';
         let action = paths[2] || 'index';
         let args = paths.slice(3);
         let model;

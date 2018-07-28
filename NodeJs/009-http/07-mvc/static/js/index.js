@@ -40,9 +40,8 @@
 		let $this = $(this);
 		let self = this;
 		$.ajax({
-			url:'/del',
+			url:'/wish/del/'+$this.data('id'),
 			type:'get',
-			data:'id='+$this.data('id'),
 			dataType:'json'
 		})
 		.done(function(data){
@@ -58,7 +57,7 @@
     $('.sub-btn').on('click',function(){
         let val = $('#content').val();
         $.ajax({
-            url:'/add',
+            url:'/wish/add',
             data:{content:val},
             dataType:'json',
             type:'POST'
