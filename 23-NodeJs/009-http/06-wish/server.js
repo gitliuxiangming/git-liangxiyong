@@ -16,39 +16,6 @@ const server = http.createServer((req,res)=>{
     if(pathname === '/index.html' || pathname === '/'){//显示首页
         WishModel.get((err,data)=>{
             if(!err){
-                /*
-                let html = `<!DOCTYPE html>
-                            <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <title>许愿墙</title>
-                                <link rel="stylesheet" href="css/index.css">
-                            </head>
-                            <body>
-                                <div class="wall">`
-                     
-                    data.forEach((val)=>{
-                        html += `<div class="wish" style="background: ${val.color}">
-                                        <a href="javascript:;" class="close" data-id='${val.id}'></a>
-                                        ${val.content}
-                                 </div>`
-                    });
- 
-                    html +=  `  </div>
-                                <div class="form-box">
-                                    <div>
-                                        <textarea name="content" id="content" cols="30" rows="20"></textarea>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:;" class="sub-btn">许下心愿</a>
-                                    </div>
-                                </div>    
-                            </body>
-                            <script src="js/jquery-1.12.4.min.js"></script>
-                            <script src="js/jquery.pep.js"></script>
-                            <script src="js/index.js"></script>
-                            </html>`;
-                            */
                 const template = swig.compileFile(__dirname+'/static/index.html');
                 var output = template({
                     'data':data
