@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb:/localhost:27017/blog');
+//1.
+mongoose.connect('mongodb://localhost:27017/class/blog',{xxxxx});
 
 const db = mongoose.connection;
 
@@ -9,19 +9,20 @@ db.on('error',()=>{
 });
 
 db.once('open', ()=>{
-  
+  	//2.
 	const UserSchema = new mongoose.Schema({
 	  name: String,
 	  age:Number,
 	  sex:String
 	});
 
-
-	const User = mongoose.model('User', UserSchema);
-
+	//3.
+	const UserModel = mongoose.model('User', UserSchema);
+	//4.
 	const LBB = new User({ name: 'LBB',age:18,sex:'男' });
 
-	User.save(function(err,result){
+
+	LBB.save(function(err,result){
 	    if(!err){
 
 	    }else{
@@ -30,9 +31,9 @@ db.once('open', ()=>{
 	});
 
 
-
-
-
+	User.find();
+	User.updata();
+	User.remove();
 });
 
 

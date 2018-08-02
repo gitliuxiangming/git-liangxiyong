@@ -1,3 +1,4 @@
 image/
 fontawesome-free-5.0.9
 **/node_modules
+**/package-lock.json
