@@ -18,8 +18,8 @@ db.once('open',()=>{
 	UserModel.insertMany({
 		name:"LBB",
 		age:23,
-		phone:'15139103727'
-		sex:"male",	
+		phone:'15139103727',
+		sex:'male',
 		locked:"false",
 		friends:['LBB1','LBB2']
 	},(err,docs)=>{
@@ -51,10 +51,22 @@ db.once('open',()=>{
 		}
 	})
 	*/
+
+	/*
 	UserModel.findOne({name:"LBB"},(err,docs)=>{
 		doc.findMyBlogs((err,docs)=>{
 			console.log(docs)
 		})
 	})
+	*/
+	
+	UserModel.findByPhone('15139103727',(err,doc)=>{
+		if(!err){
+			console.log(doc);
+		}else{
+			console.log('findByPhone error::',err);
+		}
+	})
+	
 
 });

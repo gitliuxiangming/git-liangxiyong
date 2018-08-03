@@ -18,7 +18,7 @@ db.once('open',()=>{
 	UserModel.insertMany({
 		name:"LBB",
 		age:23,
-		phone:'15139103727'
+		phone:'15139103727',
 		sex:"male",	
 		locked:"false",
 		friends:['LBB1','LBB2']
