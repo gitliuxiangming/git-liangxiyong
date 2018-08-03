@@ -8,13 +8,15 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/message', { useNewUrlParser: true });
 
+const db = mongoose.connection;
+    
 db.on('error',(err)=>{
     throw err;
 });
 
 db.once('open',()=>{
-   
-});
+    console.log('成功与结合创建链接');
+})
  
 const server = http.createServer((req,res)=>{
     let pathname = url.parse(req.url,true).pathname;
