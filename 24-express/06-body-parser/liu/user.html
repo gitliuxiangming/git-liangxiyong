@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="get">GET请求</button>
+	<button id="post">post请求</button>
+	<button id="put">put请求</button>
+	<button id="delete">delete请求</button>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#get').on('click',function(){
+			$.ajax({
+				url:'/user',
+				type:"get"
+			})
+			.done(function(data){
+				console.log(data);
+			})
+		});
+		$('#post').on('click',function(){
+			$.ajax({
+				url:'/user',
+				type:"post"
+			})
+			.done(function(data){
+				console.log(data);
+			})
+		});
+		$('#put').on('click',function(){
+			$.ajax({
+				url:'/user',
+				type:"put"
+			})
+			.done(function(data){
+				console.log(data);
+			})
+		});
+		$('#delete').on('click',function(){
+			$.ajax({
+				url:'/user',
+				type:"delete"
+			})
+			.done(function(data){
+				console.log(data);
+			})
+		});
+	})
+</script>
+</html>

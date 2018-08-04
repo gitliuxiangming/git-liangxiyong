@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+</head>
+<body>
+	<div>
+		我是页面手写的！！！
+		{{ content }}
+	</div>
+	<div>
+		{{ obj.name }}
+	</div>
+	<div>
+		{% if name=='LBB' %}
+		<h1>是个大帅哥</h1>
+		{% elseif name=='LZL' %}
+		<h1>是个大美女</h1>
+		{% else %}
+		<h1>what fuck who are you</h1>
+		{% endif %}
+	</div>
+	<div>
+		{% for key,val in arr  %}
+		<p>{{ key }} -- {{ val }}</p>
+		{% endfor %}
+	</div>
+</body>
+</html>

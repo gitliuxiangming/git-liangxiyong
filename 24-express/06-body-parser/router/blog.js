@@ -3,17 +3,16 @@ const Router = require('express').Router;
 const router = Router();
 
 router.get("/",(req,res)=>{
-	res.send('get user data');
+	res.send('get blog data');
 })
 router.post("/",(req,res)=>{
-	res.send('add user data');
+	res.send('add blog data');
 })
 router.put("/",(req,res)=>{
-	res.send('edit user data');
+	res.send('edit blog data');
 })
 router.delete("/",(req,res)=>{
-	// console.log(req.params.id);
-	res.send('delete user data');
+	res.send('delete blog data');
 })
 
 module.exports = router;

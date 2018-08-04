@@ -1,7 +1,6 @@
 const express = require('express');
 // const userRouter = require('./routes/user.js')
 
-
 const app = express();
 
 // app.use(express.static('liu'));

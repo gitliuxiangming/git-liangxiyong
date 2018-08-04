@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../static/css/index.css">
+</head>
+<body>
+	<div class="wall">
+		<div class="content">
+			{% for item in data %}
+			    <div class="wish" style="background: {{ item.color }}">
+					<a href="javascript:;" class="close" data-id="{{ item._id.toString() }}"></a>
+					{{ item.content }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="form-box">
+		<div>
+			<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		</div>
+		<div>
+			<a href="javascript:;" class="sub-btn" >挂上心愿</a>
+		</div>
+		
+	</div>
+	
+</body>
+<script src="../../static/js/jquery-1.12.4.min.js"></script>
+<script src="../../static/js/jquery.pep.js"></script>
+<script src="../../static/js/index.js"></script>
+</html>

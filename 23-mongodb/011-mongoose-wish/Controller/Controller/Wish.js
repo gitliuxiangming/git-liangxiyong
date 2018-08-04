@@ -84,12 +84,20 @@ class Wish{
             objBody.color=getcolor();
             objBody.id=uuidv1();
             wish.insertMany(objBody,(err,data)=>{
-                if(!err){
-                    let resultJson = JSON.stringify(objBody[0]);
-                    res.end(resultJson);
+                let result = {};
+               if(!err){
+                    result={
+                        'status' :0,
+                        'data' : data[0]
+                    }
                 }else{
-                    console.log(err);
+                    result={
+                        'status' :10,
+                        'message' : '数据传输失败'
+                    }
                 }
+                let resultJson = JSON.stringify(result);
+                res.end(resultJson);
             })
         });
 	};
@@ -108,7 +116,7 @@ class Wish{
             }
         })
         */
-        wish.deleteOne({id:args[0]},(err,doc)=>{
+        wish.remove({_id:args[0]},(err,doc)=>{
             if(!err){
                 let result={
                     status:0
@@ -116,7 +124,7 @@ class Wish{
                 let str=JSON.stringify(result);
                 res.end(str);
             }else{
-                console.log(err);
+                console.log('err 什么鬼：：',err);
             }
         })
 	};
