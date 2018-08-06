@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="parent">
+		{% for item in data %}
+		<div class="son"  style="background:{{item.color}}">
+			<a href="javascript:;" class="del" data-id='{{item.id}}'>X</a>
+			{{item.content}}
+		</div>
+		{% endfor %}
+	</div>
+	<div class="wishbox">
+		<textarea rows="10" cols="30" class="word"></textarea>
+		<div class="btn">许愿</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/jquery.pep.js"></script>
+<script src="js/index.js"></script>
+</html>
