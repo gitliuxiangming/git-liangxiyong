@@ -42,6 +42,22 @@ body{
 	margin-top: 51px;
 	padding-top: 20px;
 }
+/*登陆框*/
+.form-horizontal{
+	/*padding: 15px 0;*/
+	padding-top: 20px;
+	padding-bottom: 5px;
+	margin-bottom: 20px;
+	background-color: #ddd;
+}
+.btn-primary{
+	width: 100%;
+}
+.change .link{
+	display: block;
+	text-align: right;
+}
+
 /*ad部分*/
 .ad .thumbnail{
 	border: none;

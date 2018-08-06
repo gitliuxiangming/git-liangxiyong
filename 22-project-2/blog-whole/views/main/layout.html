@@ -43,34 +43,69 @@
 				</div>
 				<div class="col-md-4 hidden-xs hidden-sm">
 					<!-- 登陆框以及注册表和用户信息展示框 -->
-					<form class="form-horizontal">
-					  <div class="form-group">
-					    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-					    <div class="col-sm-10">
-					      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <div class="checkbox">
-					        <label>
-					          <input type="checkbox"> Remember me
-					        </label>
-					      </div>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="submit" class="btn btn-default">Sign in</button>
-					    </div>
-					  </div>
-					</form>
+					{% if userInfo._id %}
+					<div class="form-horizontal logout">
+						<div>
+							欢迎<span>{{ userInfo.username }}</span>
+						</div>
+						<a href="javascript:;" class="link" id="logout">退出</a>
+						<p class="err"></p>
+					</div>
+					{% else %}
+					<div class="form-horizontal login" style="display: none;">
+						<div class="form-group">
+							<label for="username" class="col-sm-4 control-label">用户名</label>
+							<div class="col-sm-6">
+								<input type="email" class="form-control username" id="username" placeholder="请输入用户名">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="col-sm-4 control-label">密码</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control password" id="password" placeholder="请输入密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-6">
+								<button type="submit" class="btn btn-primary sub-btn">提交</button>
+							</div>
+						</div>
+						<div class="form-group change">
+							<a href="jsvascript:;" class="link col-sm-offset-4 col-sm-6" id="register">免费注册</a>
+						</div>
+						<p class="err"></p>
+					</div>
+					<div class="form-horizontal register" style="display: block;">
+						<div class="form-group">
+							<label for="register-username" class="col-sm-4 control-label">用户名</label>
+							<div class="col-sm-6">
+								<input type="email" class="form-control username" id="register-username" placeholder="请输入用户名">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="register-password" class="col-sm-4 control-label">密码</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control password" id="register-password" placeholder="请输入密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="repassword" class="col-sm-4 control-label">重复密码</label>
+							<div class="col-sm-6">
+								<input type="password" class="form-control repassword" id="repassword" placeholder="请重新输入密码">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-6">
+								<button type="submit" class="btn btn-primary register-btn">提交</button>
+							</div>
+						</div>
+						<div class="form-group change">
+							<a href="jsvascript:;" class="link col-sm-offset-4 col-sm-6" id="login">已有账号？</a>
+						</div>
+						<p class="err"></p>
+					</div>
+					{% endif %}
+					
 
 					<div class="ad">
 						<a href="#" class="thumbnail">
