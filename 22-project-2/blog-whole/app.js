@@ -90,6 +90,7 @@ app.use(bodyParser.json());
 app.use('/',require('./router/index.js'));
 app.use('/user',require('./router/user.js'));
 app.use('/admin',require('./router/admin.js'));
+app.use('/category',require('./router/category.js'));
 
 
 
