@@ -6,9 +6,9 @@
 	<title>
 		{% block title %}{% endblock %}
 	</title>
-	<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/common.css">
-	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
 	<nav class="navbar navbar-default bg-navbar navbar-fixed-top" id="bg-navbar">
@@ -47,12 +47,17 @@
 					<div class="form-horizontal logout">
 						<div>
 							欢迎<span>{{ userInfo.username }}</span>
+							{% if userInfo.isAdmin %}
+							<a href="/admin" class="link">进入管理员模式</a>
+							{% else %}
+							<a href="/admin" class="link">游客模式</a>
+							{% endif %}
 						</div>
 						<a href="javascript:;" class="link" id="logout">退出</a>
 						<p class="err"></p>
 					</div>
 					{% else %}
-					<div class="form-horizontal login" style="display: none;">
+					<div class="form-horizontal login" style="display: block;">
 						<div class="form-group">
 							<label for="username" class="col-sm-4 control-label">用户名</label>
 							<div class="col-sm-6">
@@ -75,7 +80,7 @@
 						</div>
 						<p class="err"></p>
 					</div>
-					<div class="form-horizontal register" style="display: block;">
+					<div class="form-horizontal register" style="display: none;">
 						<div class="form-group">
 							<label for="register-username" class="col-sm-4 control-label">用户名</label>
 							<div class="col-sm-6">
@@ -183,7 +188,7 @@
 		</p>
 	</footer>
 </body>
-<script src="lib/jQuery/jquery-1.12.4.min.js"></script>
-<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="js/index.js"></script>
+<script src="/lib/jQuery/jquery-1.12.4.min.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/index.js"></script>
 </html>

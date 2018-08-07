@@ -21,7 +21,8 @@ router.post('/register',(req,res)=>{
 		}else{
 			let userMessage = new UserModel({
 				username:body.username,
-				password:hmac(body.password)
+				password:hmac(body.password),
+				// isAdmin:true
 			});
 			userMessage.save((err,data)=>{
 				if(!err){
@@ -48,12 +49,19 @@ router.post("/login",(req,res)=>{
 	.findOne({username:body.username,password:hmac(body.password)})
 	.then((user)=>{
 		if(user){//登录成功
+			/*
 			 result.data = {
 			 	_id:user._id,
 			 	username:user.username,
 			 	isAdmin:user.isAdmin
 			 }
-			 req.cookies.set('userInfo',JSON.stringify(result.data));
+			 */
+			 // req.cookies.set('userInfo',JSON.stringify(result.data));
+			 req.session.userInfo = {
+			 	_id:user._id,
+			 	username:user.username,
+			 	isAdmin:user.isAdmin
+			 }
 			 res.json(result);
 		}else{
 			result.code = 10;
@@ -70,7 +78,8 @@ router.get('/logout',(req,res)=>{
 		code:0,// 0 代表成功 
 		message:''
 	}	
-	req.cookies.set('userInfo',null);
+	// req.cookies.set('userInfo',null);
+	req.session.destroy();
 
 	res.json(result);
 
