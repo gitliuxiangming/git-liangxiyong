@@ -1,0 +1,40 @@
+<!-- 提交表单的页面 -->
+{% extends './layout.html' %}
+{% block header %}
+{% if category %}
+	编辑分类
+{% else %}
+  新增分类
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<!-- 主要内容展示 -->
+{% if category %}
+<form class="form-horizontal" action="/category/edit" method="post">
+{% else %}
+<form class="form-horizontal" action="/category/add" method="post">
+{% endif %}
+  <div class="form-group">
+    <label for="name" class="col-sm-1 control-label">列表名称</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="name" placeholder="名称" name="name" value="{{ category.name }}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="order" class="col-sm-1 control-label">排序</label>
+    <div class="col-sm-4">
+      <input type="number" class="form-control" id="order" name="order" placeholder="排序" value="{{ category.order || 0}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-4">
+      <input type="hidden" name="id" value="{{ category._id.toString() }}">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block footer %}
+<script src="/js/category.js"></script>
+{% endblock %}

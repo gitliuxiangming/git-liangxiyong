@@ -1,5 +1,6 @@
 
 const Router = require('express').Router;
+const ArticleModel = require('../models/article.js');
 const CategoryModel = require('../models/categoryModel.js');
 const pagination = require('../util/pagination.js');
 
@@ -14,12 +15,12 @@ router.use((req,res,next)=>{
 	}
 })
 
-//显示分类管理页面
+//显示文章管理页面
 router.get("/",(req,res)=>{
-	
+	/*
 	let options = {
 		page: req.query.page,//需要显示的页码
-		model:CategoryModel, //操作的数据模型
+		model:ArticleModel, //操作的数据模型
 		query:{}, //查询条件
 		projection:'_id name order', //投影，
 		sort:{order:1} //排序
@@ -36,57 +37,60 @@ router.get("/",(req,res)=>{
 			url:'/category'
 		});	
 	})
+	*/
+	res.render('admin/article-list',{
+		userInfo:req.userInfo,
+		url:'/category'
+	});
 })
 
 //显示新增页面
 router.get("/add",(req,res)=>{
-	res.render('admin/category-add-edit',{
-		userInfo:req.userInfo
-	});
+	CategoryModel.find({},'_id name')
+	.sort({order:1})
+	.then((categories)=>{
+		res.render('admin/article-add',{
+			userInfo:req.userInfo,
+			categories:categories
+		});
+	})
+	
 })
 //处理添加请求
 router.post("/add",(req,res)=>{
 	let body = req.body;
-	CategoryModel
-	.findOne({name:body.name})
-	.then((cate)=>{
-		if(cate){//已经存在渲染错误页面
-	 		res.render('admin/category-fail',{
+	new ArticleModel({
+		category:body.category,
+		user:req.userInfo._id,
+		title:body.title,
+		intro:body.intro,
+		content:body.content
+	})
+	.save()
+	.then((newCate)=>{
+		if(newCate){//新增成功,渲染成功页面
+			res.render('admin/article-success',{
 				userInfo:req.userInfo,
-				message:'新增失败'
-			})
-		}else{
-			new CategoryModel({
-				name:body.name,
-				order:body.order
-			})
-			.save()
-			.then((newCate)=>{
-				if(newCate){//新增成功,渲染成功页面
-					res.render('admin/category-success',{
-						userInfo:req.userInfo,
-						message:'新增成功',
-						url:'/category'
-					})
-				}
-			})
-			.catch((e)=>{//新增失败,渲染错误页面
-		 		res.render('admin/category-fail',{
-					userInfo:req.userInfo,
-					message:'新增失败'
-				})
+				message:'新增文章成功',
+				url:'/article'
 			})
 		}
+	})
+	.catch((e)=>{//新增失败,渲染错误页面
+ 		res.render('admin/article-fail',{
+			userInfo:req.userInfo,
+			message:'新增文章失败'
+		})
 	})
 })
 
 router.get("/edit/:id",(req,res)=>{
 	let id = req.params.id;
-	CategoryModel.findById(id)
-	.then((category)=>{
-		res.render('admin/category-add-edit',{
+	ArticleModel.findById(id)
+	.then((article)=>{
+		res.render('admin/article-add-edit',{
 			userInfo:req.userInfo,
-			category:category
+			article:article
 		});
 	})
 })
@@ -94,7 +98,7 @@ router.get("/edit/:id",(req,res)=>{
 
 router.post("/edit",(req,res)=>{
 	let body = req.body;
-	CategoryModel.findOne({name:body.name})
+	ArticleModel.findOne({name:body.name})
 	.then((category)=>{
 		if(category && category.order == body.order){
 			res.render('admin/category-fail',{
@@ -102,7 +106,7 @@ router.post("/edit",(req,res)=>{
 				message:'修改失败'
 			})
 		}else{
-			CategoryModel.update({_id:body.id},{name:body.name,order:body.order})
+			ArticleModel.update({_id:body.id},{name:body.name,order:body.order})
 			.then((category)=>{
 				if(category){
 					res.render('admin/category-success',{
@@ -125,7 +129,7 @@ router.post("/edit",(req,res)=>{
 
 router.get("/delete/:id",(req,res)=>{
 	let id = req.params.id;
-	CategoryModel.remove({_id:id},(err,raw)=>{
+	ArticleModel.remove({_id:id},(err,raw)=>{
 		if(!err){
 			res.render('admin/category-success',{
 				userInfo:req.userInfo,

@@ -1,0 +1,32 @@
+<!-- 往数据库添加数据的页面 -->
+{% extends './layout.html' %}
+{% block header %}
+	分类列表
+{% endblock %}
+
+{% block content %}
+<!-- 主要内容展示 -->
+<li class="active-add"><a href="/category/add">新增列表</a></li>
+<table class="table table-striped">
+  <tr>
+  	<th>id</th>
+  	<th>用户名</th>
+  	<th>排序</th>
+  	<th>操作</th>
+  </tr>
+ {% for category in categories %}
+  <tr>
+    <td>{{ category._id.toString() }}</td>
+    <td>{{ category.name }}</td>
+    <td>{{ category.order }}</td>
+    <td>
+    	<a href="/category/edit/{{ category._id.toString() }}">编辑</a>
+    	<a href="/category/delete/{{ category._id.toString() }}">删除</a>
+    </td>
+  </tr>
+ {% endfor %}
+</table>
+{% if pages > 1 %}
+{% include './pagination.html' %}
+{% endif %}
+{% endblock %}

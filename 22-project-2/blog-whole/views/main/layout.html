@@ -25,12 +25,10 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="top-nav">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-	        <li><a href="list.html">html/css</a></li>
-	        <li><a href="#">jacsscript</a></li>
-	        <li><a href="#">活到老</a></li>
-	        <li><a href="#">学到老</a></li>
-	        <li><a href="#">肯定不够</a></li>
+	        <li class="active"><a href="index.html">首页</a></li>
+	        {% for key in category %}
+	        <li><a href="{{ key._id }}">{{ key.name }}</a></li>
+	        {% endfor %}
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->

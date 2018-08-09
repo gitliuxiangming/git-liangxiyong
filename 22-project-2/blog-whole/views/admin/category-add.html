@@ -1,31 +1,31 @@
+<!-- 提交表单的页面 -->
 {% extends './layout.html' %}
 {% block header %}
-	分类列表
+	新增列表
 {% endblock %}
 
 {% block content %}
 <!-- 主要内容展示 -->
-<li class="active-add"><a href="/category/add">新增列表</a></li>
-<table class="table table-striped">
-  <tr>
-  	<th>id</th>
-  	<th>用户名</th>
-  	<th>排序</th>
-  	<th>操作</th>
-  </tr>
- {% for category in categories %}
-  <tr>
-    <td>{{ category._id.toString() }}</td>
-    <td>{{ category.name }}</td>
-    <td>{{ category.order }}</td>
-    <td>
-    	<a href="category/edit">编辑</a>
-    	<a href="category/delete">删除</a>
-    </td>
-  </tr>
- {% endfor %}
-</table>
-{% if pages > 1 %}
-{% include './pagination.html' %}
-{% endif %}
+<form class="form-horizontal" action="/category/add" method="post">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-1 control-label">列表名称</label>
+    <div class="col-sm-4">
+      <input type="text" class="form-control" id="inputEmail3" placeholder="名称" name="name">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-1 control-label">排序</label>
+    <div class="col-sm-4">
+      <input type="number" class="form-control" id="inputPassword3" placeholder="排序">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-4">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+{% block footer %}
+<script src="/js/category.js"></script>
 {% endblock %}
