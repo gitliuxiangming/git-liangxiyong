@@ -91,7 +91,7 @@ router.get("/edit/:id",(req,res)=>{
 	})
 })
 
-
+/*
 router.post("/edit",(req,res)=>{
 	let body = req.body;
 	CategoryModel.findOne({name:body.name})
@@ -121,7 +121,46 @@ router.post("/edit",(req,res)=>{
 	})
 	
 })
+*/
 
+router.post("/edit",(req,res)=>{
+	let body = req.body;
+	CategoryModel.findOne({name:body.name})
+	.then((category)=>{
+		if(category.name == body.name && category.order == body.order){
+			res.render('admin/category-fail',{
+				userInfo:req.userInfo,
+				message:'修改失败,请修改数据后再提交'
+			})
+		}else{
+			CategoryModel.findOne({name:body.name,_id:{$ne:body.id}})
+			.then((cat)=>{
+				if(cat){
+					res.render('admin/category-fail',{
+						userInfo:req.userInfo,
+						message:'修改失败,请修改数据后再提交'
+					})
+				}else{
+					CategoryModel.update({_id:body.id},{name:body.name,order:body.order})
+					.then((category)=>{
+						if(category){
+							res.render('admin/category-success',{
+								userInfo:req.userInfo,
+								message:'修改成功',
+								url:'/category'
+							})
+						}else{
+							res.render('admin/category-fail',{
+								userInfo:req.userInfo,
+								message:'修改失败'
+							})
+						}
+					})
+				}
+			})
+		}
+	})
+})
 
 router.get("/delete/:id",(req,res)=>{
 	let id = req.params.id;

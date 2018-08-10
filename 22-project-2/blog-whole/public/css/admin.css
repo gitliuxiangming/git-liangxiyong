@@ -18,3 +18,6 @@
 	text-decoration: none;
 	color: #fff;
 }
+.ck-editor__editable{
+	min-height: 300px;
+}
