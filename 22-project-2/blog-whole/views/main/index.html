@@ -37,118 +37,55 @@
   </a>
 </div>
 
-<div class="panel panel-default content-item">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-   		<a href="detail.html" class="link">移动设备优先</a> 
-	</h3>
+<div id='article-list'>
+  {% for article in articles %}
+  <div class="panel panel-default content-item">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+     		<a href="view/{{ article._id }}" class="link" target="_blank">{{ article.title }}</a> 
+  	</h3>
+    </div>
+    <div class="panel-body">
+      {{ article.intro }}
+    </div>
+    <div class="panel-footer">
+    	<span class="glyphicon glyphicon-user"></span>
+    	<span class="panel-footer-text text-muted">{{ article.user.username }}</span>
+    	<span class="glyphicon glyphicon-th-list"></span>
+    	<span class="panel-footer-text text-muted">{{ article.category.name }}</span>
+    	<span class="glyphicon glyphicon-time"></span>
+    	<span class="panel-footer-text text-muted">{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }}</span>
+    	<span class="glyphicon glyphicon-eye-open"></span>
+    	<span class="panel-footer-text text-muted"><em>{{ article.click }}</em>已阅读</span>
+    </div>
   </div>
-  <div class="panel-body">
-    三年前，前雅虎用户体验总监Luke Wroblewski首次提出了“移动优先”的设计理念，当时有很多人表示怀疑，在移动互联网日益火爆的今天，这个理念得到很多人认同，为说服少数依旧保持旧观念的人们。在这篇文章中，他列举了一组数字和分析，生动有力地再次论证了移动的重要性。
-
-	(注：Mobile First（移动优先）的口号最初是由Yahoo前首席设计架构师Luke Wroblewski提出的，已经获得了业界的广泛反响。他提倡产品研发团队首先针对移动设备设计，这不仅是因为移动设备现在数量庞大而且在飞速增长，而且因为移动设备的限制能迫使我们改变旧习惯，先做减法，更关注产品最本质、最重要的方面，同时更多地注意性能和使用场景，反而最后会得到更出色的用户体验。当然，移动设备中丰富的传感器、摄像头等等硬件，也为产品提供了更广阔的空间。)
-					
-  </div>
-  <div class="panel-footer">
-  	<span class="glyphicon glyphicon-user"></span>
-  	<span class="panel-footer-text text-muted">LBB</span>
-  	<span class="glyphicon glyphicon-th-list"></span>
-  	<span class="panel-footer-text text-muted">JavaScript</span>
-  	<span class="glyphicon glyphicon-time"></span>
-  	<span class="panel-footer-text text-muted">2018-07-01</span>
-  	<span class="glyphicon glyphicon-eye-open"></span>
-  	<span class="panel-footer-text text-muted">1000已阅读</span>
-  </div>
-</div>
-<div class="panel panel-default content-item">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-   		<a href="detail.html" class="link">移动设备优先</a> 
-	</h3>
-  </div>
-  <div class="panel-body">
-    三年前，前雅虎用户体验总监Luke Wroblewski首次提出了“移动优先”的设计理念，当时有很多人表示怀疑，在移动互联网日益火爆的今天，这个理念得到很多人认同，为说服少数依旧保持旧观念的人们。在这篇文章中，他列举了一组数字和分析，生动有力地再次论证了移动的重要性。
-
-	(注：Mobile First（移动优先）的口号最初是由Yahoo前首席设计架构师Luke Wroblewski提出的，已经获得了业界的广泛反响。他提倡产品研发团队首先针对移动设备设计，这不仅是因为移动设备现在数量庞大而且在飞速增长，而且因为移动设备的限制能迫使我们改变旧习惯，先做减法，更关注产品最本质、最重要的方面，同时更多地注意性能和使用场景，反而最后会得到更出色的用户体验。当然，移动设备中丰富的传感器、摄像头等等硬件，也为产品提供了更广阔的空间。)
-					
-  </div>
-  <div class="panel-footer">
-  	<span class="glyphicon glyphicon-user"></span>
-  	<span class="panel-footer-text text-muted">LBB</span>
-  	<span class="glyphicon glyphicon-th-list"></span>
-  	<span class="panel-footer-text text-muted">JavaScript</span>
-  	<span class="glyphicon glyphicon-time"></span>
-  	<span class="panel-footer-text text-muted">2018-07-01</span>
-  	<span class="glyphicon glyphicon-eye-open"></span>
-  	<span class="panel-footer-text text-muted">1000已阅读</span>
-  </div>
-</div>
-<div class="panel panel-default content-item">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-   		<a href="detail.html" class="link">移动设备优先</a> 
-	</h3>
-  </div>
-  <div class="panel-body">
-    三年前，前雅虎用户体验总监Luke Wroblewski首次提出了“移动优先”的设计理念，当时有很多人表示怀疑，在移动互联网日益火爆的今天，这个理念得到很多人认同，为说服少数依旧保持旧观念的人们。在这篇文章中，他列举了一组数字和分析，生动有力地再次论证了移动的重要性。
-
-	(注：Mobile First（移动优先）的口号最初是由Yahoo前首席设计架构师Luke Wroblewski提出的，已经获得了业界的广泛反响。他提倡产品研发团队首先针对移动设备设计，这不仅是因为移动设备现在数量庞大而且在飞速增长，而且因为移动设备的限制能迫使我们改变旧习惯，先做减法，更关注产品最本质、最重要的方面，同时更多地注意性能和使用场景，反而最后会得到更出色的用户体验。当然，移动设备中丰富的传感器、摄像头等等硬件，也为产品提供了更广阔的空间。)
-					
-  </div>
-  <div class="panel-footer">
-  	<span class="glyphicon glyphicon-user"></span>
-  	<span class="panel-footer-text text-muted">LBB</span>
-  	<span class="glyphicon glyphicon-th-list"></span>
-  	<span class="panel-footer-text text-muted">JavaScript</span>
-  	<span class="glyphicon glyphicon-time"></span>
-  	<span class="panel-footer-text text-muted">2018-07-01</span>
-  	<span class="glyphicon glyphicon-eye-open"></span>
-  	<span class="panel-footer-text text-muted">1000已阅读</span>
-  </div>
-</div>
-<div class="panel panel-default content-item">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-   		<a href="detail.html" class="link">移动设备优先</a> 
-	</h3>
-  </div>
-  <div class="panel-body">
-    三年前，前雅虎用户体验总监Luke Wroblewski首次提出了“移动优先”的设计理念，当时有很多人表示怀疑，在移动互联网日益火爆的今天，这个理念得到很多人认同，为说服少数依旧保持旧观念的人们。在这篇文章中，他列举了一组数字和分析，生动有力地再次论证了移动的重要性。
-
-	(注：Mobile First（移动优先）的口号最初是由Yahoo前首席设计架构师Luke Wroblewski提出的，已经获得了业界的广泛反响。他提倡产品研发团队首先针对移动设备设计，这不仅是因为移动设备现在数量庞大而且在飞速增长，而且因为移动设备的限制能迫使我们改变旧习惯，先做减法，更关注产品最本质、最重要的方面，同时更多地注意性能和使用场景，反而最后会得到更出色的用户体验。当然，移动设备中丰富的传感器、摄像头等等硬件，也为产品提供了更广阔的空间。)
-					
-  </div>
-  <div class="panel-footer">
-  	<span class="glyphicon glyphicon-user"></span>
-  	<span class="panel-footer-text text-muted">LBB</span>
-  	<span class="glyphicon glyphicon-th-list"></span>
-  	<span class="panel-footer-text text-muted">JavaScript</span>
-  	<span class="glyphicon glyphicon-time"></span>
-  	<span class="panel-footer-text text-muted">2018-07-01</span>
-  	<span class="glyphicon glyphicon-eye-open"></span>
-  	<span class="panel-footer-text text-muted">1000已阅读</span>
-  </div>
+  {% endfor %}
 </div>
 
-<nav aria-label="Page navigation" id="paga">
+
+<nav aria-label="Page navigation" id="page">
   <ul class="pagination">
     <li>
-      <a href="#" aria-label="Previous">
+      <a href="javascript:;" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    {% for i in list %}
+    {% if i == page %}
+    <li class="active"><a href="javascript:;">{{ i }}</a></li>
+    {% else %}
+    <li><a href="javascript:;">{{ i }}</a></li>
+    {% endif %}
+    
+    {% endfor %}
     <li>
-      <a href="#" aria-label="Next">
+      <a href="javascript:;" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
 </nav>
+
 {% endblock %}
 
 
