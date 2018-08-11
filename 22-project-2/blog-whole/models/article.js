@@ -25,29 +25,25 @@ const ArticleSchema = new mongoose.Schema({
   		createAt:{
   			type:Date,
   			default:Date.now
-  		}
+  		},
 	});
 
-ArticleSchema.statics.getPaginationArticle = function(req,query={}){
+ArticleSchema.statics.getPaginationArticles = function(req,query={}){
     return new Promise((resolve,reject)=>{
-      let page = req.query.page || 1;
-        let options = {
+      let options = {
         page: req.query.page,//需要显示的页码
         model:this, //操作的数据模型
         query:query, //查询条件
-        projection:'-_v', //投影，
+        projection:'-__v', //投影，
         sort:{_id:-1}, //排序
-        populate:[{path:'category',select:"name"},{path:'user',select:'username'}]
+        populate:[{path:'category',select:'name'},{path:'user',select:'username'}]
       }
-
       pagination(options)
       .then((data)=>{
-       resolve(data)
+        resolve(data); 
       })
-      
-
-    })   
-}
+    })
+ }
 
 
 

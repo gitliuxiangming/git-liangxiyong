@@ -1,6 +1,3 @@
-/*刘向明博客样式*/
-
-
 /*公共样式*/
 body{
 	background: #efefef;
@@ -125,10 +122,14 @@ body{
 	width: 330px;
 	height: 330px;
 }*/
+#comment-btn{
+	    padding: 25px 10px;
+}
 /*底部开始*/
 footer{
 	text-align: center;
 }
+
 
 
 

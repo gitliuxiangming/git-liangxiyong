@@ -48,7 +48,7 @@ router.get('/users',(req,res)=>{
 })
 
 router.post('/uploadImages',upload.single('upload'),(req, res, next)=>{
-	let path = "/uploads"+req.file.filename;
+	let path = "/uploads/"+req.file.filename;
 	res.json({
 		uploaded:true,
 		url:path

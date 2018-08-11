@@ -123,6 +123,8 @@
 
 	 	var page = 1;
 	 	var currentPage = $('#page').find('.active a').html();
+	 	var lable = $this.attr('aria-label');
+
 	 	if($this.attr('aria-label') == 'Previous'){//上一页
 	 		page = currentPage - 1;
 	 	}else if($this.attr('aria-label') == 'Next'){//下一页
@@ -131,15 +133,22 @@
 	 		page = $(this).html();
 	 	} 
 
+	 	var query ='page='+page;
+	 	var category = $('#cate-id').val();
+
+	 	if(category){
+	 		query += "&category="+category;
+	 	}
+
 	 	$.ajax({
-	 		url:'/articles?page='+page,
+	 		url:'/articles?'+query,
 	 		type:'get',
 	 		dataType:'json'
 	 	})
 	 	.done(function(result){
 	 		if(result.code == 0){
 	 			buildArticleList(result.data.docs);
-	 			buildPage(result.data.docs,result.data.page)
+	 			buildPage(result.data.list,result.data.page)
 	 		}
 	 	})
 	 	.fail(function(err){
@@ -148,10 +157,10 @@
 
 	 })
 
-	 function buildArticleList(articles){
+function buildArticleList(articles){
 	 	var html = '';
 	 	for(var i = 0;i<articles.length;i++){
-	 	var data = moment(articles[i].createdAt).format('YYYY年MM月DD日 h:mm:ss ');
+	 	var data = moment(articles[i].createAt).format('YYYY年MM月DD日 HH:mm:ss ');
 	 	html +=`<div class="panel panel-default content-item">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">
@@ -185,32 +194,52 @@
 	 }
 
 	 function buildPage(list,page){
-		var html='';
-		html+=`
-			<li>
-		      <a href="javascript:;" aria-label="Previous">
-		        <span aria-hidden="true">&laquo;</span>
-		      </a>
-		    </li>
-		`;
-		for(let i=1;i<=list.length;i++){
-			if(i==page){
-				html+=`<li class="active"><a href="javascript:;">${ i }</a></li>`
-			}else{
-				html+=`<li><a href="javascript:;">${ i }</a></li>`
-			}
-		}
-		html+=`
-			<li>
-		      <a href="javascript:;" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
-		    </li>
-		`
+	 	var html = `<li>
+				      <a href="javascript:;" aria-label="Previous">
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				    </li>`
 
-		$('#page .pagination').html(html);
+	    for(i in list){
+	    	if(list[i] == page){
+	    		html += `<li class="active"><a href="javascript:;">${list[i]}</a></li>`;
+	    	}else{
+	    		html += `<li><a href="javascript:;">${list[i]}</a></li>`
+	    	}
+	    }
+
+	 	html += `<li>
+			      <a href="javascript:;" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>`
+		$('#page .pagination').html(html)	    
 	}	
 
+	//发布评论	
+	$('#comment-btn').on('click',function(){
+		var articleId = $('#article-id').val();
+		var commentContent = $('#comment-content').val();
 
+		if(commentContent.trim() == ''){
+			$('.err').html('评论内容不能为空');
+			return false
+		}else{
+			$('.err').html('');
+		}
+
+		$.ajax({
+			url:'/comment/add',
+			type:'post',
+			dataType:'json',
+			data:{id:articleId,content:commentContent}
+		})
+		.done(function(result){
+
+		})
+		.fail(function(err){
+			console.log(err);
+		})
+	})
 
 })(jQuery)

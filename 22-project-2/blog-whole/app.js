@@ -92,6 +92,7 @@ app.use('/user',require('./router/user.js'));
 app.use('/admin',require('./router/admin.js'));
 app.use('/category',require('./router/category.js'));
 app.use('/article',require('./router/article.js'));
+app.use('/comment',require('./router/comment.js'));
 
 
 

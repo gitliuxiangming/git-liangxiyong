@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
+	{% block head %}{% endblock %}
 </head>
 <body>
 	<nav class="navbar navbar-default bg-navbar navbar-fixed-top" id="bg-navbar">
@@ -25,9 +26,18 @@
 	    </div>
 	    <div class="collapse navbar-collapse" id="top-nav">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="index.html">首页</a></li>
-	        {% for key in category %}
-	        <li><a href="{{ key._id.toString() }}">{{ key.name }}</a></li>
+	      	{% if category %}
+				<li><a href="/">首页</a></li>
+	      	{% else %}
+				<li class="active"><a href="/">首页</a></li>
+	      	{% endif %}
+	        
+	        {% for key in categories %}
+				{% if key._id.toString() == category %}
+	        	<li class="active"><a href="/list/{{ key._id.toString() }}" >{{ key.name }}</a></li>
+	        	{% else %}
+	        	<li><a href="/list/{{ key._id.toString() }}">{{ key.name }}</a></li>
+	        	{% endif %}
 	        {% endfor %}
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
@@ -112,12 +122,12 @@
 
 					<div class="ad">
 						<a href="#" class="thumbnail">
-							<img src="image/s3.jpg" class="img-responsive" alt="Responsive image">
+							<img src="/image/s3.jpg" class="img-responsive" alt="Responsive image">
 						</a>
 					</div>	
 					<div class="ad">
 						<a href="#" class="thumbnail">
-							<img src="image/s4.jpg" class="img-responsive" alt="Responsive image">
+							<img src="/image/s4.jpg" class="img-responsive" alt="Responsive image">
 						</a>
 					</div>
 					<div class="panel panel-default custom-panel">
@@ -130,7 +140,7 @@
 					  	<div class="media">
 						  <div class="media-left">
 						    <a href="#">
-						      <img class="media-object img-circle about-me-img" src="image/d1.jpg" alt="...">
+						      <img class="media-object img-circle about-me-img" src="/image/d1.jpg" alt="...">
 						    </a>
 						  </div>
 						  <div class="media-body">
@@ -149,12 +159,11 @@
 					  
 					  <div class="panel-body">
 					  	<ul class="list-group">
-					  		{% for article in topArticles %}
-						  <li class="list-group-item text-ellipsis">
-						  	<a href="/view/{{ article.url }}" class="text-muted link">{{ article.title }}</a>
-						  </li>
-						  {% endfor %}
-						</ul>					 			
+					  		<ul class="list-group">
+							{% for article in topArticles %}
+							<li class="list-group-item"><a href="/view/{{ article._id.toString() }}" class="link text-ellipsis">(曾有{{ article.click }}人看过){{ article.title }}</a></li>
+							{% endfor %}				  
+						</ul>
 					  </div>
 					  
 					</div>
@@ -165,7 +174,7 @@
 						</h3>
 					  </div>
 					  <div class="panel-body">
-					  	<img class="img-responsive" src="image/d1.jpg" alt="">					 			
+					  	<img class="img-responsive" src="/image/d1.jpg" alt="">					 			
 					  </div>
 					</div>
 				</div>

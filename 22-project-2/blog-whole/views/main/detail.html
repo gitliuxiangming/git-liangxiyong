@@ -1,8 +1,48 @@
 {% extends './layout.html' %}
-{% block title %}详情页{% endblock %}
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" href="/css/detail.css">
+{% endblock %}
+
 {% block content %}
-
-
-
-
+	<div class="panel panel-default custom-panel detail-content">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">
+	    	{{ article.title }}
+	    </h3>
+	    <p class="sub-title">
+	    	<span class="text-muted">
+	    		{{ article.category.name }}
+	    	</span>
+	    	<span class="text-muted">
+	    		{{ article.createAt | date('Y年m月d日 H:i:s',-8*60) }}
+	    	</span>
+	    	<span class="text-muted"><em>{{ article.click }}</em>人已阅读</span>
+	    </p>
+	  </div>
+	  <div class="panel-body" id="content-main">
+		<div class="well">
+			<strong>简介:</strong>{{ article.intro }}
+		</div>
+		<p>
+			{{ article.content | safe }}
+		</p>
+	  </div>
+	</div>
+	<div class="pinglun">
+		<div class="col-lg-6">
+		    <div class="input-group">
+		      <textarea  id="comment-content" cols="30" rows="3" class="form-control"></textarea>
+		      <span class="input-group-btn">
+		      	<input type="hidden" value="{{ article._id.toString() }}" id="article-id">
+		        <a href="javascript:;" class="btn btn-default" type="button" id="comment-btn">提交</a>
+		      </span>
+		      
+		    </div><!-- /input-group -->
+		    <p class="text-danger err"></p>
+		</div><!-- /.col-lg-6 -->
+	</div>
 {% endblock %}

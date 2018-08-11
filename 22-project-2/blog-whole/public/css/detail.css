@@ -1,21 +1,19 @@
-.detail-item{
-	border: none;
-	min-height: 500px;
+.detail-content{
+	min-height: 600px;
 }
-.detail-item .panel-heading{
-	background: #fff;
-    border-radius: 0;
-    border-bottom: none;
-}
-.detail-item .panel-title{
+.detail-content .panel-title{
 	font-size: 30px;
 }
-.sub-title{
-	margin-top: 10px;
+.detail-content .sub-title{
+	margin-top: 5px;
 }
-.sub-title span{
+.detail-content .sub-title span{
 	margin-right: 10px;
 }
-.summary-text{
-	font-weight: bold;
+.detail-content .panel-body{
+	background: #fff;
+}
+#content-main .image{
+	width: 100%;
+	height: 100%;
 }

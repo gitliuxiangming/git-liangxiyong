@@ -18,16 +18,7 @@ router.use((req,res,next)=>{
 //显示文章管理页面
 router.get("/",(req,res)=>{
 	
-	let options = {
-		page: req.query.page,//需要显示的页码
-		model:ArticleModel, //操作的数据模型
-		query:{}, //查询条件
-		projection:'-_v', //投影，
-		sort:{_id:-1}, //排序
-		populate:[{path:'category',select:"name"},{path:'user',select:'username'}]
-	}
-
-	pagination(options)
+	ArticleModel.getPaginationArticles(req)
 	.then((data)=>{
 		res.render('admin/article-list',{
 			userInfo:req.userInfo,
@@ -39,10 +30,6 @@ router.get("/",(req,res)=>{
 		});	
 	})
 	
-	// res.render('admin/article-list',{
-	// 	userInfo:req.userInfo,
-	// 	url:'/category'
-	// });
 })
 
 //显示新增页面

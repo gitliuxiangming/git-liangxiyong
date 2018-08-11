@@ -3,49 +3,36 @@ const Mongoose=require('mongoose');
 const CategoryModel = require('../models/categoryModel.js');
 const ArticleModel = require('../models/article.js');
 const pagination = require('../util/pagination.js');
+const getCommonData = require('../util/getCommonData.js');
 const router=Router();
 
 router.get('/',(req,res)=>{
-	// CategoryModel.find({},'_id name').then((category)=>{
-	// 	res.render('main/layout',{
-	// 		category:category
-	// 	})
-	// })
-	CategoryModel.find({},'_id name')
-	.sort({order:1})
-	.then((category)=>{//获取分类
-		/*
-		let options = {
-			page: req.query.page,//需要显示的页码
-			model:ArticleModel, //操作的数据模型
-			query:{}, //查询条件
-			projection:'-_v', //投影，
-			sort:{_id:-1}, //排序
-			populate:[{path:'category',select:"name"},{path:'user',select:'username'}]
-		}
-		*/
-		ArticleModel.getPaginationArticle(req)
-		.then((topArticles)=>{//获取首页的文章
-			ArticleModel.find({},'_id title click')
-			.sort({click:-1})
-			.limit(10)
+	ArticleModel.getPaginationArticles(req)
+	.then(pageData=>{
+		getCommonData()
+		.then(data=>{
 			res.render('main/index',{
 				userInfo:req.userInfo,
-				articles:topArticles.docs,
-				page:topArticles.page,
-				list:topArticles.list,
-				pages:topArticles.pages,
-				topArticles:topArticles,
-				category:category,
-				url:'/articles',
-			});	
+				articles:pageData.docs,
+				page:pageData.page,
+				list:pageData.list,
+				pages:pageData.pages,
+				categories:data.categories,
+				topArticles:data.topArticles,
+				url:'/articles'
+			});				
 		})
-	})
+	})	
 });
 
 //ajax请求获取文章列表的分页数据
 router.get("/articles",(req,res)=>{
-	ArticleModel.getPaginationArticle(req)
+	let category = req.query.category;
+	let query = {};
+	if(category){
+		query.category = category;
+	}
+	ArticleModel.getPaginationArticles(req,query)
 	.then((data)=>{
 		res.json({
 			code:'0',
@@ -58,13 +45,43 @@ router.get("/articles",(req,res)=>{
 //显示详情页面
 router.get('/view/:id',(req,res)=>{
 	let id = req.params.id;
+	ArticleModel.findByIdAndUpdate(id,{$inc:{click:1}},{new:true})
+	.populate('category','name')
+	.then(article=>{
+		getCommonData()
+		.then(data=>{
+			res.render('main/detail',{
+				userInfo:req.userInfo,
+				article:article,
+				categories:data.categories,
+				topArticles:data.topArticles,
+				category:article.category._id.toString()
+			})			
+		})
+	})
+})
 
 
-
-
-
-
-
+//显示列表页面
+router.get('/list/:id',(req,res)=>{
+	let id = req.params.id;
+	ArticleModel.getPaginationArticles(req,{category:id})
+	.then(pageData=>{
+		getCommonData()
+		.then(data=>{
+			res.render('main/list',{
+				userInfo:req.userInfo,
+				articles:pageData.docs,
+				page:pageData.page,
+				list:pageData.list,
+				pages:pageData.pages,
+				categories:data.categories,
+				topArticles:data.topArticles,
+				category:id.toString(),
+				url:'/articles'
+			});				
+		})
+	})
 })
 module.exports = router;
 
