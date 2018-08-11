@@ -54,7 +54,7 @@
     	<span class="glyphicon glyphicon-th-list"></span>
     	<span class="panel-footer-text text-muted">{{ article.category.name }}</span>
     	<span class="glyphicon glyphicon-time"></span>
-    	<span class="panel-footer-text text-muted">{{ article.createdAt | date('Y年m月d日 h:i:s',-8*60) }}</span>
+    	<span class="panel-footer-text text-muted">{{ article.createdAt | date('Yy年mm月d日 H:i:s',-8*60) }}</span>
     	<span class="glyphicon glyphicon-eye-open"></span>
     	<span class="panel-footer-text text-muted"><em>{{ article.click }}</em>已阅读</span>
     </div>

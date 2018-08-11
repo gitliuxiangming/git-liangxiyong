@@ -27,7 +27,7 @@
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="index.html">首页</a></li>
 	        {% for key in category %}
-	        <li><a href="{{ key._id }}">{{ key.name }}</a></li>
+	        <li><a href="{{ key._id.toString() }}">{{ key.name }}</a></li>
 	        {% endfor %}
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
@@ -146,25 +146,17 @@
 					   		点击排行
 						</h3>
 					  </div>
+					  
 					  <div class="panel-body">
 					  	<ul class="list-group">
+					  		{% for article in topArticles %}
 						  <li class="list-group-item text-ellipsis">
-						  	<a href="#" class="text-muted link">习近平会见欧洲理事会主席和欧盟委员会主席</a>
+						  	<a href="/view/{{ article.url }}" class="text-muted link">{{ article.title }}</a>
 						  </li>
-						  <li class="list-group-item text-ellipsis">
-						  	<a href="#" class="text-muted link">习近平会见世界银行行长</a>
-						  </li>
-						  <li class="list-group-item text-ellipsis">
-						  	<a href="#" class="text-muted link">雨情就是命令，蔡奇陈吉宁来到防汛第一线！</a>
-						  </li>
-						  <li class="list-group-item text-ellipsis">
-						  	<a href="#" class="text-muted link">急雨将撞早高峰！今天北京仍有中到大雨局地暴雨</a>
-						  </li>
-						  <li class="list-group-item text-ellipsis">
-						  	<a href="#" class="text-muted link">醉酒男子刺死女演员 家属放弃赔偿求严惩凶手</a>
-						  </li>
+						  {% endfor %}
 						</ul>					 			
 					  </div>
+					  
 					</div>
 					<div class="panel panel-default custom-panel">
 					  <div class="panel-heading">

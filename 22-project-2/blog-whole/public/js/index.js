@@ -124,11 +124,9 @@
 	 	var page = 1;
 	 	var currentPage = $('#page').find('.active a').html();
 	 	if($this.attr('aria-label') == 'Previous'){//上一页
-	 		console.log('上一页');
 	 		page = currentPage - 1;
 	 	}else if($this.attr('aria-label') == 'Next'){//下一页
 	 		page = currentPage*1 + 1;
-	 		console.log('下一页');
 	 	}else{
 	 		page = $(this).html();
 	 	} 
@@ -141,11 +139,11 @@
 	 	.done(function(result){
 	 		if(result.code == 0){
 	 			buildArticleList(result.data.docs);
+	 			buildPage(result.data.docs,result.data.page)
 	 		}
-	 		console.log(result)
 	 	})
-	 	.fail(function(){
-
+	 	.fail(function(err){
+	 		console.log(err);
 	 	})
 
 	 })
@@ -186,7 +184,32 @@
 		$('#article-list').html(html);
 	 }
 
+	 function buildPage(list,page){
+		var html='';
+		html+=`
+			<li>
+		      <a href="javascript:;" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		`;
+		for(let i=1;i<=list.length;i++){
+			if(i==page){
+				html+=`<li class="active"><a href="javascript:;">${ i }</a></li>`
+			}else{
+				html+=`<li><a href="javascript:;">${ i }</a></li>`
+			}
+		}
+		html+=`
+			<li>
+		      <a href="javascript:;" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		`
 
+		$('#page .pagination').html(html);
+	}	
 
 
 
