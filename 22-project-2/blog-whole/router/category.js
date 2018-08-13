@@ -51,7 +51,7 @@ router.post("/add",(req,res)=>{
 	.findOne({name:body.name})
 	.then((cate)=>{
 		if(cate){//已经存在渲染错误页面
-	 		res.render('admin/category-fail',{
+	 		res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'新增失败'
 			})
@@ -63,7 +63,7 @@ router.post("/add",(req,res)=>{
 			.save()
 			.then((newCate)=>{
 				if(newCate){//新增成功,渲染成功页面
-					res.render('admin/category-success',{
+					res.render('admin/success',{
 						userInfo:req.userInfo,
 						message:'新增成功',
 						url:'/category'
@@ -71,7 +71,7 @@ router.post("/add",(req,res)=>{
 				}
 			})
 			.catch((e)=>{//新增失败,渲染错误页面
-		 		res.render('admin/category-fail',{
+		 		res.render('admin/error',{
 					userInfo:req.userInfo,
 					message:'新增失败'
 				})
@@ -128,7 +128,7 @@ router.post("/edit",(req,res)=>{
 	CategoryModel.findOne({name:body.name})
 	.then((category)=>{
 		if(category.name == body.name && category.order == body.order){
-			res.render('admin/category-fail',{
+			res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'修改失败,请修改数据后再提交'
 			})
@@ -136,7 +136,7 @@ router.post("/edit",(req,res)=>{
 			CategoryModel.findOne({name:body.name,_id:{$ne:body.id}})
 			.then((cat)=>{
 				if(cat){
-					res.render('admin/category-fail',{
+					res.render('admin/error',{
 						userInfo:req.userInfo,
 						message:'修改失败,请修改数据后再提交'
 					})
@@ -144,13 +144,13 @@ router.post("/edit",(req,res)=>{
 					CategoryModel.update({_id:body.id},{name:body.name,order:body.order})
 					.then((category)=>{
 						if(category){
-							res.render('admin/category-success',{
+							res.render('admin/success',{
 								userInfo:req.userInfo,
 								message:'修改成功',
 								url:'/category'
 							})
 						}else{
-							res.render('admin/category-fail',{
+							res.render('admin/error',{
 								userInfo:req.userInfo,
 								message:'修改失败'
 							})
@@ -166,13 +166,13 @@ router.get("/delete/:id",(req,res)=>{
 	let id = req.params.id;
 	CategoryModel.remove({_id:id},(err,raw)=>{
 		if(!err){
-			res.render('admin/category-success',{
+			res.render('admin/success',{
 				userInfo:req.userInfo,
 				message:'删除成功',
 				url:'/category'
 			})
 		}else{
-			res.render('admin/category-fail',{
+			res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'删除失败'
 			})

@@ -57,7 +57,7 @@ router.post("/add",(req,res)=>{
 	.save()
 	.then((newCate)=>{
 		if(newCate){//新增成功,渲染成功页面
-			res.render('admin/article-success',{
+			res.render('admin/success',{
 				userInfo:req.userInfo,
 				message:'新增文章成功',
 				url:'/article'
@@ -65,7 +65,7 @@ router.post("/add",(req,res)=>{
 		}
 	})
 	.catch((e)=>{//新增失败,渲染错误页面
- 		res.render('admin/article-fail',{
+ 		res.render('admin/error',{
 			userInfo:req.userInfo,
 			message:'新增文章失败'
 		})
@@ -87,7 +87,7 @@ router.get("/edit/:id",(req,res)=>{
 			});
 		})
 		.catch((e)=>{
-			res.render('admin/article-fail',{
+			res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'获取文章失败，文章不存在'
 			})
@@ -106,13 +106,13 @@ router.post("/edit",(req,res)=>{
 	}
 	ArticleModel.update({_id:body.id},options,(err,raw)=>{
 		if(!err){
-			res.render('admin/article-success',{
+			res.render('admin/success',{
 				userInfo:req.userInfo,
 				message:'编辑文章成功',
 				url:'/article'
 			})
 		}else{
-			res.render('admin/article-fail',{
+			res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'编辑文章失败'
 			})
@@ -126,13 +126,13 @@ router.get("/delete/:id",(req,res)=>{
 	let id = req.params.id;
 	ArticleModel.remove({_id:id},(err,raw)=>{
 		if(!err){
-			res.render('admin/article-success',{
+			res.render('admin/success',{
 				userInfo:req.userInfo,
 				message:'删除文章成功',
 				url:'/article'
 			})
 		}else{
-			res.render('admin/article-fail',{
+			res.render('admin/error',{
 				userInfo:req.userInfo,
 				message:'删除文章失败'
 			})

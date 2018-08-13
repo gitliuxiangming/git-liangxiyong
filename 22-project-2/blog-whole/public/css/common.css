@@ -129,7 +129,9 @@ body{
 footer{
 	text-align: center;
 }
-
+#comment-list .panel-body{
+	word-break: break-word;
+}
 
 
 

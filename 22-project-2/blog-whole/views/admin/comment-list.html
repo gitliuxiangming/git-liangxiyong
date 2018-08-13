@@ -1,0 +1,37 @@
+<!-- 往数据库添加数据的页面 -->
+{% extends './layout.html' %}
+{% block header %}
+	文章列表
+{% endblock %}
+
+{% block content %}
+<!-- 主要内容展示 -->
+<li class="active-add"><a href="/article/add">新增文章</a></li>
+<table class="table table-striped">
+  <tr>
+  	<th>文章标题</th>
+    <th>评论内容</th>
+    <th>创建时间</th>
+    <th>评论者</th>
+    <th>操作</th>
+  </tr>
+  </tr>
+ {% for comment in comments %}
+   <tr>
+    <td>{{ comment.article.title }}</td>
+    <td>{{ comment.content }}</td>
+    <td>{{ comment.createAt | date('Y年m月d日 H:i:s',-8*60) }}</td>
+    <td>{{ comment.user.username }}</td>
+    <td>    
+      <a href="/admin/comment/delete/{{ comment._id.toString() }}">删除</a>
+    </td>
+  </tr>   
+  {% endfor %}  
+
+</table>
+
+{% if pages > 1 %}
+{% include './pagination.html' %}
+{% endif %}
+
+{% endblock %}

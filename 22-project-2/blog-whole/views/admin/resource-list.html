@@ -1,0 +1,43 @@
+<!-- 往数据库添加数据的页面 -->
+{% extends './layout.html' %}
+{% block header %}
+	资源列表
+{% endblock %}
+
+{% block content %}
+<!-- 主要内容展示 -->
+<li class="active-add"><a href="/resource/add">新增资源</a></li>
+<table class="table table-striped">
+  <tr>
+  	<th>名称</th>
+  	<th>略缩图</th>
+  	<th>路径</th>
+  	<th>操作</th>
+  </tr>
+  </tr>
+ {% for resource in resources %}
+   <tr>
+    <td>{{ resource.name }}</td>
+    <td>
+      <div>
+        <a href="javascript:;" class="thumbnail">
+          <img src="{{ resource.path }}" alt="">
+        </a>
+      </div> 
+    </td>
+    <td>
+     {{ resource.path }} 
+    </td>
+    <td>    
+      <a href="/resource/delete/{{ resource._id.toString() }}">删除</a>
+    </td>
+  </tr>   
+  {% endfor %}  
+
+</table>
+
+{% if pages > 1 %}
+{% include './pagination.html' %}
+{% endif %}
+
+{% endblock %}

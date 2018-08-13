@@ -2,6 +2,7 @@ const Router=require('express').Router;
 const Mongoose=require('mongoose');
 const CategoryModel = require('../models/categoryModel.js');
 const ArticleModel = require('../models/article.js');
+const CommentModel = require('../models/comment.js');
 const pagination = require('../util/pagination.js');
 const getCommonData = require('../util/getCommonData.js');
 const router=Router();
@@ -43,20 +44,27 @@ router.get("/articles",(req,res)=>{
 
 
 //显示详情页面
-router.get('/view/:id',(req,res)=>{
+router.get("/view/:id",(req,res)=>{
 	let id = req.params.id;
 	ArticleModel.findByIdAndUpdate(id,{$inc:{click:1}},{new:true})
 	.populate('category','name')
 	.then(article=>{
 		getCommonData()
 		.then(data=>{
-			res.render('main/detail',{
-				userInfo:req.userInfo,
-				article:article,
-				categories:data.categories,
-				topArticles:data.topArticles,
-				category:article.category._id.toString()
-			})			
+			CommentModel.getPaginationComments(req,{article:id})
+			.then(pageData=>{
+				res.render('main/detail',{
+					userInfo:req.userInfo,
+					article:article,
+					categories:data.categories,
+					topArticles:data.topArticles,
+					comments:pageData.docs,
+					page:pageData.page,
+					list:pageData.list,
+					pages:pageData.pages,
+					category:article.category._id.toString()
+				})		      	
+			})
 		})
 	})
 })

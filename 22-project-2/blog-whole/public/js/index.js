@@ -116,9 +116,14 @@
 			console.log(err)
 		})		
 	});
-
-//发送文章列表的请求
-	 $('#page').on('click','a',function(){
+	//发送文章列表的请求
+	var $articlePage = $('#article-page');
+	$articlePage.on('get-data',function(e,result){
+	 	buildArticleList(result.data.docs);
+	 	buildPage($articlePage,result.data.list,result.data.page)
+	})
+	$articlePage.pagination();
+/*	 $('#page').on('click','a',function(){
 	 	var $this = $(this);
 
 	 	var page = 1;
@@ -156,11 +161,11 @@
 	 	})
 
 	 })
-
+*/
 function buildArticleList(articles){
 	 	var html = '';
 	 	for(var i = 0;i<articles.length;i++){
-	 	var data = moment(articles[i].createAt).format('YYYY年MM月DD日 HH:mm:ss ');
+	 	var date = moment(articles[i].createAt).format('YYYY年MM月DD日 HH:mm:ss ');
 	 	html +=`<div class="panel panel-default content-item">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">
@@ -181,7 +186,7 @@ function buildArticleList(articles){
 				</span>
 				<span class="glyphicon glyphicon-time"></span>
 				<span class="panel-footer-text text-muted">
-					${ data }
+					${ date }
 				</span>
 				<span class="glyphicon glyphicon-eye-open"></span>
 				<span class="panel-footer-text text-muted">
@@ -193,7 +198,7 @@ function buildArticleList(articles){
 		$('#article-list').html(html);
 	 }
 
-	 function buildPage(list,page){
+	 function buildPage($page,list,page){
 	 	var html = `<li>
 				      <a href="javascript:;" aria-label="Previous">
 				        <span aria-hidden="true">&laquo;</span>
@@ -201,10 +206,10 @@ function buildArticleList(articles){
 				    </li>`
 
 	    for(i in list){
-	    	if(list[i] == page){
-	    		html += `<li class="active"><a href="javascript:;">${list[i]}</a></li>`;
+	    	if(list[i]  == page){
+	    		html += `<li class="active"><a href="javascript:;">${ list[i] }</a></li>`;
 	    	}else{
-	    		html += `<li><a href="javascript:;">${list[i]}</a></li>`
+	    		html += `<li><a href="javascript:;">${ list[i] }</a></li>`
 	    	}
 	    }
 
@@ -213,33 +218,70 @@ function buildArticleList(articles){
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>`
-		$('#page .pagination').html(html)	    
+		// $('#page .pagination').html(html)	 
+		$page.find('.pagination').html(html);   
 	}	
 
-	//发布评论	
+	//发布评论
+	var $commentPage = $('#comment-page');
+
 	$('#comment-btn').on('click',function(){
 		var articleId = $('#article-id').val();
 		var commentContent = $('#comment-content').val();
 
 		if(commentContent.trim() == ''){
 			$('.err').html('评论内容不能为空');
-			return false
+			return false;
 		}else{
-			$('.err').html('');
+			$('.err').html('')
 		}
 
 		$.ajax({
 			url:'/comment/add',
 			type:'post',
 			dataType:'json',
-			data:{id:articleId,content:commentContent}
+			date:{id:articleId,content:commentContent}
 		})
 		.done(function(result){
+			// console.log(result);
+			if(result.code == 0){
+				//1.渲染评论列表
+				buildCommentList(result.data.docs)
+				//2.渲染分页
+				buildPage($commentPage,result.data.list,result.data.page)
 
+				$('#comment-content').val('')
+			}
 		})
 		.fail(function(err){
-			console.log(err);
+			console.log(err)
 		})
+	});
+	//构建评论列表
+	function buildCommentList(comments){
+		var html = '';
+		for(var i = 0;i<comments.length;i++){
+			var createAt = moment(comments[i].createAt).format('YYYY年MM月DD日 HH:mm:ss ');
+			html += `
+				<div class="panel panel-default">
+				  <div class="panel-heading">
+				  	${ comments[i].user.username } 发表于 ${ createAt }
+				  </div>
+				  <div class="panel-body">
+				    ${ comments[i].content }
+				  </div>
+				</div>
+			`
+		}
+		$('#comment-list').html(html);
+	}
+
+	
+	$commentPage.on('get-data',function(e,result){
+		buildCommentList(result.data.docs)
+	 	buildPage($commentPage,result.data.list,result.data.page);
 	})
+	$commentPage.pagination();	
+
 
 })(jQuery)
