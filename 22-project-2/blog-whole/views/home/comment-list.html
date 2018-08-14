@@ -22,7 +22,7 @@
     <td>{{ comment.createAt | date('Y年m月d日 H:i:s',-8*60) }}</td>
     <td>{{ comment.user.username }}</td>
     <td>    
-      <a href="/admin/comment/delete/{{ comment._id.toString() }}">删除</a>
+      <a href="/home/comment/delete/{{ comment._id.toString() }}">删除</a>
     </td>
   </tr>   
   {% endfor %}  

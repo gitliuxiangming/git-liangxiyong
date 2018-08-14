@@ -1,5 +1,6 @@
-{% if pages > 1 %}
+
   <ul class="pagination">
+    {% if pages > 1 %}
     <li>
       <a href="javascript:;" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
@@ -18,5 +19,5 @@
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
+    {% endif %}
   </ul>
-{% endif %}

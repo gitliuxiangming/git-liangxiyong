@@ -19,6 +19,7 @@ router.get('/',(req,res)=>{
 				list:pageData.list,
 				pages:pageData.pages,
 				categories:data.categories,
+				site:data.site,
 				topArticles:data.topArticles,
 				url:'/articles'
 			});				
@@ -62,6 +63,7 @@ router.get("/view/:id",(req,res)=>{
 					page:pageData.page,
 					list:pageData.list,
 					pages:pageData.pages,
+					site:data.site,
 					category:article.category._id.toString()
 				})		      	
 			})
@@ -83,6 +85,7 @@ router.get('/list/:id',(req,res)=>{
 				page:pageData.page,
 				list:pageData.list,
 				pages:pageData.pages,
+				site:data.site,
 				categories:data.categories,
 				topArticles:data.topArticles,
 				category:id.toString(),

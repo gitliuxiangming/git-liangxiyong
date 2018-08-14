@@ -120,48 +120,14 @@
 	var $articlePage = $('#article-page');
 	$articlePage.on('get-data',function(e,result){
 	 	buildArticleList(result.data.docs);
-	 	buildPage($articlePage,result.data.list,result.data.page)
+	 	if(result.data.pages>1){
+	 		buildPage($articlePage,result.data.list,result.data.page) 		
+	 	}else{
+	 		$('#article-list').html('')
+	 	}
 	})
 	$articlePage.pagination();
-/*	 $('#page').on('click','a',function(){
-	 	var $this = $(this);
 
-	 	var page = 1;
-	 	var currentPage = $('#page').find('.active a').html();
-	 	var lable = $this.attr('aria-label');
-
-	 	if($this.attr('aria-label') == 'Previous'){//上一页
-	 		page = currentPage - 1;
-	 	}else if($this.attr('aria-label') == 'Next'){//下一页
-	 		page = currentPage*1 + 1;
-	 	}else{
-	 		page = $(this).html();
-	 	} 
-
-	 	var query ='page='+page;
-	 	var category = $('#cate-id').val();
-
-	 	if(category){
-	 		query += "&category="+category;
-	 	}
-
-	 	$.ajax({
-	 		url:'/articles?'+query,
-	 		type:'get',
-	 		dataType:'json'
-	 	})
-	 	.done(function(result){
-	 		if(result.code == 0){
-	 			buildArticleList(result.data.docs);
-	 			buildPage(result.data.list,result.data.page)
-	 		}
-	 	})
-	 	.fail(function(err){
-	 		console.log(err);
-	 	})
-
-	 })
-*/
 function buildArticleList(articles){
 	 	var html = '';
 	 	for(var i = 0;i<articles.length;i++){
@@ -240,16 +206,19 @@ function buildArticleList(articles){
 			url:'/comment/add',
 			type:'post',
 			dataType:'json',
-			date:{id:articleId,content:commentContent}
+			data:{id:articleId,content:commentContent}
 		})
 		.done(function(result){
-			// console.log(result);
+			console.log(result);
 			if(result.code == 0){
 				//1.渲染评论列表
 				buildCommentList(result.data.docs)
 				//2.渲染分页
-				buildPage($commentPage,result.data.list,result.data.page)
-
+				if(result.data.pages>1){
+					buildPage($commentPage,result.data.list,result.data.page)
+				}else{
+					$('#comment-content').html('')
+				}
 				$('#comment-content').val('')
 			}
 		})
@@ -279,7 +248,11 @@ function buildArticleList(articles){
 	
 	$commentPage.on('get-data',function(e,result){
 		buildCommentList(result.data.docs)
-	 	buildPage($commentPage,result.data.list,result.data.page);
+		if(result.data.pages>1){
+			buildPage($commentPage,result.data.list,result.data.page);
+		}else{
+			$commentPage.html('');
+		}
 	})
 	$commentPage.pagination();	
 
