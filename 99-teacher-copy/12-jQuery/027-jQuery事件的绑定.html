@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-jQuery事件的绑定.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			
+			function test1(){
+				alert('click1');
+			}
+			$('div').click(test1);
+
+			$('div').click(function(){
+				alert('click2');
+			});			
+			$('div').mouseover(function(){
+				alert('mouseover');
+			});
+			
+			/*
+			$('div').on('click',function(){
+				alert('click');
+			})
+			$('div').on('mouseover',function(){
+				alert('mouseover');
+			})	
+			*/
+			// $('div').off();						
+			// $('div').off('mouseover');	
+			$('div').off('click',test1);					
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-正方体1.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			perspective: 500px;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			/*border: 1px solid #000;*/
+			margin: 100px auto;
+			position: relative;
+			/*transform: rotateX(-14deg) rotateY(-37deg);*/
+			transform-style: preserve-3d;
+			animation:sport 3s linear 0s infinite normal;
+		}
+		ul:hover{
+			animation-play-state: paused;
+		}
+		@keyframes sport{
+			form{
+				transform: rotateX(0deg);
+			}
+			to{
+				transform: rotateX(360deg);
+			}
+		}
+		ul li{
+			width: 200px;
+			height: 200px;
+			list-style: none;
+			line-height: 200px;
+			text-align: center;
+			font-size: 24px;
+			position: absolute;
+			left:0px;
+			top:0px;
+		}
+		ul li:nth-child(1){
+			background: red;
+			transform: rotateX(90deg) translateZ(100px) scale(2,1);
+		}
+		ul li:nth-child(2){
+			background: blue;
+			transform: rotateX(180deg) translateZ(100px) scale(2,1);
+		}
+		ul li:nth-child(3){
+			background: yellow;
+			transform:rotateX(270deg) translateZ(100px) scale(2,1);
+		}
+		ul li:nth-child(4){
+			background: gold;
+			transform: rotateX(360deg) translateZ(100px) scale(2,1);
+		}
+		ul li:nth-child(5){
+			background: tomato;
+			transform:translateX(-200px) rotateY(90deg);
+		}
+		ul li:nth-child(6){
+			background: pink;
+			transform: translateX(200px) rotateY(90deg);
+		}
+		ul li img{
+			width: 200px;
+			height: 200px;			
+		}										
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="images/ad1.jpg" alt=""></li>
+		<li><img src="images/ad2.jpg" alt=""></li>
+		<li><img src="images/ad3.jpg" alt=""></li>
+		<li><img src="images/ad4.png" alt=""></li>
+		<li>序</li>
+		<li>啊</li>
+	</ul>
+</body>
+</html>

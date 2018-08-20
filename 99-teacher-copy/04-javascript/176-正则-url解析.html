@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>176-正则-url解析.html</title>
+	<script>
+		var str = "this is a websit name is https://www.kuazhu.com "
+
+		var reg = /(\w+):\/\/(\w+)\.([0-9a-z-]+)\.(\w+)/;
+
+		// console.log(reg.test(str));
+		console.log(str.match(reg));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

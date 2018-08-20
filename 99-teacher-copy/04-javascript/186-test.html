@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>186-test.html</title>
+</head>
+<body>
+	<input type="button" id='btn'>
+</body>
+<script>
+	var user = { 
+		count: 1, 
+		getCount: function() { 
+			console.log(this);
+			return this.count; //在方法调用的时候决定,调用的时候该方法属于谁,this就是谁
+		} 
+	}; 
+	//console.log(user.getCount()); //1
+	/*
+	function() { 
+			return user.count; 
+		} 
+		*/
+
+
+		
+	//var func = user.getCount; 
+	//console.log(func);
+	//console.log(window);
+	//console.log(func());
+
+	//var obj = {};
+	// obj.aa = 'aa';
+	//console.log(obj1.aa);
+
+	function foo(x){ 
+		x = x || 1 || 2; // x = x || 1;//有一个为真结果就是真
+		console.log(x); 
+	}
+ 	foo(0); 
+	
+
+</script>
+</html>

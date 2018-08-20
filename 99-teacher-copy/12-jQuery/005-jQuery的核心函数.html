@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-jQuery的核心函数.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		// console.log($);
+		var res = $(function(){
+			// console.log($(null));
+			// console.log($(undefined));
+			// console.log($(false));
+			// console.log($(''));
+			// console.log($(0));
+			// console.log($(NaN));
+
+			// console.log($('div'));
+			// console.log($('.box1'));
+			// console.log($('#box2'));
+
+			// console.log($('<h1>我是标题</h1>'))
+
+			var oBox2 = document.getElementById('box2');
+			console.log($(oBox2));
+
+		});
+		// console.log(res);
+	</script>
+</head>
+<body>
+	<div class="box1"></div>
+	<div id='box2'></div>
+	<div></div>
+</body>
+</html>

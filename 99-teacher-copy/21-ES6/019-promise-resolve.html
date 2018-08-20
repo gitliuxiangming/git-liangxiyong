@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let p1 = Promise.resolve();
+
+	// console.log(p1);
+
+	let p2 = Promise.resolve(p1);
+
+	// console.log(p2 == p1);
+
+	let thenObj = {
+		then:()=>{
+			console.log('then...');
+		}
+	}
+
+	// let p3 = Promise.resolve(thenObj);
+	// console.log(p3);
+	// console.log(p3.then(()=>{
+	// 	console.log('p3 resolved...');
+	// }));
+
+	let p4 = Promise.resolve('p4');
+	console.log(p4);
+	p4.then(()=>{
+		console.log('p4 resolved....');
+	})
+
+</script>
+</html>

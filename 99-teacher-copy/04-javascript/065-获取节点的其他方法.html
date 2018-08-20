@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>065-获取节点的其他方法.html</title>
+	<script>
+		window.onload = function(){
+			// var oUl = document.getElementById('ul1');
+			// console.log(oUl.firstElementChild)
+			// oUl.firstElementChild.style.color = 'red';
+			// console.log(oUl.lastElementChild)
+			// oUl.lastElementChild.style.color = 'red';
+			var oLi = document.getElementById('li2');
+			// console.log(oLi.nextSibling)
+			// oLi.nextSibling.style.color = 'red';
+			console.log(oLi.previousElementSibling)
+			oLi.previousElementSibling.style.color = 'red';
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li id='li2'>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+</html>

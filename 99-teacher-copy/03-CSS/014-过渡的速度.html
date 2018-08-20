@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-过渡的速度.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		ul li{
+			width: 200px;
+			height: 100px;
+			list-style: none;
+			background: blue;
+			line-height: 100px;
+			text-align: center;
+			margin-top: 20px;
+			transition-property: margin-left;
+			transition-duration: 5s;
+		}
+		ul:hover li{
+			margin-left: 600px;
+		}
+		li:nth-child(2){
+			transition-timing-function:linear; 
+		}
+		li:nth-child(3){
+			transition-timing-function: ease;
+		}
+		li:nth-child(4){
+			transition-timing-function: ease-in;
+		}
+		li:nth-child(5){
+			transition-timing-function: ease-out;
+		}
+		li:nth-child(6){
+			transition-timing-function: ease-in-out;
+		}
+		li:nth-child(7){
+			transition-timing-function: cubic-bezier(0,0,1,1);
+		}											
+	</style>
+</head>
+<body>
+	<ul>
+		<li>默认</li>
+		<li>linear</li>
+		<li>ease</li>
+		<li>ease-in</li>
+		<li>ease-out</li>
+		<li>ease-in-out</li>
+		<li>cubic-bezier</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>074-定时器的基本使用.html</title>
+	<script>
+		// function show(){
+		// 	alert(1);
+		// }
+		// show();
+		// setTimeout(show,2000);
+		
+		// var a =1;
+
+		/*
+		setTimeout(function(){
+			// console.log(1);
+			console.log(a);
+			a = 3;
+		},0)
+
+		console.log(2);
+		console.log(a);
+		
+		// setInterval(show,1000);
+		setInterval(function(){
+			alert(5);
+		},1000)
+		*/
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var timer = null;
+			oBtn1.onclick = function(){
+				/*
+				timer = setTimeout(function(){
+					console.log('aaaaa');
+				},5000)
+				*/
+				timer = setInterval(function(){
+					console.log('aaaa');
+				},1000)
+			}
+			oBtn2.onclick = function(){
+				console.log('close timer');
+				// clearTimeout(timer);
+				clearInterval(timer);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn1' value="开启">
+	<input type="button" id='btn2' value="关闭">
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-响应式容器.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			height: 50px;
+			margin: 0 auto;
+			background: red;
+		}
+		@media screen and (max-width:768px){
+			.container{
+				width: 100%;
+			}
+		}
+
+		@media screen and (min-width: 768px) and (max-width: 992px){
+			.container{
+				width: 750px;
+			}		
+		}
+		@media screen and (min-width: 992px) and (max-width: 1200px){
+			.container{
+				width: 970px;
+			}		
+		}
+		@media screen and (min-width: 1200px){
+			.container{
+				width: 1170px;
+			}				
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+</body>
+<script>
+	/*
+	(function(win,doc){
+		
+		var oCantainer = doc.querySelector('.container');
+
+		function resize(){
+			var iWidth = doc.body.clientWidth || doc.documentElement.clientWidth;
+			if(iWidth >= 1200){
+				oCantainer.style.width = '1170px';
+			}else if(iWidth >= 992){
+				oCantainer.style.width = '970px';
+			}else if(iWidth >= 768){
+				oCantainer.style.width = '750px';
+			}else{
+				oCantainer.style.width = '100%';
+			}
+		}
+
+		win.addEventListener('resize',resize,false);
+		doc.addEventListener('DOMContentLoaded',resize,false);
+
+
+	})(window,document);
+	*/
+</script>
+</html>

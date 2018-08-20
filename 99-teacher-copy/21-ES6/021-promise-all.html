@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let getLoadImgPromise = (url)=>{
+
+		let promise = new Promise((resolve,reject)=>{
+			let image = new Image();
+
+			image.onload = ()=>{
+				resolve(url);
+			}
+
+			image.onerror = ()=>{
+				reject(url);
+			}
+			image.src = url;
+
+		});
+
+		return promise;
+	}
+
+	let aP = ['img/1.jpg','img/21.jpg','img/31.jpg','img/4.jpg']
+	.map((url)=>{
+		return getLoadImgPromise(url);
+	});
+
+	// console.log(aP);
+
+	let p = Promise.all(aP);
+	// console.log(p);
+	p.then((val)=>{
+		console.log('resolved...',val);
+	},(val)=>{
+		console.log('rejected...',val);
+	})
+
+</script>
+</html>

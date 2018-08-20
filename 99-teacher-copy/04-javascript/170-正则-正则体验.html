@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>170-正则-正则体验.html</title>
+	<script>
+		var str = '123sdfdsfjk dsfds 34 dsfd 343sd dfds343 dsfd89';
+		/*
+		var result = [];
+		var tmp = '';
+		for(var i = 0;i<str.length;i++){
+			// console.log(str.charAt(i));
+			if(!isNaN(parseInt(str.charAt(i)))){
+				tmp += str.charAt(i);
+			}else if(tmp){
+				result.push(tmp);
+				tmp = '';
+			}
+		}
+		if(tmp){
+			result.push(tmp);
+			tmp = '';
+		}
+		console.log(result);
+		*/
+		var reg = /\d+/g;
+		console.log(str.match(reg));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

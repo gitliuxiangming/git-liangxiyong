@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>052-ajax1.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				$.ajax({
+					url:'http://127.0.0.1:3000/052-data.json',
+					// type:"GET",
+					type:"POST",
+					// data:"name=leo&age=88",
+					data:{name:"leo",age:98},
+					dataType:'json',
+					success:function(data,statusMsg,jqXHR){
+						console.log("success",data,statusMsg,jqXHR);
+						console.log(data.name);
+					},
+					error:function(jqXHR,statusMsg){
+						console.log("error",jqXHR,statusMsg)
+					},
+					complete:function(jqXHR,statusMsg){
+						console.log("complete",jqXHR,statusMsg)
+					},
+					// timeout:1000
+					statusCode:{
+						404:function(){
+							console.log('not found')
+						}
+					},
+					headers:{
+						"test":"kuazhu"
+					}
+				})
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123-事件-滚动条.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 400px;
+			height: 50px;
+			background: #ccc;
+			position: relative;
+		}
+		#btn{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top:0;
+			left:0;
+			background: red;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			opacity: 0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oBtn = document.getElementById('btn');
+			var oDiv = document.getElementById('div1');
+
+			oBtn.onmousedown = function(ev){
+				var oEvent = ev || event;
+				var disX = oEvent.clientX - oBtn.offsetLeft;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					var l = oEvent.clientX - disX;
+					if(l < 0){
+						l = 0;
+					}else if(l >= oBox.offsetWidth - oBtn.offsetWidth){
+						l = oBox.offsetWidth - oBtn.offsetWidth
+					}
+					console.log(l / (oBox.offsetWidth - oBtn.offsetWidth));
+					var scale = l / (oBox.offsetWidth - oBtn.offsetWidth);
+
+					oBtn.style.left = l + 'px';
+
+					/*
+					oDiv.style.width = 500 * scale + 'px';
+					oDiv.style.height = 500 * scale + 'px';
+					*/
+					oDiv.style.opacity = scale;
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="btn"></div>
+	</div>
+	<div id="div1"></div>
+</body>
+</html>

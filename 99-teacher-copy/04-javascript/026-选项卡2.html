@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-选项卡2.html</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background-color: #ccc;
+			display: none;
+		}
+		.active{
+			background-color: yellow;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var aBtn = document.getElementsByTagName('input');
+			var aDiv = document.getElementsByTagName('div');
+			// console.log(aBtn);
+			// console.log(aDiv);
+			for(var i = 0;i<aBtn.length;i++){
+				// console.log(aBtn[i])
+				aBtn[i].index = i;
+				// console.log(this);
+				aBtn[i].onclick = function(){
+					// console.log(this)
+					for(var j = 0; j<aBtn.length;j++){
+						aBtn[j].className = '';
+						aDiv[j].style.display = 'none';
+					}
+					this.className = 'active';
+					// alert(i);
+					// aDiv[i].style.display = 'block';
+					aDiv[this.index].style.display = 'block';
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="选项1" class="active">
+	<input type="button" value="选项2">
+	<input type="button" value="选项3">
+	<input type="button" value="选项4">
+	<div style="display: block;">内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+	<div>内容4</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-jQuery动画卷入卷出.html</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').fadeIn(1000,function(){
+					alert('fadeIn')
+				});
+			})
+			$('button').eq(1).click(function(){
+				$('div').fadeOut(1000,function(){
+					alert('fadeOut')
+				});
+			})
+			$('button').eq(2).click(function(){
+				$('div').fadeToggle(1000,function(){
+					alert('fadeToggle')
+				});
+			})
+			$('button').eq(3).click(function(){
+				$('div').fadeTo(1000,0.5,function(){
+					alert('fadeTo')
+				});
+			})									
+		})
+	</script>
+</head>
+<body>
+	<button>淡入</button>
+	<button>淡出</button>
+	<button>切换</button>
+	<button>淡入到</button>
+	<div></div>
+</body>
+</html>

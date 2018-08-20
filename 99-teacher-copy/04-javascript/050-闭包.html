@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>050-闭包.html</title>
+	<script>
+		var b = 1;
+		function show(){
+			var a = 1;
+			function say(){
+				alert(a);
+			}
+			say();
+		}
+		function fn(){
+			alert(a);
+		}
+		show();
+		fn();
+		console.log(window.a);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

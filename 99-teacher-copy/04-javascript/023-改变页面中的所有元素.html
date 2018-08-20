@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-改变页面中的所有元素.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin: 10px;
+			float: left;
+			list-style: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var aLi = document.getElementsByTagName('li');
+			// console.log(aLi);
+			// aLi.style.background = 'red';
+			// aLi[0].style.background = 'red';
+			// aLi[1].style.background = 'red';
+			// aLi[2].style.background = 'red';
+			alert(aLi.length);
+
+			for(var i = 0;i<aLi.length;i++){
+				aLi[i].style.background = 'red';
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

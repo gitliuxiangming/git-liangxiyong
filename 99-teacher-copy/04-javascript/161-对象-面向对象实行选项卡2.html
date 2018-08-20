@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>161-对象-面向对象实行选项卡2.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn li{
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			border-radius: 10px;
+			float: left;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		.btn li.active{
+			background: rgba(255,255,0,0.5);
+			color: #000;
+		}
+		.content li{
+			width: 300px;
+			height: 500px;
+			border: 1px solid #000;
+			display: none;
+		}
+	</style>
+	<script>
+
+		window.onload = function(){
+			new Tab('btn','content');
+			new Tab('btn1','content1');
+		}
+
+		function Tab(btnId,contentId){
+			this.aBtn = document.getElementById(btnId).children;
+			this.aContent = document.getElementById(contentId).children;
+			for(var i = 0;i<this.aBtn.length;i++){
+				this.aBtn[i].index = i;
+				
+				this.aBtn[i].onclick = this.fnClick.bind(this,this.aBtn[i]);
+			}
+		}
+
+		Tab.prototype.fnClick = function(oBtn){
+			console.log(this);
+			console.log(oBtn);
+			for(var j = 0;j<this.aBtn.length;j++){
+				this.aBtn[j].className = '';
+				this.aContent[j].style.display = 'none';
+			}
+			this.aBtn[oBtn.index].className = 'active';
+			this.aContent[oBtn.index].style.display = 'block';
+		}
+	</script>
+</head>
+<body>
+	<ul id="btn" class="btn">
+		<li class="active">btn1</li>
+		<li>btn2</li>
+		<li>btn3</li>
+		<li>btn4</li>
+	</ul>
+	<ul id="content" class="content">
+		<li style="display: block">content1</li>
+		<li>content2</li>
+		<li>content3</li>
+		<li>content4</li>
+	</ul>
+	<ul id="btn1" class="btn">
+		<li class="active">btn1</li>
+		<li>btn2</li>
+		<li>btn3</li>
+		<li>btn4</li>
+	</ul>
+	<ul id="content1" class="content">
+		<li style="display: block">content1</li>
+		<li>content2</li>
+		<li>content3</li>
+		<li>content4</li>
+	</ul>	
+</body>
+</html>

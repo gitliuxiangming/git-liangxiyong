@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-jQuery动画方法.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').animate({
+					width:400
+				},2000);
+				$('div').animate({
+					height:400
+				},2000);
+				$('div').animate({
+					opacity:0.5
+				},2000);				
+			});
+			$('button').eq(1).click(function(){
+				$('div').stop(true,true);
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+</body>
+</html>

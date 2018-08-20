@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-2d旋转修改轴向.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			perspective: 500px;
+			
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		ul li img{
+			width: 200px;
+			height: 200px;
+		}
+		ul li:nth-child(1){
+			transform: rotateX(45deg);
+		}
+		ul li:nth-child(2){
+			transform: rotateY(45deg);
+		}
+		ul li:nth-child(3){
+			transform: rotateZ(45deg);
+		}				
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="images/x.jpg" alt=""></li>
+		<li><img src="images/y.jpg" alt=""></li>
+		<li><img src="images/z.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

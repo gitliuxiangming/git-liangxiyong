@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-jQuery默认行为.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			
+			$('a').click(function(ev){
+				alert('click me');
+			});
+			// $('span').trigger('click');
+			$('span').triggerHandler('click');
+			/*
+			$('input').eq(1).click(function(){
+				alert('submit');
+			});
+			$('input').eq(1).trigger('click');
+			$('input').eq(1).triggerHandler('click');
+			*/
+		})
+	</script>
+</head>
+<body>
+	<a href="http://www.kuazhu.com"><span>去学习啦</span></a>
+	<form action="http://www.kuazhu.com">
+		<input type="text" name="username">
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

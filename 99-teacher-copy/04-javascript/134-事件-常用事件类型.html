@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>134-事件-常用事件类型.html</title>
+	<style>
+		#father{
+			width: 500px;
+			height: 500px;
+			background: red;
+			border: 1px solid #000;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			background: blue;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oFather = document.getElementById('father');
+			var oSon = document.getElementById('son');
+			/*
+			oFather.addEventListener('mouseover',function(ev){
+				var oEvent = ev || event;
+				console.log(oEvent.target,'mouseover');
+			})
+			oFather.addEventListener('mouseout',function(){
+				console.log('mouseout');
+			})
+			*/
+			oFather.addEventListener('mouseenter',function(){
+				console.log('mouseenter');
+			})
+			oFather.addEventListener('mouseleave',function(){
+				console.log('mouseleave');
+			})			
+		}
+	</script>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+</html>

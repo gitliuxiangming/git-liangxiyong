@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>152-对象-属性的定义.html</title>
+	<script>
+		var obj = {};
+		// console.log(obj);
+		Object.defineProperty(obj,"name",{value:"Tom",enumerable:true,writable:true,configurable:true});
+		// obj.name = 'Tom';
+		// console.log(obj);
+		// obj.name = "Leo";
+		delete obj.name;
+		for(key in obj){
+			console.log(obj[key]);
+		}
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

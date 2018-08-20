@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-jQuery动画方法.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			margin-top: 10px;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').eq(0).click(function(){
+				$('div').eq(0).animate({
+					width:600
+				},2000,'swing');
+				$('div').eq(1).animate({
+					width:600
+				},2000,'linear');				
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>开始动画</button>
+	<div></div>
+	<div></div>
+</body>
+</html>

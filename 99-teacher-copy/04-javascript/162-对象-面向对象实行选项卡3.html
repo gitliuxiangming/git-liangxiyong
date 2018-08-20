@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>161-对象-面向对象实行选项卡2.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn li{
+			width: 60px;
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			border-radius: 10px;
+			float: left;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		.btn li.active{
+			background: rgba(255,255,0,0.5);
+			color: #000;
+		}
+		.content li{
+			width: 300px;
+			height: 500px;
+			border: 1px solid #000;
+			display: none;
+		}
+	</style>
+	<script>
+		//1.取消函数嵌套
+		//2.添加全局变量
+		//3.onload变构造函数
+		//4.把函数该为原型对象上的方法,把全局变量改为构造函数中的属性,然后修改this
+		// var aBtn = null;
+		// var aContent = null;
+		window.onload = function(){
+			new Tab();
+		}
+		function Tab(){
+			this.aBtn = document.getElementById('btn').children;
+			this.aContent = document.getElementById('content').children;
+			// var _self = this;
+			for(var i = 0;i<this.aBtn.length;i++){
+				this.aBtn[i].index = i;
+
+				// this.aBtn[i].onclick = this.fnClick;
+				// this.aBtn[i].onclick = function(){
+				// 	// console.log(this);
+				// 	_self.fnClick(this);
+				// }
+				this.aBtn[i].onclick = this.fnClick.bind(this,this.aBtn[i]);
+			}
+			
+		}
+		Tab.prototype.fnClick = function(oBtn){
+			// console.log(this);
+			for(var j = 0;j<this.aBtn.length;j++){
+				this.aBtn[j].className = '';
+				this.aContent[j].style.display = 'none';
+			}
+			this.aBtn[oBtn.index].className = 'active';
+			this.aContent[oBtn.index].style.display = 'block';					
+		}
+
+	</script>
+</head>
+<body>
+	<ul id="btn" class="btn">
+		<li class="active">btn1</li>
+		<li>btn2</li>
+		<li>btn3</li>
+		<li>btn4</li>
+	</ul>
+	<ul id="content" class="content">
+		<li style="display: block">content1</li>
+		<li>content2</li>
+		<li>content3</li>
+		<li>content4</li>
+	</ul>	
+</body>
+</html>

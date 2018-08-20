@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>064-each和map测试.html</title>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		$(function(){
+			var aLi = document.getElementsByTagName('li');
+			var arr = [11,22,33,44];
+			var likeArr = {0:'aaa',1:'bbb',2:'ccc',length:3};
+			var obj = {name:'Tom',age:18,sex:'boy'}
+			// $.each(arr,function(index,value){
+			// 	console.log(index,value);
+			// });
+
+			// var res = $.each(arr,function(index,value){
+
+				// if(index == 1){
+				// 	return false;
+				// }
+
+				// console.log(index,value)
+				// console.log(this);
+				
+				// if(index == 1){
+				// 	return false;
+				// }
+
+				
+				// if(index == 'age'){
+				// 	return true;
+				// }
+								
+				// console.log(index,value)
+			// 	console.log(this);
+			// })
+			// console.log(res);
+			// var res = $.map(arr,function(value,index){
+			// 	console.log(this);
+			// 	// console.log(value,index)
+			// 	// if(index==0){
+			// 	// 	return value;
+			// 	// }
+			// 	// return value + 10;
+				
+			// });
+			// console.log(res);
+			// var res = $('li').each(function(index,value){
+			// 	// console.log('aa');
+			// 	console.log(index,value)
+			// 	// console.log(this);
+			// });
+			// console.log(res);
+			// $('li').each(function(index,value){
+			// 	console.log(index,value);
+			// })
+
+			// $.each($('li'),function(index,value){
+			// 	console.log(index,value);
+			// })
+
+			
+			var res = $('li').map(function(value,index){
+				if(index == 0){
+					return value;
+				}
+				
+			});
+			console.log(res);
+
+		})
+	</script>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

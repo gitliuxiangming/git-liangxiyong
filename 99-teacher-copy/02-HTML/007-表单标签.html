@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-表单标签.html</title>
+	<style>
+		textarea{
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+	<form action="https://www.kuazhu.com/">
+		<fieldset>
+		<legend>注册界面</legend>
+		<p>
+			<label for="username">用户名:</label>
+			
+			<input type="text" name="username" value="test
+			" id='username' list='names'>
+			<datalist id='names'>
+				<option >Tom</option>
+				<option >Amy</option>
+				<option >Mike</option>
+			</datalist>
+		</p>
+		<p>
+			密码:
+			<input type="password" name="password">
+		</p>
+		<p>
+			性别:
+			<input type="radio" name='sex' value="0">男
+			<input type="radio" name='sex' valu="1" checked>女
+			<input type="radio" name="sex" value="2">不告诉你
+		</p>
+		<p>
+			爱好:
+			<input type="checkbox" name="hobbit" value="0">篮球
+			<input type="checkbox" name='hobbit' value="1"
+			checked>足球
+			<input type="checkbox" name='hobbit' value="2" checked>洗脚
+		</p>
+		<p>
+			email:
+			<input type="email" name='email' value="aa@qq.com">
+		</p>
+		<p>
+			个人首页:
+			<input type="url" name='url'>
+		</p>
+		<p>
+			年龄:
+			<input type="number" name='age'>
+		</p>
+		<p>
+			喜欢的颜色:
+			<input type="color" name='color'>
+		</p>
+		<p>
+			生日:
+			<input type="date" >
+		</p>
+		<p>
+			住址:
+			<select name="address">
+				<optgroup label="直辖市">
+					<option value="bj">北京</option>
+					<option value="sh">上海</option>
+					<option value="tj" selected>天津</option>
+				</optgroup>
+				<optgroup label="特区">
+					<option value="sz">深圳</option>
+					<option value="zh">珠海</option>
+				</optgroup>
+			</select>
+		</p>
+		<p>
+			介绍:
+			<textarea name="intr" id="intr" cols="50" rows="20">test</textarea>
+		</p>
+		<p>
+			<input type="hidden" value="123" name="test">
+			<input type="button" value="点我">
+			<input type="submit" value="注册">
+			<input type="reset" value="清空">
+			<input type="image" src="images/5.jpg">
+		</p>
+	</fieldset>
+	</form>
+</body>
+</html>

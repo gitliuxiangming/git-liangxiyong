@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-箭头函数和普通函数的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function Person(){
+
+	}
+	*/
+
+	/*
+	let Person = ()=>{
+
+	}
+
+	// let p = new Person();
+	console.log(Person.prototype);
+	*/
+
+	/*
+	function show(){
+		console.log(arguments);
+	}
+
+	show(11,22);
+	*/
+
+	/*
+	let show = (...args)=>{
+		console.log(args);
+	}
+
+	show(11,22,33);
+	*/
+
+	function fact(n){
+		if(n<=1){
+			return 1;
+		} else{
+			return n * fact(n-1); 
+			// return n * arguments.callee(n-1);
+		}
+	}
+
+	// console.log(fact(5));
+	let fnFact = fact;
+	fact = null;
+	console.log(fnFact(5));
+
+
+</script>
+</html>

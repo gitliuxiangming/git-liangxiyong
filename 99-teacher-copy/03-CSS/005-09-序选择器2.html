@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-09-序选择器.html</title>
+	<style>
+		/*
+		p:first-of-type{
+			color: red;
+		}
+		
+		p:last-of-type{
+			color: blue;
+		}
+		
+		p:nth-of-type(3){
+			color: blue;
+		}
+		
+		p:nth-of-type(3n+0){
+			color: blue;
+		}
+				p:nth-last-of-type(3){
+			color: blue;
+		}
+		*/
+		p:only-of-type{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>我是标题</h1>
+<!-- 		<p>我是段落1</p>
+		<p>我是段落2</p>
+		<p>我是段落3</p> -->
+		<ul>
+			<li>li1</li>
+			<li>li2</li>
+			<li>li3</li>
+			<li>
+				<p>li里面的段落1</p>
+				<p>li里面的段落2</p>
+				<p>li里面的段落3</p>
+				<p>li里面的段落4</p>
+				<p>li里面的段落5</p>
+			</li>
+		</ul>
+		<p>我是段落4</p>
+<!-- 		<p>我是段落5</p>
+		<p>我是段落6</p> -->
+		<span>我是span</span>
+	</div>
+	<ul>
+		<li>
+			<p>我是段落01</p>
+			<p>我是段落02</p>
+			<p>我是段落03</p>
+			<p>我是段落04</p>
+			<p>我是段落05</p>
+			<p>我是段落06</p>
+			<span>我是span</span>
+		</li>
+	</ul>
+</body>
+</html>

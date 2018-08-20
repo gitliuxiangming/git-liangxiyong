@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-jQuery添加节点.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				// 父节点jQuery对象.append(子节点jQuery对象)
+				var $li = $('<li>我是新建的li</li>');
+				// $('ul').append($li);
+				// 子节点jQuery对象.appendTo(父节点jQuery对象)
+				// $li.appendTo($('ul'));
+				// 父节点jQuery对象.prepend(子节点jQuery对象)
+				// $('ul').prepend($li);
+				// 子节点jQuery对象.prependTo(父节点jQuery对象)	
+				// $li.prependTo($('ul'));	
+				// $li.after($('ul'));	
+				// $('ul').after($li);	
+				$('ul').before($li);	
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>测试</button>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-jQuery操作位置.html</title>
+	<style>
+		.father{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			background: red;
+			margin: 100px auto;
+			position: relative;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			position: absolute;
+/*			left:10px;
+			top:10px;*/
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			console.log($('.son').position());
+			/*
+			$('.son').position({
+				top:20,
+				left:20
+			})
+			*/
+		})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

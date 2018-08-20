@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>054-对象级别的插件1.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 20px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		;(function($){
+			// console.log($.prototype == $.fn);
+			/*
+			$.fn.setColor = function(options){
+				var defaults = {
+					color:'red'
+				}
+				// console.log(this);//就是jQuery对象
+				options = $.extend(defaults,options)
+				
+				// this.css('color',options.color);
+				this.each(function(){
+					// console.log(this);
+					this.style.color = options.color;
+				});
+			}
+			*/
+			$.fn.extend({
+				setColor: function(options){
+					var defaults = {
+						color:'red'
+					}
+					// console.log(this);//就是jQuery对象
+					options = $.extend(defaults,options)
+					
+					// this.css('color',options.color);
+					this.each(function(){
+						// console.log(this);
+						this.style.color = options.color;
+					});
+				},
+				setBackground:function(){
+
+				}
+			});
+		})(jQuery);
+	</script>
+	<script>
+		$(function(){
+
+
+			$('button').click(function(){
+				// $('div').css('color','red');
+				// $('div').setColor('red');
+				// console.log($('div'));
+				// $('div').setColor({
+				// 	color:"yellow"
+				// });
+				$('div').setColor();
+				console.log($('div'));
+			})
+		})
+	</script>
+</head>
+<body>
+	<button>点我变色</button>
+	<div>我是DIV</div>
+	<div>我是DIV</div>
+	<div>我是DIV</div>
+</body>
+</html>

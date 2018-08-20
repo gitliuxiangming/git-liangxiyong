@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-02-类选择器.html</title>
+	<style>
+		.colorg{
+			color: green;
+		}
+		.colorr{
+			color: red;
+		}
+		.fts36{
+			font-size: 36px;
+		}
+/*		.div{
+			font-size: 24px;
+		}*/
+		.text-clip{
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+		.p1{
+			width: 100px;
+		}
+		h1{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<p class="colorg">我是段落1</p>
+	<p class="colorg">我是段落2</p>
+	<p class="colorr fts36">我是段落3</p>
+	<p class="colorr">我是段落4</p>
+	<ul>
+		<li>
+			<ul>
+				<li>
+					<p class="colorg">我是段落5</p>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<ul>
+		<li class="colorr">我是列表</li>
+	</ul>
+	<p class="p1 text-clip">
+		我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落我是段落
+	</p>
+	<h1 class="text-clip">
+		我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题我是标题
+	</h1>
+
+</body>
+</html>

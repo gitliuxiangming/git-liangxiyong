@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>042-秒转时间.html</title>
+	<script>
+		var time = 3405;
+		//00:00:00
+		var h = parseInt(time/3600);
+		var m = parseInt((time%3600)/60);
+		var s = (time%3600)%60;
+		if(h<10){
+			h = '0' + h;
+		}
+		if(m<10){
+			m = '0' + m;
+		}
+		if(s<10){
+			s = '0' + s;
+		}					
+		alert(h+":"+m+":"+s);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>137-对象-对象属性唯一应用.html</title>
+	<script>
+		var arr = [11,22,33,44,22,11,55];
+
+		function removeDup(arr){
+			var result = [];
+			var obj = {};
+			for(var i = 0;i < arr.length;i++){
+				obj[arr[i]] = '';
+			}
+			for(key in obj){
+				result.push(key);
+			}
+
+			return result;
+		}
+		console.log(arr);
+		console.log(removeDup(arr));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

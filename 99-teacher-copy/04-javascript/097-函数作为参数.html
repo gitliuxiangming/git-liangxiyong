@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>097-函数作为参数.html</title>
+	<script>
+		function show(fn){
+			// alert(val);
+			fn();
+		}
+		show(function(){
+			alert('abc')
+		});
+		//回调
+		function sum(x,y,fn){
+			var z = x*10 + y*10;
+			fn(z);
+		}
+		sum(2,3,function(res){
+			alert(res);
+		})
+		// arr.sort(function(n1,n1))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

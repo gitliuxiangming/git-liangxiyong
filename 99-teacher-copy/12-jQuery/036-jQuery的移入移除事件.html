@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-jQuery的移入移除事件.html</title>
+	<style>
+		.father{
+			width: 300px;
+			height: 300px;
+			background: red;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: blue;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			/*
+			$('.father').mouseover(function(){
+				alert('mousever');
+			});
+			$('.father').mouseout(function(){
+				alert('mouseout');
+			});	
+				
+			$('.father').mouseenter(function(){
+				alert('mouseenter');
+			});
+			$('.father').mouseleave(function(){
+				alert('mouseleave');
+			});
+			
+			$('.father').hover(function(){
+				alert('mouseenter');
+			},function(){
+				alert('mouseleave');
+			})	
+			*/	
+			
+			$('.father').hover(function(){
+				alert('haha');
+			})							
+		})
+	</script>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

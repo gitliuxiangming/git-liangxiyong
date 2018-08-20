@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>082-匀速动画的案例.html</title>
+	<style>
+		#main{
+			width: 400px;
+			height: 100px;
+			background: black;
+			position: absolute;
+			bottom: 0;
+			left:-400px;
+		}
+		#sub{
+			width: 100px;
+			height: 100px;
+			background: pink;
+			position: absolute;
+			top:0px;
+			right: -100px;
+		}
+	</style>
+	<script>
+
+		window.onload = function(){
+			var oMain = document.getElementById('main');
+			var oSub = document.getElementById('sub');
+
+			var timer = null;
+			function animation(iTarget){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(oMain.offsetLeft < iTarget){
+						iSpeed = 20;
+					}else{
+						iSpeed = -20;
+					}
+					if(Math.abs(iTarget - oMain.offsetLeft) <= Math.abs(iSpeed)){
+						oMain.style.left = iTarget + 'px';
+						clearInterval(timer);
+					}else{
+						oMain.style.left = oMain.offsetLeft + iSpeed + 'px';
+					}
+				},30);
+			}
+			/*
+			function animation2(){
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(oMain.offsetLeft < -400){
+						iSpeed = 20;
+					}else{
+						iSpeed = -20;
+					}
+					if(Math.abs(-400 - oMain.offsetLeft) <= Math.abs(iSpeed)){
+						oMain.style.left = '-400px';
+						clearInterval(timer);
+					}else{
+						oMain.style.left = oMain.offsetLeft + iSpeed + 'px';
+					}
+				},30);
+			}
+			*/
+			oMain.onmouseover = function(){
+				// oMain.style.left = '0px';
+				animation(0);
+
+			}
+			oMain.onmouseout = function(){
+				animation(-400);
+			}			
+		}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<div id="sub"></div>
+	</div>
+</body>
+</html>

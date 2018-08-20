@@ -1,0 +1,20 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-17 10:26:29
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-17 16:41:55
+*/
+*{
+	margin: 0;
+	padding: 0;
+}
+.App{
+	width: 400px;
+	margin: 50px auto;
+}
+.App li{
+	list-style: none;
+	width: 100%;
+	border-bottom: 1px dashed gray;
+	margin-top: 10px;
+}

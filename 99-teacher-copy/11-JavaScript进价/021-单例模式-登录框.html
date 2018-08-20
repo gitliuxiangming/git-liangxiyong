@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-单例模式-登录框.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#login{
+			width: 200px;
+			height: 300px;
+			background: #ccc;
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-left: -50px;
+			margin-top: -150px;
+			/*display: none;*/
+		}
+		#mask{
+			width: 500px;
+			height: 500px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="登陆" id='btn'>
+	<!-- <div id='login'></div> -->
+</body>
+<script>
+
+	(function(w){
+		var obj = null;
+		function LoginLayer(){
+			if(!obj){
+				var oDiv = document.createElement('div');
+				oDiv.id = 'login';
+				document.body.appendChild(oDiv);
+				obj = oDiv;
+			}
+		}
+		w.LoginLayer = LoginLayer;
+	})(window);
+
+	function createLoginLayer(){
+			var oDiv = document.createElement('div');
+			oDiv.id = 'login';
+			document.body.appendChild(oDiv);	
+			return oDiv;
+	}
+	function createMaskLayer(){
+			var oDiv = document.createElement('div');
+			oDiv.id = 'mask';
+			document.body.appendChild(oDiv);	
+			return oDiv;		
+	}
+	// var getSignle = (function(fn){
+	// 	var obj = null;
+	// 	if(!obj){
+	// 		obj = 
+	// 	}
+	// })(fn);
+
+	function getSignle(fn){
+		var obj = null;
+		return function(){
+			if(!obj){
+				obj = fn();
+			}
+			return obj;
+		}
+	}
+
+	var createSignleLoginLayer = getSignle(createLoginLayer);
+	var createSignleMaskLayer = getSignle(createMaskLayer);
+
+	var oBtn = document.getElementById('btn');
+
+	oBtn.onclick = function(){
+		// new LoginLayer();
+		console.log(createSignleLoginLayer());
+		console.log(createSignleMaskLayer());
+	}
+</script>
+</html>

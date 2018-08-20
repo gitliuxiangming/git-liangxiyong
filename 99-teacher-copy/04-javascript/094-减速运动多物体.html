@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>094-减速运动多物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			float: left;
+			margin-right: 30px;
+		}
+	</style>
+	<script>
+		// var timer = null;
+		function animation(obj,attr,iTarget){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var curr = parseFloat(getComputedStyle(obj,false)[attr]);
+				if(attr == 'opacity'){
+					curr = Math.round(curr*100)
+				}
+				
+				var iSpeed = (iTarget - curr)/10;
+				
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+				if(!iSpeed){
+					clearInterval(obj.timer)
+				}else{
+					if(attr == 'opacity'){
+
+						obj.style[attr] = (curr + iSpeed)/100 ;
+					}else{
+						obj.style[attr] = curr + iSpeed + 'px';
+					}
+				}
+			},30)
+		}
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('div');
+			aDiv[0].onmouseover = function(){
+				animation(this,'height',500);
+			}
+			aDiv[0].onmouseout = function(){
+				animation(this,'height',100);
+			}
+			aDiv[1].onmouseover = function(){
+				animation(this,'width',500);
+			}
+			aDiv[1].onmouseout = function(){
+				animation(this,'width',100);
+			}
+			aDiv[2].onmouseover = function(){
+				animation(this,'opacity',30);
+			}
+			aDiv[2].onmouseout = function(){
+				animation(this,'opacity',100);
+			}			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>
+</html>

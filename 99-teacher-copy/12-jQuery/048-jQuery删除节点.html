@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-jQuery删除节点.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<style>
+		div{
+			width: 100px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		$(function(){
+			$('div').click(function(){
+				alert('click div')
+			});
+			$('button').click(function(){
+				// var $res = $('div').remove();
+				// console.log($res);
+				// $('body').append($res);
+				$('div').empty();
+				// var $res = $('div').detach();
+				// console.log($res);
+				// $('body').append($res);
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>删除</button>
+	<div>我第div<h1>我是标题</h1></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105-BOM-location.html</title>
+	<script>
+
+		window.onload = function(){
+			document.getElementById('btn1').onclick = function(){
+				window.history.go(-1);
+			}
+			document.getElementById('btn2').onclick = function(){
+				window.history.go(1);
+			}			
+		}
+	</script>
+</head>
+<body>
+	<a href="https://www.baidu.com">baidu</a>
+	<input type="button" value="上一页" id='btn1'>
+	<input type="button" value="下一页" id='btn2'>
+</body>
+</html>

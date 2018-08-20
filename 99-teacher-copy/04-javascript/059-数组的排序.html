@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-数组的排序.html</title>
+	<script>
+		// var arr = ['cat','apple','book','zoom','yellow'];
+		var arr = [10,88,1,120,99,121];
+		console.log(arr);
+		arr.sort(function(n1,n2){
+			/*
+			if(n1<n2){
+				return -100;
+			}else if(n1>n2){
+				return 1999;
+			}else{
+				return 0;
+			}
+			*/
+			return n2 - n1;
+		});
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

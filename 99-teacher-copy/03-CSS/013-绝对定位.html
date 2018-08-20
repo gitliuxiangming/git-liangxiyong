@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-绝对定位.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		.box1{
+			background: red;
+		}
+		.box2{
+			background: blue;
+/*			position: relative;
+			top:10px;
+			left:10px;*/
+			position: absolute;
+			left:0;
+			right: 0;
+			top:0;
+			bottom:0;
+
+		}
+		.box3{
+			background: green;
+			width: 200px;
+			height: 200px;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background: pink;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<span>我是span</span>
+</body>
+</html>

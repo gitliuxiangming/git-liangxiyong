@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-属性和属性节点.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var obj = {};
+			obj.name = 'aa';
+			console.log(obj.name);
+			var oDiv = document.getElementById('box1');
+			oDiv.name = 'bb';
+			console.log(oDiv.name);
+		})
+	</script>
+</head>
+<body>
+	<div class="box1" id='box1' test='test'>11</div>
+</body>
+</html>

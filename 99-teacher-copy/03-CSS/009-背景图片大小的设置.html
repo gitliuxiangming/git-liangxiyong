@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-背景图片大小的设置.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 600px;
+			margin: 100px auto;
+		}
+		li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin-bottom: 10px;
+			background-image: url(images/bg1.jpg);
+			background-repeat: no-repeat;
+		}
+		li:nth-child(2){
+			background-size: 100px 150px;
+		}
+		li:nth-child(3){
+			background-size: 50% 100%;
+		}
+		li:nth-child(4){
+			background-size: 50px auto;
+		}
+		li:nth-child(5){
+			background-size: auto 80px;
+		}
+		li:nth-child(6){
+			background-image: url(images/icon.jpg);
+			background-size: contain;
+		}
+		li:nth-child(7){
+			background-image: url(images/icon.jpg);
+			background-size: cover;
+		}		
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

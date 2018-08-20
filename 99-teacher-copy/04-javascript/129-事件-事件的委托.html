@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>129-事件-事件的委托.html</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			/*
+			var aA = oUl.getElementsByTagName('a');
+
+			for(var i = 0;i<aA.length;i++){
+				aA[i].onclick = function(){
+					oUl.removeChild(this.parentNode);
+				}
+			}
+			*/
+			oUl.addEventListener('click',function(ev){
+				var oEvent = ev || window.event;
+
+				// console.log(oEvent.target);
+				oUl.removeChild(oEvent.target.parentNode);
+			},false)
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li>li1<a href="javascript:;">del1</a></li>
+		<li>li2<a href="javascript:;">del2</a></li>
+		<li>li3<a href="javascript:;">del3</a></li>
+		<li>li4<a href="javascript:;">del4</a></li>
+		<li>li5<a href="javascript:;">del5</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+		<li>li6<a href="javascript:;">del6</a></li>
+	</ul>
+</body>
+</html>

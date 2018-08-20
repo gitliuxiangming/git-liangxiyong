@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>117-事件-基础拖拽.html</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var disX = 0;
+			var disY = 0;
+			oDiv.onmousedown = function(ev){
+				var oEvent = ev || event;
+				disX = oEvent.clientX - oDiv.offsetLeft;
+				disY = oEvent.clientY - oDiv.offsetTop;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					oDiv.style.left  = oEvent.clientX - disX + 'px';
+					oDiv.style.top = oEvent.clientY - disY + 'px';
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup  = null;
+				}	
+			}
+	
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

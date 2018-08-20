@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-promise基本使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	/*
+	let loadImg = (url,success,fail)=>{
+		let image = new Image();
+
+		image.onload = ()=>{
+			success();
+		}
+
+		image.onerror = ()=>{
+			fail();
+		}
+		image.src = url;
+	}
+
+	loadImg('img/1.jpg',()=>{
+		console.log('success loaded....');
+	},()=>{
+		console.log('success failed....');
+	})
+	*/
+
+	let getLoadImgPromise = (url)=>{
+
+		let promise = new Promise((resolve,reject)=>{
+			let image = new Image();
+
+			image.onload = ()=>{
+				resolve(url);
+			}
+
+			image.onerror = ()=>{
+				reject(url);
+			}
+			image.src = url;
+
+		});
+
+		return promise;
+	}
+	let promise = getLoadImgPromise('img/1.jpg');
+	
+	console.log('a',promise);
+
+	let p = promise.then((url)=>{
+		console.log(url+' success loaded....');
+		console.log(promise);
+	},(url)=>{
+		console.log(url+' failed loaded....');
+		console.log(promise);
+	});
+
+	console.log('b',p);
+
+</script>
+</html>

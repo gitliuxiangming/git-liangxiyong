@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>131-事件-事件对象常用属性-type.html</title>
+	<style>
+		#div1{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var oDiv = document.getElementById('div1');
+
+			//解藕
+			function oDivEventHandle(ev){
+				var oEvent = ev || event;
+				// console.log(oEvent.type)
+				if(oEvent.type == 'mouseover'){
+					oDiv.style.background = 'red';
+				}else if(oEvent.type == 'click'){
+					oDiv.style.background = 'blue';
+				}
+			}
+
+			oDiv.addEventListener('mouseover',oDivEventHandle)
+			oDiv.addEventListener('click',oDivEventHandle)			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

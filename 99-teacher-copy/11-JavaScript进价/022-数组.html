@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-数组.html</title>
+	<script>
+		var arr = [45,60,89,30,60,70];
+		console.log(arr);
+
+		/*
+		var res = arr.forEach(function(value,index){
+			console.log("index "+index+"::"+value);
+		});
+		console.log(res);
+		
+
+		var arr1 = arr.map(function(value,index){
+			console.log("index "+index+"::"+value);
+			return value+10;
+		});
+
+		console.log(arr);
+		console.log(arr1);
+		
+		var arr1 = arr.filter(function(value,index){
+			return value >= 60;
+			// return 0;
+		});
+		console.log(arr);
+		console.log(arr1);	
+		
+		var bRes = arr.every(function(value,index){
+			return value >= 10;	
+		})
+		console.log(bRes);	
+		*/
+		var bRes = arr.some(function(value,index){
+			return value >= 80;	
+		})
+		console.log(bRes);
+
+		window.onload = function(){
+			var aLi = document.getElementsByTagName('li');
+			console.log(aLi);
+			aLi.forEach(function(value,index){
+				console.log(value);
+			})
+		}	
+	</script>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

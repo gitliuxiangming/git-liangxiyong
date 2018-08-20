@@ -1,0 +1,32 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+//设置rem的基准值
+@rem:32;
+
+.rem(@attr,@px1){
+	@{attr}:unit(@px1 / @rem,rem);
+}
+.rem(@attr,@px1,@px2){
+	@{attr}:unit(@px1 / @rem,rem) unit(@px2 / @rem,rem);
+}
+.rem(@attr,@px1,@px2,@px3){
+	@{attr}:unit(@px1 / @rem,rem) unit(@px2 / @rem,rem) unit(@px3 / @rem,rem);
+}
+.rem(@attr,@px1,@px2,@px3,@px4){
+	@{attr}:unit(@px1 / @rem,rem) unit(@px2 / @rem,rem) unit(@px3 / @rem,rem) unit(@px4 / @rem,rem);
+}
+
+img{
+	//width: 3.75rem;
+	.rem(width,120);
+	float: left;
+	.rem(margin,10,20,30,40);
+}
+
+h1{
+	.rem(font-size,12);
+}
+

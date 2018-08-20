@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-结构解析对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+/*
+let {username:username1,age:age1}	= {username:'Tom',age:18};
+
+console.log(username1,age1);
+*/
+
+/*
+let {username,age}	= {username:'Tom',age:18};
+
+// let {username:username,age:age}	= {username:'Tom',age:18};
+console.log(username,age);
+*/
+
+/*
+let {age,username}	= {username:'Tom',age:18};
+console.log(username,age);
+*/
+/*
+let {person,dog}	= {person:{
+	name:'Tom',
+	age:18
+},dog:{
+	name:'wangwang',
+	age:5
+}};
+
+console.log(person,dog);
+*/
+let {person={name:'Tom'},dog}	= {person:null,dog:{
+	name:'wangwang',
+	age:5
+}};
+
+console.log(person,dog);
+</script>
+</html>

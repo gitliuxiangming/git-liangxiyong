@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-定位流-相对定位.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		.box1{
+			background: red;
+		}
+		.box2{
+			background: green;
+			/*margin-top: 20px;*/
+			/*border: 10px solid #000;*/
+			padding-top:20px;
+			/*top:20px;*/
+			left:20px;
+			position: relative;
+			/*top:20px;*/
+			/*bottom: 20px;*/
+/*			left:20px;
+			right: 20px;*/
+		}
+		.box3{
+			background: blue;
+		}
+		span{
+			width: 100px;
+			height: 100px;
+			background: purple;
+			/*float: left;*/
+			position: relative;
+			left:20px;
+			right: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+	<span>我是span</span>
+</body>
+</html>

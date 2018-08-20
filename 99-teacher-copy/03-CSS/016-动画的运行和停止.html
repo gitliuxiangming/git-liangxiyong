@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-动画的运行和停止.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			animation:sport 2s;
+		}
+		div:hover{
+			animation-play-state:paused; 
+		}
+		@keyframes sport{
+			from{
+				width: 100px;
+			}
+			to{
+				width: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

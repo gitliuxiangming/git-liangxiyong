@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-js修改多个属性.html</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			background-color: red;
+		}
+	</style>
+	<script>
+		function toBlue(){
+			var oBox = document.getElementById('box');
+			oBox.style.width='400px';
+			oBox.style.height='400px';
+			oBox.style.backgroundColor='blue';			
+		}
+		function toRed(){
+			var oBox = document.getElementById('box');
+			oBox.style.width='200px';
+			oBox.style.height='200px';
+			oBox.style.backgroundColor='red';
+		}
+	</script>
+</head>
+<body>
+	<div id='box' onmouseover="toBlue()" onmouseout="toRed()"></div>
+</body>
+</html>

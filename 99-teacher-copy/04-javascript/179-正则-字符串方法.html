@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>179-正则-字符串方法.html</title>
+	<script>
+		var str = 'abcdab2018-05-10dsfdsf2018-05-11dfds';
+		var reg = /(\d{4})-(\d{2})-(\d{2})/g;
+		// var str1 = new String('bbb');
+		// console.log(str1);
+		// console.log('abcd'.charAt(0));
+		// console.log(str.search('b'));
+		// console.log(str.search(/a/g));
+		// console.log(str.match(reg));
+		// console.log(reg.exec(str));
+
+		var str1 = 'a1b2c3d4e';//a2b3c4d5
+		// console.log(str1.split(" "));
+		// console.log(str1.split(/\d/));
+
+		// console.log(str.replace(reg,'*'));
+		console.log(str1.replace(/\d/g,function(match){
+			// console.log(match);
+			//'1'
+			return match*1+1;
+		}));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

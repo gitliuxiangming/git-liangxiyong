@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-jQuery事件冒泡.html</title>
+	<style>
+		.grandfather{
+			width: 500px;
+			height: 500px;
+			background: red;
+			border: 1px solid #000;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+			border: 1px solid #000;
+			background: blue;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			background: yellow;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.son').click(function(ev){
+				alert('click son');
+
+			});
+			$('.father').click(function(ev){
+				alert('click father');
+
+			});
+			$('.grandfather').click(function(){
+				alert('click grandfather');
+			});	
+			// $('.son').trigger('click');	
+			$('.son').triggerHandler('click');
+
+		})
+	</script>
+</head>
+<body>
+	<div class="grandfather">
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</div>
+</body>
+</html>

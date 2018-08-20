@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>125-事件-愤怒的小鸟.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		#bird{
+			width: 30px;
+			height: 30px;
+			background: black;
+			position: absolute;
+			top:0;
+			left:50%;
+			margin-left: -15px;
+		}
+		.topLine{
+			position: absolute;
+			width: 50px;
+			background: green;
+			top: 0;
+			left:100%;
+		}
+		.bottomLine{
+			position: absolute;
+			width: 50px;
+			background: green;
+			bottom: 0;
+			left:100%;
+		}		
+	</style>
+	<script>
+		function getRandom(min,max) {
+			
+			return Math.round(min + (max-min)*Math.random());
+		}
+		function checkKiss(obj1,obj2){
+			if(
+				(obj1.offsetTop+obj1.offsetHeight)>obj2.offsetTop && 
+				(obj1.offsetLeft+obj1.offsetWidth)> obj2.offsetLeft &&
+				(obj2.offsetLeft+obj2.offsetWidth) > obj1.offsetLeft &&
+				(obj2.offsetTop+obj2.offsetHeight) > obj1.offsetTop
+				){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		var moveBirdTimer = null;
+		var addLineTimer = null;
+		var moveLineTimer = null;
+		window.onload = function(){
+			var oBird = document.getElementById('bird');
+
+			function addLine(){
+				var oTopLine = document.createElement('div');
+				var oBottomLine = document.createElement('div');
+				oTopLine.className = 'topLine';
+				oBottomLine.className = 'bottomLine';
+				oTopLine.data = 100;
+				var h = getRandom(300,500);
+				oTopLine.style.height = h +'px';
+				oBottomLine.style.height = window.innerHeight - 300 - h + 'px';
+
+				document.body.appendChild(oTopLine);
+				document.body.appendChild(oBottomLine);
+			}
+
+			// addLine();
+			clearInterval(addLineTimer);
+			addLineTimer = setInterval(function(){
+				addLine();
+			},800);
+
+			clearInterval(moveLineTimer);
+			moveLineTimer = setInterval(function(){
+				var aTopLine = document.getElementsByClassName('topLine');
+				var aBottomLine = document.getElementsByClassName('bottomLine');				
+				for(var i = 0;i<aTopLine.length;i++){
+					if(checkKiss(oBird,aTopLine[i]) || checkKiss(oBird,aBottomLine[i])){
+						die();
+					}
+					if(aTopLine[i].data == '-10'){
+						document.body.removeChild(aTopLine[i]);
+						document.body.removeChild(aBottomLine[i]);						
+					}
+
+					aBottomLine[i].style.left = aTopLine[i].style.left = aTopLine[i].data - 1 + '%';
+					aTopLine[i].data = aTopLine[i].data - 1;
+				}
+			},30)
+			
+			var iSpeed = 0;
+			var isDie = false;
+			clearInterval(moveBirdTimer);
+			moveBirdTimer = setInterval(function(){
+				iSpeed += 1;
+				var t = oBird.offsetTop + iSpeed;
+				if(t<0){
+					die();
+					t = 0;
+				}else if(t >= window.innerHeight - oBird.offsetHeight){
+					die();
+					t = window.innerHeight - oBird.offsetHeight;					
+				}
+				oBird.style.top = t + 'px';
+			},30)
+
+			document.onkeydown = function(){
+				if(isDie){
+					return false;
+				}
+				iSpeed -= 20;
+			}
+			function die(){
+				isDie = true;
+				clearInterval(addLineTimer);
+				clearInterval(moveLineTimer);
+				clearInterval(moveBirdTimer);				
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="bird"></div>
+</body>
+</html>

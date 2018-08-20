@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>076-数码时钟.html</title>
+	<style>
+		body{
+			background: #000;
+		}
+		#box{
+			color: #fff;
+			font-size: 40px;
+			width: 400px;
+			margin: 50px auto;
+		}
+	</style>
+	<script>
+		function toStr(n){
+			if(n<10){
+				return '0'+n;
+			}else{
+				return ''+n;
+			}
+		}
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var aImg = oBox.getElementsByTagName('img');
+			
+			function timer(){
+				var now = new Date();
+				
+				var h = now.getHours();
+				var m = now.getMinutes();
+				var s = now.getSeconds();
+
+				var str = toStr(h)+toStr(m)+toStr(s);
+				// alert(str);
+			
+				for(var i = 0;i<aImg.length;i++){
+					aImg[i].src = 'images/' + str.charAt(i) + '.png';
+				}				
+			}
+
+			setInterval(timer,1000)
+			timer();
+		
+			/*
+			aImg[0].src = 'images/' + str.charAt(0) + '.png';
+			aImg[1].src = 'images/'+ str.charAt(1) + '.png';
+			aImg[2].src = 'images/'+ str.charAt(2)+ '.png';
+			aImg[3].src = 'images/'+ str.charAt(3)+ '.png';
+			aImg[4].src = 'images/'+ str.charAt(4)+ '.png';
+			aImg[5].src = 'images/'+ str.charAt(5)+ '.png';
+			*/
+		}
+	</script>
+</head>
+<body>
+	<div id='box'>
+		<img src="images/1.png" alt="">
+		<img src="images/0.png" alt="">
+		:
+		<img src="images/0.png" alt="">
+		<img src="images/9.png" alt="">
+		:
+		<img src="images/3.png" alt="">
+		<img src="images/4.png" alt="">	
+	</div>
+</body>
+</html>

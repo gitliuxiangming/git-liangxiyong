@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var arr = [11,22,33,44];
+	console.log(arr);
+	console.log(...arr);
+	*/
+	/*
+	function show(n1,n2,n3){
+		console.log(n1,n2,n3)
+	}
+	var arr = [11,22,33];
+	// show(11,22,33);
+	//show.apply(null,arr)
+	show(...arr);
+	*/
+	/*
+	function show(...arr){
+		console.log(arr);
+		console.log(arguments)
+	}
+
+	show(11,22,33);
+	*/
+
+	/*
+	function sum(n1,n2){
+		return n1 + n2;
+	}
+
+	// console.log(sum(11,22,33));
+	// console.log(sum(...[11,22]));
+	*/
+
+	/*
+	function sum(){
+		var result = 0;
+
+		for(var i =0 ;i<arguments.length;i++){
+			result += arguments[i];
+		}
+
+		return result;
+	}
+	var arr = [11,22,33,44,55];
+
+	// console.log(sum(11,22,33,44));
+	// console.log(sum(...arr));
+	*/
+	/*
+	function sum(...arr){
+		var result = 0;
+
+		for(var i =0 ;i<arr.length;i++){
+			result += arr[i];
+		}
+
+		return result;		
+	}
+	var arr = [11,22,33,44,55];
+	// console.log(sum(11,22,33,44));
+	console.log(sum(...arr));
+	*/
+	//console.log(Math.max(1,4,3));
+
+	//求数组的最大值
+	/*
+	var arr = [11,22,33,44,99,55];
+	// console.log(Math.max.apply(null,arr));
+	console.log(Math.max(...arr));
+	*/
+
+	var arr1 = [11,22,33,44,99,55];
+	/*
+	var arr2 = arr1;
+	arr2.push(111);
+	*/
+	
+	/*
+	var arr2 = [];
+	for(var i = 0;i<arr1.length;i++){
+		arr2.push(arr1[i]);
+	}
+	arr2.push(111);
+	*/
+	/*
+	var arr2 = arr1.concat();
+	arr2.push(111);
+	*/
+	/*
+	var arr2 = arr1.slice();
+	arr2.push(111);
+	*/
+	/*
+	var arr2 = [...arr1];
+	arr2.push(111);
+	console.log(arr1,arr2);
+	*/
+
+	/*
+	var obj1 = {name:'Tom',age:18};
+	// var obj2 = obj1;
+	var obj2 = {...obj1};
+	obj2.name = 'Leo';
+	console.log(obj1,obj2);
+	*/
+	var obj1 = {name:'Tom',age:18,friend:{name:'Leo',age:40}};
+	var obj2 = {...obj1};
+	obj2.name = "Amy";
+	obj2.friend.name = 'Mike';
+	console.log(obj1,obj2);
+
+</script>
+</html>

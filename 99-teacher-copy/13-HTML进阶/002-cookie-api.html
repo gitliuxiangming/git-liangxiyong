@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-cookie.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//存储
+    function setCookie(key,value,iDate) {
+		var oDate = new Date();
+	    oDate.setDate(oDate.getDate() + iDate);
+	    document.cookie = key + "=" + value +";expires="+oDate;    	
+    }
+	//获取
+	function getCookie(key){
+		var value = '';
+		var str = document.cookie;
+		var arr1 = str.split(';');
+		for(var i = 0 ;i<arr1.length;i++){
+			var arr2 = arr1[i].split('=');
+			if(arr2[0].trim() == key.trim()){
+				value = arr2[1];
+				break;
+			}
+		}
+		return value;
+	}
+	//删除
+	function removeCookie(key){
+		setCookie(key,false,-1);
+	}
+
+	setCookie('name','kuazhu',10);
+</script>
+</html>

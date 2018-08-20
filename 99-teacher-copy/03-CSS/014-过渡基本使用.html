@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-过渡基本使用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			transition-property: width,background-color;
+			transition-duration: 3s,5s; 
+			/*
+			transition-property: background-color;
+			transition-duration: 3s; 			
+			*/
+		}
+		div:hover{
+			width: 500px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

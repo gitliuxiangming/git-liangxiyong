@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>061-真伪数组的转换.html</title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+<script>
+	var aLi = document.getElementsByTagName('li');
+	var likeArr = {0:'aaa',1:'bbb',2:'ccc',length:3};
+	var arr = [11,22,33,44,55];
+
+	//call/apply
+	function test(n1,n2){
+		console.log(this,n1,n2);
+	}
+	// test();
+	// window.test();
+	var obj = {name:'Tom'};
+	// test.call(obj,1,2);
+	// test.apply(obj,[3,4]);
+
+	var arr2 = [];
+	arr2.push(1,2);
+	// console.log(arr2);
+
+	var obj = {};
+	// [].push.apply(obj,arr);
+	//转换成伪数组
+	[].push.apply(obj,aLi);
+	
+	console.log(obj);
+
+	var arr3 = [];
+	// [].push.apply(arr3,aLi);
+	// [].push.apply(arr3,arr);
+	[].push.apply(arr3,likeArr);
+	console.log(arr3);
+
+
+	//伪数组转真数组
+	var arr4 = [].slice.call(likeArr);
+	console.log(arr4);
+
+
+</script>
+</html>

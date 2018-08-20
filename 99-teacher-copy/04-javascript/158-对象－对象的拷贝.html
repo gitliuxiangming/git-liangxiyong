@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>158-对象－对象的拷贝.html</title>
+	<script>
+		var obj1 = {
+			name:"Tom",
+			age:18
+		}
+
+		var obj2 = obj1;
+
+		// obj2.sex = 'famel';
+
+		// console.log(obj1);
+
+		var obj3 = {};
+		for(key in obj1){
+			obj3[key] = obj1[key];
+		}
+		obj3.sex = 'famel';
+		console.log(obj3);
+		console.log(obj1);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

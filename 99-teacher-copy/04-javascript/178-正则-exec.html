@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>178-正则-exec.html</title>
+	<script>
+		var str = 'adfds2018-04-23';
+		var reg = /(\d{4})-(\d{2})-(\d{2})/;
+		var arr = [];
+		var result = [];
+		//null false
+		console.log(reg.exec(str));
+		while(arr = reg.exec(str)){
+			// console.log(arr);
+			console.log(reg.lastIndex);
+			result.push(arr[3]+"/"+arr[2]+"/"+arr[1]);
+		}
+		console.log(result);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

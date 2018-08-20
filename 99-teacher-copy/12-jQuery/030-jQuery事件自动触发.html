@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-jQuery事件自动触发.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('div').click(function(){
+				alert('click');
+			});
+			// $('div').trigger('click');
+			$('div').triggerHandler('click');
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

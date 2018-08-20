@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>163-对象-面向对象的拖拽4.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			new Drag({width:100,height:100,background:"yellow"});
+			new Drag({width:200,height:200,background:"red"});			
+		}
+		function Drag(option){
+			this.oBox = document.createElement('div');
+			this.oBox.style.width = option.width + 'px';
+			this.oBox.style.height = option.height + 'px';
+			this.oBox.style.background = option.background;
+			this.oBox.style.position = 'absolute';
+			this.disX = 0;
+			this.disY = 0;
+			document.body.appendChild(this.oBox);
+			this.oBox.onmousedown = this.fnDown.bind(this);
+		}
+		Drag.prototype.fnDown = function(ev){
+			var oEvent = ev || event;
+			this.disX = oEvent.clientX - this.oBox.offsetLeft;
+			this.disY = oEvent.clientY - this.oBox.offsetTop;
+			document.onmousemove =this.fnMove.bind(this);
+			document.onmouseup = this.fnUp;	
+		}
+		Drag.prototype.fnMove = function(ev){
+			var oEvent = ev || event;
+			this.oBox.style.left = oEvent.clientX - this.disX + "px";
+			this.oBox.style.top = oEvent.clientY - this.disY + "px";			
+		}
+		Drag.prototype.fnUp = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;			
+		}
+	</script>
+</head>
+<body>
+	<!-- <div id="div1"></div> -->
+</body>
+</html>

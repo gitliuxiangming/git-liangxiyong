@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-浮动元素的清除.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			background-color: blue;
+			/*margin-bottom: 10px;*/
+			overflow: hidden;
+		}
+		.box1 p{
+			background: tomato;
+			width: 100px;
+			float: left;
+		}
+		.box2{
+			background-color: green;
+			margin-top: 20px;
+		}
+		.box2 p{
+			background: orange;
+			width: 100px;
+			float: left;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box1">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<!-- <div class="wall"></div> -->
+	</div>
+	
+	<div class="box2">
+		<p>11</p>
+		<p>22</p>
+		<p>33</p>
+	</div>
+</body>
+</html>

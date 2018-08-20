@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>059-kquery001.html</title>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+<!-- 	<script>
+		$(function(){
+			var aLi = document.getElementsByTagName('li');
+			console.log(aLi);
+		})
+	</script> -->
+</head>
+<body>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+	</ul>
+</body>
+	<script>
+		/*
+		window.onload = function(){
+			console.log('window.onload...')
+		}
+		document.addEventListener('DOMContentLoaded',function(){
+			console.log('DOMContentLoaded');
+		})
+		*/
+		
+		// $(function(){
+		// 	console.log('jquery...');
+		// })
+		
+		// $(function(){
+		// 	console.log('kquery...');
+		// })
+
+
+		//布尔值是假的情况返回空的jquery对象
+		// console.log($(''));
+		// console.log($(false));
+		// console.log($(NaN));
+		// console.log($(undefined));
+		// console.log($(null));
+		// console.log($(0));
+
+		//如是函数的话返回有document的jquery对象
+		// console.log($(function(){}));
+
+		//HTML->HTML对象的DOM节点的jquery对象
+		//选择器,返回的是选择器选中的DOM节点的jquery对象
+		// console.log($('  <div><p></p></div><div><p></p></div>  '));
+		//<a>
+		// console.log($('li'));
+
+		var aLi = document.getElementsByTagName('li');
+		var likeArr = {0:'aaa',1:'bbb',2:'ccc',length:3};
+		var arr = [11,22,33,44,55];
+		//返回数组中的内容的的jquery对象
+		// console.log($(aLi));
+		// console.log($(likeArr));
+		// console.log($(arr));
+
+		//返回参数对应的内容的jquery对象
+		var oLi = aLi[0];
+		console.log($(oLi));
+		console.log($(123));
+		console.log($(true));
+		console.log($({}));
+
+	</script>
+</html>

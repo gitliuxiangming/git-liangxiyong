@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>067-封装通过类名获取元素函数.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			width: 100%;
+			height: 50px;
+			border: 1px solid #000;
+		}
+		#box>div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		function getElementsByClass(obj,sClass){
+			var result = [];
+			// var aEle = obj.children;
+			var aEle = obj.getElementsByTagName('*')
+			for(var i = 0;i<aEle.length;i++){
+				if(aEle[i].className == sClass){
+					result.push(aEle[i]);
+				}
+			}
+			return result;
+		}
+		window.onload = function(){
+			/*
+			var oUl = document.getElementById('ul1');
+			// var aLi = oUl.getElementsByClassName('box');
+			var aLi = getElementsByClass(oUl,'box');
+			for(i in aLi){
+				aLi[i].style.background = 'red';
+			}
+			*/
+			var oBox =  document.getElementById('box');
+			var aDiv = getElementsByClass(oBox,'box');
+			for(i in aDiv){
+				aDiv[i].style.background = 'red';
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id="ul1">
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+	</ul>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div class="box"></div>
+		<div></div>
+		<div class="box"></div>
+	</div>
+</body>
+</html>

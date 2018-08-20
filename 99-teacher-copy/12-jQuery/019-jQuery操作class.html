@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-jQuery操作class.html</title>
+	<style>
+		.box1{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+		.box2{
+			background: red;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			var oBtn = document.getElementsByTagName('button')[0];
+			oBtn.onclick = function(){
+				// $('div').addClass('box1 box2');	
+				// $('div').removeClass('box1');
+				// $('div').toggleClass('box2');
+				// $('div').attr('class','box1 box2');
+			}
+		})
+	</script>
+</head>
+<body>
+	<button>点我</button>
+	<div class=""></div>
+</body>
+</html>

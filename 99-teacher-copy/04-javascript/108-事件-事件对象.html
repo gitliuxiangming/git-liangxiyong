@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>108-事件-事件对象.html</title>
+	<style>
+		body{
+			/*height: 200px;*/
+			/*border: 1px solid #000;*/
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			// document.body.onclick = function(){
+			// 	alert('abc');
+			// }
+			document.onclick = function(ev){
+				// alert('abc');
+				// console.log(document.childNodes[2]);
+				var oEvent = ev || event;
+				console.log('X:',oEvent.clientX);
+				console.log('Y:',oEvent.clientY);
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

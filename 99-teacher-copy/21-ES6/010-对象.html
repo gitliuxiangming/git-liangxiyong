@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	let p1 = new Person();
+	
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+
+	Person.prototype = {
+		constructor:Person,
+
+		showName:function(){
+			console.log("I am "+this.name);
+		},
+		showAge:function(){
+			console.log("I am "+this.age+" years old");
+		}
+	};
+	Person.sayHi = function() {
+		console.log('Hi ....');
+	}
+
+	var p = new Person("Tom",18);
+	p.showName();
+	p.showAge();
+	Person.sayHi();
+	*/
+	
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		showName(){
+			console.log("I am "+this.name);
+		}
+
+		showAge(){
+			console.log("I am "+this.age+" years old");
+		}
+
+		static sayHi(){
+			console.log('Hi ....');
+		}
+		
+	}
+
+	class Student extends Person{
+		constructor(name,age,major){
+			super(name,age);
+			this.major = major;
+		}
+		showMajor(){
+			console.log("I am from "+ this.major);
+		}
+		showName(){
+			console.log("I am "+this.name + " and I am a student");
+		}
+	}
+
+	let p = new Person("Tom",18);
+	// // console.log(p);
+	// // console.log(typeof Person);
+	// // console.log(Person.prototype)
+	// p.showName();
+	// p.showAge();
+	// Person.sayHi();
+	// p.showMajor();
+
+	// console.log(Student.prototype)
+	let s = new Student("Tom",18,'Computer');
+	// console.log(s);
+	s.showAge();
+	s.showName();
+	s.showMajor();
+	console.log(s)
+	Student.sayHi();
+	
+	
+
+</script>
+</html>

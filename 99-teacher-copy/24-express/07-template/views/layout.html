@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		nav{
+			height: 50px;
+			width: 100%;
+			background: black;
+		}
+		.content{
+			float: left;
+			width: 800px;
+			height: 800px;
+			background: yellow;
+		}
+		.side{
+			float: right;
+			width: 200px;
+			height: 800px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="#">首页</a>
+		<a href="#">我的足迹</a>
+	</nav>
+	<div>
+		<div class="content">
+			{% block content %}{% endblock %}
+		</div>
+		<div class="side">
+			right side!!!!!! 
+		</div>
+	</div>
+</body>
+{% include './footer.html' %}
+</html>

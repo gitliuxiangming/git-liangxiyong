@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-规定动画的状态.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: blue;
+			margin: 100px auto;
+			animation-name:sport;
+			animation-duration: 3s;
+			animation-delay: 2s;
+			/*animation-fill-mode: backwards;*/
+			/*animation-fill-mode: forwards;*/
+			animation-fill-mode: both;
+		}
+		@keyframes sport{
+			0%{
+				transform: rotate(20deg);
+			}
+			40%{
+				transform: rotate(35deg);
+			}
+			70%{
+				transform: rotate(60deg);
+			}
+			100%{
+				transform: rotate(75deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-拖拽中事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.container{
+			width: 200px;
+			height: 200px;
+			background: blue;
+		}
+		.target{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		.drop{
+			background: yellow;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="container"></div>
+	<div class="target" id="target" draggable='true'></div>
+	<img src="img/logo.png" id='logo' class="hide" alt="">
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//被拖拽的元素
+		$('#target')
+		.on('dragstart',function(ev){//当元素开始拖动时触发
+			ev.originalEvent.dataTransfer.setData('targetId',ev.target.id)
+			ev.originalEvent.dataTransfer.setDragImage($('#logo').clone().removeClass('hide')[0],0,0);//自定义鼠标图形
+		})
+		.on('drag',function(){//被拖动元素拖动时触发
+			console.log('target drag');
+		})
+		.on('dragend',function(){//拖拽时松开鼠标时触发
+			console.log('target dragend');
+		})
+
+		//容器
+		$('#container')
+		.on('drop',function(ev){//当放置被拖动元素时触发
+			var targetId = ev.originalEvent.dataTransfer.getData('targetId');
+			$('#container').append($('#'+targetId));
+		})
+		.on('dragover',function(ev){//被拖动元素正在到放置到容器时触发
+			ev.preventDefault();
+		})
+		.on('dragenter',function(){//当被拖动元素进入容器时触
+			console.log('container dragenter');
+			$('#container').addClass('drop');
+		})
+		.on('dragleave',function(){
+			console.log('container dragleave');
+			$('#container').removeClass('drop');
+		})
+		.on('drag',function(){//容器中的被拖动元素拖动时触发
+			console.log('container drag');
+		})
+		.on('dragend',function(){//被拖动元素在容器中松开鼠标时触发
+			console.log('container dragend');
+		})		
+	})
+</script>
+</html>

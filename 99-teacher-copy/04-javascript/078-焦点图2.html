@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>077-焦点图2.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.carousel{
+			width: 1226px;
+			height: 460px;
+			background: red;
+			position: absolute;
+			left:0;
+			top:0;
+			overflow: hidden;	
+		}
+
+		#imgBox{
+			width:3678px; 
+			height: 460px;
+		}
+		 .carousel .img-box li{
+			width: 1226px;
+			height: 460px;
+			float: left;
+/*			position: absolute;
+			left:0;
+			top:0;*/
+		}
+		 .carousel .img-box li img{
+			width: 100%;
+			height: 100%;
+		}
+
+		.leftArrow,.rightArrow{
+			display: inline-block;
+			width: 30px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			font-size: 24px;
+			color: #fff;
+			position: absolute;
+			top:200px;
+			cursor: pointer;
+			z-index: 999;
+		}
+		.leftArrow:hover,.rightArrow:hover{
+			background: rgba(0,0,0,0.3);
+		}
+		.leftArrow{
+			/*left:234px;*/
+		}
+		.rightArrow{
+			right: 0;
+		}
+		 .carousel .btn-box{
+			position: absolute;
+			right: 20px;
+			bottom: 20px;
+			z-index: 999;
+		}
+		 .carousel .btn-box li{
+			float: left;
+			width: 10px;
+			height: 10px;
+			border: 1px solid #000;
+			border-radius: 50%;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+		 .carousel .active{
+		 	background: red;
+		 }
+	</style>
+	<script>
+		
+		window.onload = function(){
+			var oImgBox = document.getElementById('imgBox');
+			var aImgLi = document.getElementById('imgBox').children;
+			var aBtnLi = document.getElementById('btnBox').children;
+			var oPreBtn = document.getElementById('preBtn');
+			var oNextBtn = document.getElementById('nextBtn');
+			var oBox = document.getElementById('carouselBox');
+			var now = 0;
+			var timer = null;
+			oNextBtn.onclick = function(){
+				now++;
+				if(now>=aBtnLi.length){
+					now = 0;
+				}
+				tab();
+			}
+			oPreBtn.onclick = function(){
+				now--;
+				if(now < 0){
+					now = aBtnLi.length - 1;
+				}
+				tab();
+
+			}
+			function tab(){
+				for(var i = 0;i<aBtnLi.length;i++){
+					aBtnLi[i].className = '';
+				}
+				// aImgLi[now].style.zIndex = 30;
+				oImgBox.style.marginLeft = now * -1226 + 'px';
+				aBtnLi[now].className = 'active';		
+			}
+			for(var i = 0;i<aBtnLi.length;i++){
+				aBtnLi[i].index = i;
+				aBtnLi[i].onclick = function(){
+					now = this.index;
+					tab();
+				}
+			}
+			timer = setInterval(function(){
+				oNextBtn.onclick();			
+			},1000)
+			oBox.onmouseover = function(){
+				clearInterval(timer);
+			}
+			oBox.onmouseout = function(){
+				timer = setInterval(function(){
+					oNextBtn.onclick();			
+				},1000)
+			}
+
+		}
+		
+	</script>
+</head>
+<body>
+	<div class="carousel" id='carouselBox'>
+		<ul class="img-box" id='imgBox'>
+			<li><img src="images/b1.jpg" alt=""></li>
+			<li><img src="images/b2.jpg" alt=""></li>
+			<li><img src="images/b3.jpg" alt=""></li>
+		</ul>
+		<span class="leftArrow" id="preBtn">&lt;</span>
+		<span class="rightArrow" id="nextBtn">&gt;</span>
+		<ul class="btn-box" id='btnBox'>
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>	
+</body>
+</html>

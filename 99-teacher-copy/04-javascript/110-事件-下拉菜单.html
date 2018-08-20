@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>110-事件-下拉菜单.html</title>
+	<style>
+		#menu{
+			width: 100px;
+			height: 500px;
+			background: #ccc;
+			display: none;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oMenu = document.getElementById('menu');
+			oBtn.onclick = function(ev){
+				var oEvent = ev || event;
+				oMenu.style.display = 'block';
+				oEvent.stopPropagation();
+				// alert('btn click')
+			}
+			document.onclick = function(){
+				oMenu.style.display = 'none';
+				// alert('doc click');
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="菜单">
+	<div id="menu"></div>
+</body>
+</html>

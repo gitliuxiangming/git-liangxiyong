@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>183-表单脚本-表单的提交和重置.html</title>
+</head>
+<body>
+	<form action="http://www.kuazhu.com" id='form1'>
+		<div>
+			姓名:<input type="text" name="username">
+		</div>
+		<div>
+			年龄:<input type="text" name="age" value="18">
+		</div>
+		<div>
+			性别:<input type="radio" name="sex">男<input type="radio" name="sex">女<input type="radio" name="sex">保密
+		</div>
+		<div>
+			爱好: <input type="checkbox" name="fav">足球<input type="checkbox" name="fav">蓝球
+		</div>	
+		<div>
+			<select name="city" id="city" >
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+				<option value="gz">广州</option>
+			</select>
+		</div>	
+		<div>
+			<input type="submit" value="提交1" id='btn1'>
+			<button type="submit">提交2</button>
+			<input type="image" src="images/9.png">
+			<input type="button" value="提交3" id='btn2'>
+
+			<input type="reset" value="重置1" id='btn3'>
+			<button type="reset">重置2</button>	
+			<input type="button" value="重置3" id='btn4'>		
+		</div>				
+	</form>
+
+</body>
+<script>
+	var oForm = document.forms[0];
+	var oBtn = document.getElementById('btn1');
+	var oBtn2 = document.getElementById('btn2');
+	var oBtn3 = document.getElementById('btn3');
+	var oBtn4 = document.getElementById('btn4');
+	
+	oBtn2.onclick = function(){
+		oForm.submit();
+	}
+	
+	oForm.onsubmit = function(){
+		console.log('submit...');
+		return false;
+	}
+
+	oForm.onreset = function(){
+		console.log('reset...');
+		// return false;
+	}
+	oBtn4.onclick = function(){
+		oForm.reset();
+	}
+	oBtn3.onclick = function(){
+		return false;
+	}
+
+</script>
+</html>

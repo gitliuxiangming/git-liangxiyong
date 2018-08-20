@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>100-动画函数运用-图标跳动.html</title>
+	<link rel="stylesheet" href="css/fontawesome-all.min.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			height: 200px;
+			margin: 100px auto;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 120px;
+			border: 1px solid #000;
+			float: left;
+			text-align: center;
+			position: relative;
+		}
+		i{
+			font-size: 30px;
+			position: absolute;
+			top:40px;
+			left:25px;
+		}
+		p{
+			position: absolute;
+			left:25px;
+			bottom: 10px;
+		}
+	</style>
+	<script src="js/tool.js"></script>
+	<script>
+		window.onload = function(){
+			var aLi = document.getElementsByTagName('li');
+			for(var i = 0;i<aLi.length;i++){
+				aLi[i].onmouseover = function(){
+					var oI = this.firstElementChild;
+					animation(oI,{top:5,opacity:0},false,function(){
+						animation(oI,{top:40,opacity:100},false);
+					});
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>
+			<i class="fas fa-home"></i>
+			<p>文字</p>
+		</li>
+		<li>
+			<i class="fas fa-coffee"></i>
+			<p>文字</p>
+		</li>
+		<li>
+			<i class="fas fa-building"></i>
+			<p>文字</p>
+		</li>
+		<li>
+			<i class="fas fa-phone"></i>
+			<p>文字</p>
+		</li>
+	</ul>
+</body>
+</html>

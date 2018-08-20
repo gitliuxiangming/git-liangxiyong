@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>观察者模式</title>
+	<script>
+		(function(w){
+			function Teacher(name){
+				this.name = name;
+				this.students = [];
+			}
+			Teacher.prototype = {
+				constructor:Teacher,
+				__proto__:Object.prototype,
+				register:function(student){
+					this.students.push(student);
+				},
+				publish:function(msg){
+					for(var i = 0;i<this.students.length;i++){
+						this.students[i].listen(msg)
+					}
+				}
+			}
+			w.Teacher = Teacher;
+		})(window);
+
+		(function(w){
+			function Student(name,teacher){
+				this.name = name;
+				teacher.register(this);
+				this.msg = '';
+			}
+			Student.prototype = {
+				constructor:Student,
+				__proto__:Object.prototype,
+				listen:function(msg){
+					this.msg = msg;
+				}
+			}
+			w.Student = Student;
+		})(window);
+
+		var teacher = new Teacher('Tom');
+		var s1 = new Student('张三',teacher);
+		var s2 = new Student('李四',teacher);
+		var s3 = new Student('王五',teacher);
+
+		teacher.publish('完成小米首页');
+
+		console.log(s1.name + "get " + s1.msg);
+		console.log(s2.name + "get " + s2.msg);
+		console.log(s3.name + "get " + s3.msg);
+
+		var teacher2 = new Teacher('Leo');
+		var s4 = new Student('小刘',teacher2);
+		var s5 = new Student('小张',teacher2);
+		var s6 = new Student('小李',teacher2);
+		teacher2.publish('背诵论语第一篇');
+		console.log(s4.name + "get " + s4.msg);
+		console.log(s5.name + "get " + s5.msg);
+		console.log(s6.name + "get " + s6.msg);
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>111-事件-跟随鼠标移动的物体.html</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		body{
+			height: 3000px;
+		}
+	</style>
+	<script>
+		function getPoint(ev){
+				var iTop = document.body.scrollTop || document.documentElement.scrollTop;
+				var iLeft = document.body.scrollLeft || document.documentElement.scrollLeft;	
+				return {x:ev.clientX+iLeft,y:ev.clientY+iTop}
+		}
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				var oPoint = getPoint(oEvent);
+				oDiv.style.left = oPoint.x + 'px';
+				oDiv.style.top = oPoint.y+ 'px';
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

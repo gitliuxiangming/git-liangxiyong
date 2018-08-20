@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-剪辑区.html</title>
+	<style>
+		#canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		您的浏览器不支持, 请更换高版本浏览器	
+	</canvas>
+</body>
+<script>
+	//获取canvas的DOM元素
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width = 600;
+	oCanvas.height = 600;
+
+	//获取canvas的上下文环境
+	var ctx = oCanvas.getContext('2d');
+
+	ctx.beginPath();
+	ctx.lineWidth = 6;
+	ctx.strokeStyle = "#333";
+	ctx.beginPath();
+	ctx.moveTo(76, 325);
+	ctx.bezierCurveTo(73, 40, 401, 69, 412, 212);
+	ctx.stroke();
+
+
+
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-js外部文件使用.html</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.cl1{
+			background-color: red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			function toRed(){
+				document.getElementById('box').style.background = 'red';
+			}
+			document.getElementById('box').onclick = toRed;
+		}
+
+	</script>
+</head>
+<body>
+	<div id='box' ></div>
+</body>
+</html>

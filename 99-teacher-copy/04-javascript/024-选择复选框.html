@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-选择复选框.html</title>
+	<script>
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var oBtn3 = document.getElementById('btn3');
+			var oDiv = document.getElementById('box');
+
+			var aCb = oDiv.getElementsByTagName('input');
+			console.log(aCb);
+			oBtn1.onclick = function(){
+				for(var i = 0;i<aCb.length;i++){
+					aCb[i].checked = true;
+				}
+			}
+			oBtn2.onclick = function(){
+				for(var i = 0;i<aCb.length;i++){
+					aCb[i].checked = false;
+				}
+			}
+			oBtn3.onclick = function(){
+				for(var i = 0;i<aCb.length;i++){
+					if(aCb[i].checked == true){
+						aCb[i].checked = false;
+					}else{
+						aCb[i].checked = true;
+					}
+				}
+			}							
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="全选" id='btn1'>
+	<input type="button" value="全不选" id='btn2'>
+	<input type="button" value="反选" id='btn3'>
+	<div id="box">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+		<input type="checkbox">
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>054-函数的不定参数.html</title>
+	<script>
+		/*
+		function sum(){
+			console.log(arguments);
+			var result = 0;
+			for(var i = 0;i<arguments.length;i++){
+				result += arguments[i];
+			}
+			alert(result)
+		}
+		sum(1,2,45454545,4545,4545,3453,45,45);
+		*/
+		function sum(a,b){
+			// console.log(arguments)
+			console.log(arguments[1])
+			return a+b;
+		}
+		console.log(sum);
+		alert(sum(1,2));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

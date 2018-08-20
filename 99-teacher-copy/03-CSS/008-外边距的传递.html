@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-外边距的传递.html</title>
+	<style>
+		.father{
+			width: 300px;
+			height: 300px;
+			background: gray;
+			/*overflow: hidden;*/
+			/*border-top: 1px solid gray;*/
+			padding-top: 1px;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-top: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

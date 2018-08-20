@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>070-DOM克隆.html</title>
+	<style>
+		div{
+			width: 300px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+	</style>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		$(function(){
+			$('div').on('click',function(){
+				alert('aa');
+			});
+
+			$('button').on('click',function(){
+				// console.log($('div').clone());
+				$('body').append($('div').clone(true))
+				
+			});
+			
+			$('div').eq(0).off();
+		})
+	</script>
+</head>
+<body>
+	<button>测试</button>
+	<div>div1</div>
+	<div>div2</div>
+</body>
+</html>

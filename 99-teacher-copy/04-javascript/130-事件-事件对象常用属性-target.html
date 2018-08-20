@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>130-事件-事件对象常用属性.html</title>
+	<style>
+		#father{
+			width: 500px;
+			height: 500px;
+			background: red;
+			border: 1px solid #000;
+		}
+		#son {
+			width: 200px;
+			height: 200px;
+			background: blue;
+			margin: 100px auto;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oFather = document.getElementById('father');
+			var oSon = document.getElementById('son');
+			
+			/*
+			oSon.addEventListener('click',function(ev){
+				console.log(ev.target);
+				console.log(ev.currentTarget);
+			})
+			*/
+			oFather.addEventListener('click',function(ev){
+				console.log(ev.target);
+				console.log(ev.currentTarget);
+			})			
+		}
+	</script>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+</html>

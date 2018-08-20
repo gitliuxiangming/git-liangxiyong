@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>073-内容排序.html</title>
+	<style>
+		#ul1 li{
+			color: red;
+		}
+		#ul2 li{
+			color: blue;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oUl1 = document.getElementById('ul1');
+			var aLi = oUl1.children;
+			// var oUl2 = document.getElementById('ul2');
+
+			oBtn.onclick = function(){
+				// var oLi = oUl1.firstElementChild;
+				// oUl1.removeChild(oLi);
+				// oUl2.appendChild(oLi);
+				// oUl1.appendChild(oLi);
+				var arr = [];
+				for(var i = 0;i<aLi.length;i++){
+					arr.push(aLi[i]);
+				}
+				// console.log(arr);
+				arr.sort(function(oLi1,oLi2){
+					var n1 = oLi1.innerHTML;
+					var n2 = oLi2.innerHTML;
+					return n1 - n2;
+				});
+				for(var i = 0;i<arr.length;i++){
+					// alert('第'+i+'次把'+arr[i].innerHTML + '插入到最后');
+					oUl1.appendChild(arr[i]);
+				}
+				// console.log(arr);
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn' value="排序">
+	<ul id='ul1'>
+		<li>12</li>
+		<li>44</li>
+		<li>19</li>
+		<li>123</li>
+		<li>77</li>
+	</ul>
+	<!--
+	<ul id="ul2">	
+	</ul>
+	-->
+</body>
+</html>

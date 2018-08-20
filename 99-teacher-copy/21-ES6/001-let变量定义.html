@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-let变量定义.html</title>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+</body>
+<script>	
+	/*
+	var name = 'Tom';
+	var name = 'Leo';
+	console.log(name);
+	*/
+	
+	/*
+	let name = 'Tom';
+	let name = 'Leo';
+	console.log(name);
+	*/
+
+	/*
+	console.log(age);
+
+	var age = 18;
+	*/
+
+	/*
+	let age = 18;
+
+	console.log(age);
+	*/
+	/*
+	{
+		var age = 18;
+		let age1 = 19;
+		console.log(age1);
+	}
+
+
+	console.log(age);
+	console.log(age1);
+	*/
+	/*
+	function showAge(){
+		let age = 18;
+		console.log('out::',age);
+		function showAgeAgain(){
+			let age = 19;
+			console.log('in::',age);
+		}
+		showAgeAgain();
+		console.log('out2',age);
+	}
+
+	showAge();
+	*/
+	/*
+	function showAge(){
+		var age = 18;
+		console.log('out::',age);
+		function showAgeAgain(){
+			age = 19;
+			console.log('in::',age);
+		}
+		showAgeAgain();
+		console.log('out2',age);
+	}
+
+	showAge();
+	*/
+
+	var oBtn = document.getElementsByTagName('button');
+
+	/*
+	for(var i = 0;i<oBtn.length;i++){
+		oBtn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+	*/
+	/*
+	for(var i = 0;i<oBtn.length;i++){
+		oBtn[i].index = i;
+		oBtn[i].onclick = function(){
+			console.log(this.index);
+		}
+	}
+	*/
+	/*
+	for(var i = 0;i<oBtn.length;i++){
+		(function(i){
+			oBtn[i].onclick = function(){
+				console.log(i);
+			}			
+		})(i)
+	}
+	*/
+	for(let i = 0;i<oBtn.length;i++){
+		oBtn[i].onclick = function(){
+			console.log(i);
+		}
+	}	
+</script>
+</html>

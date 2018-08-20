@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-cookie.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//存储
+	// console.log(document.cookie);
+	// document.cookie = 'name=Tom';
+	// document.cookie = 'age=18';
+
+	var oDate = new Date();
+    oDate.setDate(oDate.getDate() + 14);
+    document.cookie = "name=Tom;expires="+oDate;
+
+	//获取
+	console.log(document.cookie);
+	//删除
+</script>
+</html>

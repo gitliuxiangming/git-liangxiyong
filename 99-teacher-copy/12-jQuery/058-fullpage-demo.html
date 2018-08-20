@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>058-fullpage-demo.html</title>
+	<link rel="stylesheet" href="../../55_download/fullPage.js-master/dist/jquery.fullpage.css">
+	<style>
+		#menu{
+			width: 300px;
+			height: 30px;
+			position: fixed;
+			top:0;
+			left:0;
+			z-index: 999;
+		}
+		#menu li{
+			float: left;
+			list-style: none;
+			margin-right: 10px;
+		}
+		.move{
+			transform: rotateY(100deg);
+			transition: all 0.5s;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="../../55_download/fullPage.js-master/dist/jquery.fullpage.min.js"></script>
+	<script>
+		$(function(){
+			$('#fullpage').fullpage({
+				sectionsColor:['#ff6700','#ff0','#0ff','orange'],
+				controlArrows:false,
+				verticalCentered:true,
+				resize:true,
+				scrollingSpeed:1000,
+				anchors:['page1','page2','page3','page4'],
+				// lockAnchors:true,
+				css3:true,
+				menu:'#menu',
+				navigation:true,
+				navigationPosition:'right',
+				navigationTooltips:['page1','page2','page3','page4'],
+				showActiveTooltip:true,
+				slidesNavigation:true,
+				slidesNavPosition:'bottom',
+	 			afterLoad: function(anchorLink, index){//当前页面加载完成后的回调
+	                console.log("afterLoad",anchorLink, index)
+	                if(index == 3){
+	                    $('img').addClass('move')
+	                }
+            	},
+	            onLeave: function(index, nextIndex, direction){//离开页面的回调
+	                console.log("onLeave",index, nextIndex, direction)
+	            }				
+			})	
+		})
+	</script>
+</head>
+<body>
+	<ul id="menu">
+		<li data-menuanchor='page1'><a href="#page1">第一屏</a></li>
+		<li data-menuanchor='page2'><a href="#page2">第二屏</a></li>
+		<li data-menuanchor='page3'><a href="#page3">第三屏</a></li>
+		<li data-menuanchor='page4'><a href="#page4">第四屏</a></li>
+	</ul>
+	<div id="fullpage">
+		<div class="section">第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏第一屏</div>
+		<div class="section">
+			<div class="slide">slide1</div>
+			<div class="slide">slide2</div>
+			<div class="slide">slide3</div>
+		</div>
+		<div class="section">
+			<img src="../03-CSS/images/bg1.jpg" alt="">
+		</div>
+		<div class="section">第四屏</div>
+	</div>
+</body>
+</html>

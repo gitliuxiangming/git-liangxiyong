@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="post">POST请求</button>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+	$(function(){
+		$('#post').on('click',function(){
+			$.ajax({
+				url:'/',
+				type:'post',
+				data:{"name":"Tom",age:18}
+			})
+			.done(function(data){
+				console.log(data)
+			})
+		})
+	})
+</script>
+</html>

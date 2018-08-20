@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-行内块状元素垂直对齐.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		p{
+			border: 1px solid #000;
+			margin-bottom: 10px;
+		}
+		.box{
+			background: black;
+			padding-left: 10px;
+			color: white;
+			line-height: 40px;
+			border: 1px solid #f00;
+		}
+		.dot{
+			display: inline-block;
+			width: 4px;
+			height: 4px;
+			background: red;
+		}
+		p:nth-child(2) .dot{
+			vertical-align: baseline;
+			margin-top: 10px;
+		}
+		p:nth-child(3) .dot{
+			vertical-align: top;
+			margin-top: 1px;
+		}
+		p:nth-child(4) .dot{
+			vertical-align: middle;
+		}
+		p:nth-child(5) .dot{
+			vertical-align: bottom;
+		}
+		p:nth-child(6) .dot{
+			vertical-align: text-bottom;
+		}								
+	</style>
+</head>
+<body>
+	<p><span class="box"><span class="dot"></span>我是文字 默认</span></p>
+	<p><span class="box"><span class="dot"></span>我是文字 baseline</span></p>
+	<p><span class="box"><span class="dot"></span>我是文字 top</span></p>
+	<p><span class="box"><span class="dot"></span>我是文字 middle</span></p>
+	<p><span class="box"><span class="dot"></span>我是文字 bottom</span></p>
+	<p><span class="box"><span class="dot"></span>我是文字 text-bottom</span></p>
+	<img src="images/010-base_line.jpg" alt="">
+</body>
+</html>

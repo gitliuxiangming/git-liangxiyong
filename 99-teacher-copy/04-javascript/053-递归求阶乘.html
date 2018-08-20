@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-递归求阶乘.html</title>
+	<script>
+		//5! = 5*4*3*2*1 = 5*4! = 5*4*3!
+		function fact(n){
+			if(n==1){
+				return 1;
+			}else{
+				return n * fact(n-1);
+			}
+		}
+		alert(fact(3));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

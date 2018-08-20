@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>068-DOM操作测试1.html</title>
+	<style>	
+	</style>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		$(function(){
+			$('button')[0].onclick = function(){
+				// console.log($('div').empty());
+				// console.log($('div').remove());
+				// console.log($('div').remove('.box1.box2'))
+				// console.log($('div').append('<p>我是p</p>'));
+				// console.log($('div').append($('.box3')));
+				// console.log($('.box2').append($('.box3')));
+				// console.log($('div').append($('p')[0]));
+				// console.log($('div').append());
+
+				console.log($('div').prepend('<p>我是p</p>'));
+				// console.log($('div').prepend($('.box3')));
+				// console.log($('.box2').prepend($('.box3')));
+				// console.log($('div').prepend($('p')[0]));
+				// console.log($('div').prepend());				
+
+			};
+		})
+	</script>
+</head>
+<body>
+	<button>测试</button>
+	<div class="box2">
+		<p>xx</p>	
+		11
+	</div>
+	<div>22</div>
+	<div>33</div>
+	<div class="box1">44</div>
+	<p class="box1">pp1</p>
+	<p class="box1">pp2</p>
+	<p class="box3">pp3</p>
+</body>
+</html>

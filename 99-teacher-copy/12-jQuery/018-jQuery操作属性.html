@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-jQuery操作属性.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// console.log($('input').attr('value'));
+			// console.log($('input').prop('value'));
+			// console.log($('input').attr('name'));
+			// console.log($('input').prop('name'));
+			// $('input').attr('name','a2');
+			// $('input').prop('name','a2');
+			// $('input').removeAttr('name');
+			// $('input').removeProp('name');
+			// console.log($('input').eq(3));
+			console.log($('input').eq(3).attr('checked'));
+			console.log($('input').eq(3).prop('checked'));
+			// $('input').eq(3).attr('checked',true)
+			// $('input').eq(3).prop('checked',true)
+			// $('input').eq(3).removeAttr('checked')
+			$('input').eq(3).removeProp('checked')
+		})
+	</script>
+</head>
+<body>
+	<input type="text" value="aaa" name="a1">
+	<input type="text" value="bbb" name="b1">
+	<input type="text" value="ccc" name="c1">
+	<input type="checkbox" checked="">
+</body>
+</html>

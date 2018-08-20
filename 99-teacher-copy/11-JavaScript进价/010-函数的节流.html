@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-函数的节流.html</title>
+	<style>
+		body{
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var timer = null;
+	window.onresize = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function(){
+			console.log(window.innerWidth);
+			//todo......
+		},400)
+	}
+	
+	function throttle(fn,delay){
+		var timer = null;
+		return function(){
+			clearTimeout(timer);
+			timer = setTimeout(fn,delay);
+		}
+	}
+	window.onresize = throttle(function(){
+		console.log('aa');
+	},400);
+
+	window.onscroll = throttle(function(){
+		console.log('bb');
+	},400);
+	/*
+	window.onscroll = function(){
+		console.log('aaa');
+	}
+	
+
+	var timer = null;
+	window.onresize = function(){
+		clearTimeout(timer);
+		timer = setTimeout(function(){
+			console.log(window.innerWidth);
+		},200)
+	}
+	*/
+	//当屏幕尺寸发生变化时,执行 ();
+
+	//做一个函数,来实现节流
+
+	function throttle(fn,delay){
+		var timer = null;
+		return function(){
+			clearTimeout(timer);
+			timer = setTimeout(fn,delay)
+		}
+	}
+
+	window.onresize = throttle(function(){
+		console.log('bbb');
+	},200);
+
+</script>
+</html>

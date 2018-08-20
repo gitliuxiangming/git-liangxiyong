@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>185-表单脚本-表单验证案例.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .reg {
+            width: 980px;
+            margin: 50px auto;
+        }
+        .reg div {
+            position: relative;
+            margin-bottom: 20px;
+            zoom: 1;
+            display: block;
+        }
+        .reg div:after {
+            content: "";
+            clear: both;
+            display: block;
+            visibility: hidden;
+            height: 0;
+        }
+        .reg label {
+            display: block;
+            float: left;
+            height: 42px;
+            width: 65px;
+            margin-right: 10px;
+            line-height: 42px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 700;
+            text-align: right;
+        }
+        .reg input {
+            display: block;
+            position: relative;
+            float: left;
+            height: 16px;
+            width: 328px;
+            padding: 11px 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+            transition: .3s;
+            float: left;
+        }
+        #verify-box input:nth-of-type(1){
+             width: 158px;
+        }
+        #verify-box input:nth-of-type(2){
+            border-radius: 0;
+            height: 40px;
+            background: #f7f7f7;
+            font-weight: 400;
+            width: 160px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #verify-box input:nth-of-type(2):focus{
+            border: 1px solid #ddd;
+        }
+        #verify-box input:nth-of-type(2):hover
+        {
+            background-color: #eee;
+        }
+        #verify-box .cancel{
+            left: 212px;
+        }
+        .reg .subBtn {
+            position: relative;
+            left: 75px;
+        }
+        .reg .subBtn input {
+            display: block;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            color: #fff;
+            background-image: none;
+            border-radius: 3px;
+            border: 0;
+            float: left;
+            width: 350px;
+            background-color: #3f89ec;
+        }
+        .reg input:focus {
+            border-color: #488ee7;
+            outline: 0;
+        }
+        .msg{
+            display: none;
+        }
+        .ok {
+            display: inline-block;
+            position: relative;
+            float: left;
+            top: 14px;
+            height: 16px;
+            line-height: 12px;
+            padding-left: 20px;
+            background: url(images/reg_icons.png) -80px 0 no-repeat;
+        }
+        .err {
+            float: left;
+            position: relative;
+            width: 250px;
+            top: 12px;
+            color: #fc4343;
+            height: 16px;
+            line-height: 14px;
+            padding-left: 20px;
+            background: url(images/reg_icons.png) -80px -23px no-repeat;
+            font-size: 12px;
+        }
+        .cancel {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: url(images/reg_icons.png) -32px -24px no-repeat;
+            top: 12px;
+            left: 398px;
+            cursor: pointer;
+        }
+
+        .cancel:hover {
+            background-position: -48px -24px;
+        }
+        .tiptext {
+            font-size: 12px;
+            color: #aaa;
+            height: 40px;
+            line-height: 40px;
+
+        }
+        #username-box .tiptext{
+            line-height: 18px;
+            width: 250px;
+            float: left;
+        }
+
+        #pwdChecklist{
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            box-shadow: 1px 1px 1px #efefef;
+            background: #f9f9f9;
+            width: 200px;
+            font-size: 12px;
+            position: absolute;
+            top: 0;
+            right: 318px;
+        }
+        .pwd-checklist li{
+            list-style: none;
+        }
+        .pwd-checklist .pwd-checklist-item-success {
+            background-position: -86px -128px;
+        }
+        .pwd-checklist  .pwd-checklist-item-error {
+            color: rgb(252, 67, 67);
+            background-position: -86px -144px;
+        }
+        .pwd-checklist-item {
+            line-height: 20px;
+            padding-left: 18px;
+            background: url(images/reg_icons.png) no-repeat -86px -112px;
+            color: #666;
+        }
+        .pwd-checklist-arrow{
+            width: 14px;
+            height: 14px;
+            background: #f9f9f9;
+            position: absolute;
+            top: 12px;
+            left: -7px;
+            transform: rotateZ(45deg);
+            border-bottom: 1px solid #ddd;
+            border-left: 1px solid #ddd;       
+        }
+        #agree-box{
+            font-size: 12px;
+        }
+        #agree-box a{
+            text-decoration: none;
+        }
+        #agree-box label{
+            width: 60px;
+            height: 40px;
+            vertical-align: top;
+            font-size: 12px;
+            color: #666;
+            font-weight: normal;
+            margin:-12px 0px 0px 2px;
+        }
+        #agree-box input{
+            width: 20px;
+            margin: 1px 0px 0px 70px;
+        }
+        #agree-box .msg{
+            float: none;
+            top: 0;
+            color: #fc4343;
+        }
+    </style>
+    <script>
+        function getLen(str){
+            return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
+        }
+        function setErr(oMsg,sMsg,oInput){
+            oMsg.className = 'err';
+            oMsg.innerHTML = sMsg;
+            oInput.style.borderColor = 'red';            
+        }
+        function setOk(oMsg,oInput){
+            oMsg.className = 'ok';
+            oMsg.innerHTML = '';
+            oInput.style.borderColor = '#ddd';           
+        }
+        window.onload = function(){
+            //获取元素
+            var oForm = document.forms[0];
+            var oUserName = oForm.username;
+            var oPhone = oForm.phone;
+            var oPwd = oForm.password;
+            var oPwdCheckList = document.getElementById('pwdChecklist');
+            var aPwdCheckListLi = oPwdCheckList.getElementsByTagName('li');
+            var oVerify = oForm.verify;
+            var oSmsBtn = document.getElementById('smsBtn');
+
+            var oAgree = document.getElementById('isAgree');
+            var oSubBtn = document.getElementById('subBtn');
+
+            var aCancel = document.querySelectorAll('.cancel');
+            var aMsg = document.querySelectorAll('.msg');
+
+            //全局验证位
+            var bPhone = false;
+            var bUserName = false;
+            var bPwd = false;
+            var bVerify = false;
+            init();
+            checkUserName();
+            checkPhone();
+            checkPwd();
+            checkVerify();
+            handleSub();
+            //初始化
+            //设置默认焦点
+            function init(){
+                oUserName.focus();
+                //设置默认提示信息
+                aMsg[0].className = 'tiptext';
+                aMsg[0].innerHTML = '设置后不可更改<br>中英文均可,最长14个英文或7个汉字'; 
+                //通过是事件冒泡委托父元素处理添加取消按钮功能
+                oForm.oninput = function(ev){
+                    var oEvent = ev || event;
+                    var oInput = ev.target;
+                    var oCancel = oInput.nextElementSibling;
+                    if(oInput.value.length > 0){
+                        oCancel.style.display = 'block';
+                    }else{
+                        oCancel.style.display = 'none';
+                    }
+                }
+                //通过是事件冒泡委托父元素处理添加取消按钮功能
+                oForm.onclick = function(ev){
+                    var oEvent = ev || event;
+                    var oSpan = ev.target;
+
+                    // 方法一
+                    var oInput = oSpan.previousElementSibling;
+                    if(oInput && (oInput.name == 'username' || oInput.name == 'phone' || oInput.name == 'password' || oInput.name == 'verify' )){
+                        oInput.value = '';
+                        oSpan.style.display = 'none';
+                        oInput.focus();          
+                    }
+                    
+                    //方法二
+                    /*
+                    var sInput = oSpan.dataset.obj;
+                    if(sInput  == 'username' || sInput == 'phone' || sInput == 'password' || sInput == 'verify'){
+                        oForm[sInput].value = '';
+                        oSpan.style.display = 'none';
+                        oForm[sInput].focus();  
+                    }
+                    */
+                }                               
+            }
+            //验证用户名
+            function checkUserName(){
+                oUserName.onfocus = function(){
+                    aMsg[0].className = 'tiptext';
+                    aMsg[0].innerHTML = '设置后不可更改<br>中英文均可,最长14个英文或7个汉字';
+                    oUserName.style.borderColor = '#488ee7';               
+                }
+                oUserName.onblur = function(){
+                    aMsg[0].className = 'msg';
+                    oUserName.style.borderColor = '#ddd';
+                    var sVal = oUserName.value;
+                    var reg1 = /[^\u4e00-\u9fa5|a-z|0-9_]/;
+                    var reg2 = /^\d+$/;
+                    var reg3 = /^\s+$/;
+                    if(sVal == ''){
+                        bUserName = false;
+                    }
+                    //用户名不能超过7个汉字或14个字符
+                    else if(getLen(sVal)>14){
+                        setErr(aMsg[0],'用户名不能超过7个汉字或14个字符',oUserName); 
+                        bUserName = false;                  
+                    }
+                    else if(reg3.test(sVal)){
+                        setErr(aMsg[0],'请输入用户名',oUserName);
+                        bUserName = false;                         
+                    }                
+                    //用户名仅支持中英文、数字和下划线,且不能为纯数字
+                    else if(reg1.test(sVal) || reg2.test(sVal)){
+                        setErr(aMsg[0],'用户名仅支持中英文、数字和下划线,且不能为纯数字',oUserName);  
+                        bUserName = false;                   
+                    }else{
+                        setOk(aMsg[0],oUserName);
+                        bUserName = true;                    
+                    }
+                }
+            }
+            //验证手机
+            function checkPhone(){
+                oPhone.onfocus = function(){
+                    aMsg[1].className = 'tiptext';
+                    aMsg[1].innerHTML = '请输入中国大陆手机号,其他用户不可见';
+                    oPhone.style.borderColor = '#488ee7';               
+                }
+                oPhone.onblur = function(){
+                    aMsg[1].className = 'msg';
+                    oPhone.style.borderColor = '#ddd';
+                    var sVal = oPhone.value;
+                    //合法手机号 11位数字
+                    //13213368101
+                    var reg1 = /^\s+$/;
+                    var reg2 = /^1[35789]\d{9}$/;
+                    if(sVal == ''){
+                        bPhone = false;
+                    }
+                    else if(reg1.test(sVal)){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                        bPhone = false;
+                    }
+                    else if(!reg2.test(sVal)){
+                        setErr(aMsg[1],'手机号码格式不正确',oPhone);  
+                        bPhone = false;
+                    }                
+                    else{ 
+                        setOk(aMsg[1],oPhone);
+                        bPhone = true;
+                    }
+                }
+                oPhone.onkeydown = function(ev){
+                    var oEvent = ev || event;
+                    if((oEvent.keyCode < 48 || oEvent.keyCode > 57 ||oPhone.value.length > 10)
+                        && oEvent.keyCode != 8
+                        && oEvent.keyCode !=37
+                        && oEvent.keyCode !=39
+
+                        ){
+                        return false;
+                    }
+                }
+            } 
+            //验证密码
+            function checkPwd(){
+                oPwd.onfocus = function(){
+                    oPwdCheckList.style.display = 'block';
+                    oPwd.style.borderColor = '#488ee7';
+                }
+                var sSucc = 'pwd-checklist-item pwd-checklist-item-success';
+                var sErr = 'pwd-checklist-item pwd-checklist-item-error';
+                var bPwd1 = false;
+                var bPwd2 = false;
+                var bPwd3 = false;
+                oPwd.oninput = function(){
+                    var sVal = oPwd.value;
+                    //长度为6~14个字符
+                    var reg1 = /^.{6,14}$/;
+                    //支持数字,大小写字母和标点符号
+                    var reg2 = /[^0-9a-z\^\$\*\?\[\]\(\)]/i;
+                    //不允许有空格
+                    var reg3 = /\s/;
+                    if(reg1.test(sVal)){
+                        aPwdCheckListLi[0].className = sSucc;
+                        bPwd1 = true;
+                    }else{
+                        aPwdCheckListLi[0].className = sErr;
+                        bPwd1 = false;
+                    }
+
+                    if(reg2.test(sVal)){
+                        aPwdCheckListLi[1].className = sErr;
+                        bPwd2 = false;
+                    }else{
+                        aPwdCheckListLi[1].className = sSucc;
+                        bPwd2 =true;
+                    }
+
+                    if(reg3.test(sVal)){
+                        aPwdCheckListLi[2].className = sErr;
+                        bPwd3 = false;
+                    }else{
+                        aPwdCheckListLi[2].className = sSucc;
+                        bPwd3 = true;
+                    }
+                }
+                oPwd.onblur = function(){
+                    aMsg[2].className = 'msg';
+                    oPwd.style.borderColor = '#ddd';
+                    if(bPwd1 && bPwd2 && bPwd3){
+                        oPwdCheckList.style.display = 'none';
+                        setOk(aMsg[2],oPwd);
+                        bPwd = true;
+                    }else{
+                        bPwd = false;
+                    }
+                    if(oPwd.value == ''){
+                        oPwdCheckList.style.display = 'none';
+                        bPwd = false;
+                    }
+                }
+                aCancel[2].onclick = function(){
+                    bPwd1 = false;
+                    bPwd2 = false;
+                    bPwd3 = false;
+                    for(var i = 0;i<aPwdCheckListLi.length;i++){
+                        aPwdCheckListLi[i].className = 'pwd-checklist-item';
+                    }
+                }
+            } 
+            //验证验证码
+            function checkVerify(){
+                //监听获取验证码事件
+                oSmsBtn.onclick = function(){
+                    if(oPhone.value == ''){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                    }
+                    if(!bPhone){
+                        return false;
+                    }
+                    console.log('get sms...');
+                    //todo..... get sms 
+                }
+                oVerify.onblur = function(){
+                    if(oVerify.value.length == 6){
+                        bVerify = true;
+                    }else{
+                        verify = false;
+                    }
+                }
+            } 
+            //处理提交
+            function handleSub(){
+                // 
+                oSubBtn.onclick = function(){
+                    if(oUserName.value == ''){
+                        setErr(aMsg[0],'请输入手机号',oUserName);
+                    }
+                    if(oPhone.value == ''){
+                        setErr(aMsg[1],'请输入手机号',oPhone);
+                    }
+                    if(oPwd.value == ''){
+                        setErr(aMsg[2],'请输入密码',oPwd);
+                    }
+                    if(oVerify.value == ''){
+                        aMsg[3].className = 'err';
+                        aMsg[3].innerHTML = '请输入验证码';
+                    }else{
+                        aMsg[3].className = 'msg';
+                    }
+                    if(!oAgree.checked){
+                        aMsg[4].style.display = 'inline';
+                    }else{
+                        aMsg[4].style.display = 'none';
+                    }
+                    if(bUserName && bPhone && bPwd && bVerify && oAgree.checked ){
+                        oForm.submit();
+                    }                    
+                }
+            }         
+        }
+    </script>
+</head>
+
+<body>
+    <div class="reg" id='reg'>
+        <form action="http://www.kuazhu.com">
+            <div id="username-box">
+                <label for="username">用户名</label>
+                <input type="text" name="username" placeholder="请设置用户名">
+                <span class="cancel" data-obj="username"  style="display: none;"></span>
+                <span class="msg"></span>
+            </div>
+            <div id="phone-box">
+                <label for="phone">手机号</label>
+                <input type="text" name="phone" placeholder="可用于登录和找回密码">
+                <span class="cancel" data-obj="phone" style="display: none;"></span>
+                <span class="msg"></span>
+            </div>
+            <div id="pwd-box" class="pwd-box">
+                <label for="password">密码</label>
+                <input type="password" name="password" placeholder="请设置登录密码"/>
+                <span class="cancel"  data-obj="password"style="display: none;"></span>
+                <span class="msg"></span>
+                <div id="pwdChecklist" class="pwd-checklist" style="display:none">
+                    <ul>
+                        <li class="pwd-checklist-item">长度为6~14个字符</li>
+                        <li class="pwd-checklist-item">支持数字,大小写字母和标点符号</li>
+                        <li class="pwd-checklist-item ">不允许有空格</li>
+                    </ul>
+                    <span class="pwd-checklist-arrow"></span>
+                </div>
+            </div>
+            <div id="verify-box">
+                <label for="verify">验证码</label>
+                <input type="text" name="verify" placeholder="请输入验证码">
+                <span class="cancel"  data-obj="verify" style="display: none;"></span>
+                <input type="button"  id="smsBtn" value="获取短信验证码">
+                <span class="msg"></span>       
+            </div> 
+            <div id='agree-box'>
+               <input type="checkbox" name='isAgree' id='isAgree'> 
+               <label for="isAgree">阅读并接受</label>
+               <a href="#">《百度用户协议》</a>及<a href="#">《百度隐私权保护声明》</a>  
+               <span class="msg" id='agreeErr'>选“阅读并接受百度用户协议”</span>               
+            </div>           
+            <div class="subBtn">
+                <input type="button" value="注册" id="subBtn">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

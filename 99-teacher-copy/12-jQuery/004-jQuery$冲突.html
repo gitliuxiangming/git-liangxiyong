@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		(function(w){
+			function test(){
+				alert('my test');
+			}
+			w.$ = test;
+		})(window);
+	</script>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		// jQuery.noConflict();
+		var kz = jQuery.noConflict();
+		$();
+		/*
+		jQuery(function(){
+			alert('aa');
+		});
+		*/
+		kz(function(){
+			alert('abb');
+		})
+		console.log(jQuery == $);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

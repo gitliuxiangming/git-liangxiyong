@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-静态方法回顾.html</title>
+	<script>
+		function Person(){
+
+		}
+		Person.prototype.sayHi = function(){
+			console.log("Hi");
+		}
+
+		Person.sayHello = function(){
+			console.log("Hello");
+		}
+
+		var p = new Person();
+		p.sayHi();
+		Person.sayHello();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

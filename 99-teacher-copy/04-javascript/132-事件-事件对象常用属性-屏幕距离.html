@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>132-事件-事件对象常用属性-屏幕距离.html</title>
+	<script>
+		window.onload = function(){
+			document.onclick = function(ev){
+				var oEvent = ev || event;
+				console.log("oEvent.clientX:"+oEvent.clientX);
+				console.log("oEvent.clientY:"+oEvent.clientY);
+				console.log("oEvent.pageX:"+oEvent.pageX);
+				console.log("oEvent.pageY:"+oEvent.pageY);
+				console.log("oEvent.screenX:"+oEvent.screenX);
+				console.log("oEvent.screenY:"+oEvent.screenY);
+			}
+		}
+	</script>
+</head>
+<body style="height: 3000px">
+	
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>181-表单脚本-获取元素.html</title>
+</head>
+<body>
+	<form action="http://www.kuazhu.com" id='form1'>
+		<div>
+			姓名:<input type="text" name="username">
+		</div>
+		<div>
+			年龄:<input type="text" name="age">
+		</div>
+		<div>
+			性别:<input type="radio" name="sex">男<input type="radio" name="sex">女<input type="radio" name="sex">保密
+		</div>
+		<div>
+			爱好: <input type="checkbox" name="fav">足球<input type="checkbox" name="fav">蓝球
+		</div>	
+		<div>
+			<select name="city" id="city" >
+				<option value="bj">北京</option>
+				<option value="sh">上海</option>
+				<option value="gz">广州</option>
+			</select>
+		</div>	
+		<div>
+			<input type="submit" value="提交">
+			<input type="button" value="测试" id='textBtn'>
+		</div>				
+	</form>
+
+<!-- 	<form action="http://www.kuazhu.com" id='form2'>
+		<div>
+			<input type="text" name="username">
+		</div>
+		<div>
+			<input type="text" name="age">
+		</div>
+		<div>
+			<input type="submit" value="提交">
+		</div>				
+	</form>	 -->
+</body>
+<script>
+	// var oForm = document.getElementsByTagName('form')[0];
+	// var oForm = document.getElementById('form1');
+	var aForms = document.forms;
+	var oForm = aForms[0];
+	var aFormEle = oForm.elements;
+	// console.log(aForms);
+	// console.log(aFormEle[0])
+	// console.log(aFormEle.age)
+	// console.log(aFormEle['age']);
+	// console.log(oForm.elements);
+	// console.log(aFormEle[0].form);
+	// aFormEle[0].disabled = true;
+	// aFormEle[0].readOnly = true;
+	// console.log( aFormEle.fav);
+	var oSelect = aFormEle.city;
+	console.log(oSelect.options);
+	textBtn.onclick = function(){
+		/*
+		var aFav = aFormEle.fav;
+		for(var i = 0;i<aFav.length;i++){
+			console.log(aFav[i].checked);
+		}
+		*/
+		/*
+		var aSex = aFormEle.sex;
+		for(var i = 0;i<aSex.length;i++){
+			// console.log(aSex[i].checked);
+			if(aSex[i].checked){
+				console.log(aSex[i])
+			}
+		}
+		
+		for(var i = 0;i<oSelect.options.length;i++){
+			if(oSelect.options[i].selected){
+				console.log(oSelect.options[i]);
+			}
+		}
+		*/
+		var aSelectedOpt = 	getSelectedOptions(oSelect);
+		console.log(aSelectedOpt);			
+	}
+
+	function getSelectedOptions(oSelect){
+		var result = [];
+		for(var i = 0;i<oSelect.options.length;i++){
+			if(oSelect.options[i].selected){
+				result.push(oSelect.options[i]);
+			}
+		}
+		return result;
+	}
+</script>
+</html>

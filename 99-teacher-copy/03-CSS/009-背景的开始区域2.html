@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-背景的开始区域.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 600px;
+			margin: 50px auto;
+		}
+		li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			border: 10px dashed #000;
+			padding:10px;
+			margin-bottom: 10px;
+			background-color: red;
+
+		}
+		li:nth-child(2){
+			background-clip: padding-box;
+		}
+		li:nth-child(3){
+			background-clip: border-box;
+		}
+		li:nth-child(4){
+			background-clip: content-box;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

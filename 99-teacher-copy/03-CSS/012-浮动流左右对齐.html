@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>012-浮动流左右对齐.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+		}
+		.box1{
+			background: red;
+			float: left;
+		}
+		.box2{
+			background: blue;
+			/*float: right;*/
+			/*float: center;*/
+			width: 300px;
+			height: 300px;
+		}
+		.father{
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</body>
+</html>

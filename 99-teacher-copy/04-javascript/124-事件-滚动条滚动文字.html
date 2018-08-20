@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>124-事件-滚动条滚动文字.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			width: 400px;
+			height: 50px;
+			background: #ccc;
+			position: relative;
+		}
+		#btn{
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			top:0;
+			left:0;
+			background: red;
+		}
+		#div1{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			position: relative;
+			overflow: hidden;
+		}
+		#div2{
+			width: 100%;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox = document.getElementById('box');
+			var oBtn = document.getElementById('btn');
+			var oDiv2 = document.getElementById('div2');
+			var oDiv1 = document.getElementById('div1');
+
+			oBtn.onmousedown = function(ev){
+				var oEvent = ev || event;
+				var disX = oEvent.clientX - oBtn.offsetLeft;
+				var l = 0;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					l = oEvent.clientX - disX;
+					handleMove();
+				}
+				oBox.onmousewheel = function(ev){
+					var oEvent = ev || event;
+					
+					// console.log(ev.wheelDelta);
+					if(oEvent.wheelDelta > 0){
+						l += 10;
+			
+					}else{
+						l -= 10;
+					}
+
+					handleMove();
+
+					return false;
+				}
+				function handleMove(){
+					if(l < 0){
+						l = 0;
+					}else if(l >= oBox.offsetWidth - oBtn.offsetWidth){
+						l = oBox.offsetWidth - oBtn.offsetWidth
+					}
+
+					var scale = l / (oBox.offsetWidth - oBtn.offsetWidth);
+
+					oBtn.style.left = l + 'px';
+
+					oDiv2.style.top = (- oDiv2.offsetHeight + oDiv1.offsetHeight) * scale + 'px'					
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="btn"></div>
+	</div>
+	<div id="div1">
+		<div id="div2">
+	在江西境内，长江流经了152公里。赣江，是长江在这里最大的支流。位于赣江上游的寻乌县，因为拥有丰富的稀土资源，过度开采导致了水土流失严重。
+
+　　未来，被修复的矿区将种上油茶果树、百香果等经济作物，发展矿山公园等文化旅游项目。
+
+　　作为长江下游最大的湖泊，太湖一直是周边渔民的“天然鱼塘”。然而，围网养殖带来的大面积水体污染，对水质造成破坏性影响。
+
+　　到明年6月份，这里的3000多户渔民将全部上岸。
+课堂讲义：
+
+
+一、浏览器的历史
+1.Tim Berners-Lee发明万维网的同时发布了第一款浏览器 Nexus,也叫www浏览器
+
+2.由于Nexus只能显示文字, 马克安德森在伊利诺伊大学开发了第一款可以浏览图片网页的浏览器 Mosaic
+
+3.1994年4月,马克安德森和吉姆克拉克成立了Mosaic Communication Corporation
+
+4.但是由于Mosaic的版权归伊利诺伊大学所有,并且伊利诺伊大学将技术转让给了Spy Glass公司,所以在1994年11月Mosaic公司改名为Netscape Communication Corporation,浏览器改名为Netscape Navigator
+
+5.1996年微软买下Spy Glass公司,以Mosaic为基础开发出Internet Explorer
+
+6.1996年,挪威的Telenor公司开发了Opera浏览器
+
+7.2003年,Netscape公司倒闭,将Netscape Navigator浏览器源代码开放,Mozilla公司在Netscape Navigator浏览器的基础上开放出了FireFox
+
+8.2003年,苹果公司开发了safari浏览器
+
+9.2008年,Google发布Chrome浏览器
+
+
+二、JavaScript历史
+1.1995年,兰登艾奇(Brendan Eich)开发出LiveScript,并首次运行在Netscape Navigator 2上,用来完成简单的表单验证
+
+2.因为市场宣传需求,LiveScript与Sun公司合作,发布前将LiveScript改名为JavaScript
+
+3.随后在Netscape Navigator 3中发布了JavaScript1.1,同时微软在IE3中加入JavaScript的实现JScript,ScriptEase中加入JavaScript的实现CEnvi,至此浏览器上有三种不同版本的脚本语言
+
+4.1997年,为了统一,欧洲计算机制造商协会ECMA(European Computer Manufacturers Association）的39号技术委员会(TC39 Technical Committee#39)以JavaScript1.1为蓝本,完成了ECMA-262号标准的制定,即定义了一种名为ECMAScript的新的脚本语言标准,届时ES1诞生
+
+5.1998年,ES2发布,但是ES2没有任何改动,该版本主要是为了和ISO/IEC-16262保持一致
+
+6.1999年,ES3发布,ES3新增了正则,异常处理,控制语句等,自此ES成了一门正真的语言
+
+7.2000年,ES4开始准备,但是这个版本最后没有通过,但是它的大部分内容被ES6继承了
+
+8.2007年,ES4草案发布,ES4做了一次全面的修改,包括强类型变量,类和继承,但是由于改动太大,ECMA和各大浏览器厂商发生了严重分歧,最后ECMA开会决定,中止ES4的开发
+
+9.2009年12月3号,ES5发布,新增JSON对象,严格模式等,到了2011年,ES5成为了ISO国际标准
+
+10.2015年6月,ES6发布
+
+11.2016年,ES7发布
+
+12.2017年6月,ES8发布
+
+
+三、浏览器组成
+1.Shell部分
+2.内核
+（1）内核的组成
+①渲染引擎
+
+②JS引擎
+
+③其他模块
+
+（2）主流内核介绍
+①Trident(IE内核)
+
+②Gecko(FireFox内核)
+
+③Webkit(Safari内核)
+
+④Blink(Chrome和Opera内核)
+
+
+三、JS引擎
+1.各个浏览器厂商的JS引擎去实现ES标准
+
+2.初期JS引擎由渲染引擎来负责,执行效率非常慢
+
+3.2001年,IE6将JS引擎从渲染引擎中分离出来并做了优化
+
+4.2008年,Google发布Chrome浏览器,并使用新的JS引擎V8,V8可以直接把JS代码转换为机器码,所以执行速度大大提高		
+		</div>
+	</div>
+</body>
+</html>

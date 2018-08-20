@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>049-变量的作用域.html</title>
+	<script>
+		var b = 2;
+		var a = 11;
+		function show(){
+			var a = 1;
+			// alert(b);
+			// alert(a);
+			return a;
+		}
+		function say(){
+			alert(b);
+		}
+		alert(a);
+		alert(show());
+		// say();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

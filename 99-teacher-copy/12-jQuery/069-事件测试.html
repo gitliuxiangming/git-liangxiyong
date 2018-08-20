@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>069-事件测试.html</title>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		$(function(){
+			function test1(){
+				alert('click1');
+			}
+			function test2(){
+				alert('click1');
+			}
+			$('button').on('click',test1);
+			$('button').on('click',function(){
+				alert('click2');
+			});
+			
+			$('button').on('mouseover',function(){
+				alert('mouseover');
+			});
+			$('button').on('mouseout',function(){
+				alert('mouseout');
+			});
+			
+
+			// $('button').off();	
+			// $('button').off('click');					
+			// $('button').off('mouseover');	
+			$('button').off('click',test1);				
+		})
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+</body>
+</html>

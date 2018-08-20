@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-类级别的插件.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		// console.log($);
+		
+		// function Person(argument) {
+		// 	// body...
+		// }
+		// Person.sayHi = function(){
+		// 	alert('Hi')
+		// }
+		// Person.sayHi();
+		// $.sayHi = function(){
+		// 	alert("Hi");
+		// }
+		// $.sayHi();
+		// $.ajax();
+		// $.extend({
+		// 	sayHi:function(){
+		// 		alert('Hi')
+		// 	}
+		// });
+
+		// $.sayHi();
+		var obj = {
+			sayHi:function(){
+				alert('Hi')
+			}	
+		}
+		// obj.sayHi();
+		$.zs = obj;
+
+		$.zs.sayHi();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

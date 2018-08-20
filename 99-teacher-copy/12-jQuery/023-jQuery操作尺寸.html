@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-jQuery操作尺寸.html</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			padding: 10px;
+			border: 5px solid #000;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// console.log($('div').width());
+			// console.log($('div').height());
+			// $('div').width(200);
+			// $('div').height(200);
+			// console.log($('div').innerWidth());
+			// console.log($('div').innerHeight());
+			// $('div').innerWidth(140)
+			// $('div').innerHeight(140)
+			// console.log($('div').outerWidth());
+			// console.log($('div').outerHeight());
+			$('div').outerWidth(140)
+			$('div').outerHeight(140)
+		})
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-Symbol</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var obj = {name:'Tom'};
+
+	obj.name = "Leo";
+
+	console.log(obj);
+	*/
+
+	let s1 = Symbol('name');
+	let obj = {[s1]:"Tom"};
+
+	// obj[s1] = 'Amy';
+	let s2 = Symbol('name');
+	obj[s2] = "Leo";
+
+	// console.log(s1 === s2);
+	// console.log(obj);
+
+	// console.log(obj[s2]);
+	// console.log(typeof s1);
+	// console.log(s1 === s2);
+
+	/*
+	for(key in obj){
+		console.log(obj[key]);
+	}
+	*/
+	let keys = Reflect.ownKeys(obj);
+	// console.log(keys);
+	for(key of keys){
+		console.log(obj[key]);
+	}
+	
+
+</script>
+</html>

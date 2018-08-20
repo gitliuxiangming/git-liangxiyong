@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-innerHTML的使用.html</title>
+	<style>
+		#box{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oTxt = document.getElementById('txt');
+			var oBtn = document.getElementById('btn');
+			var oBox = document.getElementById('box');
+			
+			oBtn.onclick = function(){
+				// alert(oTxt.value)
+				oBox.innerHTML = oTxt.value
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id='txt'>
+	<input type="button" id='btn' value="提交">
+	<div id="box"></div>
+</body>
+</html>

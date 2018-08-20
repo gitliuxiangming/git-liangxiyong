@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>066-操作属性.html</title>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oTxt = document.getElementById('txt');
+			oBtn.onclick = function(){
+				// oTxt.value = 'abc';
+				// oTxt['value'] = 'abc';
+				// oTxt.setAttribute('value','abc');
+				// alert(oTxt.getAttribute('value'));
+				oTxt.removeAttribute('value');
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn' value="设置">
+	<input type="text" id=txt value="123">
+</body>
+</html>

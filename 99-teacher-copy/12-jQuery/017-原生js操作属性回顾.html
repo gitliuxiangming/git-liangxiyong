@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-原生js操作属性回顾.html</title>
+	<style>
+		.box1{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="box1" id="box1" index='0'></div>
+</body>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		var oDiv = document.getElementById('box1');
+		// console.log(oDiv.getAttribute('id'));
+		// console.log(oDiv.id);
+		// console.log(oDiv['id']);
+		// console.log(oDiv.getAttribute('index'));
+		// console.log(oDiv.index);
+		// console.log(oDiv['index']);	
+		// oDiv.setAttribute('id','bbb');	
+		// oDiv.id = 'bbb';
+		// oDiv['id'] = 'bbb';
+		// oDiv.setAttribute('index','bbb');
+		// oDiv.index = 'bbb';
+		// oDiv['index'] = 'bbb';	
+		oDiv.removeAttribute('id');	
+		$(function(){
+			
+		})
+	</script>
+</html>

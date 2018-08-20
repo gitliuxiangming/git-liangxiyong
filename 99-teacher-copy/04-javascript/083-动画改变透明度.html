@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>083-动画改变透明度.html</title>
+	<style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			opacity: 0.3;
+		}
+	</style>
+	<script>
+		var timer = null;
+		function animation(obj,iTarget){
+			// obj.style.opacity = iTarget;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var curr = getComputedStyle(obj,false)['opacity']*100;
+				var iSpeed = 0;
+				if(curr > iTarget){
+					iSpeed = -10;
+				}else{
+					iSpeed = 10;
+				}
+
+				if(Math.abs(iTarget - curr) <= Math.abs(iSpeed)){
+					clearInterval(timer);
+					obj.style.opacity = iTarget/100;
+				}else{
+					obj.style.opacity = (curr + iSpeed)/100;
+					// console.log('hi');
+				}
+				// console.log(curr+"##"+iSpeed);
+			},30)
+		}
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			oDiv.onmouseover = function(){
+				// oDiv.style.opacity = 1;
+				animation(this,100);
+			}
+			oDiv.onmouseout = function(){
+				// oDiv.style.opacity = 1;
+				animation(this,30);
+			}			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

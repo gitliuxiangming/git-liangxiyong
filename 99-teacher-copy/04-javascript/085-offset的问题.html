@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-offset的问题.html</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+
+				
+		window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			oDiv1.onmouseover = function(){
+				setInterval(function(){
+					console.log(oDiv1.offsetWidth);
+										102 - 1
+					oDiv1.style.width = oDiv1.offsetWidth - 1 +'px';
+				},30)
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

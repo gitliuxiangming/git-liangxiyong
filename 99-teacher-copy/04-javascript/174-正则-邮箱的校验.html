@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>174-正则-邮箱的校验.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">校验邮箱</button>
+</body>
+<script>
+	btn.onclick = function(){
+		// alert(txt.value);
+		var str = txt.value;
+		// 76876201@qq.com
+		// niantao@126.com
+		// nian_tao@126.com
+		var reg = /^\w+@\w+\.[a-z]{2,5}$/;
+
+		if(reg.test(str)){
+			alert("邮箱合法")
+		}else{
+			alert("邮箱有误")
+		}
+	}
+</script>
+</html>

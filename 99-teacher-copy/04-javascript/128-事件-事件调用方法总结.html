@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>128-事件-事件调用方法总结.html</title>
+	<style>
+		div{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		function show() {
+			alert(1);
+		}
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			/*
+			var oDiv = document.getElementById('div1');
+			oDiv.onclick = function(){
+				alert(1);
+			}
+			oDiv.onclick = function(){
+				alert(2);
+			}
+			*/
+			// alert(1);
+			function show(){
+				alert(1)
+			}
+			oDiv.addEventListener('click',show,false)
+
+			oDiv.addEventListener('click',function(){
+				alert(2);
+			},false)
+			/*
+			oDiv.removeEventListener('click',function(){
+				alert(1);
+			},false);
+			*/
+			oDiv.removeEventListener('click',show,false);	
+		}
+		// window.onload = function(){
+		// 	alert(2);
+		// }
+	</script>
+</head>
+<body>
+	<!-- <div onclick="alert(1)"></div> -->
+	<!-- <div onclick="show()"></div> -->
+	<div id='div1'></div>
+</body>
+</html>

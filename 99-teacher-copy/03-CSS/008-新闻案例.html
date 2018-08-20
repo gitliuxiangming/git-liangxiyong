@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-新闻案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.news{
+			width: 280px;
+			margin: 50px auto;
+		}
+		.news .header{
+			width: 100%;
+			border-top: 2px solid #ececec;
+			border-bottom: 1px solid #ececec;
+			/*padding: 8px 0;*/
+			padding-bottom: 8px;
+			height: 52px;
+		}
+		.news .header h2{
+			width: 105px;
+			font-size: 20px;
+			margin-top: -2px;
+			border-top:2px solid #069;
+			padding-top: 8px;
+			color: #069;
+
+		}
+		.news .header  span{
+			color: #999;
+			font-size: 9px;
+			font-family: Arial;
+		}
+		.news .content li{
+			width: 100%;
+			list-style: none;
+			height: 35px;
+			line-height: 35px;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			font-size: 12px;
+			border-bottom: 1px dotted #ececec;
+
+		}
+		.news .content li:before{
+			content: "";
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			background: #069;
+			margin-right: 6px;
+    		/*margin-bottom: 1px;*/
+    		vertical-align: top;
+    		margin-top: 10px;
+		}
+		.news .content li:last-child{
+			border-bottom: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="news">
+		<div class="header">
+			<h2>互联网新闻</h2>
+			<span>INTERNET NEWS</span>
+		</div>
+		<ul class="content">
+			<li>滴滴进军外卖，三雄争霸即将来临？</li>
+			<li>沃尔玛下架支付宝，“神仙打架”不能让“凡人遭殃”</li>
+			<li>微软发布Windows 10 RS4慢速预览版17..</li>
+			<li>马斯克为何踩Facebook：他和扎克伯格什么仇什..</li>
+			<li>马斯克怒删特斯拉和SpaceX脸书主页！硅谷二马恩..</li>
+			<li>[评论]Facebook - 信息帝国的数据隐患</li>
+			<li>尚德机构在纽交所挂牌上市，募资14.95亿美元</li>
+			<li>美团打车上海上线次日订单破25万，滴滴美团竞争凶猛</li>
+			<li>美团、滴滴攻守道：冲突会越来越多</li>
+			<li>短路三分钟 | 马斯克为什么就这么恨扎克伯格？</li>
+		</ul>
+	</div>
+</body>
+</html>

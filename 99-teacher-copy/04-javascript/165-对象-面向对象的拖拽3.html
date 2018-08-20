@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>165-对象-面向对象的拖拽3.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		// var oBox = null;
+		// var disX = 0;
+		// var disY = 0;
+		window.onload = function(){
+			new Drag();
+		}
+		function Drag(){
+			this.oBox = document.getElementById('div1');
+			this.disX = 0;
+			this.disY = 0;
+			var _self = this; 
+			// this.oBox.onmousedown = this.fnDown.bind(this);
+			this.oBox.onmousedown = function(){
+				_self.fnDown();
+			}
+		}
+		Drag.prototype.fnDown = function(ev){
+			var oEvent = ev || event;
+			this.disX = oEvent.clientX - this.oBox.offsetLeft;
+			this.disY = oEvent.clientY - this.oBox.offsetTop;
+			document.onmousemove =this.fnMove.bind(this);
+			document.onmouseup = this.fnUp;	
+		}
+		Drag.prototype.fnMove = function(ev){
+			var oEvent = ev || event;
+			this.oBox.style.left = oEvent.clientX - this.disX + "px";
+			this.oBox.style.top = oEvent.clientY - this.disY + "px";			
+		}
+		Drag.prototype.fnUp = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;			
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

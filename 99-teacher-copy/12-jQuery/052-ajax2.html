@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>052-ajax1.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('button').click(function(){
+				/*
+				$.get("./052-data.json",'name=leo&age=99',function(data){
+					console.log(data.name);
+				},'json')
+				
+				$.get("./052-data.json",{name:"leo",age:88},function(data){
+					console.log(data.name);
+				},'json')
+				
+				$.getJSON("./052-data.json",{name:"leo",age:88},function(data){
+					console.log(data.name);
+				})	
+				
+				$.getScript("./052-data.js",function(data){
+					console.log(data);
+				});
+				
+				$.post('./postReq',{name:"leo",age:88},function(data){
+					console.log(data.name);
+				},'json');	
+				*/	
+				$('div').load('./052-ajax1.html');					
+			});
+		})
+	</script>
+</head>
+<body>
+	<button>获取数据</button>
+	<div></div>
+</body>
+</html>

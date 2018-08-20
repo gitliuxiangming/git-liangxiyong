@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>135-事件-表单事件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		p{
+			width: 300px;
+		}
+		li{
+			list-style: none;
+			height: 30px;
+			width: 200px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oInput = document.getElementById('username');
+			var oTxt = document.getElementById('txt');
+			var oSub = document.getElementById('sub');
+			var oList = document.getElementById('list');
+			var oForm = document.getElementById('form1');
+			var isOk = false;
+			var data = ['Tom','Tommy','Amy','Mike'];
+			var isLoaded = false;
+			oInput.onfocus = function(){
+				oTxt.style.color = 'green';
+				oTxt.innerHTML = '输入3-6位用户名';
+			}
+			oInput.onblur = function(){
+				var l = oInput.value.length;
+				if(l >= 3 && l <=6){
+					oTxt.style.color = 'green';
+					oTxt.innerHTML = '输入正确';
+					isOk = true;	
+				}else{
+					oTxt.style.color = 'red';
+					oTxt.innerHTML = '输入用户名有误';						
+				}
+			}
+			/*
+			oInput.onchange = function(){
+				console.log('aaa');
+			}
+			*/
+			/*
+			oInput.onkeypress = function(){
+				console.log('aaa');
+			}
+			
+			oInput.onkeyup = function(){
+				console.log('aaa');
+			}
+			*/
+			oInput.oninput = function(){
+				if(isLoaded){
+					return false;
+				}
+				for(var i = 0 ;i<data.length;i++){
+					var oLi = document.createElement('li');
+					oLi.innerHTML = data[i];
+					oList.appendChild(oLi);
+
+					/*
+					oLi.onclick = function(){
+						oInput.value = this.innerHTML
+						oTxt.style.color = 'green';
+						oTxt.innerHTML = '输入正确';
+						isOk = true;	
+					}
+					*/
+				}
+				isLoaded = true;
+			}
+			oList.onclick = function(ev){
+				var oEvent = ev || event;
+				// console.log(ev.target);
+				oInput.value = ev.target.innerHTML
+				oTxt.style.color = 'green';
+				oTxt.innerHTML = '输入正确';
+				isOk = true;	
+			}
+			/*
+			oForm.onsubmit = function(){
+				alert('aa');
+			}
+			
+			oForm.onreset = function(){
+				alert('bb');
+			}
+			*/											
+			oSub.onclick = function(){
+				// alert('go go');
+				if(!isOk){
+					//alert('输入有误,请重新输入')
+					return false;	
+				}
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<form action="https://www.kuazhu.com" id='form1'>
+		<p>
+			<input type="text" id='username' name="username">
+			<span id='txt'></span>
+			<ul id='list'>
+			</ul>
+			
+		</p>
+
+		<p>
+			<input type="submit" value="提交" id='sub'>
+			<input type="reset" value="重置" >
+		</p>
+	</form>
+</body>
+</html>

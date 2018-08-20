@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>062-DOM获取父节点.html</title>
+	<script>
+		window.onload = function(){
+			var oBox2 = document.getElementById('box2');
+			console.log(oBox2.parentNode.parentNode);
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2"></div>
+	</div>
+</body>
+</html>

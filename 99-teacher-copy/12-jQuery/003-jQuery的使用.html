@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-jQuery的使用.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		/*
+		window.onload = function(){
+			alert('aa');
+		}
+		window.onload = function(){
+			alert('bb');
+		}
+		
+
+		jQuery(document).ready(function(){
+			var name = 'Tom';
+			alert(name);
+		})
+		jQuery(document).ready(function(){
+			var name = 'Leo';
+			alert(name);
+		})	
+		*/
+		// console.log(jQuery == $);
+		/*
+		$(document).ready(function(){
+			var name = 'Tom';
+			alert(name);
+		})
+		$(document).ready(function(){
+			var name = 'Leo';
+			alert(name);
+		})
+		*/
+		$(function(){
+			var name = 'Tom';
+			alert(name);			
+		});
+		$(function(){
+			var name = 'Leo';
+			alert(name);			
+		})
+		
+		/*
+		jQuery(function(){
+			var name = 'Tom';
+			alert(name);			
+		});
+		jQuery(function(){
+			var name = 'Leo';
+			alert(name);			
+		})
+		*/									
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<!-- <img src="imgs/aa.jpg" alt=""> -->
+</body>
+</html>

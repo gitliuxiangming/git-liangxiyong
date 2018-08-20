@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>090-减速动画基础.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:100px;
+			left:600px;
+			opacity: 1;
+		}
+		#line{
+			width: 1px;
+			height: 800px;
+			background: black;
+			position: absolute;
+			top:0;
+			left:300px;
+		}
+	</style>
+	<script>
+		var timer = null;
+		function animation(obj,attr,iTarget){
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var curr = parseFloat(getComputedStyle(obj,false)[attr]);
+				if(attr == 'opacity'){
+					curr = Math.round(curr*100)
+				}
+				
+				var iSpeed = (iTarget - curr)/10;
+				
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+				if(!iSpeed){
+					clearInterval(timer)
+				}else{
+					if(attr == 'opacity'){
+
+						obj.style[attr] = (curr + iSpeed)/100 ;
+					}else{
+						obj.style[attr] = curr + iSpeed + 'px';
+					}
+				}
+			},30)
+		}
+
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oBox = document.getElementById('box1');
+			
+			oBtn.onclick = function(){
+				// oBox.style.left = '300px';
+				animation(oBox,'height',300);
+	
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="开始动画">
+	<div id="box1"></div>
+	<div id="line"></div>
+</body>
+</html>

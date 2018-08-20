@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>073-搜索.html</title>
+	<script>
+		window.onload = function(){
+			var oTxt = document.getElementById('txt');
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('ul1');
+			var aLi = oUl.children;
+			oBtn.onclick = function(){
+				var sTxt = oTxt.value.toLowerCase();
+				var aTxt = sTxt.split(' ');
+				for(var i = 0;i<aLi.length;i++){
+					aLi[i].style.background = '';
+				}
+				for(var i = 0;i<aLi.length;i++){
+					var sLi = aLi[i].innerHTML.toLowerCase();
+					for(var j = 0;j<aTxt.length;j++){
+						if(sLi.search(aTxt[j]) != -1){
+							aLi[i].style.background = 'yellow';
+						}
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id='txt'>
+	<input type="button" id='btn' value="提交">
+	<ul id="ul1">
+		<li>Tom</li>
+		<li>Amy</li>
+		<li>Hello</li>
+		<li>Too</li>
+		<li>Table</li>
+		<li>Cat</li>
+		<li>张三</li>
+		<li>李四</li>
+		<li>王五</li>
+		<li>赵四</li>
+	</ul>
+</body>
+</html>

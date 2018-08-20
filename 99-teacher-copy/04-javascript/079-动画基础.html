@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>079-动画基础.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top:100px;
+			left:600px;
+		}
+		.line{
+			width: 1px;
+			height: 800px;
+			background: black;
+			position: absolute;
+			top:0;
+			left:300px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oDiv = document.getElementById('div1');
+			var oTxt = document.getElementById('txt');
+			var timer = null;
+			var iSpeed = 0;
+			oBtn.onclick = function(){
+				// oDiv.style.left = '300px';
+				clearInterval(timer);
+				if(oDiv.offsetLeft < 300){
+					iSpeed = 10;
+				}else{
+					iSpeed = -10;
+				}
+				timer = setInterval(function(){
+					if(Math.abs(300-oDiv.offsetLeft)<=Math.abs(iSpeed)){
+						oDiv.style.left = '300px';
+						clearInterval(timer);
+					}else{
+						oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px';	
+					}
+					oTxt.value = oDiv.offsetLeft + "$$" + iSpeed;
+					console.log(oDiv.offsetLeft + "$$" + iSpeed);
+				},30)
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn' value="开始动画">
+	<input type="text" id='txt'>
+	<div id="div1"></div>
+	<div class="line"></div>
+</body>
+</html>

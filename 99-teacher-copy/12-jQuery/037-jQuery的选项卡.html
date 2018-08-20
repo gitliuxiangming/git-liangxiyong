@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-jQuery的选项卡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn li{
+			list-style: none;
+			width: 60px;
+			height: 30px;
+			list-style: 30px;
+			border: 1px solid #000;
+			float: left;
+			text-align: center;
+		}
+		.btn li.active{
+			background: #000;
+			color: #fff;
+		}
+		.content li{
+			list-style: none;
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			display: none;
+		}
+		.content li.show{
+			display: block;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.btn>li').mouseenter(function(){
+				var $this = $(this);
+				$this.addClass('active');
+				$this.siblings().removeClass('active');
+				var $index = $this.index();
+				var $currLi = $('.content>li').eq($index);
+				$currLi.addClass('show');
+				$currLi.siblings().removeClass('show');
+			});
+		})
+	</script>
+</head>
+<body>
+	<ul class="btn">
+		<li class="active">btn1</li>
+		<li>btn2</li>
+		<li>btn3</li>
+		<li>btn4</li>
+	</ul>
+	<ul class="content">
+		<li class="show">我是内容1</li>
+		<li>我是内容2</li>
+		<li>我是内容3</li>
+		<li>我是内容4</li>
+	</ul>
+</body>
+</html>

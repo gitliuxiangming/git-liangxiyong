@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056-获取和设置样式.html</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+		.toGreen{
+			background: green;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var oBtn3 = document.getElementById('btn3');
+			var oBox = document.getElementById('box');
+			oBtn1.onclick = function(){
+				oBox.style.background = 'red';
+			}
+			oBtn2.onclick = function(){
+				oBox.className = 'toGreen';
+			}
+			oBtn3.onclick = function(){
+				// alert(oBox.style.background);
+				alert(getComputedStyle(oBox,false)['width'])
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn1' value="变红">
+	<input type="button" id='btn2' value="变绿">
+	<input type="button" id='btn3' value="获取背景色">
+	<div id='box'></div>
+</body>
+</html>

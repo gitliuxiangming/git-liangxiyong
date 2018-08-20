@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-12-伪类选择器.html</title>
+	<style>
+
+		a{
+			color:red;
+		}
+		a:visited{
+			color: yellow;
+		}
+		a:hover{
+			color: black;
+		}
+		a:active{
+			color: purple;
+		}	
+		p:hover{
+			color: red;
+		}	
+		input:focus{
+			outline-color: red;
+		}
+		div:before{
+			content: '你好';
+		}
+		div:after{
+			content: '咱们一起去看樱花';
+		}
+	</style>
+</head>
+<body>
+	<a href="#">点我试试看</a>
+	<p>我是段落</p>
+	<input type="text">
+	<div>
+		我好喜欢你
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 500px;
+			height: 100px;
+			border: 1px solid #000;
+			/*display: block;*/
+		}
+		input{
+			/*display: inline-block;*/
+			width: 200px;
+			height: 100px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBtn = document.getElementById('btn');
+			var oMsg = document.getElementById('msg');
+			oBtn.onclick = function(){
+				// alert(oMsg.style.display);
+				if(oMsg.style.display == 'none'){
+					oMsg.style.display = 'block';
+				}else{
+					oMsg.style.display = 'none';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="消息" id='btn'>
+	<div id='msg' style="display: none">
+		你还没有新的消息....
+	</div>
+</body>
+</html>

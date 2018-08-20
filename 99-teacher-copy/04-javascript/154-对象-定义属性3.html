@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>154-对象－定义属性3.html</title>
+	<script>
+		var obj = {};
+		Object.defineProperties(obj,{
+			"name":{
+				value:'Tom',
+				enumerable:true,
+				writable:true,
+				configurable:true
+			},
+			"age":{
+				value:18,
+				enumerable:false,
+				writable:true,
+				configurable:true
+			}			
+		});
+		// console.log(obj.name)
+		// obj.name = 'Leo';
+		// delete obj.name;
+		for(key in obj){
+			console.log(obj[key]);
+		}
+		console.log(Object.getOwnPropertyDescriptor(obj,"name"));
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

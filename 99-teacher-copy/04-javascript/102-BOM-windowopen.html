@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>102-BOM-windowopen.html</title>
+	<script>
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			oBtn1.onclick = function(){
+				// window.open("about:blank","_blank");
+				// window.open("about:blank");
+				// window.open("about:blank","_self");
+				window.open('https://www.kuazhu.com');
+			}
+			oBtn2.onclick = function(){
+				window.close();
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id="btn1" value="新建窗口">
+	<input type="button" id="btn2" value="关闭窗口">
+</body>
+</html>

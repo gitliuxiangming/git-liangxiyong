@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>151-对象-添加和删除属性.html</title>
+	<script>
+		/*
+		var obj = {
+			name:'Tom',
+			age:18,
+			name:'Leo'
+		}
+
+		obj.legs = 2;
+		obj.showName = function() {
+			console.log('IM '+ this.name + 'I have '+this.legs + ' legs');
+		}
+		obj.legs = 4;
+		obj.showName();
+		*/
+		function Person(name,age){
+			this.name = name;
+		}
+
+		Person.prototype.showName = function(){
+			console.log("I am "+ this.name+" I have "+this.LEGS + ' legs');
+		}
+		Person.prototype.showAge = function(){
+			console.log("I am "+ this.age + " years old");
+		}
+		Person.prototype.LEGS = 2;
+		var p1 = new Person('Tom',18);
+		// p1.LEGS = 4;
+		// console.log(p1.name);
+		// console.log(delete p1.sex);
+		delete Person.prototype.LEGS;
+		p1.showName();
+
+		var p2 = new Person('Leo',18);
+		p2.showName();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

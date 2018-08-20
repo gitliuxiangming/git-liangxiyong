@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>122-事件-碰撞检测.html</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		#div2{
+			width: 200px;
+			height: 200px;
+			background: gray;
+			position: absolute;
+			top:300px;
+			left:500px;
+		}
+	</style>
+	<script>
+		function checkKiss(oDiv1,oDiv2){
+			if(
+				(oDiv1.offsetTop+oDiv1.offsetHeight)>oDiv2.offsetTop && 
+				(oDiv1.offsetLeft+oDiv1.offsetWidth)> oDiv2.offsetLeft &&
+				(oDiv2.offsetLeft+oDiv2.offsetWidth) > oDiv1.offsetLeft &&
+				(oDiv2.offsetTop+oDiv2.offsetHeight) > oDiv1.offsetTop
+				){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+			var disX = 0;
+			var disY = 0;
+			oDiv1.onmousedown = function(ev){
+				var oEvent = ev || event;
+				disX = oEvent.clientX - oDiv1.offsetLeft;
+				disY = oEvent.clientY - oDiv1.offsetTop;
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					oDiv1.style.left  = oEvent.clientX - disX + 'px';
+					oDiv1.style.top = oEvent.clientY - disY + 'px';
+
+					if(checkKiss(oDiv1,oDiv2)){
+						oDiv2.style.background = 'blue';
+					}else{
+						oDiv2.style.background = 'gray';
+					}
+				}
+				document.onmouseup = function(){
+					document.onmousemove = null;
+					document.onmouseup  = null;
+				}	
+			}
+	
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

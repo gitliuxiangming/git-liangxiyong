@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>056-turnjs-demo.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			overflow: hidden;
+		}
+		.container{
+			position: absolute;
+			left:50%;
+			top:50%;
+			/*background: blue;*/
+		}
+		.book{
+			width: 922px;
+			height: 600px;
+			position: absolute;
+			left:-461px;
+			top:-300px;
+			/*background: red;*/
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script src="../../55_download/turnjs4/lib/turn.min.js"></script>
+	<script>
+		$(function(){
+			$('.book').turn();
+		})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="book">
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/1.jpg)"></div>
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/2.jpg)"></div>
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/3.jpg)"></div>
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/4.jpg)"></div>
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/5.jpg)"></div>
+			<div style="background: url(../../55_download/turnjs4/samples/basic/pages/6.jpg)"></div>
+		</div>
+	</div>
+</body>
+</html>

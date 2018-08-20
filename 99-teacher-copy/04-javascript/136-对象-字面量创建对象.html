@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>136-对象-字面量创建对象.html</title>
+	<script>
+		var obj = {
+			name:'Tom',
+			age:18,
+			name:'Amy',
+			sayHi:function(){
+				console.log(this.name + ' say hi');
+			}
+		};
+		/*
+		obj.name = 'Tom';
+		obj.age = 18;
+		obj.sayHi = function(){
+			console.log('Hello');
+		}
+		*/
+		// console.log(typeof obj);
+		//console.log(obj.name);
+		//obj.sayHi();
+		for(key in obj){
+			console.log(key);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

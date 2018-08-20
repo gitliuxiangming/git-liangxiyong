@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>087-底部固定.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			/*position: fixed;*/
+			position: absolute;
+			/*bottom: 0;*/
+			right: 0;
+		}
+	</style>
+	<script>
+		function animation(obj,attr,iTarget){
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+				var iSpeed = 0;
+				
+				var curr = parseFloat(getComputedStyle(obj,false)[attr]);
+				if(attr == 'opacity'){
+					curr = curr * 100;
+				}
+
+				if(curr > iTarget){
+					iSpeed = -50;
+				}else{
+					iSpeed = 50;
+				}
+
+				if(Math.abs(iTarget - curr) <= Math.abs(iSpeed)){
+					clearInterval(obj.timer);
+					if(attr == 'opacity'){
+						obj.style[attr] = iTarget / 100;
+					}else{
+						obj.style[attr] = iTarget + 'px';	
+					}
+					
+				}else{
+					if(attr == 'opacity'){
+						obj.style[attr] = (curr + iSpeed)/100; 
+					}else{
+						obj.style[attr] = curr + iSpeed + 'px';	
+					}
+				}
+
+			},30)
+		}		
+		window.onresize = window.onscroll = window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var iHeight = window.innerHeight;
+			var iTop = document.body.scrollTop || document.documentElement.scrollTop;
+			// oDiv.style.top = iTop + iHeight - oDiv.offsetHeight + 'px';
+			var iTarget = iTop + iHeight - oDiv.offsetHeight;
+			animation(oDiv,'top',iTarget);
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

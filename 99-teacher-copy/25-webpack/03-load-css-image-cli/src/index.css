@@ -1,0 +1,11 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-16 10:33:34
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-16 11:14:38
+*/
+body{
+	background: url('./bg.jpg');
+	font-size: 20px;
+	color:red;
+}

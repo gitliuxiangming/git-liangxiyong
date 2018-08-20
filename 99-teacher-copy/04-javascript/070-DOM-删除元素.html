@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>070-DOM-删除元素.html</title>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementById('ul1');
+			var aA = oUl.getElementsByTagName('a');
+			for(var i = 0;i<aA.length;i++){
+				aA[i].onclick = function(){
+					oUl.removeChild(this.parentNode);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul id='ul1'>
+		<li>1<a href="javascript:;">del</a></li>
+		<li>2<a href="javascript:;">del</a></li>
+		<li>3<a href="javascript:;">del</a></li>
+		<li>4<a href="javascript:;">del</a></li>
+		<li>5<a href="javascript:;">del</a></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-jQuery的过滤方法.html</title>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			// console.log($('div:eq(0)'));
+			// console.log($('div:eq(1)'));
+			// console.log($('div:eq(-1)').index());
+			// console.log($('div').eq(0));
+			// console.log($('div')[0]);
+			console.log($('div:eq(0)').siblings());
+		})
+	</script>
+</head>
+<body>
+	<div>div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	<div>div4</div>
+	<div>div5</div>
+</body>
+</html>

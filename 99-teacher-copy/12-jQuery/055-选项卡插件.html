@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>055-选项卡插件.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.tab{
+			width: 400px;
+			margin: 20px auto;
+		}
+		.btn{
+			overflow: hidden;
+		}
+		.btn>li{
+			width: 40px;
+			height: 20px;
+			border: 1px solid #000;
+			line-height: 20px;
+			text-align: center;
+			float: left;
+		}
+		.btn>li.active{
+			background: yellow;
+		}
+		.btn>li.current{
+			background: red;
+		}		
+		.content>li{
+			width: 200px;
+			height: 300px;
+			border: 1px solid #000;
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		;(function($){
+			$.fn.extend({
+				tab:function(options){
+					var defaults = {
+						activeClass:'active',
+						btnSelector:'.btn>li',
+						contentSelector:'.content>li',
+						eventType:'click'
+					}
+					
+					options = $.extend(defaults,options);
+
+					this.each(function(){
+						var $tab = $(this);
+						var $btns = $tab.find(options.btnSelector);
+						$btns.on(options.eventType,function(){
+							$(this).addClass(options.activeClass).siblings().removeClass(options.activeClass);
+							var index = $(this).index();
+							$tab.find(options.contentSelector).eq(index).show().siblings().hide();
+						});
+
+					})
+				}
+			});
+		})(jQuery);
+	</script>
+	<script>
+		$(function(){
+			$('.tab').tab({
+				activeClass:'current',
+				btnSelector:'ul.btn>li'
+			});
+			$('.tab-box').tab();
+		})
+	</script>
+</head>
+<body>
+	<div class="tab">
+		<ul class="btn">
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul class="content">
+			<li style="display: block;">content1</li>
+			<li>content2</li>
+			<li>content3</li>
+			<li>content4</li>
+		</ul>
+	</div>
+	<div class="tab">
+		<ul class="btn">
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul class="content">
+			<li style="display: block;">content1</li>
+			<li>content2</li>
+			<li>content3</li>
+			<li>content4</li>
+		</ul>
+	</div>
+	<div class="tab-box">
+		<ul class="btn">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<ul class="content">
+			<li style="display: block;">content1</li>
+			<li>content2</li>
+			<li>content3</li>
+			<li>content4</li>
+		</ul>
+	</div>			
+</body>
+</html>

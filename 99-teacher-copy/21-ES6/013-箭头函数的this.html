@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-箭头函数的this.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	function Timer(id){
+		this.id = id;
+
+		setTimeout(function(){
+			console.log(this,this.id);
+		}.bind(this),500)
+	}
+
+	var timer = new Timer('100');
+	
+	/*
+	function Timer(id){
+		this.id = id;
+
+		setTimeout(()=>{
+			console.log(this,this.id);
+		},500)
+	}
+
+	var timer = new Timer('100');
+	*/
+</script>
+</html>

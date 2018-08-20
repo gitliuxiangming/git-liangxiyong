@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>062-extend测试.html</title>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		function Person(){
+
+		}
+
+		var obj = {
+			test1:function(){
+				console.log('test1');
+			},
+			test2:function(){
+				console.log('test2');
+			}
+		}
+		/*
+		for(key in obj){
+			Person[key] = obj[key];
+		}
+
+		Person.test1();
+		Person.test2();
+		*/
+		
+		Person.extend = Person.prototype.extend  = function(obj){
+			// console.log(this);
+			for(key in obj){
+				this[key] = obj[key];
+			}
+		}
+		
+		Person.prototype.test3 = function(){
+			console.log('test3');
+		}
+		/*
+		Person.prototype.extend = function(obj){
+			// console.log(this);
+			for(key in obj){
+				this[key] = obj[key];
+			}
+		}
+		*/
+
+		Person.extend(obj);
+		// Person.test1();
+		// Person.test2();
+		
+		var obj2 = {
+			test3:function(){
+				console.log('test3');
+			},
+			test4:function(){
+				console.log('test4');
+			}
+		}
+		Person.prototype.extend(obj2);
+		var p = new Person();
+		p.test3();
+		p.test4();
+
+		$(function(){
+			
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

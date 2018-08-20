@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-2D旋转基点的修改.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 50px auto;
+			position: relative;
+		}
+		ul li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			position: absolute;
+			top:0;
+			left:0;
+			transform-origin: left bottom;
+		}
+		ul li:nth-child(1){
+			background-color: blue;
+			transform: rotate(15deg);
+		}
+		ul li:nth-child(2){
+			background-color: green;
+			transform: rotate(45deg);
+		}
+		ul li:nth-child(3){
+			background-color: yellow;
+			transform: rotate(60deg);
+		}				
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>

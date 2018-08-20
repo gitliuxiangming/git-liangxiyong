@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>145-对象-原型测试</title>
+	<script>
+		Array.prototype.sum = function(){
+			var result = 0;
+			for(var i = 0;i<this.length;i++){
+				result += this[i]
+			}
+			return result;
+		}
+
+		var arr = new Array(2,3,4,5);
+		// arr.sort();
+		// console.log(arr);
+		/*
+		arr.sum = function(){
+			var result = 0;
+			for(var i = 0;i<this.length;i++){
+				result += this[i]
+			}
+			return result;
+		}
+		*/
+
+		console.log(arr.sum());
+
+		var arr2 = new Array(2,3,46);
+		console.log(arr2.sum());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

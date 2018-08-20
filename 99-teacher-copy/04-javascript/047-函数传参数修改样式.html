@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-函数传参数修改样式.html</title>
+	<style>
+		#box,#box2{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+		}
+	</style>
+	<script>
+		//css(obj,attr,value)
+		//css(obj,attr)
+		function css(obj,attr,value){
+			// alert(obj);
+			// alert(attr);
+			// alert(value);
+			obj.style[attr] = value;
+		}
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oBtn2 = document.getElementById('btn2');
+			var oBtn3 = document.getElementById('btn3');
+			var oBox = document.getElementById('box');
+			var oBox2 = document.getElementById('box2');
+			oBtn1.onclick = function(){
+				// oBox.style.width = '400px';
+				css(oBox,'width','400px');
+				css(oBox2,'width','400px');
+			}
+			oBtn2.onclick = function(){
+				// oBox.style.height = '400px';
+				css(oBox,'height','400px');
+			}
+			oBtn3.onclick = function(){
+				// oBox.style['background'] = 'red';
+				css(oBox,'background','red')
+			}						
+		}
+	</script>
+</head>
+<body>
+	<input type="button" id='btn1' value="变宽">
+	<input type="button" id='btn2' value="变高">
+	<input type="button" id='btn3' value="变红">
+	<div id='box'></div>
+	<div id='box2'></div>
+</body>
+</html>

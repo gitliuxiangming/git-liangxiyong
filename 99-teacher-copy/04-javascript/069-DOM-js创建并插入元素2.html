@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>069-DOM-js创建并插入元素2.html</title>
+	<script>
+		window.onload = function(){
+			var oTxt = document.getElementById('txt');
+			var oBtn = document.getElementById('btn');
+			var oUl = document.getElementById('ul1');
+			oBtn.onclick = function(){
+				var oLi = document.createElement('li');
+				oLi.innerHTML = oTxt.value;
+				// console.log(oLi);
+				// oUl.appendChild(oLi);
+				// oUl.insertBefore(oLi,oUl.firstElementChild);
+				// oUl.insertBefore(oLi,oUl.children[0]);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id='txt'>
+	<input type="button" value="创建" id='btn'>
+	<ul id='ul1'>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+</body>
+</html>

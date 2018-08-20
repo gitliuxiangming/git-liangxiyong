@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-闭包说明.html</title>
+	<script>
+	var abc = 	(function(){
+			var obj = null;
+			return function(){
+				if(!obj){
+					console.log('aaa');
+					obj ={name:'Tom'};
+				}
+				return obj;
+			}
+		})();
+		// console.log(abc);
+		console.log(abc());
+		console.log(abc());
+	</script>
+	
+</head>
+<body>
+	
+</body>
+</html>

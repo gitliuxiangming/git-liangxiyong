@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>18-平滑过渡页面综合练习.html</title>
+	<link rel="stylesheet" href="css/fontawesome-all.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html,body{
+			height: 100%;
+		}
+		body{
+			overflow: hidden;
+		}
+		.container{
+			height: 100%;
+		}
+		.container input,.container a{
+			position: fixed;
+			top:0;
+			width: 20%;
+			height: 34px;
+			line-height: 34px;
+		}
+		.container a{
+			background: #2f2f2f;
+		}
+		.container a>i{
+			margin-right: 5px;
+		}
+		#ctr1,#ctr1+a{
+			left:0%;
+		}
+		#ctr2,#ctr2+a{
+			left:20%;
+		}
+		#ctr3,#ctr3+a{
+			left:40%;
+		}	
+		#ctr4,#ctr4+a{
+			left:60%;
+		}	
+		#ctr5,#ctr5+a{
+			left:80%;
+		}
+		.container input{
+			z-index: 1000;
+			opacity: 0;
+			cursor: pointer;
+		}
+		.container a{
+			z-index: 10;
+			text-align: center;
+			text-decoration: none;
+			font-size: 18px;
+			color: white;
+			font-weight: bold;
+		}
+		.container input:checked + a,
+		.container input:checked:hover + a{
+			color: #ff4c00;
+		}
+		.container input:hover + a {
+			background: #2a2a2a;
+		}
+		.content,.panel{
+			height: 100%;
+		}
+		.content{
+			margin-top: 34px;
+			transition: all 0.5s;
+		}
+		#ctr1:checked ~ .content{
+			transform: translateY(0%);
+		} 
+		#ctr2:checked ~ .content{
+			transform: translateY(-100%);
+		}
+		#ctr3:checked ~ .content{
+			transform: translateY(-200%);
+		} 
+		#ctr4:checked ~ .content{
+			transform: translateY(-300%);
+		} 
+		#ctr5:checked ~ .content{
+			transform: translateY(-400%);
+		}
+		.panel{
+			background-repeat: no-repeat;
+			background-size: 100%  100%;
+		}
+		#home{
+			background-image: url(images/home.png);
+		} 
+		#service{
+			background-image: url(images/service.png);
+		} 									 				
+		#about{
+			background-image: url(images/about.png);
+		}
+		#team{
+			background-image: url(images/team.png);
+		}
+		#contact{
+			background-image: url(images/contact.png);
+		}
+		#ctr1:checked ~ .content #home,
+		#ctr2:checked ~ .content #service,
+		#ctr3:checked ~ .content #about,
+		#ctr4:checked ~ .content #team,
+		#ctr5:checked ~ .content #contact
+		{
+			animation:sport 0.5s linear 0s  normal;
+		}
+		@keyframes sport{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		} 			 			 				
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="radio" name='radion-set' id='ctr1' checked="checked">
+		<a href="#"><i class="fas fa-home"></i>Home</a>
+		<input type="radio" name='radion-set' id='ctr2'>
+		<a href="#"><i class="fas fa-coffee"></i>Service</a>	
+		<input type="radio" name='radion-set' id='ctr3'>
+		<a href="#"><i class="fas fa-building"></i>About</a>
+		<input type="radio" name='radion-set' id='ctr4'>
+		<a href="#"><i class="fas fa-users"></i>Team</a>
+		<input type="radio" name='radion-set' id='ctr5'>
+		<a href="#"><i class="fas fa-phone"></i>Contact</a>	
+		<div class="content">
+			<section class="panel" id='home'></section>
+			<section class="panel" id='service'></section>
+			<section class="panel" id='about'></section>
+			<section class="panel" id='team'></section>
+			<section class="panel" id='contact'></section>
+		</div>									
+	</div>
+</body>
+</html>

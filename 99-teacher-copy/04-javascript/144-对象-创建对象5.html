@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>141-对象-创建对象5.html</title>
+	<script>
+
+		function createPerson(name,age){
+
+			this.name = name;
+			this.age = age;
+
+			this.showName = showName;
+			this.showAge = showAge;
+
+		}
+
+		function showName(){
+			console.log("I am "+this.name);
+		}
+		function showAge(){
+			console.log("I am "+this.age + " years old");	
+		}
+
+		var p1 = new createPerson("Tom",18);
+		p1.showName();
+		p1.showAge();
+
+		var p2 = new createPerson("Leo",88);
+		p2.showName();
+		p2.showAge();
+
+		console.log(p1.showName == p2.showName);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

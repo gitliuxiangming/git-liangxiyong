@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-jQuery命名空间.html</title>
+	<style>
+		.grandfather{
+			width: 500px;
+			height: 500px;
+			background: red;
+			border: 1px solid #000;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			margin: 100px auto;
+			border: 1px solid #000;
+			background: blue;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			background: yellow;
+		}
+	</style>
+	<script src="js/jquery-1.12.4.js"></script>
+	<script>
+		$(function(){
+			$('.son').on('click.zs',function(){
+				alert('son click1');
+			});
+			$('.son').on('click.ls',function(){
+				alert('son click2');
+			});
+			$('.father').on('click.zs',function(){
+				alert('father click1');
+			});
+			$('.father').on('click.ls',function(){
+				alert('father click2');
+			});			
+			$('.son').trigger('click.zs');			
+		})
+	</script>
+</head>
+<body>
+	<div class="grandfather">
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</div>
+</body>
+</html>

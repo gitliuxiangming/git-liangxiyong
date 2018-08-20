@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>065-属性方法测试2.html</title>
+	<!-- <script src="js/jquery-1.12.4.js"></script> -->
+	<script src="js/kquery-1.0.0.js"></script>
+	<script>
+		$(function(){
+			$('button')[0].onclick = function(){
+				// console.log($('div').attr());
+				// console.log($('div').attr('name'));
+				// console.log($('div').attr('name','aaa'));
+				// console.log($('div').attr({
+				// 	class:'box',
+				// 	name:'aaa'
+				// }));
+				// console.log($('div').removeAttr());
+				// console.log($('div').removeAttr('name'));
+				// console.log($('input').val());
+				console.log($('input').val('ccc'));
+			};
+		})
+	</script>
+</head>
+<body>
+	<button>测试</button>
+	<div class="box1" name='bbb'>div1</div>
+	<div class="box2" name='ccc'>div2</div>
+	<form action="http://www.kuazhu.com">
+	<input type="text" value="aaa" name="n1">
+	<input type="text" value="bbb" name="n2">
+	<input type="submit" value="提交">
+	</form>
+</body>
+</html>

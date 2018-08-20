@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-过渡的复合样式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*
+			transition-property: width;
+			transition-duration: 3s;
+			transition-delay: 2s;
+			transition-timing-function: linear;
+			
+			transition: width 3s linear 0s,background-color 3s linear 0s,height 3s linear 0s;
+			
+			transition: width 3s,background-color 3s,height 3s ;
+			*/
+				transition: width 5s,background-color 3s,height 3s ;
+			/*transition: all 3s;*/
+		}
+		div:hover{
+			width: 500px;
+			background-color: blue;
+			height: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

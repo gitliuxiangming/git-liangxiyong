@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-模板字符.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var str = 1;
+	var html = '<ul>';
+		html += '<li>'+str+'</li>'
+		html += '<li>'+str+'</li>'
+		html += '<li>'+str+'</li>'
+		html += '<li>'+str+'</li>'
+		html += '<li>'+str+'</li>'
+		html += '<li>'+str+'</li>'
+		html += '</ul>';
+	*/
+
+	let str = 1;
+	let html = `
+				<ul>
+					 <li>${str}</li>		
+					 <li>${str}</li>	
+					 <li>${str}</li>	
+					 <li>${str}</li>	
+					 <li>${str}</li>	
+				</ul>
+			`;
+
+	document.body.innerHTML = html;
+</script>
+</html>

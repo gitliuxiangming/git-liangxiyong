@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-线形渐变.html</title>
+	<style>
+		#canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		您的浏览器不支持, 请更换高版本浏览器	
+	</canvas>
+</body>
+<script>
+	//获取canvas的DOM元素
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width = 600;
+	oCanvas.height = 600;
+
+	//获取canvas的上下文环境
+	var ctx = oCanvas.getContext('2d');
+
+	ctx.beginPath();
+
+	var linearGradient = ctx.createLinearGradient(300,300,500,400);
+	linearGradient.addColorStop(0.1,'rgb(255,0,0)');
+	linearGradient.addColorStop(1,'rgb(0,255,0)');
+	
+	ctx.fillStyle = linearGradient;
+
+	ctx.fillRect(300,300,200,100);
+
+
+
+
+</script>
+</html>

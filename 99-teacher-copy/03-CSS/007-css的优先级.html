@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-css的优先级.html</title>
+	 <style>
+		p{
+			color: blue;
+		}	 
+		*{
+			color: yellow ;
+		}	 
+		ul{
+			color: red !important;
+		}
+		.box1{
+			color: purple;
+			font-size: 24px;
+		}
+		#box1{
+			color: pink;
+			font-size: 48px;
+		}
+	 </style>
+</head>
+<body>
+	<ul>
+		<li>
+			<p class="box1" id='box1'>我是文字1</p>
+		</li>
+	</ul>
+	<div class="box2">
+		<p class="box3" id='box2'>我是文字2</p>
+	</div>
+</body>
+</html>

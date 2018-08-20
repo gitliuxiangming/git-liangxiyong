@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>150-对象-原型链.html</title>
+	<script>
+		
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		Person.prototype.showName = function(){
+			console.log("I am "+ this.name);
+		}
+		Person.prototype.showAge = function(){
+			console.log("I am "+ this.age + " years old");
+		}
+
+		console.log("1::",Person.prototype);
+		console.log("2::",Person.prototype.constructor == Person);
+		console.log("3::",Person.prototype.__proto__);
+		console.log("4::",Person.prototype.__proto__ == Object.prototype);
+		console.log("5::",Object.prototype.constructor == Object);
+		console.log("6::",Object.prototype.__proto__ );
+
+		var p1 = new Person('Tom',18);
+		p1.showName = function(){
+			console.log("Hello IM " + this.name);
+		}
+		p1.showName();
+		console.log("7::",p1);
+		console.log("8::",p1.__proto__);
+		console.log("9::",p1.__proto__ == Person.prototype);
+
+		var p2 = new Person('Leo',88);
+		console.log('10::',p2);
+		console.log("11::",p2.__proto__);
+		console.log("12::",p2.__proto__ == Person.prototype);
+		p2.showName();
+		// p1.toString();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

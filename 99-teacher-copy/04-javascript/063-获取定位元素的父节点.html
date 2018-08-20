@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>063-获取定位元素的父节点.html</title>
+	<style>
+		#box1{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			background: #ccc;
+			margin: 100px auto;
+			/*position: relative;*/
+		}
+		#box2{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oBox2 = document.getElementById('box2');
+			// console.log(oBox2.parentNode);
+			// oBox2.parentNode.style.background = 'blue';
+			oBox2.offsetParent.style.background = 'blue';
+		}
+	</script>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2"></div>
+	</div>
+</body>
+</html>

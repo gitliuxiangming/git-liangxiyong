@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-如何保证盒子不变.html</title>
+	<style>
+		.father{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+		}
+		.son1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			padding:50px;
+			box-sizing: border-box;
+		}
+		.son2{
+			width: 50px;
+			height: 50px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">s1</div>
+		<div class="son2">s2</div>
+	</div>
+</body>
+</html>

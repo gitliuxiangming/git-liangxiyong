@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-固定定位的参考.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 400px;
+			height: 400px;
+			background: gray;
+			margin: 100px auto;
+			position: relative;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: fixed;
+			top:0;
+			left:0;
+		}
+		p{
+			width: 2000px;
+			height: 2000px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+	<p></p>
+</body>
+</html>

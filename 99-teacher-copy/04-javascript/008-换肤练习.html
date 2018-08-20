@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-换肤练习.html</title>
+	<link id='sk' rel="stylesheet" href="css/skin1.css">
+	<script>
+		function changeToSk1(){
+			document.getElementById('sk').href = 'css/skin1.css'
+		}
+		function changeToSk2(){
+			document.getElementById('sk').href = 'css/skin2.css'
+		}		
+	</script>
+</head>
+<body>
+	<input type="button" value="皮肤1" id="btn1" onclick="changeToSk1()">
+	<input type="button" value="皮肤2" id="btn2" onclick="changeToSk2()">
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>096-动画的链式调用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			float: left;
+			margin-right: 30px;
+		}
+	</style>
+	<script>
+	
+		function animation(obj,attr,iTarget,isLinear,fnEnd){
+			clearInterval(obj.timer);
+			var iSpeed = 0;
+			obj.timer = setInterval(function(){
+				var curr = parseFloat(getComputedStyle(obj,false)[attr]);
+				var isStop = false;
+				if(attr == 'opacity'){
+					curr = Math.round(curr*100)
+				}
+				
+				if(isLinear){
+					if(curr > iTarget){
+						iSpeed = -20;
+					}else{
+						iSpeed = 20;
+					}
+					if(Math.abs(iTarget - curr) <= Math.abs(iSpeed)){
+						isStop = true;
+					}					
+				}else{
+					iSpeed = (iTarget - curr)/10;
+					iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+					if(!iSpeed){
+						isStop = true;
+					}
+				}
+
+				if(isStop){
+					clearInterval(obj.timer)
+					if(isLinear){
+						if(attr == 'opacity'){
+							obj.style[attr] = iTarget / 100;
+						}else{
+							obj.style[attr] = iTarget + 'px';	
+						}		
+					}
+					if(fnEnd){
+						fnEnd();
+					}
+				}else{
+					if(attr == 'opacity'){
+						obj.style[attr] = (curr + iSpeed)/100 ;
+					}else{
+						obj.style[attr] = curr + iSpeed + 'px';
+					}
+				}
+			},30)
+		}
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('div');
+			aDiv[0].onmouseover = function(){
+				function test(){
+					animation(aDiv[0],'width',500,false,function(){
+						animation(aDiv[0],'opacity',50,true)
+					});
+				}
+				animation(this,'height',500,false,test);
+			}
+			aDiv[0].onmouseout = function(){
+				animation(this,'opacity',100,true,function(){
+					animation(aDiv[0],'width',100,false,function(){
+						animation(aDiv[0],'height',100,false);
+					})
+				});
+			}		
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

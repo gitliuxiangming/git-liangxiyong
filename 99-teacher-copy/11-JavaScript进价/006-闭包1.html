@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-闭包</title>
+	<script>
+		var name = 'Tom';
+		function show(){
+			var name1 = 'Leo';
+			/*
+			function fn(){
+				console.log(name1);
+			}
+			fn();
+			*/
+			return function(){
+				return name1;
+			}
+		}
+		// show();
+		var fn = show();
+		console.log(fn());
+		// show();
+		// console.log(name1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

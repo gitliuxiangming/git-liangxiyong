@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-css的优先级.html</title>
+	 <style>
+		body ul#father li p{
+			color: blue;
+		}	 
+		ul#father li .box1{
+			color: red;
+		}
+
+	 </style>
+</head>
+<body>
+	<ul id='father' class="father">
+		<li id='son'>
+			<p class="box1" id='box1'>我是文字1</p>
+		</li>
+	</ul>
+	<div class="box2">
+		<p class="box3" id='box2'>我是文字2</p>
+	</div>
+</body>
+</html>

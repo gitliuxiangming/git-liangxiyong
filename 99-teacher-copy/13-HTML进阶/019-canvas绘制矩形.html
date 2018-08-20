@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-canvas画布.html</title>
+	<style>
+		#canvas{
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas">
+		您的浏览器不支持, 请更换高版本浏览器	
+	</canvas>
+</body>
+<script>
+	//获取canvas的DOM元素
+	var oCanvas = document.getElementById('canvas');
+	oCanvas.width = 600;
+	oCanvas.height = 300;
+
+	//获取canvas的上下文环境
+	var ctx = oCanvas.getContext('2d');
+
+	ctx.beginPath();
+	ctx.strokeStyle = '#f00';
+	ctx.fillStyle = '#ff0';
+	ctx.strokeRect(10,10,100,50);
+	ctx.fillRect(200,10,100,50);
+
+	// ctx.moveTo(0,0);
+	// ctx.lineTo(100,100);
+	// ctx.lineTo(100,200);
+	// ctx.strokeStyle = '#f00';
+	// ctx.lineWidth = 1;
+	// ctx.fillStyle = '#ff0';
+	// ctx.closePath();
+	// ctx.stroke();
+	// ctx.fill();
+
+	// ctx.beginPath();
+	// ctx.moveTo(300,0);
+	// ctx.lineTo(400,100);
+	// ctx.stroke();
+
+</script>
+</html>

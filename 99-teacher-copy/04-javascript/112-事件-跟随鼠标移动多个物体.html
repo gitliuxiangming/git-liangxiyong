@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>112-事件-跟随鼠标移动多个物体.html</title>
+	<style>
+		div{
+			width: 50px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+	<script>
+		function getPoint(ev){
+				var iTop = document.body.scrollTop || document.documentElement.scrollTop;
+				var iLeft = document.body.scrollLeft || document.documentElement.scrollLeft;	
+				return {x:ev.clientX+iLeft,y:ev.clientY+iTop}
+		}
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('div');
+			document.onmousemove = function(ev){
+				var oEvent = ev || event;
+				var oPoint = getPoint(oEvent);
+
+				aDiv[0].style.left = oPoint.x + 'px';
+				aDiv[0].style.top = oPoint.y + 'px';
+
+				for(var i = aDiv.length -1;i>0;i--){
+					aDiv[i].style.left = aDiv[i-1].offsetLeft + 10+'px';
+					aDiv[i].style.top = aDiv[i-1].offsetTop + 10+'px';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>

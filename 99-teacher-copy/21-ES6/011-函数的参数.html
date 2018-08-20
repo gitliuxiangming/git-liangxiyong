@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-函数的参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function show(msg){
+		msg = msg || 'hello'; 
+		console.log(msg);
+	}
+
+	show('');
+	*/
+	/*
+	function show(msg){
+		// msg = msg || 'hello'; 
+		if(typeof msg === 'undefined'){
+			msg = 'hello';
+		}
+		console.log(msg);
+	}
+
+	show('');	
+	*/
+
+	/*
+	function show(msg='hello'){
+		console.log(msg);
+	}
+
+	show('');
+	*/
+	/*
+	function show(name,msg='hello'){
+		console.log(msg,name);
+	}
+
+	show("Tom");
+	*/
+
+	/*
+	function show(name,{age=18,sex="女"}={}){
+		console.log(name,age,sex);
+	}
+
+	show('Amy',{age:88,sex:"男"});
+	*/
+
+	/*
+	function show(name,...arg){
+		console.log(name,arg[0]);
+	}
+
+	// show('Amy',...[18,"男"]);
+	show('Amy',18)
+	*/
+
+	let i = 99;
+
+	function show(age=i+1){
+		console.log(age);
+	}
+
+	show();
+
+	i = 100;
+
+	show();
+
+
+
+</script>
+</html>
