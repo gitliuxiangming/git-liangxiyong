@@ -1,0 +1,7 @@
+.TodoList{
+	width: 400px;
+	margin: 50px auto;
+}
+.TodoList li{
+	margin-top: 10px;
+}
