@@ -1,0 +1,16 @@
+/*
+* @Author: TomChen
+* @Date:   2018-08-21 14:39:26
+* @Last Modified by:   TomChen
+* @Last Modified time: 2018-08-21 14:39:53
+*/
+.TodoList{
+	width: 400px;
+	margin: 50px auto;
+}
+.TodoList li{
+	list-style: none;
+	width: 100%;
+	border-bottom: 1px dashed gray;
+	margin-top: 10px;
+}
