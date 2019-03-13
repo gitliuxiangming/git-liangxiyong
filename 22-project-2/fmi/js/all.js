@@ -159,7 +159,7 @@ function listli(){
 			oUl.innerHTML='';
 			clearTimeout(time);
 			for(var j=0;j<aA.length;j++){
-			aA[j].className='';			
+				aA[j].className='';			
 			}				
 			oCateContent.style.display = 'block';
 			this.className='active';
@@ -203,7 +203,7 @@ function listli(){
 	}
 }
 function nowtime(){
-	var nextData= new Date('2018/05/23 12:00:00');
+	var nextData= new Date('2018/12/26 12:00:00');
 	var aLi=document.querySelectorAll('.shangou .content .time ul li span');
 	var timer=null;
 	timer=setInterval(time,1000)

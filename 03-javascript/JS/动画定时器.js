@@ -13,23 +13,23 @@ function animation(obj,opation,sudu,fn){
 	obj.time = setInterval(function(){
 		var stopall=true;
 		for(attr in opation){
-			var dqz=parseFloat(getComputedStyle(obj,true)[attr]);
+			var current=parseFloat(getComputedStyle(obj,true)[attr]);
 			if(attr == 'opacity'){
-				dqz=dqz*100;
+				current=current*100;
 			}
 			if (sudu) {
-				if(dqz<=opation[attr]){
+				if(current<=opation[attr]){
 					speed= 10;
 				}else{
 					speed= -10;
 				}
-				if (Math.abs(opation[attr]-dqz)<Math.abs(speed)) {
+				if (Math.abs(opation[attr]-current)<Math.abs(speed)) {
 					stop=true;								
 				}else{
 					stopall=false;
 				}
 			}else{
-				speed=(opation[attr]-dqz)/20;
+				speed=(opation[attr]-current)/20;
 				speed=speed>0 ? Math.ceil(speed) : Math.floor(speed);
 				if (!speed) {
 					stop=true;
@@ -45,9 +45,9 @@ function animation(obj,opation,sudu,fn){
 				}
 			}else{
 				if(attr == 'opacity'){
-					obj.style[attr]=(dqz+speed)/100;
+					obj.style[attr]=(current+speed)/100;
 				}else{
-					obj.style[attr] = dqz+speed+'px';
+					obj.style[attr] = current+speed+'px';
 				}
 			}
 		}
