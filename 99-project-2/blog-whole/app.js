@@ -19,7 +19,7 @@ db.on('error',(err)=>{
 });
 
 db.once('open',()=>{
-    console.log('成功与集合创建链接');
+    console.log('connection successful');
 })
 
 //第三部配置模板

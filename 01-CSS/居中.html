@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>居中.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		.son{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin:100px;
+			line-height: 400px;
+		}
+		img{
+			width: 200px;
+			height: 200px;
+			vertical-align: middle;
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son">
+			<img src="../src/1.jpg" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	/*
+	let a=1;
+	console.log(a)
+	console.log(window.a)
+	console.log(window)
+	*/
+	var obj = {
+		name:'tom',
+		age:18
+	}
+	console.log(obj.ad)
+	console.log(obj)
+</script>
+</html>
