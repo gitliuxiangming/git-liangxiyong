@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-背景测试.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 250px;
+			height: 500px;
+			border: 1px solid #000;
+			margin:20px auto;
+		}
+		.son{
+			display: inline-block;
+			width: 250px;
+			height: 250px;
+			line-height: 250px;
+			box-sizing: border-box;
+			padding: 25px;
+			background-origin: content-box;
+			text-align:center;
+			background-size: 200px 200px;
+			background-repeat: no-repeat;
+			color:red;
+		}
+		.son1{
+			background-image: url('src/1.jpg')
+		}
+		.son2{
+			background-image: url('src/2.jpg')
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="son1 son">我是小盒子</div>
+		<div class="son2 son">我是小盒子</div>
+	</div>
+</body>
+</html>
